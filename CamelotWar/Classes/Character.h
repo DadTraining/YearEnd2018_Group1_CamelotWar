@@ -8,8 +8,8 @@ public:
 	~Character();
 	Character(cocos2d::Scene* scene);
 
-	void update();
-	void init();
+	virtual void update();
+	virtual void init();
 	
 	void deCreaseHP();
 	void reBorn();
@@ -22,13 +22,21 @@ public:
 	void setDamage(int damage);
 	int getSpeed();
 	void setSpeed(int speed);
+	int getRange();
+	void setRange(int range);
 
+	cocos2d::Sprite* getHpBar();
+	void setHpBar(cocos2d::Sprite* hpBar);
+
+	void deCreaseHpBar();
 
 private:
 	int mHP;
 	int mPrice;
 	int mDamage;
 	int mSpeed;
+	int mRange;
+	cocos2d::Sprite* mHpBar;
 };
 
 

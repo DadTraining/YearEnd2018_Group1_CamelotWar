@@ -69,3 +69,27 @@ void Character::setSpeed(int speed)
 {
 	mSpeed = speed;
 }
+
+int Character::getRange()
+{
+	return mRange;
+}
+
+void Character::setRange(int range)
+{
+	mRange = range;
+}
+
+cocos2d::Sprite * Character::getHpBar()
+{
+	return mHpBar;
+}
+
+void Character::setHpBar(cocos2d::Sprite * hpBar)
+{
+	mHpBar = hpBar;
+}
+
+void Character::deCreaseHpBar()
+{
+}
