@@ -11,6 +11,7 @@ Character::~Character()
 
 Character::Character(cocos2d::Scene * scene)
 {
+	
 }
 
 void Character::update()
