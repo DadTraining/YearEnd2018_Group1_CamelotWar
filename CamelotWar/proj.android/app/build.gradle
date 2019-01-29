@@ -5,7 +5,7 @@ android {
     buildToolsVersion PROP_BUILD_TOOLS_VERSION
 
     defaultConfig {
-        applicationId "D:\intern.Dev\gameMaster\YearEnd2018_Group1"
+        applicationId "com.vn.CamelotWar"
         minSdkVersion PROP_MIN_SDK_VERSION
         targetSdkVersion PROP_TARGET_SDK_VERSION
         versionCode 1
