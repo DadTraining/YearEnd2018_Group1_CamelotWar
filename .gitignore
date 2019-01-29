@@ -243,4 +243,5 @@ ModelManifest.xml
 
 CamelotWar/[Cc]ocos2d/
 CamelotWar/proj.ios_mac/
+CamelotWar/proj.win32/
 CamelotWar/proj.linux/
