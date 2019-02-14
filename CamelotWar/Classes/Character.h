@@ -1,7 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 #include "Model.h"
-class Character : Model
+class Character : public Model
 {
 public:
 	Character(); 
