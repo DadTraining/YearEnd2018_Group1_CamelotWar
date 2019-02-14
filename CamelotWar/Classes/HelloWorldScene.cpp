@@ -52,9 +52,14 @@ bool HelloWorld::init()
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-	Troll* troll = new Troll(this);
-   
+	troll = new Troll(this);
+	scheduleUpdate();
     return true;
+}
+
+void HelloWorld::update(float)
+{
+	troll->update();
 }
 
 

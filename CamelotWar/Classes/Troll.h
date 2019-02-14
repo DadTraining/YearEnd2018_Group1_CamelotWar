@@ -12,7 +12,9 @@ public:
 	void update();
 	void init();
 
+	void setStep(int);
+	int getStep();
 private:
-
+	int mStep;
 };
 
