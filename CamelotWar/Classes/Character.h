@@ -1,15 +1,15 @@
 #pragma once
+
 #include "cocos2d.h"
 #include "Model.h"
+#include "ui/CocosGUI.h"
+
 class Character : public Model
 {
 public:
 	Character(); 
 	~Character();
 	Character(cocos2d::Scene* scene);
-
-	virtual void update();
-	virtual void init();
 	
 	void deCreaseHP();
 	void reBorn();
@@ -30,13 +30,15 @@ public:
 
 	void deCreaseHpBar();
 
-private:
+	virtual void update();
+	virtual void init();
+
+protected:
 	int mHP;
 	int mPrice;
 	int mDamage;
 	int mSpeed;
 	int mRange;
 	cocos2d::Sprite* mHpBar;
+	cocos2d::ui::LoadingBar * mloadingHpBar;
 };
-
-

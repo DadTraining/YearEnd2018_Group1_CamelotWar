@@ -11,7 +11,9 @@ Character::~Character()
 
 Character::Character(cocos2d::Scene * scene)
 {
-	
+	init();
+	scene->addChild(mHpBar);
+	scene->addChild(mloadingHpBar);
 }
 
 void Character::update()
@@ -20,14 +22,21 @@ void Character::update()
 
 void Character::init()
 {
+	setHpBar(cocos2d::Sprite::create("loading_bg.png"));
+
+	mloadingHpBar = cocos2d::ui::LoadingBar::create("loadingbar.png");
+	mloadingHpBar->setDirection(cocos2d::ui::LoadingBar::Direction::LEFT);
+	mloadingHpBar->setPercent(100);
 }
 
 void Character::deCreaseHP()
 {
+
 }
 
 void Character::reBorn()
 {
+
 }
 
 int Character::getHP()

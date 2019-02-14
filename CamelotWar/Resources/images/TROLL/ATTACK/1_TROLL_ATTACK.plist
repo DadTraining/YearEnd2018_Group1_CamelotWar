@@ -119,13 +119,13 @@
             <key>premultiplyAlpha</key>
             <false/>
             <key>realTextureFileName</key>
-            <string>C:/Users/Win 8.1 Pro/Desktop/New folder (2)/1_TROLL_ATTACK.png/1_TROLL_ATTACK.png</string>
+            <string>1_TROLL_ATTACK.png</string>
             <key>size</key>
             <string>{124,206}</string>
             <key>smartupdate</key>
             <string>$TexturePacker:SmartUpdate:50ed9553ee54aa7a2d1c0111f3c4de2a:bfeb14a6c447c622adbab739007498f0:e0b92ae573c739f54c2748305d1bce42$</string>
             <key>textureFileName</key>
-            <string>C:/Users/Win 8.1 Pro/Desktop/New folder (2)/1_TROLL_ATTACK.png/1_TROLL_ATTACK.png</string>
+            <string>1_TROLL_ATTACK.png</string>
         </dict>
     </dict>
 </plist>
