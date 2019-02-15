@@ -13,32 +13,19 @@ public:
 	
 	void deCreaseHP();
 	void reBorn();
-
-	int getHP();
-	void setHP(int hp);
-	int getPrice();
-	void setPrice(int price);
-	int getDamage();
-	void setDamage(int damage);
-	int getSpeed();
-	void setSpeed(int speed);
-	int getRange();
-	void setRange(int range);
-
-	cocos2d::Sprite* getHpBar();
-	void setHpBar(cocos2d::Sprite* hpBar);
-
 	void deCreaseHpBar();
 
 	virtual void update();
 	virtual void init();
 
+	void setPosHp(cocos2d::Vec2 pos);
 protected:
 	int mHP;
 	int mPrice;
 	int mDamage;
 	int mSpeed;
 	int mRange;
+	int mAlive;
 	cocos2d::Sprite* mHpBar;
 	cocos2d::ui::LoadingBar * mloadingHpBar;
 };

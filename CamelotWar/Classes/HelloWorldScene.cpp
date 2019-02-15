@@ -83,6 +83,5 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 
 void HelloWorld::update(float delta)
 {
-	CCLOG("ok");
 	troll->update();
 }
