@@ -38,6 +38,7 @@ static void problemLoading(const char* filename)
     printf("Error while loading: %s\n", filename);
     printf("Depending on how you compiled you might have to add 'Resources/' in front of filenames in HelloWorldScene.cpp\n");
 }
+Troll* troll;
 
 // on "init" you need to initialize your instance
 bool HelloWorld::init()
@@ -78,4 +79,10 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
     //_eventDispatcher->dispatchEvent(&customEndEvent);
 
 
+}
+
+void HelloWorld::update(float delta)
+{
+	CCLOG("ok");
+	troll->update();
 }
