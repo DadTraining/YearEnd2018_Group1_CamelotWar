@@ -12,8 +12,10 @@ public:
 
 	void trollWalk();
 	void trollATK();
+	void trollDie();
 	void update();
 	void init();
-
+private:
+	int changeStatus;
 };
 
