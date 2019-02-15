@@ -10,9 +10,9 @@ public:
 	~Troll();
 	Troll(cocos2d::Scene * scene);
 
-	void trollWalk();
-	void trollATK();
-	void trollDie();
+	void walk() override;
+	void attack() override;
+	void die() override;
 	void update();
 	void init();
 private:
