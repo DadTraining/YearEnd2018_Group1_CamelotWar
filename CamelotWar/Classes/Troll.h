@@ -10,11 +10,10 @@ public:
 	~Troll();
 	Troll(cocos2d::Scene * scene);
 
-	virtual bool onTouchBegan(cocos2d::Touch* touch, cocos2d::Event *event);
-	virtual void onTouchMoved(cocos2d::Touch* touch, cocos2d::Event *event);
-	virtual void onTouchEnded(cocos2d::Touch* touch, cocos2d::Event *event);
-
+	void trollWalk();
+	void trollATK();
 	void update();
 	void init();
+
 };
 
