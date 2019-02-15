@@ -57,8 +57,8 @@ bool HelloWorld::init()
 
 	//troll = new Troll(this);
 	ARCHER = new Archer(this);
-
-	//scheduleUpdate();
+	ARCHER->init();
+	scheduleUpdate();
 	
     return true;
 }
@@ -83,7 +83,6 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 
 void HelloWorld::update(float delta)
 {
-	CCLOG("ok");
-	//troll->update();
+	
 	ARCHER->update();
 }

@@ -39,7 +39,7 @@ void Model::setAnimation(std::string namePlist, char* namePng, int CountImage)
 	}
 
 	//run action animation
-	auto animation = cocos2d::Animation::createWithSpriteFrames(animFrames, 1.0f / 16);
+	auto animation = cocos2d::Animation::createWithSpriteFrames(animFrames, 1.0f / 10);
 	mSprite->runAction(cocos2d::RepeatForever::create(cocos2d::Animate::create(animation)));
 }
 

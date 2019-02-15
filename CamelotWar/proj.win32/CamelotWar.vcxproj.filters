@@ -42,7 +42,7 @@
     <ClCompile Include="..\Classes\Archer.cpp">
       <Filter>src\Models</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Weapons.cpp">
+    <ClCompile Include="..\Classes\Arrow.cpp">
       <Filter>src\Models</Filter>
     </ClCompile>
   </ItemGroup>
@@ -71,7 +71,7 @@
     <ClInclude Include="..\Classes\Archer.h">
       <Filter>src\Models</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Weapons.h">
+    <ClInclude Include="..\Classes\Arrow.h">
       <Filter>src\Models</Filter>
     </ClInclude>
   </ItemGroup>
