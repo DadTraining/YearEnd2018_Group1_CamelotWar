@@ -53,7 +53,7 @@ void Troll::trollDie()
 	}
 	setPos(getPos() - cocos2d::Vec2(0, 1));
 	setPosHp(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height / 2));
-
+	
 }
 
 void Troll::update()
