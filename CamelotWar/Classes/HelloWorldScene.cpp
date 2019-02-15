@@ -25,6 +25,7 @@
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
 #include "Troll.h"
+#include "Archer.h"
 USING_NS_CC;
 
 Scene* HelloWorld::createScene()
@@ -38,7 +39,8 @@ static void problemLoading(const char* filename)
     printf("Error while loading: %s\n", filename);
     printf("Depending on how you compiled you might have to add 'Resources/' in front of filenames in HelloWorldScene.cpp\n");
 }
-Troll* troll;
+//Troll* troll;
+Archer* ARCHER;
 
 // on "init" you need to initialize your instance
 bool HelloWorld::init()
@@ -53,9 +55,10 @@ bool HelloWorld::init()
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-	troll = new Troll(this);
+	//troll = new Troll(this);
+	ARCHER = new Archer(this);
 
-	scheduleUpdate();
+	//scheduleUpdate();
 	
     return true;
 }
@@ -81,5 +84,6 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 void HelloWorld::update(float delta)
 {
 	CCLOG("ok");
-	troll->update();
+	//troll->update();
+	ARCHER->update();
 }

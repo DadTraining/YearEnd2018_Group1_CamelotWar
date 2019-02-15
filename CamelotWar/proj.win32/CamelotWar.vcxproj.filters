@@ -39,6 +39,12 @@
     <ClCompile Include="..\Classes\Troll.cpp">
       <Filter>src\Models</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Archer.cpp">
+      <Filter>src\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Weapons.cpp">
+      <Filter>src\Models</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -61,6 +67,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Defines.h">
       <Filter>src\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Archer.h">
+      <Filter>src\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Weapons.h">
+      <Filter>src\Models</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

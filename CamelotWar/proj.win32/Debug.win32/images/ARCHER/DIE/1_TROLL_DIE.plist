@@ -89,13 +89,13 @@
             <key>premultiplyAlpha</key>
             <false/>
             <key>realTextureFileName</key>
-            <string>C:/Users/Win 8.1 Pro/Desktop/New folder (2)/1_TROLL_DIE.png/1_TROLL_DIE.png</string>
+            <string>1_TROLL_DIE.png</string>
             <key>size</key>
             <string>{64,272}</string>
             <key>smartupdate</key>
             <string>$TexturePacker:SmartUpdate:d53fa48884bf6147e872af5755c04aca:2cb5ca4845427d93164df4e6232c954d:b5cd73f4821545e0973530c58631683d$</string>
             <key>textureFileName</key>
-            <string>C:/Users/Win 8.1 Pro/Desktop/New folder (2)/1_TROLL_DIE.png/1_TROLL_DIE.png</string>
+            <string>1_TROLL_DIE.png</string>
         </dict>
     </dict>
 </plist>
