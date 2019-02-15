@@ -18,17 +18,23 @@ Character::Character(cocos2d::Scene * scene)
 	scene->addChild(mloadingHpBar);
 }
 
-void Character::deCreaseHP()
+void Character::deCreaseHP(int hp)
 {
+	float percentHpDecrease =( (float) hp / (float)mHP) * 100;
+	CCLOG("%f",percentHpDecrease);
+	mloadingHpBar->setPercent(mloadingHpBar->getPercent() - percentHpDecrease);
+	mHP = mHP - hp;
 
 }
 
 void Character::reBorn()
 {
+
 }
 
 void Character::update()
 {
+
 }
 
 void Character::init()
@@ -46,9 +52,4 @@ void Character::setPosHp(cocos2d::Vec2 pos)
 {
 	mHpBar->setPosition(pos);
 	mloadingHpBar->setPosition(pos);
-}
-
-void Character::deCreaseHpBar()
-{
-
 }
