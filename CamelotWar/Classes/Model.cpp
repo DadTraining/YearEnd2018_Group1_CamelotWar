@@ -7,7 +7,7 @@ Model::Model()
 
 Model::Model(cocos2d::Scene * scene)
 {
-
+	
 }
 
 
@@ -39,6 +39,7 @@ void Model::setAnimation(std::string namePlist, char* namePng, int CountImage,in
 	}
 
 	//run action animation
+
 	auto animation = cocos2d::Animation::createWithSpriteFrames(animFrames, 1.0f / speed);
 	if (repeat == 1 )
 	{
