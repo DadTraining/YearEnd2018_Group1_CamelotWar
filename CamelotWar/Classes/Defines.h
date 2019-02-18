@@ -8,11 +8,11 @@
 #define NAME_PNG_TROLL_ATK "ATTAK_00%d.png"
 #define COUNT_IMG_TROLL_ATK 7
 
-#define NAME_SPRITE_TROLL "images/TROLL/ATTACK/1_ORK.png"
+#define NAME_SPRITE_TROLL "CloseNormal.png"
 
 #define NAME_PLIST_TROLL_DIE "images/TROLL/DIE/1_TROLL_DIE.plist"
 #define NAME_PNG_TROLL_DIE "DIE_00%d.png"
-
+#define COUNT_IMG_TROLL_DIE 7
 
 #define NAME_PLIST_TROLL_WALK "images/TROLL/WALK/1_TROLL_WALK.plist"
 #define NAME_PNG_TROLL_WALK "WALK_00%d.png"
