@@ -11,9 +11,11 @@ public:
 	~Character();
 	Character(cocos2d::Scene* scene);
 	
-	void deCreaseHP();
+	void deCreaseHP(int hp);
 	void reBorn();
-	void deCreaseHpBar();
+	virtual void walk()=0;
+	virtual	void attack()=0;
+	virtual void die() = 0;;
 
 	virtual void update();
 	virtual void init();
