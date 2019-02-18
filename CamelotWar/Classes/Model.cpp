@@ -7,7 +7,7 @@ Model::Model()
 
 Model::Model(cocos2d::Scene * scene)
 {
-
+	
 }
 
 
