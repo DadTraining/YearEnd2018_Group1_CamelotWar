@@ -45,7 +45,11 @@
     <ClCompile Include="..\Classes\Arrow.cpp">
       <Filter>src\Models</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\HammerTroll.cpp" />
+    <ClCompile Include="..\Classes\HammerTroll.cpp">
+      <Filter>src\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Archer_knife.cpp" />
+    <ClCompile Include="..\Classes\Knife.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -75,7 +79,11 @@
     <ClInclude Include="..\Classes\Arrow.h">
       <Filter>src\Models</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\HammerTroll.h" />
+    <ClInclude Include="..\Classes\HammerTroll.h">
+      <Filter>src\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Archer_knife.h" />
+    <ClInclude Include="..\Classes\Knife.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">
