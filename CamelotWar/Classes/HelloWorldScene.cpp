@@ -3,7 +3,12 @@
 #include "Archer.h"
 #include "Troll.h"
 #include "HammerTroll.h"
+<<<<<<< HEAD
 #include "Defines.h"
+=======
+#include "Archer_knife.h"
+
+>>>>>>> 1f5f1ece989b720bdc4e081f73feedecb0a9a41c
 USING_NS_CC;
 
 Scene* HelloWorld::createScene()
@@ -21,6 +26,7 @@ static void problemLoading(const char* filename)
 Archer* ARCHER;
 Troll * troll;
 HammerTroll* hammerTroll;
+Archer_knife *archer_knife;
 // on "init" you need to initialize your instance
 bool HelloWorld::init()
 {
@@ -42,9 +48,10 @@ bool HelloWorld::init()
 
 	troll = new Troll(this);
 	hammerTroll = new HammerTroll(this);
-
 	ARCHER = new Archer(this);
 	ARCHER->init();
+	archer_knife = new Archer_knife(this);
+	archer_knife->init();
 	scheduleUpdate();
 	
     return true;
@@ -84,4 +91,5 @@ void HelloWorld::update(float delta)
 	ARCHER->update();
 	troll->update();
 	hammerTroll->update();
+	archer_knife->update();
 }
