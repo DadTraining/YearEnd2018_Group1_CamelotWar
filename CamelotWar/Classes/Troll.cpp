@@ -15,55 +15,81 @@ Troll::~Troll()
 Troll::Troll(cocos2d::Scene * scene) : Character::Character(scene)
 {
 	mSprite = cocos2d::Sprite::create(NAME_SPRITE_TROLL);
-	setPos(cocos2d::Vec2(SCREEN_W / 3, SCREEN_H / 3));
 	scene->addChild(mSprite);
-
-	auto listener = cocos2d::EventListenerTouchOneByOne::create();
-	listener->onTouchBegan = CC_CALLBACK_2(Troll::onTouchBegan, this);
-	listener->onTouchMoved = CC_CALLBACK_2(Troll::onTouchMoved, this);
-	listener->onTouchEnded = CC_CALLBACK_2(Troll::onTouchEnded, this);
-	scene->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, scene);
 
 	init();
 }
 
-
-bool Troll::onTouchBegan(cocos2d::Touch * touch, cocos2d::Event * event)
+void Troll::walk()
 {
-	if (mloadingHpBar->getPercent() > 0)
+	setPos(mSprite->getPosition() + cocos2d::Vec2(mSpeed/10, 0));
+	setPosHp(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height / 2));
+}
+int countFrame = 0;
+void Troll::attack()
+{
+	countFrame = countFrame + 1;
+	if (changeStatus == 0)
 	{
-		mloadingHpBar->setPercent(mloadingHpBar->getPercent() - 20);
+		mSprite->stopAllActions();	
+		setAnimation(NAME_PLIST_TROLL_ATK, NAME_PNG_TROLL_ATK, COUNT_IMG_TROLL_ATK, mSpeed, 0);
+		changeStatus++;
 	}
-	else
+	int a = (COUNT_IMG_TROLL_ATK * FPS) / mSpeed ;
+	if (countFrame % a == 0)
 	{
-		setAnimation(NAME_PLIST_TROLL_DIE,NAME_PNG_TROLL_DIE,COUNT_IMG_TROLL_DIE);
+		deCreaseHP(100);
 	}
-	return false;
 }
 
-void Troll::onTouchMoved(cocos2d::Touch * touch, cocos2d::Event * event)
+void Troll::die()
 {
-
-}
-
-void Troll::onTouchEnded(cocos2d::Touch * touch, cocos2d::Event * event)
-{
-
+	mAlive = 0 ;
+	if (changeStatus == 0)
+	{
+		mSprite->stopAllActions();
+		setAnimation(NAME_PLIST_TROLL_DIE, NAME_PNG_TROLL_DIE, COUNT_IMG_TROLL_DIE, mSpeed, 1);
+		changeStatus+= 2;
+	}
+	if (changeStatus == 1)
+	{
+		mSprite->stopAllActions();
+		setAnimation(NAME_PLIST_TROLL_DIE, NAME_PNG_TROLL_DIE, COUNT_IMG_TROLL_DIE, mSpeed, 1);
+		changeStatus += 1;
+	}
+	setPos(getPos() - cocos2d::Vec2(0, 1));
+	setPosHp(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height / 2));
+	
 }
 
 void Troll::update()
 {
-	if (mloadingHpBar->getPercent() > 0)
+	if (getPos().x >= SCREEN_W/2 && mAlive == 1)
 	{
-		//setAnimation(NAME_PLIST_TROLL_ATK, NAME_PNG_TROLL_ATK, COUNT_IMG_TROLL_ATK);
+		attack();
 	}
+	if (getPos().x < SCREEN_W / 2 && mAlive == 1)
+	{
+		walk();
+	}
+	if (mloadingHpBar->getPercent() == 0 )
+	{
+		die();
+	}
+
 }
 
 void Troll::init()
 {
-	getHpBar()->setPosition(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height / 2));
-	mloadingHpBar->setPosition(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height / 2));
-
-	setAnimation(NAME_PLIST_TROLL_ATK, NAME_PNG_TROLL_ATK, COUNT_IMG_TROLL_ATK);
+	changeStatus = 0;
+	mSpeed =15;
+	mAlive = 1;
+	mHP = 1000;
+	mPrice = 100;
+	mDamage = 100;
+	mRange = 10;
+	setPos(cocos2d::Vec2(MONSTER_APPEAR, SCREEN_H / 3));
+	setPosHp(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height / 2));
+	setAnimation(NAME_PLIST_TROLL_WALK, NAME_PNG_TROLL_WALK, COUNT_IMG_TROLL_WALK,mSpeed,0);
 
 }
