@@ -3,12 +3,9 @@
 #include "Archer.h"
 #include "Troll.h"
 #include "HammerTroll.h"
-<<<<<<< HEAD
 #include "Defines.h"
-=======
 #include "Archer_knife.h"
 
->>>>>>> 1f5f1ece989b720bdc4e081f73feedecb0a9a41c
 USING_NS_CC;
 
 Scene* HelloWorld::createScene()
