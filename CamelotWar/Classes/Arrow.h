@@ -11,9 +11,13 @@ public:
 	
 	void setVisible(boolean visible);
 	boolean isVisible();
+
+	void setMShoot(boolean shoot);
+
 	void setSpeed(int);
 	int getSpeed();
 private:
 	int mSpeed;
+	boolean mShoot;
 };
 

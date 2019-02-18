@@ -3,7 +3,7 @@
 #include "Archer.h"
 #include "Troll.h"
 #include "HammerTroll.h"
-
+#include "Defines.h"
 USING_NS_CC;
 
 Scene* HelloWorld::createScene()
@@ -52,18 +52,25 @@ bool HelloWorld::init()
 
 bool HelloWorld::onTouchBegan(cocos2d::Touch * touch, cocos2d::Event * event)
 {
-	troll->setPos(cocos2d::Vec2(touch->getLocation()));
+	if (touch->getLocation().x > SCREEN_W/2 )
+	{
+		ARCHER->flip(false);
+	}
+	else
+	{ 
+		ARCHER->flip(true);
+	}
 	return true;
 }
 
 void HelloWorld::onTouchMoved(cocos2d::Touch * touch, cocos2d::Event * event)
 {
-	troll->setPos(cocos2d::Vec2(touch->getLocation()));
+	//troll->setPos(cocos2d::Vec2(touch->getLocation()));
 }
 
 void HelloWorld::onTouchEnded(cocos2d::Touch * touch, cocos2d::Event * event)
 {
-	troll->setPos(cocos2d::Vec2(touch->getLocation()));
+	//troll->setPos(cocos2d::Vec2(touch->getLocation()));
 }
 
 
