@@ -4,7 +4,7 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>WALK_000.png</key>
+            <key>3_WALK_000.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -19,7 +19,7 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>WALK_001.png</key>
+            <key>3_WALK_001.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -34,7 +34,7 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>WALK_002.png</key>
+            <key>3_WALK_002.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -49,7 +49,7 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>WALK_003.png</key>
+            <key>3_WALK_003.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -64,7 +64,7 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>WALK_004.png</key>
+            <key>3_WALK_004.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -79,7 +79,7 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>WALK_005.png</key>
+            <key>3_WALK_005.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -94,7 +94,7 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>WALK_006.png</key>
+            <key>3_WALK_006.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -119,13 +119,13 @@
             <key>premultiplyAlpha</key>
             <false/>
             <key>realTextureFileName</key>
-            <string>C:/Users/Win 8.1 Pro/Desktop/New folder (2)/3_TROLL_WALK.png/3_TROLL_WALK.png</string>
+            <string>3_TROLL_WALK.png</string>
             <key>size</key>
             <string>{564,64}</string>
             <key>smartupdate</key>
             <string>$TexturePacker:SmartUpdate:28876cd574d0e50ddb06affdfd299e89:159016de819fd0f9f1f625ddbdd55d78:5b87bca578efd1e235a1c80d9ef93808$</string>
             <key>textureFileName</key>
-            <string>C:/Users/Win 8.1 Pro/Desktop/New folder (2)/3_TROLL_WALK.png/3_TROLL_WALK.png</string>
+            <string>3_TROLL_WALK.png</string>
         </dict>
     </dict>
 </plist>
