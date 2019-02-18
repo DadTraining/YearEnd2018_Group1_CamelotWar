@@ -21,7 +21,6 @@ Character::Character(cocos2d::Scene * scene)
 void Character::deCreaseHP(int hp)
 {
 	float percentHpDecrease =( (float) hp / (float)mHP) * 100;
-	CCLOG("%f",percentHpDecrease);
 	mloadingHpBar->setPercent(mloadingHpBar->getPercent() - percentHpDecrease);
 	mHP = mHP - hp;
 
