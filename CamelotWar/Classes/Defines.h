@@ -11,7 +11,7 @@
 
 #define NAME_PLIST_TROLL_DIE "images/TROLL/DIE/1_TROLL_DIE.plist"
 #define NAME_PNG_TROLL_DIE "DIE_00%d.png"
-#define COUNT_IMG_TROLL_DIE 7
+
 
 //ARCHER
 
