@@ -11,9 +11,9 @@ public:
 	~Archer();
 	Archer(cocos2d::Scene * scene);
 
-	virtual bool onTouchBegan(cocos2d::Touch* touch, cocos2d::Event *event);
-	virtual void onTouchMoved(cocos2d::Touch* touch, cocos2d::Event *event);
-	virtual void onTouchEnded(cocos2d::Touch* touch, cocos2d::Event *event);
+	void walk() override;
+	void attack() override;
+	void die() override;
 
 	void update();
 	void init();

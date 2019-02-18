@@ -13,6 +13,7 @@ public:
 	void walk() override;
 	void attack() override;
 	void die() override;
+
 	void update();
 	void init();
 private:

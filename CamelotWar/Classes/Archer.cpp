@@ -24,35 +24,22 @@ Archer::Archer(cocos2d::Scene * scene) : Character::Character(scene)
 		arrows.push_back(arrow);
 		arrow->setVisible(false);
 	}
-	// set pos
-
 
 	init();
 }
 
-
-bool Archer::onTouchBegan(cocos2d::Touch * touch, cocos2d::Event * event)
+void Archer::walk()
 {
-	if (mloadingHpBar->getPercent() > 0)
-	{
-		mloadingHpBar->setPercent(mloadingHpBar->getPercent() - 20);
-	}
-	else
-	{
-		setAnimation(NAME_PLIST_ARCHER_DIE, NAME_PNG_ARCHER_DIE, COUNT_IMG_ARCHER_DIE);
-	}
-	return false;
 }
 
-void Archer::onTouchMoved(cocos2d::Touch * touch, cocos2d::Event * event)
+void Archer::attack()
 {
-
 }
 
-void Archer::onTouchEnded(cocos2d::Touch * touch, cocos2d::Event * event)
+void Archer::die()
 {
-
 }
+
 
 void Archer::update()
 {
@@ -85,9 +72,10 @@ void Archer::update()
 void Archer::init()
 {
 	mFrameCount = 0;
-	getHpBar()->setPosition(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height / 2));
+	mSpeed = 20;
+	mHpBar->setPosition(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height / 2));
 	mloadingHpBar->setPosition(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height / 2));
 
-	setAnimation(NAME_PLIST_ARCHER_ATTACK, NAME_PNG_ARCHER_ATTACK, COUNT_IMG_ARCHER_ATTACK);
+	setAnimation(NAME_PLIST_ARCHER_ATTACK, NAME_PNG_ARCHER_ATTACK, COUNT_IMG_ARCHER_ATTACK,mSpeed,0);
 
 }
