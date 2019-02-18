@@ -32,6 +32,20 @@
 
 #define IMG_Weapons "images/ARCHER/ATTACK/ATTACK_Arrow.png"
 
+// Archer-knife ==========================================================================//
+#define NAME_PLIST_ARCHER_ATTACK_Knife "images/ARCHER/ATTACK/2_TROLL_ATTACK.plist"
+#define NAME_PNG_ARCHER_ATTACK_Knife "2_ATTACK_00%d.png"
+#define COUNT_IMG_ARCHER_ATTACK_Knife 5
+
+#define NAME_SPRITE_ARCHER_Knife "images/ARCHER/ATTACK/ATTACK_2.png"
+
+#define NAME_PLIST_ARCHER_DIE_Knife "images/ARCHER/DIE/2_TROLL_DIE.plist"
+#define NAME_PNG_ARCHER_DIE_Knife "DIE_00%d.png"
+#define COUNT_IMG_ARCHER_DIE_Knife 5
+
+#define IMG_Knife "images/ARCHER/ATTACK/ATTACK_knife.png"
+//==============================================================================================//
+
 // Hammer Troll
 #define NAME_PLIST_HAMMERTROLL_ATK "images/TROLL/ATTACK/2_TROLL_ATTACK.plist"
 #define NAME_PNG_HAMMERTROLL_ATK "ATTAK_00%d.png"
