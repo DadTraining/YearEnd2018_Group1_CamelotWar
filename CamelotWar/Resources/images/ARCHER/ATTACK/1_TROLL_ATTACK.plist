@@ -9,43 +9,43 @@
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
-                <string>{-35,0}</string>
+                <string>{0,0}</string>
                 <key>spriteSize</key>
-                <string>{57,64}</string>
+                <string>{54,62}</string>
                 <key>spriteSourceSize</key>
-                <string>{127,64}</string>
+                <string>{54,62}</string>
                 <key>textureRect</key>
-                <string>{{355,1},{57,64}}</string>
+                <string>{{67,67},{54,62}}</string>
                 <key>textureRotated</key>
-                <false/>
+                <true/>
             </dict>
             <key>ATTACK_001.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
-                <string>{-34,0}</string>
+                <string>{0,0}</string>
                 <key>spriteSize</key>
                 <string>{59,64}</string>
                 <key>spriteSourceSize</key>
-                <string>{127,64}</string>
+                <string>{59,64}</string>
                 <key>textureRect</key>
-                <string>{{294,1},{59,64}}</string>
+                <string>{{1,67},{59,64}}</string>
                 <key>textureRotated</key>
-                <false/>
+                <true/>
             </dict>
             <key>ATTACK_002.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
-                <string>{-31,0}</string>
+                <string>{0,0}</string>
                 <key>spriteSize</key>
-                <string>{65,64}</string>
+                <string>{64,64}</string>
                 <key>spriteSourceSize</key>
-                <string>{127,64}</string>
+                <string>{64,64}</string>
                 <key>textureRect</key>
-                <string>{{227,1},{65,64}}</string>
+                <string>{{1,1},{64,64}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -54,13 +54,13 @@
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
-                <string>{-16,0}</string>
+                <string>{0,0}</string>
                 <key>spriteSize</key>
-                <string>{95,64}</string>
+                <string>{54,64}</string>
                 <key>spriteSourceSize</key>
-                <string>{127,64}</string>
+                <string>{54,64}</string>
                 <key>textureRect</key>
-                <string>{{130,1},{95,64}}</string>
+                <string>{{67,1},{54,64}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -71,11 +71,11 @@
                 <key>spriteOffset</key>
                 <string>{0,0}</string>
                 <key>spriteSize</key>
-                <string>{127,64}</string>
+                <string>{53,64}</string>
                 <key>spriteSourceSize</key>
-                <string>{127,64}</string>
+                <string>{53,64}</string>
                 <key>textureRect</key>
-                <string>{{1,1},{127,64}}</string>
+                <string>{{123,1},{53,64}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -85,17 +85,17 @@
             <key>format</key>
             <integer>3</integer>
             <key>pixelFormat</key>
-            <string>RGBA4444</string>
+            <string>RGBA8888</string>
             <key>premultiplyAlpha</key>
             <false/>
             <key>realTextureFileName</key>
-            <string>C:/Users/Win 8.1 Pro/Desktop/New folder (2)/1_TROLL_ATTAK.png/1_TROLL_ATTAK.png</string>
+            <string>1_TROLL_ATTACK.png</string>
             <key>size</key>
-            <string>{413,66}</string>
+            <string>{177,127}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:e95887c6c756085676afe19494f54ddd:ac8283f46206166b33acb4afe3baec29:fa4ede7f72400d3c302a93d2db259633$</string>
+            <string>$TexturePacker:SmartUpdate:9249aa2f58bef11e479f14301c7366c2:9cb1e8d09a3eb5bc06ff92d199aa19f8:e0b92ae573c739f54c2748305d1bce42$</string>
             <key>textureFileName</key>
-            <string>C:/Users/Win 8.1 Pro/Desktop/New folder (2)/1_TROLL_ATTAK.png/1_TROLL_ATTAK.png</string>
+            <string>1_TROLL_ATTACK.png</string>
         </dict>
     </dict>
 </plist>

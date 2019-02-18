@@ -1,7 +1,11 @@
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
+<<<<<<< HEAD
+#include "Archer.h"
+=======
 #include "Troll.h"
 
+>>>>>>> 286ec8990016faf37db75f138831cf1d03ef8530
 USING_NS_CC;
 
 Scene* HelloWorld::createScene()
@@ -15,7 +19,8 @@ static void problemLoading(const char* filename)
     printf("Error while loading: %s\n", filename);
     printf("Depending on how you compiled you might have to add 'Resources/' in front of filenames in HelloWorldScene.cpp\n");
 }
-Troll* troll;
+
+Archer* ARCHER;
 
 // on "init" you need to initialize your instance
 bool HelloWorld::init()
@@ -30,6 +35,8 @@ bool HelloWorld::init()
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
+<<<<<<< HEAD
+=======
 	auto listener = EventListenerTouchOneByOne::create();
 	listener->onTouchBegan = CC_CALLBACK_2(HelloWorld::onTouchBegan, this);
 	listener->onTouchMoved = CC_CALLBACK_2(HelloWorld::onTouchMoved, this);
@@ -37,7 +44,10 @@ bool HelloWorld::init()
 	getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 
 	troll = new Troll(this);
+>>>>>>> 286ec8990016faf37db75f138831cf1d03ef8530
 
+	ARCHER = new Archer(this);
+	ARCHER->init();
 	scheduleUpdate();
 	
     return true;
@@ -67,5 +77,10 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 
 void HelloWorld::update(float delta)
 {
+<<<<<<< HEAD
+	
+	ARCHER->update();
+=======
 	//troll->update();
+>>>>>>> 286ec8990016faf37db75f138831cf1d03ef8530
 }
