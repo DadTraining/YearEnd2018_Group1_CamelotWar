@@ -24,7 +24,6 @@
 
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
-#include "Troll.h"
 #include "Archer.h"
 USING_NS_CC;
 
@@ -39,7 +38,7 @@ static void problemLoading(const char* filename)
     printf("Error while loading: %s\n", filename);
     printf("Depending on how you compiled you might have to add 'Resources/' in front of filenames in HelloWorldScene.cpp\n");
 }
-//Troll* troll;
+
 Archer* ARCHER;
 
 // on "init" you need to initialize your instance
@@ -55,7 +54,7 @@ bool HelloWorld::init()
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-	//troll = new Troll(this);
+
 	ARCHER = new Archer(this);
 	ARCHER->init();
 	scheduleUpdate();
