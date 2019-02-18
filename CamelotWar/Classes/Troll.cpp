@@ -25,13 +25,20 @@ void Troll::walk()
 	setPos(mSprite->getPosition() + cocos2d::Vec2(mSpeed/10, 0));
 	setPosHp(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height / 2));
 }
+int countFrame = 0;
 void Troll::attack()
 {
+	countFrame = countFrame + 1;
 	if (changeStatus == 0)
 	{
-		mSprite->stopAllActions();
+		mSprite->stopAllActions();	
 		setAnimation(NAME_PLIST_TROLL_ATK, NAME_PNG_TROLL_ATK, COUNT_IMG_TROLL_ATK, mSpeed, 0);
 		changeStatus++;
+	}
+	int a = (COUNT_IMG_TROLL_ATK * FPS) / mSpeed ;
+	if (countFrame % a == 0)
+	{
+		deCreaseHP(100);
 	}
 }
 
@@ -57,13 +64,25 @@ void Troll::die()
 
 void Troll::update()
 {
-	
+	if (getPos().x >= SCREEN_W/2 && mAlive == 1)
+	{
+		attack();
+	}
+	if (getPos().x < SCREEN_W / 2 && mAlive == 1)
+	{
+		walk();
+	}
+	if (mloadingHpBar->getPercent() == 0 )
+	{
+		die();
+	}
+
 }
 
 void Troll::init()
 {
 	changeStatus = 0;
-	mSpeed = 15;
+	mSpeed =15;
 	mAlive = 1;
 	mHP = 1000;
 	mPrice = 100;
