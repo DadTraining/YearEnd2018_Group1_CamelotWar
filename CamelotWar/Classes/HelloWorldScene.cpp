@@ -2,6 +2,7 @@
 #include "SimpleAudioEngine.h"
 #include "Archer.h"
 #include "Troll.h"
+#include "HammerTroll.h"
 
 USING_NS_CC;
 
@@ -19,6 +20,7 @@ static void problemLoading(const char* filename)
 
 Archer* ARCHER;
 Troll * troll;
+HammerTroll* hammerTroll;
 // on "init" you need to initialize your instance
 bool HelloWorld::init()
 {
@@ -39,6 +41,7 @@ bool HelloWorld::init()
 	getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 
 	troll = new Troll(this);
+	hammerTroll = new HammerTroll(this);
 
 	ARCHER = new Archer(this);
 	ARCHER->init();
@@ -70,7 +73,8 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 }
 
 void HelloWorld::update(float delta)
-{
-
+{	
 	ARCHER->update();
+	troll->update();
+	hammerTroll->update();
 }
