@@ -14,7 +14,7 @@ Archer_Fire::~Archer_Fire()
 
 Archer_Fire::Archer_Fire(cocos2d::Scene * scene) : Character::Character(scene)
 {
-	mSprite = cocos2d::Sprite::create(NAME_SPRITE_ARCHER);
+	mSprite = cocos2d::Sprite::create(NAME_SPRITE_ARCHER_FIRE);
 	setPos(cocos2d::Vec2(SCREEN_W / 2, SCREEN_H / 2));
 	scene->addChild(mSprite);
 
@@ -75,6 +75,6 @@ void Archer_Fire::init()
 	mHpBar->setPosition(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height / 2));
 	mloadingHpBar->setPosition(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height / 2));
 
-	setAnimation(NAME_PLIST_ARCHER_ATTACK_Fire, NAME_PNG_ARCHER_ATTACK_Fire, COUNT_IMG_ARCHER_ATTACK_Fire, mSpeed, 0);
+	setAnimation(NAME_PLIST_ARCHER_ATTACK_FIRE, NAME_PNG_ARCHER_ATTACK_FIRE, COUNT_IMG_ARCHER_ATTACK_FIRE, mSpeed, 0);
 
 }
