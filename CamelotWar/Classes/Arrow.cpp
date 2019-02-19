@@ -17,16 +17,23 @@ Arrow::~Arrow()
 
 void Arrow::init()
 {
+
 }
 
 void Arrow::update()
 {
-	/*if (isVisible()) {
-		setPos(getPos() + cocos2d::Vec2(getSpeed(), 0));
-		if (getPos().x >= SCREEN_W + mSprite->getContentSize().width / 2) {
-			setVisible(false);
-		}
-	}*/
+	if (mShoot == true)
+	{
+		int x = 1;
+		int y = -(x*x)  ;
+		setPos(getPos() + cocos2d::Vec2(x,y));
+	}
+	else 
+	{
+		int x = -1;
+		int y = -(x*x) ;
+		setPos(getPos() + cocos2d::Vec2(x, y));
+	}
 }
 
 void Arrow::setVisible(boolean visible)
@@ -37,6 +44,11 @@ void Arrow::setVisible(boolean visible)
 boolean Arrow::isVisible()
 {
 	return mSprite->isVisible();
+}
+
+void Arrow::setMShoot(boolean shoot)
+{
+	mShoot = shoot;
 }
 
 void Arrow::setSpeed(int)

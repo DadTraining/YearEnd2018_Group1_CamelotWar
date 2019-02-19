@@ -48,11 +48,19 @@ bool TitleScene::init()
 	Menu->setPosition(Vec2::ZERO);
 	addChild(Menu);
 
+	troll = new Troll(this);
+
+	scheduleUpdate();
 	return true;
+}
+
+void TitleScene::update(float delta)
+{
+	troll->update();
 }
 
 
 void TitleScene::menuPlayCallback(Ref* pSender)
 {
-
+	
 }
