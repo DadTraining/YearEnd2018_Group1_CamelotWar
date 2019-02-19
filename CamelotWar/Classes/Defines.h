@@ -46,6 +46,20 @@
 #define IMG_Knife "images/ARCHER/ATTACK/ATTACK_knife.png"
 //==============================================================================================//
 
+//Archer_Fire ===================================================================================//
+#define NAME_PLIST_ARCHER_ATTACK_Fire "images/ARCHER/ATTACK/3_TROLL_ATTACK.plist"
+#define NAME_PNG_ARCHER_ATTACK_Fire "3_ATTACK_00%d.png"
+#define COUNT_IMG_ARCHER_ATTACK_Fire 5
+
+#define NAME_SPRITE_ARCHER_Fire "images/ARCHER/ATTACK/ATTACK_3.png"
+
+#define NAME_PLIST_ARCHER_DIE_Fire "images/ARCHER/DIE/3_TROLL_DIE.plist"
+#define NAME_PNG_ARCHER_DIE_Fire "DIE_00%d.png"
+#define COUNT_IMG_ARCHER_DIE_Fire 5
+
+#define IMG_Fire "images/ARCHER/ATTACK/ATTACK_fire.png"
+//==================================================================================================//
+
 // Hammer Troll
 #define NAME_PLIST_HAMMERTROLL_ATK "images/TROLL/ATTACK/2_TROLL_ATTACK.plist"
 #define NAME_PNG_HAMMERTROLL_ATK "2_ATTAK_00%d.png"
@@ -60,3 +74,18 @@
 #define NAME_PLIST_HAMMERTROLL_WALK "images/TROLL/WALK/2_TROLL_WALK.plist"
 #define NAME_PNG_HAMMERTROLL_WALK "2_WALK_00%d.png"
 #define COUNT_IMG_HAMMERTROLL_WALK 7
+
+// Bone Troll 
+#define NAME_PLIST_BONETROLL_ATK "images/TROLL/ATTACK/3_TROLL_ATTACK.plist"
+#define NAME_PNG_BONETROLL_ATK "3_ATTAK_00%d.png"
+#define COUNT_IMG_BONETROLL_ATK 7
+
+#define NAME_SPRITE_BONETROLL "CloseNormal.png"
+
+#define NAME_PLIST_BONETROLL_DIE "images/TROLL/DIE/3_TROLL_DIE.plist"
+#define NAME_PNG_BONETROLL_DIE "3_DIE_00%d.png"
+#define COUNT_IMG_BONETROLL_DIE 7
+
+#define NAME_PLIST_BONETROLL_WALK "images/TROLL/WALK/3_TROLL_WALK.plist"
+#define NAME_PNG_BONETROLL_WALK "3_WALK_00%d.png"
+#define COUNT_IMG_BONETROLL_WALK 7

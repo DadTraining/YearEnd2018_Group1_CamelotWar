@@ -28,7 +28,7 @@ void Arrow::update()
 		int y = -(x*x)  ;
 		setPos(getPos() + cocos2d::Vec2(x,y));
 	}
-	else
+	else 
 	{
 		int x = -1;
 		int y = -(x*x) ;
