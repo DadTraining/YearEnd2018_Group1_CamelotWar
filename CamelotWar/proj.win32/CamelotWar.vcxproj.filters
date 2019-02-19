@@ -68,6 +68,7 @@
     <ClCompile Include="..\Classes\Archer_Fire.cpp">
       <Filter>src\Models</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\SwordOrk.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -120,6 +121,7 @@
     <ClInclude Include="..\Classes\Archer_Fire.h">
       <Filter>src\Models</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\SwordOrk.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">
