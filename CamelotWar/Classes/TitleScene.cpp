@@ -16,7 +16,7 @@ bool TitleScene::init()
 	// 1. super init first
 	if (!Scene::init())
 	{
-		return false;
+		return false; 
 	}
 
 	auto visibleSize = Director::getInstance()->getVisibleSize();
