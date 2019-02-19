@@ -36,6 +36,7 @@ private:
 	int mDamage;
 	int mSpeed;
 	int mRange;
+
 	cocos2d::Sprite* mHpBar;
 };
 

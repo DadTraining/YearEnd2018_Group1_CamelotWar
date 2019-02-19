@@ -3,10 +3,12 @@
 
 Character::Character()
 {
+
 }
 
 Character::~Character()
 {
+
 }
 
 Character::Character(cocos2d::Scene * scene)
@@ -16,18 +18,22 @@ Character::Character(cocos2d::Scene * scene)
 
 void Character::update()
 {
+
 }
 
 void Character::init()
 {
+
 }
 
 void Character::deCreaseHP()
 {
+
 }
 
 void Character::reBorn()
 {
+
 }
 
 int Character::getHP()

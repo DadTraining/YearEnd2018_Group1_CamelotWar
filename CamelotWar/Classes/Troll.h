@@ -1,9 +1,19 @@
 #pragma once
-#include "cocos2d.h"
+
+#include <string>
+#include <vector>
+
 #include "Character.h"
+#include "Model.h"
+
+#include "cocos2d.h"
+#include "ui/CocosGUI.h"
 
 class Troll : public Character
 {
+private:
+	int mCount;
+
 public:
 	Troll();
 	~Troll();
@@ -11,8 +21,4 @@ public:
 
 	void update();
 	void init();
-
-private:
-
 };
-
