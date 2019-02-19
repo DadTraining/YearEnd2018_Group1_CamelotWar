@@ -4,6 +4,7 @@
 #include "Troll.h"
 #include "HammerTroll.h"
 #include "Archer_knife.h"
+#include "Archer_Fire.h"
 #include "BoneTroll.h"
 #include "HammerOrk.h"
 
@@ -25,6 +26,7 @@ Archer* ARCHER;
 Troll * troll;
 HammerTroll* hammerTroll;
 Archer_knife *archer_knife;
+Archer_Fire * archer_fire;
 BoneTroll* boneTroll;
 HammerOrk* hammerOrk;
 
@@ -56,6 +58,7 @@ bool HelloWorld::init()
 	ARCHER->init();
 	archer_knife = new Archer_knife(this);
 	archer_knife->init();
+	archer_fire = new Archer_Fire(this);
 	scheduleUpdate();
 	
     return true;
@@ -90,4 +93,6 @@ void HelloWorld::update(float delta)
 	hammerTroll->update();
 	boneTroll->update();
 	hammerOrk->update();
+	archer_knife->update();
+	archer_fire->update();
 }
