@@ -62,8 +62,9 @@ bool HelloWorld::init()
 	ARCHER->init();
 	archer_knife = new Archer_knife(this);
 	archer_knife->init();
-	archer_fire = new Archer_Fire(this);
-  boneTroll = new BoneTroll(this);
+	/*archer_fire = new Archer_Fire(this);
+	archer_fire->init();*/
+	boneTroll = new BoneTroll(this);
 
 	scheduleUpdate();
 	
@@ -106,8 +107,8 @@ void HelloWorld::update(float delta)
 	hammerTroll->update();
 	archer_knife->update();
 
-	archer_fire->update();
+	//archer_fire->update();
 
-  boneTroll->update();
+	boneTroll->update();
 
 }

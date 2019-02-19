@@ -112,6 +112,10 @@
       <Filter>src\Models</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Fire.h">
+    <ClInclude Include="..\Classes\Fire.h">
+      <Filter>src\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Archer_Fire.h">
       <Filter>src\Models</Filter>
     </ClInclude>
   </ItemGroup>
