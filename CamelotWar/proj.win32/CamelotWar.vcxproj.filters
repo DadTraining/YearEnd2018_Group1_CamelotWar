@@ -48,8 +48,14 @@
     <ClCompile Include="..\Classes\HammerTroll.cpp">
       <Filter>src\Models</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Archer_knife.cpp" />
-    <ClCompile Include="..\Classes\Knife.cpp" />
+    <ClCompile Include="..\Classes\Knife.cpp">
+      <Filter>src\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Archer_knife.cpp">
+      <Filter>src\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Archer_Fire.cpp" />
+    <ClCompile Include="..\Classes\Fire.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -82,8 +88,14 @@
     <ClInclude Include="..\Classes\HammerTroll.h">
       <Filter>src\Models</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Archer_knife.h" />
-    <ClInclude Include="..\Classes\Knife.h" />
+    <ClInclude Include="..\Classes\Knife.h">
+      <Filter>src\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Archer_knife.h">
+      <Filter>src\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Archer_Fire.h" />
+    <ClInclude Include="..\Classes\Fire.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">

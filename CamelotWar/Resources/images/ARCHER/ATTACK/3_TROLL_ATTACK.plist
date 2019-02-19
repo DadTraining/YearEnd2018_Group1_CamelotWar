@@ -4,80 +4,80 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>ATTACK_000.png</key>
-            <dict>
-                <key>aliases</key>
-                <array/>
-                <key>spriteOffset</key>
-                <string>{-29,0}</string>
-                <key>spriteSize</key>
-                <string>{52,64}</string>
-                <key>spriteSourceSize</key>
-                <string>{110,64}</string>
-                <key>textureRect</key>
-                <string>{{67,67},{52,64}}</string>
-                <key>textureRotated</key>
-                <false/>
-            </dict>
-            <key>ATTACK_001.png</key>
-            <dict>
-                <key>aliases</key>
-                <array/>
-                <key>spriteOffset</key>
-                <string>{-29,-1}</string>
-                <key>spriteSize</key>
-                <string>{52,62}</string>
-                <key>spriteSourceSize</key>
-                <string>{110,64}</string>
-                <key>textureRect</key>
-                <string>{{67,133},{52,62}}</string>
-                <key>textureRotated</key>
-                <false/>
-            </dict>
-            <key>ATTACK_002.png</key>
-            <dict>
-                <key>aliases</key>
-                <array/>
-                <key>spriteOffset</key>
-                <string>{-25,0}</string>
-                <key>spriteSize</key>
-                <string>{60,64}</string>
-                <key>spriteSourceSize</key>
-                <string>{110,64}</string>
-                <key>textureRect</key>
-                <string>{{67,1},{60,64}}</string>
-                <key>textureRotated</key>
-                <false/>
-            </dict>
-            <key>ATTACK_003.png</key>
-            <dict>
-                <key>aliases</key>
-                <array/>
-                <key>spriteOffset</key>
-                <string>{-8,0}</string>
-                <key>spriteSize</key>
-                <string>{94,64}</string>
-                <key>spriteSourceSize</key>
-                <string>{110,64}</string>
-                <key>textureRect</key>
-                <string>{{1,113},{94,64}}</string>
-                <key>textureRotated</key>
-                <true/>
-            </dict>
-            <key>ATTACK_004.png</key>
+            <key>3_ATTACK_000.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
                 <string>{0,0}</string>
                 <key>spriteSize</key>
-                <string>{110,64}</string>
+                <string>{51,64}</string>
                 <key>spriteSourceSize</key>
-                <string>{110,64}</string>
+                <string>{51,64}</string>
                 <key>textureRect</key>
-                <string>{{1,1},{110,64}}</string>
+                <string>{{1,133},{51,64}}</string>
                 <key>textureRotated</key>
-                <true/>
+                <false/>
+            </dict>
+            <key>3_ATTACK_001.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{51,64}</string>
+                <key>spriteSourceSize</key>
+                <string>{51,64}</string>
+                <key>textureRect</key>
+                <string>{{1,199},{51,64}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+            <key>3_ATTACK_002.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{59,64}</string>
+                <key>spriteSourceSize</key>
+                <string>{59,64}</string>
+                <key>textureRect</key>
+                <string>{{1,1},{59,64}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+            <key>3_ATTACK_003.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{53,64}</string>
+                <key>spriteSourceSize</key>
+                <string>{53,64}</string>
+                <key>textureRect</key>
+                <string>{{1,67},{53,64}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+            <key>3_ATTACK_004.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{50,62}</string>
+                <key>spriteSourceSize</key>
+                <string>{50,62}</string>
+                <key>textureRect</key>
+                <string>{{1,265},{50,62}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
         </dict>
         <key>metadata</key>
@@ -85,15 +85,15 @@
             <key>format</key>
             <integer>3</integer>
             <key>pixelFormat</key>
-            <string>RGBA4444</string>
+            <string>RGBA8888</string>
             <key>premultiplyAlpha</key>
             <false/>
             <key>realTextureFileName</key>
             <string>3_TROLL_ATTACK.png</string>
             <key>size</key>
-            <string>{128,208}</string>
+            <string>{61,328}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:c25bc5777811c7f5d4d4083e6c304715:d7d38976d556bddf18bc0bed93980211:90b6cc22248e3bea0221a93b50c7139b$</string>
+            <string>$TexturePacker:SmartUpdate:a3eb30790d8f4aaa96eb7dcef6dffc79:a1558ee36afb7a881f0f779d4cc5ae78:731eeda444c8c3f2e6273fea033ad07e$</string>
             <key>textureFileName</key>
             <string>3_TROLL_ATTACK.png</string>
         </dict>
