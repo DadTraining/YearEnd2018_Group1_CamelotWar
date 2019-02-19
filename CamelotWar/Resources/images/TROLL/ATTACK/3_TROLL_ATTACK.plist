@@ -4,7 +4,7 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>ATTAK_000.png</key>
+            <key>3_ATTAK_000.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -19,7 +19,7 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>ATTAK_001.png</key>
+            <key>3_ATTAK_001.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -34,7 +34,7 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>ATTAK_002.png</key>
+            <key>3_ATTAK_002.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -49,7 +49,7 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>ATTAK_003.png</key>
+            <key>3_ATTAK_003.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -64,7 +64,7 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>ATTAK_004.png</key>
+            <key>3_ATTAK_004.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -79,7 +79,7 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>ATTAK_005.png</key>
+            <key>3_ATTAK_005.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -94,7 +94,7 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>ATTAK_006.png</key>
+            <key>3_ATTAK_006.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -119,13 +119,13 @@
             <key>premultiplyAlpha</key>
             <false/>
             <key>realTextureFileName</key>
-            <string>2_TROLL_ATTACK.png</string>
+            <string>3_TROLL_ATTACK.png</string>
             <key>size</key>
             <string>{64,392}</string>
             <key>smartupdate</key>
             <string>$TexturePacker:SmartUpdate:a77f940bf088072a95c6327ba05e04a0:72c1a9ea54c4d853bd0c9aa59c1a8ea2:533d978f2e4f0acae30bcc8f5750e5a5$</string>
             <key>textureFileName</key>
-            <string>2_TROLL_ATTACK.png</string>
+            <string>3_TROLL_ATTACK.png</string>
         </dict>
     </dict>
 </plist>

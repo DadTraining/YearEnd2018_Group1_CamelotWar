@@ -56,6 +56,11 @@
     </ClCompile>
     <ClCompile Include="..\Classes\Archer_Fire.cpp" />
     <ClCompile Include="..\Classes\Fire.cpp" />
+    <ClCompile Include="..\Classes\Archer_knife.cpp" />
+    <ClCompile Include="..\Classes\Knife.cpp" />
+     <ClCompile Include="..\Classes\BoneTroll.cpp">
+      <Filter>src\Models</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -96,6 +101,11 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Archer_Fire.h" />
     <ClInclude Include="..\Classes\Fire.h" />
+    <ClInclude Include="..\Classes\Archer_knife.h" />
+    <ClInclude Include="..\Classes\Knife.h" />
+    <ClInclude Include="..\Classes\BoneTroll.h">
+      <Filter>src\Models</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">
