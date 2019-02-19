@@ -18,12 +18,12 @@ Archer_knife::Archer_knife(cocos2d::Scene * scene) :Character::Character(scene)
 	setPos(cocos2d::Vec2(SCREEN_W / 4, SCREEN_H / 4));
 	scene->addChild(mSprite);
 
-	/*for (int i = 0; i < 10; i++) {
+	for (int i = 0; i < 10; i++) {
 		auto knife = new Knife(scene);
 		knife->setPos(cocos2d::Vec2(getPos().x + mSprite->getContentSize().width +20, getPos().y));
 		knifes.push_back(knife);
 		knife->setVisible(false);
-	}*/
+	}
 	init();
 }
 
@@ -41,7 +41,7 @@ void Archer_knife::die()
 
 void Archer_knife::update()
 {
-	/*for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 10; i++)
 	{
 		knifes.at(i)->update();
 	}
@@ -73,15 +73,15 @@ void Archer_knife::update()
 				knifes[i]->update();
 			}
 		}
-	}*/
+	}
 }
 
 void Archer_knife::init()
 {
 	mFrameCount = 0;
 	mSpeed = 20;
-	//mHpBar->setPosition(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height / 2));
-	//mloadingHpBar->setPosition(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height / 2));
+	mHpBar->setPosition(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height / 2));
+	mloadingHpBar->setPosition(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height / 2));
 
-	//setAnimation(NAME_PLIST_ARCHER_ATTACK_Knife, NAME_PNG_ARCHER_ATTACK_Knife, COUNT_IMG_ARCHER_ATTACK_Knife, mSpeed, 0);
+	setAnimation(NAME_PLIST_ARCHER_ATTACK_Knife, NAME_PNG_ARCHER_ATTACK_Knife, COUNT_IMG_ARCHER_ATTACK_Knife, mSpeed, 0);
 }
