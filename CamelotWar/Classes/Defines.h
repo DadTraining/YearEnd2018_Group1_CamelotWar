@@ -119,3 +119,18 @@
 #define NAME_PLIST_SWORDORK_WALK "images/2_ORK/2_ORK_WALK.plist"
 #define NAME_PNG_SWORDORK_WALK "2_ORK_WALK_00%d.png"
 #define COUNT_IMG_SWORDORK_WALK 7
+
+// Scene title ========================================================
+#define SCENE_TITLE_PNG_BACKGROUND "scene/background.png"
+#define SCENE_TITLE_PNG_THECAMELOT "scene/theCamelot.png"
+#define SCENE_TITLE_PNG_PLAY "scene/play.png"
+#define SCENE_TITLE_PNG_SETTING "scene/setting.png"
+#define SCENE_TITLE_PNG_EXIT "scene/exit.png"
+#define SCENE_TITLE_THECAMELOT_W 410
+#define SCENE_TITLE_THECAMELOT_H 410
+#define SCENE_TITLE_PLAY_W 512
+#define SCENE_TITLE_PLAY_H 100
+#define SCENE_TITLE_SETTING_W 256
+#define SCENE_TITLE_SETTING_H 90
+#define SCENE_TITLE_EXIT_W 768
+#define SCENE_TITLE_EXIT_H 90
