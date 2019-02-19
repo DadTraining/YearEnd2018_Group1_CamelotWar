@@ -3,6 +3,7 @@
 #include "Archer.h"
 #include "Troll.h"
 #include "HammerTroll.h"
+#include "Archer_knife.h"
 #include "BoneTroll.h"
 #include "HammerOrk.h"
 
@@ -23,6 +24,7 @@ static void problemLoading(const char* filename)
 Archer* ARCHER;
 Troll * troll;
 HammerTroll* hammerTroll;
+Archer_knife *archer_knife;
 BoneTroll* boneTroll;
 HammerOrk* hammerOrk;
 
@@ -52,6 +54,8 @@ bool HelloWorld::init()
 
 	ARCHER = new Archer(this);
 	ARCHER->init();
+	archer_knife = new Archer_knife(this);
+	archer_knife->init();
 	scheduleUpdate();
 	
     return true;

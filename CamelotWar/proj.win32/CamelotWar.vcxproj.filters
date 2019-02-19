@@ -48,7 +48,9 @@
     <ClCompile Include="..\Classes\HammerTroll.cpp">
       <Filter>src\Models</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\BoneTroll.cpp">
+    <ClCompile Include="..\Classes\Archer_knife.cpp" />
+    <ClCompile Include="..\Classes\Knife.cpp" />
+     <ClCompile Include="..\Classes\BoneTroll.cpp">
       <Filter>src\Models</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\HammerOrk.cpp">
@@ -86,6 +88,8 @@
     <ClInclude Include="..\Classes\HammerTroll.h">
       <Filter>src\Models</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\Archer_knife.h" />
+    <ClInclude Include="..\Classes\Knife.h" />
     <ClInclude Include="..\Classes\BoneTroll.h">
       <Filter>src\Models</Filter>
     </ClInclude>
