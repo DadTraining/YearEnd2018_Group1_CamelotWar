@@ -3,6 +3,7 @@
 #include "Archer.h"
 #include "Troll.h"
 #include "HammerTroll.h"
+#include "Archer_knife.h"
 #include "BoneTroll.h"
 
 USING_NS_CC;
@@ -22,6 +23,7 @@ static void problemLoading(const char* filename)
 Archer* ARCHER;
 Troll * troll;
 HammerTroll* hammerTroll;
+Archer_knife *archer_knife;
 BoneTroll* boneTroll;
 // on "init" you need to initialize your instance
 bool HelloWorld::init()
@@ -44,10 +46,11 @@ bool HelloWorld::init()
 
 	troll = new Troll(this);
 	hammerTroll = new HammerTroll(this);
-	boneTroll = new BoneTroll(this);
-
 	ARCHER = new Archer(this);
 	ARCHER->init();
+	archer_knife = new Archer_knife(this);
+	archer_knife->init();
+  boneTroll = new BoneTroll(this);
 	scheduleUpdate();
 	
     return true;
@@ -80,5 +83,6 @@ void HelloWorld::update(float delta)
 	ARCHER->update();
 	troll->update();
 	hammerTroll->update();
-	boneTroll->update();
+	archer_knife->update();
+  boneTroll->update();
 }

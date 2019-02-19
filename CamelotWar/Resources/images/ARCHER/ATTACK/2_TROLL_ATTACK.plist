@@ -4,7 +4,7 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>ATTACK_000.png</key>
+            <key>2_ATTACK_000.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -19,7 +19,7 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>ATTACK_001.png</key>
+            <key>2_ATTACK_001.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -34,7 +34,7 @@
                 <key>textureRotated</key>
                 <true/>
             </dict>
-            <key>ATTACK_002.png</key>
+            <key>2_ATTACK_002.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -49,7 +49,7 @@
                 <key>textureRotated</key>
                 <true/>
             </dict>
-            <key>ATTACK_003.png</key>
+            <key>2_ATTACK_003.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -64,7 +64,7 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>ATTACK_004.png</key>
+            <key>2_ATTACK_004.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -95,7 +95,7 @@
             <key>smartupdate</key>
             <string>$TexturePacker:SmartUpdate:efe38b5f058e31759a8e51187ea40f5c:d9bf5c90341a0dfb5be6b2322643468e:9cc30d978b0464274b9228d4cfd2d654$</string>
             <key>textureFileName</key>
-            <string>2_TROLL_ATTACsK.png</string>
+            <string>2_TROLL_ATTACK.png</string>
         </dict>
     </dict>
 </plist>
