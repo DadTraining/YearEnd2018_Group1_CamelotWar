@@ -32,6 +32,10 @@
 
 #define IMG_Weapons "images/ARCHER/ATTACK/ATTACK_Arrow.png"
 
+// Archer-KNIFE ==========================================================================//
+#define NAME_PLIST_ARCHER_ATTACK_KNIFE "images/ARCHER/ATTACK/2_TROLL_ATTACK.plist"
+#define NAME_PNG_ARCHER_ATTACK_KNIFE "2_ATTACK_00%d.png"
+#define COUNT_IMG_ARCHER_ATTACK_KNIFE 5
 // Archer-knife ==========================================================================//
 #define NAME_PLIST_ARCHER_ATTACK_KNIFE "images/ARCHER/ATTACK/2_TROLL_ATTACK.plist"
 #define NAME_PNG_ARCHER_ATTACK_KNIFE "2_ATTACK_00%d.png"
@@ -43,9 +47,14 @@
 #define NAME_PNG_ARCHER_DIE_KNIFE "DIE_00%d.png"
 #define COUNT_IMG_ARCHER_DIE_KNIFE 5
 
+#define IMG_KNIFE "images/ARCHER/ATTACK/ATTACK_KNIFE.png"
 #define IMG_KNIFE "images/ARCHER/ATTACK/ATTACK_knife.png"
 //==============================================================================================//
 
+//Archer_FIRE ===================================================================================//
+#define NAME_PLIST_ARCHER_ATTACK_FIRE "images/ARCHER/ATTACK/3_TROLL_ATTACK.plist"
+#define NAME_PNG_ARCHER_ATTACK_FIRE "3_ATTACK_00%d.png"
+#define COUNT_IMG_ARCHER_ATTACK_FIRE 5
 //Archer_Fire ===================================================================================//
 #define NAME_PLIST_ARCHER_ATTACK_FIRE "images/ARCHER/ATTACK/3_TROLL_ATTACK.plist"
 #define NAME_PNG_ARCHER_ATTACK_FIRE "3_ATTACK_00%d.png"
@@ -58,6 +67,7 @@
 #define COUNT_IMG_ARCHER_DIE_FIRE 5
 
 #define IMG_FIRE "images/ARCHER/ATTACK/ATTACK_fire.png"
+#define IMG_FIRE "images/ARCHER/ATTACK/ATTACK_FIRE.png"
 //==================================================================================================//
 
 // Hammer Troll
