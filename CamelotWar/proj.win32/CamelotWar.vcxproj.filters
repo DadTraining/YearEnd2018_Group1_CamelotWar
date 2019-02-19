@@ -68,6 +68,9 @@
     <ClCompile Include="..\Classes\Archer_Fire.cpp">
       <Filter>src\Models</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\TitleScene.cpp">
+      <Filter>src\Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -119,6 +122,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Archer_Fire.h">
       <Filter>src\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TitleScene.h">
+      <Filter>src\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
