@@ -10,7 +10,14 @@ USING_NS_CC;
 
 Scene* HelloWorld::createScene()
 {
-    return HelloWorld::create();
+	auto scene = HelloWorld::createWithPhysics();
+	scene->getPhysicsWorld()->setDebugDrawMask(cocos2d::PhysicsWorld::DEBUGDRAW_ALL);
+
+	auto layer = HelloWorld::create();
+	layer->setPhysicsWorld(scene->getPhysicsWorld());
+	scene->addChild(layer);
+
+	return scene;
 }
 
 // Print useful error message instead of segfaulting when files are not there.
@@ -33,6 +40,8 @@ bool HelloWorld::init()
     {
         return false;
     }
+
+	
 
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();

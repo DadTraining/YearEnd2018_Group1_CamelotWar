@@ -15,7 +15,12 @@ Archer::~Archer()
 Archer::Archer(cocos2d::Scene * scene) : Character::Character(scene)
 {
 	mSprite = cocos2d::Sprite::create(NAME_SPRITE_ARCHER);
-	setPos(cocos2d::Vec2(SCREEN_W / 3, SCREEN_H / 3));
+	setPos(cocos2d::Vec2(SCREEN_W /2 , SCREEN_H -100));
+
+	auto physicsBody = cocos2d::PhysicsBody::createBox(mSprite->getContentSize());
+	physicsBody->setDynamic(false);
+	mSprite->addComponent(physicsBody);
+
 	scene->addChild(mSprite);
 
 	for (int i = 0; i < 10; i++) {
@@ -24,6 +29,8 @@ Archer::Archer(cocos2d::Scene * scene) : Character::Character(scene)
 		arrows.push_back(arrow);
 		arrow->setVisible(false);
 	}
+
+	
 
 	init();
 }
@@ -84,8 +91,6 @@ void Archer::init()
 	mHpBar->setPosition(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height / 2));
 	mloadingHpBar->setPosition(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height / 2));
 
-	
-
 	setAnimation(NAME_PLIST_ARCHER_ATTACK, NAME_PNG_ARCHER_ATTACK, COUNT_IMG_ARCHER_ATTACK,mSpeed,0);
 
-}
+}	

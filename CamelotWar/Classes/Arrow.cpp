@@ -24,11 +24,15 @@ void Arrow::update()
 {
 	if (mShoot == true)
 	{
-		setPos(getPos() + cocos2d::Vec2(-10, 0));
+		int x = 1;
+		int y = -(x*x)  ;
+		setPos(getPos() + cocos2d::Vec2(x,y));
 	}
 	else
 	{
-		setPos(getPos() + cocos2d::Vec2(10, 0));
+		int x = -1;
+		int y = -(x*x) ;
+		setPos(getPos() + cocos2d::Vec2(x, y));
 	}
 }
 
