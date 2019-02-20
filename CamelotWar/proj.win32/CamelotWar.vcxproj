@@ -162,6 +162,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\Classes\Knife.cpp" />
     <ClCompile Include="..\Classes\Model.cpp" />
+    <ClCompile Include="..\Classes\SpearKnight.cpp" />
     <ClCompile Include="..\Classes\SwordOrk.cpp" />
     <ClCompile Include="..\Classes\TitleScene.cpp" />
     <ClCompile Include="..\Classes\Troll.cpp" />
@@ -183,6 +184,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\Classes\Knife.h" />
     <ClInclude Include="..\Classes\Model.h" />
+    <ClInclude Include="..\Classes\SpearKnight.h" />
     <ClInclude Include="..\Classes\SwordOrk.h" />
     <ClInclude Include="..\Classes\TitleScene.h" />
     <ClInclude Include="..\Classes\Troll.h" />
