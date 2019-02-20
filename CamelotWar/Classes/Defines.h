@@ -144,3 +144,18 @@
 #define SCENE_TITLE_SETTING_H 90
 #define SCENE_TITLE_EXIT_W 1000
 #define SCENE_TITLE_EXIT_H 90
+
+// Axe Ork 
+#define NAME_PLIST_AXEORK_ATK "images/3_ORK/3_ORK_ATTACK.plist"
+#define NAME_PNG_AXEORK_ATK "3_ORK_ATTACK_00%d.png"
+#define COUNT_IMG_AXEORK_ATK 7
+
+#define NAME_SPRITE_AXEORK "CloseNormal.png"
+
+#define NAME_PLIST_AXEORK_DIE "images/3_ORK/3_ORK_DIE.plist"
+#define NAME_PNG_AXEORK_DIE "3_ORK_DIE_00%d.png"
+#define COUNT_IMG_AXEORK_DIE 7
+
+#define NAME_PLIST_AXEORK_WALK "images/3_ORK/3_ORK_WALK.plist"
+#define NAME_PNG_AXEORK_WALK "3_ORK_WALK_00%d.png"
+#define COUNT_IMG_AXEORK_WALK 7

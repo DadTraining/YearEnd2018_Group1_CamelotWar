@@ -9,6 +9,7 @@
 #include "BoneTroll.h"
 #include "HammerOrk.h"
 #include "SwordOrk.h"
+#include "AxeOrk.h"
 
 USING_NS_CC;
 
@@ -39,6 +40,7 @@ Archer_Fire * archer_fire;
 BoneTroll* boneTroll;
 HammerOrk* hammerOrk;
 SwordOrk* swordOrk;
+AxeOrk* axeOrk;
 
 // on "init" you need to initialize your instance
 bool HelloWorld::init()
@@ -66,6 +68,7 @@ bool HelloWorld::init()
 	boneTroll = new BoneTroll(this);
 	hammerOrk = new HammerOrk(this);
 	swordOrk = new SwordOrk(this);
+	axeOrk = new AxeOrk(this);
 
 	ARCHER = new Archer(this);
 	ARCHER->init();
@@ -73,7 +76,6 @@ bool HelloWorld::init()
 	archer_knife->init();
 	archer_fire = new Archer_Fire(this);
 	archer_fire->init();
-	boneTroll = new BoneTroll(this);
 
 	scheduleUpdate();
 	
@@ -119,4 +121,5 @@ void HelloWorld::update(float delta)
 	archer_knife->update();
 	archer_fire->update();
 	swordOrk->update();
+	axeOrk->update();
 }
