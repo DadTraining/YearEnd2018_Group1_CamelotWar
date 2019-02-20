@@ -77,7 +77,12 @@
     <ClCompile Include="..\Classes\AxeOrk.cpp">
       <Filter>src\Models</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\SpearKnight.cpp" />
+    <ClCompile Include="..\Classes\SpearKnight.cpp">
+      <Filter>src\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AxeKnight.cpp">
+      <Filter>src\Models</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -139,7 +144,12 @@
     <ClInclude Include="..\Classes\SwordOrk.h">
       <Filter>src\Models</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\SpearKnight.h" />
+    <ClInclude Include="..\Classes\SpearKnight.h">
+      <Filter>src\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AxeKnight.h">
+      <Filter>src\Models</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">
