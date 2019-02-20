@@ -115,6 +115,21 @@
 #define NAME_PNG_HAMMERORK_WALK "1_ORK_WALK_00%d.png"
 #define COUNT_IMG_HAMMERORK_WALK 7
 
+// Sword Ork 
+#define NAME_PLIST_SWORDORK_ATK "images/2_ORK/2_ORK_ATTACK.plist"
+#define NAME_PNG_SWORDORK_ATK "2_ORK_ATTACK_00%d.png"
+#define COUNT_IMG_SWORDORK_ATK 7
+
+#define NAME_SPRITE_SWORDORK "CloseNormal.png"
+
+#define NAME_PLIST_SWORDORK_DIE "images/2_ORK/2_ORK_DIE.plist"
+#define NAME_PNG_SWORDORK_DIE "2_ORK_DIE_00%d.png"
+#define COUNT_IMG_SWORDORK_DIE 7
+
+#define NAME_PLIST_SWORDORK_WALK "images/2_ORK/2_ORK_WALK.plist"
+#define NAME_PNG_SWORDORK_WALK "2_ORK_WALK_00%d.png"
+#define COUNT_IMG_SWORDORK_WALK 7
+
 // Scene title ========================================================
 #define SCENE_TITLE_PNG_BACKGROUND "scene/background.png"
 #define SCENE_TITLE_PNG_THECAMELOT "scene/theCamelot.png"
