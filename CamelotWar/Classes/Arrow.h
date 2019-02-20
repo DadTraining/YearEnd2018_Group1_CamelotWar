@@ -7,6 +7,7 @@ public:
 	~Arrow();
 
 	void init();
+	void fly(cocos2d::Vec2 pos);
 	void update();
 	
 	void setVisible(boolean visible);
@@ -19,5 +20,7 @@ public:
 private:
 	int mSpeed;
 	boolean mShoot;
+	float a;
+	float b;
 };
 

@@ -30,4 +30,6 @@ protected:
 	int mAlive;
 	cocos2d::Sprite* mHpBar;
 	cocos2d::ui::LoadingBar * mloadingHpBar;
+
+
 };

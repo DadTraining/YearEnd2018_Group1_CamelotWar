@@ -22,6 +22,11 @@ void Model::setPos(cocos2d::Vec2 pos)
 	mSprite->setPosition(pos);
 }
 
+cocos2d::Sprite* Model::getSprite()
+{
+	return mSprite;
+}
+
 void Model::setAnimation(std::string namePlist, char* namePng, int CountImage,int speed, int repeat)
 {
 	auto visibleSize = cocos2d::Director::getInstance()->getVisibleSize();

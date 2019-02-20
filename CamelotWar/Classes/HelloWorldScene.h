@@ -2,6 +2,8 @@
 #define __HELLOWORLD_SCENE_H__
 
 #include "cocos2d.h"
+#include "Character.h"
+#include <vector>
 
 class HelloWorld : public cocos2d::Scene
 {
@@ -13,14 +15,17 @@ public:
 	virtual bool onTouchBegan(cocos2d::Touch* touch, cocos2d::Event *event);
 	virtual void onTouchMoved(cocos2d::Touch* touch, cocos2d::Event *event);
 	virtual void onTouchEnded(cocos2d::Touch* touch, cocos2d::Event *event);
+	
+	void createMonster();
 
-    void menuCloseCallback(cocos2d::Ref* pSender);
-	void setPhysicsWorld(cocos2d::PhysicsWorld* world) { sceneWorld = world; };
 	void update(float delta);
 
     CREATE_FUNC(HelloWorld);
 private:
-	cocos2d::PhysicsWorld* sceneWorld;
+	std::vector< Character*> mListCharacters;
+	std::vector< Character*> mListMonsters;
+
+
 };
 
 #endif // __HELLOWORLD_SCENE_H__

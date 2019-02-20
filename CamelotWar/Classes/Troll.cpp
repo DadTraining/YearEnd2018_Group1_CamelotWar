@@ -64,11 +64,11 @@ void Troll::die()
 
 void Troll::update()
 {
-	if (getPos().x >= SCREEN_W/2 && mAlive == 1)
+	if (getPos().x >= SCREEN_W - 100 && mAlive == 1)
 	{
 		attack();
 	}
-	if (getPos().x < SCREEN_W / 2 && mAlive == 1)
+	if (getPos().x < SCREEN_W - 100 && mAlive == 1)
 	{
 		walk();
 	}
