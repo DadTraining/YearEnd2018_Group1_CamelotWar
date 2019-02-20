@@ -5,9 +5,8 @@
 Arrow::Arrow(cocos2d::Scene * scene)
 {
 	mSprite = cocos2d::Sprite::create(IMG_Weapons);
-	
 	scene->addChild(mSprite);
-	setSpeed(10);
+	mSpeed = 20;
 	init();
 }
 
@@ -20,20 +19,18 @@ void Arrow::init()
 
 }
 
+void Arrow::fly(cocos2d::Vec2 pos)
+{
+	 a = (pos.y - getPos().y)  / (pos.x - getPos().x);
+	 b = pos.y - (a * pos.x);		
+}
+
 void Arrow::update()
 {
-	if (mShoot == true)
-	{
-		int x = 1;
-		int y = -(x*x)  ;
-		setPos(getPos() + cocos2d::Vec2(x,y));
-	}
-	else 
-	{
-		int x = -1;
-		int y = -(x*x) ;
-		setPos(getPos() + cocos2d::Vec2(x, y));
-	}
+
+	float y = getPos().y -mSpeed;
+	float x = (y - b) / a ;
+	setPos(cocos2d::Vec2(x,y));
 }
 
 void Arrow::setVisible(boolean visible)

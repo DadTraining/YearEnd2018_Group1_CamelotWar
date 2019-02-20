@@ -13,6 +13,8 @@ public:
 	cocos2d::Vec2 getPos();
 	void setPos(cocos2d::Vec2 pos);
 
+	cocos2d::Sprite * getSprite();
+
 	void setAnimation(std::string namePlist, char * namePng, int CountImage,int speed,int repeat);
 
 	virtual void update() = 0;

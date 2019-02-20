@@ -18,14 +18,7 @@ USING_NS_CC;
 
 Scene* HelloWorld::createScene()
 {
-	auto scene = HelloWorld::createWithPhysics();
-	scene->getPhysicsWorld()->setDebugDrawMask(cocos2d::PhysicsWorld::DEBUGDRAW_ALL);
-
-	auto layer = HelloWorld::create();
-	layer->setPhysicsWorld(scene->getPhysicsWorld());
-	scene->addChild(layer);
-
-	return scene;
+	return HelloWorld::create();
 }
 
 // Print useful error message instead of segfaulting when files are not there.
@@ -35,6 +28,8 @@ static void problemLoading(const char* filename)
     printf("Depending on how you compiled you might have to add 'Resources/' in front of filenames in HelloWorldScene.cpp\n");
 }
 
+Archer *archer;
+=======
 Archer* ARCHER;
 Troll * troll;
 HammerTroll* hammerTroll;
@@ -69,6 +64,11 @@ bool HelloWorld::init()
 	listener->onTouchEnded = CC_CALLBACK_2(HelloWorld::onTouchEnded, this);
 	getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 
+	createMonster();
+
+	archer = new Archer(this);
+	archer->setListMonster(mListMonsters);
+
 	troll = new Troll(this);
 	hammerTroll = new HammerTroll(this);
 	boneTroll = new BoneTroll(this);
@@ -95,35 +95,35 @@ bool HelloWorld::init()
 
 bool HelloWorld::onTouchBegan(cocos2d::Touch * touch, cocos2d::Event * event)
 {
-	if (touch->getLocation().x > SCREEN_W/2 )
-	{
-		ARCHER->flip(false);
-	}
-	else
-	{ 
-		ARCHER->flip(true);
-	}
 	return true;
 }
 
 void HelloWorld::onTouchMoved(cocos2d::Touch * touch, cocos2d::Event * event)
 {
-	//troll->setPos(cocos2d::Vec2(touch->getLocation()));
+
 }
 
 void HelloWorld::onTouchEnded(cocos2d::Touch * touch, cocos2d::Event * event)
 {
-	//troll->setPos(cocos2d::Vec2(touch->getLocation()));
+
 }
 
-
-void HelloWorld::menuCloseCallback(Ref* pSender)
+void HelloWorld::createMonster()
 {
-
+	Troll *troll = new Troll(this);
+	mListMonsters.push_back(troll);
 }
+
 
 void HelloWorld::update(float delta)
 {	
+	archer->update();
+
+	for (int  i = 0; i < mListMonsters.size(); i++)
+	{
+		mListMonsters[i]->update();
+	}
+
 	ARCHER->update();
 	troll->update();
 	hammerTroll->update();
