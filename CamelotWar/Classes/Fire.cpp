@@ -5,7 +5,7 @@
 
 Fire::Fire(cocos2d::Scene * scene)
 {
-	mSprite = cocos2d::Sprite::create(IMG_Fire);
+	mSprite = cocos2d::Sprite::create(IMG_FIRE);
 
 	scene->addChild(mSprite);
 	setSpeed(10);

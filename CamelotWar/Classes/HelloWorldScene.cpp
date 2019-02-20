@@ -3,6 +3,7 @@
 #include "Archer.h"
 #include "Troll.h"
 #include "HammerTroll.h"
+#include "Defines.h"
 #include "Archer_knife.h"
 #include "Archer_Fire.h"
 #include "BoneTroll.h"
@@ -13,7 +14,14 @@ USING_NS_CC;
 
 Scene* HelloWorld::createScene()
 {
-    return HelloWorld::create();
+	auto scene = HelloWorld::createWithPhysics();
+	scene->getPhysicsWorld()->setDebugDrawMask(cocos2d::PhysicsWorld::DEBUGDRAW_ALL);
+
+	auto layer = HelloWorld::create();
+	layer->setPhysicsWorld(scene->getPhysicsWorld());
+	scene->addChild(layer);
+
+	return scene;
 }
 
 // Print useful error message instead of segfaulting when files are not there.
@@ -42,6 +50,8 @@ bool HelloWorld::init()
         return false;
     }
 
+	
+
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
@@ -62,6 +72,9 @@ bool HelloWorld::init()
 	archer_knife = new Archer_knife(this);
 	archer_knife->init();
 	archer_fire = new Archer_Fire(this);
+	archer_fire->init();
+	boneTroll = new BoneTroll(this);
+
 	scheduleUpdate();
 	
     return true;
@@ -69,18 +82,25 @@ bool HelloWorld::init()
 
 bool HelloWorld::onTouchBegan(cocos2d::Touch * touch, cocos2d::Event * event)
 {
-	troll->setPos(cocos2d::Vec2(touch->getLocation()));
+	if (touch->getLocation().x > SCREEN_W/2 )
+	{
+		ARCHER->flip(false);
+	}
+	else
+	{ 
+		ARCHER->flip(true);
+	}
 	return true;
 }
 
 void HelloWorld::onTouchMoved(cocos2d::Touch * touch, cocos2d::Event * event)
 {
-	troll->setPos(cocos2d::Vec2(touch->getLocation()));
+	//troll->setPos(cocos2d::Vec2(touch->getLocation()));
 }
 
 void HelloWorld::onTouchEnded(cocos2d::Touch * touch, cocos2d::Event * event)
 {
-	troll->setPos(cocos2d::Vec2(touch->getLocation()));
+	//troll->setPos(cocos2d::Vec2(touch->getLocation()));
 }
 
 

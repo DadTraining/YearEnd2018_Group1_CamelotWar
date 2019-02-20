@@ -14,7 +14,7 @@ Archer_knife::~Archer_knife()
 
 Archer_knife::Archer_knife(cocos2d::Scene * scene) :Character::Character(scene)
 {
-	mSprite = cocos2d::Sprite::create(NAME_SPRITE_ARCHER_Knife);
+	mSprite = cocos2d::Sprite::create(NAME_SPRITE_ARCHER_KNIFE);
 	setPos(cocos2d::Vec2(SCREEN_W / 4, SCREEN_H / 4));
 	scene->addChild(mSprite);
 
@@ -83,5 +83,5 @@ void Archer_knife::init()
 	mHpBar->setPosition(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height / 2));
 	mloadingHpBar->setPosition(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height / 2));
 
-	setAnimation(NAME_PLIST_ARCHER_ATTACK_Knife, NAME_PNG_ARCHER_ATTACK_Knife, COUNT_IMG_ARCHER_ATTACK_Knife, mSpeed, 0);
+	setAnimation(NAME_PLIST_ARCHER_ATTACK_KNIFE, NAME_PNG_ARCHER_ATTACK_KNIFE, COUNT_IMG_ARCHER_ATTACK_KNIFE, mSpeed, 0);
 }

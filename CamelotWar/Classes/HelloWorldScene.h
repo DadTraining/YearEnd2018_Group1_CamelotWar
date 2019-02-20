@@ -15,10 +15,12 @@ public:
 	virtual void onTouchEnded(cocos2d::Touch* touch, cocos2d::Event *event);
 
     void menuCloseCallback(cocos2d::Ref* pSender);
-
+	void setPhysicsWorld(cocos2d::PhysicsWorld* world) { sceneWorld = world; };
 	void update(float delta);
 
     CREATE_FUNC(HelloWorld);
+private:
+	cocos2d::PhysicsWorld* sceneWorld;
 };
 
 #endif // __HELLOWORLD_SCENE_H__

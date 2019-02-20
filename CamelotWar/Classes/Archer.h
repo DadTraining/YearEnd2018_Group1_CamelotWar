@@ -14,6 +14,7 @@ public:
 	void walk() override;
 	void attack() override;
 	void die() override;
+	void flip(boolean flip);
 
 	void update();
 	void init();

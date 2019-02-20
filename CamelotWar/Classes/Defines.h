@@ -1,5 +1,5 @@
-#define SCREEN_W 1024
-#define SCREEN_H 576
+#define SCREEN_W 1280
+#define SCREEN_H 720
 #define FPS 50
 #define MONSTER_APPEAR -50
 
@@ -32,32 +32,42 @@
 
 #define IMG_Weapons "images/ARCHER/ATTACK/ATTACK_Arrow.png"
 
+// Archer-KNIFE ==========================================================================//
+#define NAME_PLIST_ARCHER_ATTACK_KNIFE "images/ARCHER/ATTACK/2_TROLL_ATTACK.plist"
+#define NAME_PNG_ARCHER_ATTACK_KNIFE "2_ATTACK_00%d.png"
+#define COUNT_IMG_ARCHER_ATTACK_KNIFE 5
 // Archer-knife ==========================================================================//
-#define NAME_PLIST_ARCHER_ATTACK_Knife "images/ARCHER/ATTACK/2_TROLL_ATTACK.plist"
-#define NAME_PNG_ARCHER_ATTACK_Knife "2_ATTACK_00%d.png"
-#define COUNT_IMG_ARCHER_ATTACK_Knife 5
+#define NAME_PLIST_ARCHER_ATTACK_KNIFE "images/ARCHER/ATTACK/2_TROLL_ATTACK.plist"
+#define NAME_PNG_ARCHER_ATTACK_KNIFE "2_ATTACK_00%d.png"
+#define COUNT_IMG_ARCHER_ATTACK_KNIFE 5
 
-#define NAME_SPRITE_ARCHER_Knife "images/ARCHER/ATTACK/ATTACK_2.png"
+#define NAME_SPRITE_ARCHER_KNIFE "images/ARCHER/ATTACK/ATTACK_2.png"
 
-#define NAME_PLIST_ARCHER_DIE_Knife "images/ARCHER/DIE/2_TROLL_DIE.plist"
-#define NAME_PNG_ARCHER_DIE_Knife "DIE_00%d.png"
-#define COUNT_IMG_ARCHER_DIE_Knife 5
+#define NAME_PLIST_ARCHER_DIE_KNIFE "images/ARCHER/DIE/2_TROLL_DIE.plist"
+#define NAME_PNG_ARCHER_DIE_KNIFE "DIE_00%d.png"
+#define COUNT_IMG_ARCHER_DIE_KNIFE 5
 
-#define IMG_Knife "images/ARCHER/ATTACK/ATTACK_knife.png"
+#define IMG_KNIFE "images/ARCHER/ATTACK/ATTACK_KNIFE.png"
+#define IMG_KNIFE "images/ARCHER/ATTACK/ATTACK_knife.png"
 //==============================================================================================//
 
+//Archer_FIRE ===================================================================================//
+#define NAME_PLIST_ARCHER_ATTACK_FIRE "images/ARCHER/ATTACK/3_TROLL_ATTACK.plist"
+#define NAME_PNG_ARCHER_ATTACK_FIRE "3_ATTACK_00%d.png"
+#define COUNT_IMG_ARCHER_ATTACK_FIRE 5
 //Archer_Fire ===================================================================================//
-#define NAME_PLIST_ARCHER_ATTACK_Fire "images/ARCHER/ATTACK/3_TROLL_ATTACK.plist"
-#define NAME_PNG_ARCHER_ATTACK_Fire "3_ATTACK_00%d.png"
-#define COUNT_IMG_ARCHER_ATTACK_Fire 5
+#define NAME_PLIST_ARCHER_ATTACK_FIRE "images/ARCHER/ATTACK/3_TROLL_ATTACK.plist"
+#define NAME_PNG_ARCHER_ATTACK_FIRE "3_ATTACK_00%d.png"
+#define COUNT_IMG_ARCHER_ATTACK_FIRE 5
 
-#define NAME_SPRITE_ARCHER_Fire "images/ARCHER/ATTACK/ATTACK_3.png"
+#define NAME_SPRITE_ARCHER_FIRE "images/ARCHER/ATTACK/ATTACK_3.png"
 
-#define NAME_PLIST_ARCHER_DIE_Fire "images/ARCHER/DIE/3_TROLL_DIE.plist"
-#define NAME_PNG_ARCHER_DIE_Fire "DIE_00%d.png"
-#define COUNT_IMG_ARCHER_DIE_Fire 5
+#define NAME_PLIST_ARCHER_DIE_FIRE "images/ARCHER/DIE/3_TROLL_DIE.plist"
+#define NAME_PNG_ARCHER_DIE_FIRE "DIE_00%d.png"
+#define COUNT_IMG_ARCHER_DIE_FIRE 5
 
-#define IMG_Fire "images/ARCHER/ATTACK/ATTACK_fire.png"
+#define IMG_FIRE "images/ARCHER/ATTACK/ATTACK_fire.png"
+#define IMG_FIRE "images/ARCHER/ATTACK/ATTACK_FIRE.png"
 //==================================================================================================//
 
 // Hammer Troll
@@ -95,7 +105,7 @@
 #define NAME_PNG_HAMMERORK_ATK "1_ORK_ATTACK_00%d.png"
 #define COUNT_IMG_HAMMERORK_ATK 7
 
-#define NAME_SPRITE_HAMMERORK "CloseNormal.png"
+#define NAME_SPRITE_HAMMERORK "images/1_ORK/1_ORK.png"
 
 #define NAME_PLIST_HAMMERORK_DIE "images/1_ORK/1_ORK_DIE.plist"
 #define NAME_PNG_HAMMERORK_DIE "1_ORK_DIE_00%d.png"
@@ -126,11 +136,11 @@
 #define SCENE_TITLE_PNG_PLAY "scene/play.png"
 #define SCENE_TITLE_PNG_SETTING "scene/setting.png"
 #define SCENE_TITLE_PNG_EXIT "scene/exit.png"
-#define SCENE_TITLE_THECAMELOT_W 410
-#define SCENE_TITLE_THECAMELOT_H 410
-#define SCENE_TITLE_PLAY_W 512
-#define SCENE_TITLE_PLAY_H 100
-#define SCENE_TITLE_SETTING_W 256
+#define SCENE_TITLE_THECAMELOT_W 500
+#define SCENE_TITLE_THECAMELOT_H 500
+#define SCENE_TITLE_PLAY_W 640
+#define SCENE_TITLE_PLAY_H 110
+#define SCENE_TITLE_SETTING_W 280
 #define SCENE_TITLE_SETTING_H 90
-#define SCENE_TITLE_EXIT_W 768
+#define SCENE_TITLE_EXIT_W 1000
 #define SCENE_TITLE_EXIT_H 90
