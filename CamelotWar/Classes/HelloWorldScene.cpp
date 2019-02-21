@@ -29,18 +29,8 @@ static void problemLoading(const char* filename)
 }
 
 Archer *archer;
-Archer* ARCHER;
-Troll * troll;
-HammerTroll* hammerTroll;
-Archer_knife *archer_knife;
 Archer_Fire * archer_fire;
-BoneTroll* boneTroll;
-HammerOrk* hammerOrk;
-SwordOrk* swordOrk;
-AxeOrk* axeOrk;
-SpearKnight* spearKnight;
-AxeKnight* axeKnight;
-SwordKnight* swordKnight;
+Archer_knife * archer_knife;
 
 // on "init" you need to initialize your instance
 bool HelloWorld::init()
@@ -68,24 +58,11 @@ bool HelloWorld::init()
 	archer = new Archer(this);
 	archer->setListMonster(mListMonsters);
 
-	troll = new Troll(this);
-	hammerTroll = new HammerTroll(this);
-	boneTroll = new BoneTroll(this);
-	hammerOrk = new HammerOrk(this);
-	swordOrk = new SwordOrk(this);
-	axeOrk = new AxeOrk(this);
+	/*archer_fire = new Archer_Fire(this);
+	archer_fire->setListMonster(mListMonsters);*/
 
-	/*ARCHER = new Archer(this);
-	ARCHER->init();*/
 	archer_knife = new Archer_knife(this);
-	archer_knife->init();
-	archer_fire = new Archer_Fire(this);
-	archer_fire->init();
-
-	// Knight
-	spearKnight = new SpearKnight(this);
-	axeKnight = new AxeKnight(this);
-	swordKnight = new SwordKnight(this);
+	archer_knife->setListMonster(mListMonsters);
 
 	scheduleUpdate();
 	
@@ -117,19 +94,17 @@ void HelloWorld::createMonster()
 void HelloWorld::update(float delta)
 {	
 	archer->update();
-
+	/*archer_fire->update();*/
+	archer_knife->update();
 	for (int  i = 0; i < mListMonsters.size(); i++)
 	{
 		mListMonsters[i]->update();
 	}
 
-	/*ARCHER->update();*/
-	troll->update();
-	hammerTroll->update();
-	boneTroll->update();
-	hammerOrk->update();
-	archer_knife->update();
-	archer_fire->update();
-	swordOrk->update();
-	axeOrk->update();
+
+
+
+
+
+
 }

@@ -48,7 +48,7 @@
 #define COUNT_IMG_ARCHER_DIE_KNIFE 5
 
 #define IMG_KNIFE "images/ARCHER/ATTACK/ATTACK_KNIFE.png"
-#define IMG_KNIFE "images/ARCHER/ATTACK/ATTACK_knife.png"
+
 //==============================================================================================//
 
 //Archer_FIRE ===================================================================================//
