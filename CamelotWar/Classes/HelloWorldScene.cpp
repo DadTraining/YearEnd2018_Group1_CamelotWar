@@ -58,8 +58,8 @@ bool HelloWorld::init()
 	archer = new Archer(this);
 	archer->setListMonster(mListMonsters);
 
-	/*archer_fire = new Archer_Fire(this);
-	archer_fire->setListMonster(mListMonsters);*/
+	archer_fire = new Archer_Fire(this);
+	archer_fire->setListMonster(mListMonsters);
 
 	archer_knife = new Archer_knife(this);
 	archer_knife->setListMonster(mListMonsters);
@@ -94,7 +94,7 @@ void HelloWorld::createMonster()
 void HelloWorld::update(float delta)
 {	
 	archer->update();
-	/*archer_fire->update();*/
+	archer_fire->update();
 	archer_knife->update();
 	for (int  i = 0; i < mListMonsters.size(); i++)
 	{
