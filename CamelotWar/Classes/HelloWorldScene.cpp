@@ -29,7 +29,6 @@ static void problemLoading(const char* filename)
 }
 
 Archer *archer;
-=======
 Archer* ARCHER;
 Troll * troll;
 HammerTroll* hammerTroll;
@@ -76,8 +75,8 @@ bool HelloWorld::init()
 	swordOrk = new SwordOrk(this);
 	axeOrk = new AxeOrk(this);
 
-	ARCHER = new Archer(this);
-	ARCHER->init();
+	/*ARCHER = new Archer(this);
+	ARCHER->init();*/
 	archer_knife = new Archer_knife(this);
 	archer_knife->init();
 	archer_fire = new Archer_Fire(this);
@@ -124,7 +123,7 @@ void HelloWorld::update(float delta)
 		mListMonsters[i]->update();
 	}
 
-	ARCHER->update();
+	/*ARCHER->update();*/
 	troll->update();
 	hammerTroll->update();
 	boneTroll->update();
