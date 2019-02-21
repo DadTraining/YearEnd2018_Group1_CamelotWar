@@ -28,6 +28,16 @@ Archer_Fire::Archer_Fire(cocos2d::Scene * scene) : Character::Character(scene)
 	init();
 }
 
+void Archer_Fire::setPosAll(cocos2d::Vec2 pos)
+{
+	setPos(pos);
+	setPosHp(cocos2d::Vec2(pos.x, pos.y + mSprite->getContentSize().height / 2));
+	for (int i = 0; i < 10; i++)
+	{
+		fires[i]->setPos(cocos2d::Vec2(pos.x, pos.y));
+	}
+}
+
 void Archer_Fire::walk()
 {
 }

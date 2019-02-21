@@ -20,6 +20,9 @@ public:
 	virtual void update();
 	virtual void init();
 
+	void setAlive(int alive);
+	int getAlive();
+
 	void setPosHp(cocos2d::Vec2 pos);
 protected:
 	int mHP;

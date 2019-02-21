@@ -20,6 +20,8 @@ public:
 
 	void turnOnArrow(cocos2d::Vec2 pos);
 
+	void setPosAll(cocos2d::Vec2 pos);
+
 	void shootArrow();
 
 	void collision();

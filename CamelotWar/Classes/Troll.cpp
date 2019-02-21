@@ -38,7 +38,6 @@ void Troll::attack()
 	int a = (COUNT_IMG_TROLL_ATK * FPS) / mSpeed ;
 	if (countFrame % a == 0)
 	{
-		deCreaseHP(100);
 	}
 }
 
@@ -88,6 +87,7 @@ void Troll::init()
 	mPrice = 100;
 	mDamage = 100;
 	mRange = 10;
+	mAlive = 1;
 	setPos(cocos2d::Vec2(MONSTER_APPEAR, SCREEN_H / 3));
 	setPosHp(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height / 2));
 	setAnimation(NAME_PLIST_TROLL_WALK, NAME_PNG_TROLL_WALK, COUNT_IMG_TROLL_WALK,mSpeed,0);

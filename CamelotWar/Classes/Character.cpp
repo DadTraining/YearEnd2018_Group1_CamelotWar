@@ -44,7 +44,17 @@ void Character::init()
 	mloadingHpBar->setDirection(cocos2d::ui::LoadingBar::Direction::LEFT);
 	mloadingHpBar->setPercent(100);
 
-	mAlive = 1;
+	
+}
+
+void Character::setAlive(int alive)
+{
+	mAlive = alive;
+}
+
+int Character::getAlive()
+{
+	return mAlive;
 }
 
 void Character::setPosHp(cocos2d::Vec2 pos)

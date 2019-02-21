@@ -47,7 +47,6 @@
 #define NAME_PNG_ARCHER_DIE_KNIFE "DIE_00%d.png"
 #define COUNT_IMG_ARCHER_DIE_KNIFE 5
 
-#define IMG_KNIFE "images/ARCHER/ATTACK/ATTACK_KNIFE.png"
 #define IMG_KNIFE "images/ARCHER/ATTACK/ATTACK_knife.png"
 //==============================================================================================//
 
@@ -66,7 +65,6 @@
 #define NAME_PNG_ARCHER_DIE_FIRE "DIE_00%d.png"
 #define COUNT_IMG_ARCHER_DIE_FIRE 5
 
-#define IMG_FIRE "images/ARCHER/ATTACK/ATTACK_fire.png"
 #define IMG_FIRE "images/ARCHER/ATTACK/ATTACK_FIRE.png"
 //==================================================================================================//
 
