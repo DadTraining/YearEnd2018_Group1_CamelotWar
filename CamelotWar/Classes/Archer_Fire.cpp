@@ -147,7 +147,7 @@ void Archer_Fire::update()
 void Archer_Fire::init()
 {
 	mFrameCount = 0;
-	mSpeed = 20;
+	mSpeed = 7;
 	mRange = 300;
 	mHpBar->setPosition(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height / 2));
 	mloadingHpBar->setPosition(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height / 2));
