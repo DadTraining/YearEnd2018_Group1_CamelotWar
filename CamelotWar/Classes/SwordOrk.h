@@ -15,7 +15,6 @@ public:
 	void update();
 	void init();
 private:
-	int changeStatus;
 	int countFrame = 0;
 };
 

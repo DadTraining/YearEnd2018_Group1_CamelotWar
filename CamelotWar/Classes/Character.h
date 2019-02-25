@@ -12,13 +12,21 @@ public:
 	Character(cocos2d::Scene* scene);
 	
 	void deCreaseHP(int hp);
+	void setPosAll(cocos2d::Vec2 pos);
 	void reBorn();
 	virtual void walk()=0;
 	virtual	void attack()=0;
 	virtual void die() = 0;;
 
-	virtual void update();
+
 	virtual void init();
+
+	void setAlive(int alive);
+	int getAlive();
+
+	void setAppear(bool appear);
+	bool getAppear();
+
 
 	void setPosHp(cocos2d::Vec2 pos);
 protected:
@@ -28,8 +36,9 @@ protected:
 	int mSpeed;
 	int mRange;
 	int mAlive;
+	bool mAppear;
 	cocos2d::Sprite* mHpBar;
 	cocos2d::ui::LoadingBar * mloadingHpBar;
-
+	int changeStatus;
 
 };

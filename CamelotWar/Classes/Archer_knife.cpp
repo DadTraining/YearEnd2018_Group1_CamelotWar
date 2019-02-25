@@ -2,12 +2,9 @@
 #include "Defines.h"
 #include "Character.h"
 
-
-
 Archer_knife::Archer_knife()
 {
 }
-
 
 Archer_knife::~Archer_knife()
 {
@@ -126,12 +123,12 @@ void Archer_knife::update()
 {
 	for (int j = 0; j < mListMonsters.size(); j++)
 	{
-		if (mListMonsters[j]->getPos().x >= getPos().x - mRange && mListMonsters[j]->getPos().x <= getPos().x)
+		if (mListMonsters[j]->getPos().x >= getPos().x - mRange && mListMonsters[j]->getPos().x <= getPos().x && mListMonsters[j]->getAlive() == 1)
 		{
 			mSprite->setFlipX(true);
 			turnOnKnife(mListMonsters[j]->getPos());
 		}
-		if (mListMonsters[j]->getPos().x >= getPos().x  && mListMonsters[j]->getPos().x <= getPos().x + mRange)
+		if (mListMonsters[j]->getPos().x >= getPos().x  && mListMonsters[j]->getPos().x <= getPos().x + mRange && mListMonsters[j]->getAlive() == 1)
 		{
 			mSprite->setFlipX(false);
 			turnOnKnife(mListMonsters[j]->getPos());
@@ -140,6 +137,7 @@ void Archer_knife::update()
 	reuseKnife();
 	shootKnife();
 	collision();
+	setPosAll(getPos());
 }
 
 void Archer_knife::init()

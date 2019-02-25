@@ -37,7 +37,7 @@ void HammerOrk::attack()
 	int a = (COUNT_IMG_HAMMERORK_ATK * FPS) / mSpeed;
 	if (countFrame % a == 0)
 	{
-		deCreaseHP(100);
+		//deCreaseHP(100);
 	}
 }
 

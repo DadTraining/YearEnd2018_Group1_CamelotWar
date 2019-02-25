@@ -26,12 +26,13 @@ void Character::deCreaseHP(int hp)
 
 }
 
-void Character::reBorn()
+void Character::setPosAll(cocos2d::Vec2 pos)
 {
+	setPos(pos);
+	setPosHp(cocos2d::Vec2(pos.x, pos.y + mSprite->getContentSize().height / 2));
+} 
 
-}
-
-void Character::update()
+void Character::reBorn()
 {
 
 }
@@ -44,7 +45,27 @@ void Character::init()
 	mloadingHpBar->setDirection(cocos2d::ui::LoadingBar::Direction::LEFT);
 	mloadingHpBar->setPercent(100);
 
-	mAlive = 1;
+	
+}
+
+void Character::setAlive(int alive)
+{
+	mAlive = alive;
+}
+
+int Character::getAlive()
+{
+	return mAlive;
+}
+
+void Character::setAppear(bool appear)
+{
+	mAppear = appear;
+}
+
+bool Character::getAppear()
+{
+	return mAppear;
 }
 
 void Character::setPosHp(cocos2d::Vec2 pos)
@@ -52,3 +73,4 @@ void Character::setPosHp(cocos2d::Vec2 pos)
 	mHpBar->setPosition(pos);
 	mloadingHpBar->setPosition(pos);
 }
+

@@ -23,7 +23,7 @@ public:
 	void fireFire();
 	void collsion();
 	void reuseFire();
-	void setListMonster(std::vector<Character*> listMonsters);
+	void setListMonster(std::vector<Character*> &listMonsters);
 
 	void update();
 	void init();
