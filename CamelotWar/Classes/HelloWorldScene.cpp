@@ -28,6 +28,8 @@ static void problemLoading(const char* filename)
     printf("Depending on how you compiled you might have to add 'Resources/' in front of filenames in HelloWorldScene.cpp\n");
 }
 Archer *archer;
+Archer_Fire * archer_fire;
+Archer_knife * archer_knife;
 
 // on "init" you need to initialize your instance
 bool HelloWorld::init()
@@ -55,7 +57,11 @@ bool HelloWorld::init()
 	archer = new Archer(this);
 	archer->setListMonster(mListMonsters);
 
-	
+	archer_fire = new Archer_Fire(this);
+	archer_fire->setListMonster(mListMonsters);
+
+	archer_knife = new Archer_knife(this);
+	archer_knife->setListMonster(mListMonsters);
 
 	scheduleUpdate();
 	
@@ -87,11 +93,17 @@ void HelloWorld::createMonster()
 void HelloWorld::update(float delta)
 {	
 	archer->update();
-
+	archer_fire->update();
+	archer_knife->update();
 	for (int  i = 0; i < mListMonsters.size(); i++)
 	{
 		mListMonsters[i]->update();
 	}
 
-	
+
+
+
+
+
+
 }

@@ -8,13 +8,19 @@ public:
 
 	void init();
 	void update();
+	void fly(cocos2d::Vec2 pos);
 
 	void setVisible(boolean visible);
 	boolean isVisible();
+
+	void setMKnife(boolean knife);
 	void setSpeed(int);
 	int getSpeed();
 
 private:
 	int mSpeed;
+	boolean mKnife;
+	float a;
+	float b;
 };
 
