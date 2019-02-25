@@ -205,6 +205,12 @@
 #define NAME_PNG_SWORDKNIGHT_DIE "3_KNIGHT_DIE_00%d.png"
 #define COUNT_IMG_SWORDKNIGHT_DIE 7
 
+
+// Boat
+
+#define BOAT_NAME_SPRITE "boat11.png"
+#define BOAT_MIN_POSITION_Y 30
+
 //pedestal===================================================================
 
 #define NAME_SPRITE_PEDESTAL "pl_3.png"

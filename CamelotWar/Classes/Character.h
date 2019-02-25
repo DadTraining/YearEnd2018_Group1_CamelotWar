@@ -12,8 +12,11 @@ public:
 	Character(cocos2d::Scene* scene);
 	
 	void deCreaseHP(int hp);
+
+	void reBorn(Character*);
+
 	void setPosAll(cocos2d::Vec2 pos);
-	void reBorn();
+	
 	virtual void walk()=0;
 	virtual	void attack()=0;
 	virtual void die() = 0;;
