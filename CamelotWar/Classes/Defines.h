@@ -3,6 +3,8 @@
 #define FPS 50
 #define MONSTER_APPEAR -50
 
+
+
 // troll
 #define NAME_PLIST_TROLL_ATK "images/TROLL/ATTACK/1_TROLL_ATTACK.plist"
 #define NAME_PNG_TROLL_ATK "ATTAK_00%d.png"
@@ -68,6 +70,7 @@
 
 #define IMG_FIRE "images/ARCHER/ATTACK/ATTACK_fire.png"
 #define IMG_FIRE "images/ARCHER/ATTACK/ATTACK_FIRE.png"
+
 //==================================================================================================//
 
 // Hammer Troll
@@ -192,3 +195,5 @@
 #define NAME_PLIST_SWORDKNIGHT_DIE "images/3_KNIGHT/3_KNIGHT_DIE.plist"
 #define NAME_PNG_SWORDKNIGHT_DIE "3_KNIGHT_DIE_00%d.png"
 #define COUNT_IMG_SWORDKNIGHT_DIE 7
+
+

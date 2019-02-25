@@ -13,6 +13,7 @@
 #include "SpearKnight.h"
 #include "AxeKnight.h"
 #include "SwordKnight.h"
+#include "Castle.h"
 
 USING_NS_CC;
 
@@ -31,6 +32,7 @@ static void problemLoading(const char* filename)
 Archer *archer;
 Archer_Fire * archer_fire;
 Archer_knife * archer_knife;
+Castle* castle;
 
 // on "init" you need to initialize your instance
 bool HelloWorld::init()
@@ -64,6 +66,9 @@ bool HelloWorld::init()
 	archer_knife = new Archer_knife(this);
 	archer_knife->setListMonster(mListMonsters);
 
+	//
+	castle = new Castle(this);
+
 	scheduleUpdate();
 	
     return true;
@@ -96,6 +101,7 @@ void HelloWorld::update(float delta)
 	archer->update();
 	archer_fire->update();
 	archer_knife->update();
+	
 	for (int  i = 0; i < mListMonsters.size(); i++)
 	{
 		mListMonsters[i]->update();
