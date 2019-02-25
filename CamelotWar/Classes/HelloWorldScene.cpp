@@ -13,6 +13,7 @@
 #include "SpearKnight.h"
 #include "AxeKnight.h"
 #include "SwordKnight.h"
+#include "Boat.h"
 #include "pedestal.h"
 
 USING_NS_CC;
@@ -28,6 +29,21 @@ static void problemLoading(const char* filename)
     printf("Error while loading: %s\n", filename);
     printf("Depending on how you compiled you might have to add 'Resources/' in front of filenames in HelloWorldScene.cpp\n");
 }
+
+Archer *archer;
+Archer* ARCHER;
+Troll * troll;
+HammerTroll* hammerTroll;
+Archer_knife *archer_knife;
+Archer_Fire * archer_fire;
+BoneTroll* boneTroll;
+HammerOrk* hammerOrk;
+SwordOrk* swordOrk;
+AxeOrk* axeOrk;
+SpearKnight* spearKnight;
+AxeKnight* axeKnight;
+SwordKnight* swordKnight;
+Boat* boat;
 
 
 // on "init" you need to initialize your instance
@@ -55,7 +71,19 @@ bool HelloWorld::init()
 
 	countFrame = 0;
 
-	//check = true;
+
+	troll = new Troll(this);
+	hammerTroll = new HammerTroll(this);
+	boneTroll = new BoneTroll(this);
+	hammerOrk = new HammerOrk(this);
+	swordOrk = new SwordOrk(this);
+	axeOrk = new AxeOrk(this);
+	// boat
+	boat = new Boat(this);
+	boat->setListMonster(mListMonsters);
+
+	check = true;
+
 
 	createMonster();
 
@@ -65,13 +93,16 @@ bool HelloWorld::init()
 	
 	scheduleUpdate();
 	
-	
+
 
     return true;
 }
 
 bool HelloWorld::onTouchBegan(cocos2d::Touch * touch, cocos2d::Event * event)
 {
+
+
+
 	for (int i = 0; i < mListIconHero.size(); i++)
 	{
 		if (mListIconHero[i]->getBoundingBox().containsPoint(touch->getLocation()))
@@ -115,23 +146,33 @@ bool HelloWorld::onTouchBegan(cocos2d::Touch * touch, cocos2d::Event * event)
 					check = false;
 					break;
 				}
+				default: 
+				{
+					check = false;
+					break;
+				}
 			}
 			return true;
 		}
 	}
-	return false;
+	return boat->BoatTouchBegan(touch, event);;
+
 }
 
 void HelloWorld::onTouchMoved(cocos2d::Touch * touch, cocos2d::Event * event)
 {
+
+	boat->BoatTouchMoved(touch, event);
+
 	if (check)
 	{
 		mListCharacters[mListCharacters.size() - 1]->setPos(touch->getLocation());
 	}
 	else
 	{
-		mListPedestal[mListPedestal.size() - 1]->setPos(touch->getLocation());
+		//mListPedestal[mListPedestal.size() - 1]->setPos(touch->getLocation());
 	}
+
 }
 
 void HelloWorld::onTouchEnded(cocos2d::Touch * touch, cocos2d::Event * event)
@@ -239,5 +280,17 @@ void HelloWorld::update(float delta)
 		}
 	}
 
+
+
+	/*ARCHER->update();*/
+	//troll->update();
+	//hammerTroll->update();
+	//boneTroll->update();
+	//hammerOrk->update();
+	//archer_knife->update();
+	//archer_fire->update();
+	//swordOrk->update();
+	//axeOrk->update();
+	boat->update();
 
 }

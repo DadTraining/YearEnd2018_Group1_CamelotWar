@@ -1,6 +1,7 @@
 #include "TitleScene.h"
 #include "SimpleAudioEngine.h"
 #include "Defines.h"
+
 #include "HelloWorldScene.h"
 
 USING_NS_CC;
@@ -27,12 +28,13 @@ bool TitleScene::init()
 	background->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
 	background->setContentSize(visibleSize);
 	addChild(background);
-
+  
 	auto spriteTheCamelot = Sprite::create(SCENE_TITLE_PNG_THECAMELOT);
 	spriteTheCamelot->setPosition(Vec2(SCENE_TITLE_THECAMELOT_W, SCENE_TITLE_THECAMELOT_H));
 	addChild(spriteTheCamelot);
 
 	// Create play item
+
 	auto Play = MenuItemImage::create(SCENE_TITLE_PNG_PLAY, SCENE_TITLE_PNG_PLAY, CC_CALLBACK_1(TitleScene::menuPlayCallback, this));
 	Play->setPosition(Vec2(SCENE_TITLE_PLAY_W, SCENE_TITLE_PLAY_H));
 	
@@ -50,6 +52,13 @@ bool TitleScene::init()
 	addChild(Menu);
 
 	scheduleUpdate();
+
+	return true;
+}
+
+
+void TitleScene::menuPlayCallback(Ref* pSender)
+{
 	return true;
 }
 
