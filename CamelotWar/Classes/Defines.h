@@ -4,6 +4,19 @@
 #define MONSTER_APPEAR -50
 #define BACKGROUND_PLAYSCENE "ScenePlay/backgroundscene.png"
 
+
+// Scene
+#define SCENE_TITLE_THECAMELOT_W 410
+#define SCENE_TITLE_THECAMELOT_H 410
+#define SCENE_TITLE_PLAY_W 512
+#define SCENE_TITLE_PLAY_H 100
+#define SCENE_TITLE_SETTING_W 256
+#define SCENE_TITLE_SETTING_H 90
+#define SCENE_TITLE_EXIT_W 768
+#define SCENE_TITLE_EXIT_H 90
+
+// Splash
+
 // troll
 #define NAME_PLIST_TROLL_ATK "images/TROLL/ATTACK/1_TROLL_ATTACK.plist"
 #define NAME_PNG_TROLL_ATK "ATTAK_00%d.png"
@@ -193,6 +206,12 @@
 #define NAME_PNG_SWORDKNIGHT_DIE "3_KNIGHT_DIE_00%d.png"
 #define COUNT_IMG_SWORDKNIGHT_DIE 7
 
+
+// Boat
+
+#define BOAT_NAME_SPRITE "boat11.png"
+#define BOAT_MIN_POSITION_Y 30
+
 //pedestal===================================================================
 
-#define NAME_SPRITE_PEDESTAL "pl_3.png"
+#define NAME_SPRITE_PEDESTAL "ScenePlay/pedestal1.png"

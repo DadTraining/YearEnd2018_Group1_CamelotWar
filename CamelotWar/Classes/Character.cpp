@@ -1,5 +1,6 @@
 #include "Model.h"
 #include "Character.h"
+#include "Defines.h"
 
 Character::Character()
 {
@@ -22,7 +23,13 @@ void Character::deCreaseHP(int hp)
 {
 	float percentHpDecrease =( (float) hp / (float)mHP) * 100;
 	mloadingHpBar->setPercent(mloadingHpBar->getPercent() - percentHpDecrease);
-	mHP = mHP - hp;
+}
+
+void Character::reBorn()
+{
+	setPos(cocos2d::Vec2(getPos().x, SCREEN_H / 3-30));
+	mloadingHpBar->setPercent(100);
+	mAlive = 1;
 
 }
 
@@ -31,11 +38,6 @@ void Character::setPosAll(cocos2d::Vec2 pos)
 	setPos(pos);
 	setPosHp(cocos2d::Vec2(pos.x, pos.y + mSprite->getContentSize().height + 10));
 } 
-
-void Character::reBorn()
-{
-
-}
 
 void Character::init()
 {
@@ -46,7 +48,6 @@ void Character::init()
 	mloadingHpBar->setPercent(100);
 
 	mAppear = false;
-	
 }
 
 void Character::setAlive(int alive)

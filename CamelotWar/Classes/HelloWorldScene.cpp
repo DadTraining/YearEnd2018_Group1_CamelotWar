@@ -13,6 +13,7 @@
 #include "SpearKnight.h"
 #include "AxeKnight.h"
 #include "SwordKnight.h"
+#include "Boat.h"
 #include "pedestal.h"
 
 USING_NS_CC;
@@ -28,6 +29,21 @@ static void problemLoading(const char* filename)
     printf("Error while loading: %s\n", filename);
     printf("Depending on how you compiled you might have to add 'Resources/' in front of filenames in HelloWorldScene.cpp\n");
 }
+
+Archer *archer;
+Archer* ARCHER;
+Troll * troll;
+HammerTroll* hammerTroll;
+Archer_knife *archer_knife;
+Archer_Fire * archer_fire;
+BoneTroll* boneTroll;
+HammerOrk* hammerOrk;
+SwordOrk* swordOrk;
+AxeOrk* axeOrk;
+SpearKnight* spearKnight;
+AxeKnight* axeKnight;
+SwordKnight* swordKnight;
+Boat* boat;
 
 
 // on "init" you need to initialize your instance
@@ -55,7 +71,10 @@ bool HelloWorld::init()
 
 	countFrame = 0;
 
-	//check = true;
+	boat = new Boat(this);
+	boat->setListMonster(mListMonsters);
+
+	check = true;
 
 	createMonster();
 
@@ -64,8 +83,6 @@ bool HelloWorld::init()
 	createPedestal();
 	
 	scheduleUpdate();
-	
-	
 
     return true;
 }
@@ -106,20 +123,18 @@ bool HelloWorld::onTouchBegan(cocos2d::Touch * touch, cocos2d::Event * event)
 					check = true;
 					break;
 				}
-				case 6:
-				{
-					auto pedestal = new Pedestal(this);
-					pedestal->setPos(touch->getLocation());
-					pedestal->setlistCharacter(mListCharacters);
-					mListPedestal.push_back(pedestal);
-					check = false;
-					break;
-				}
 			}
 			return true;
 		}
 	}
+	if (boat->BoatTouchBegan(touch, event))
+	{
+		check = false;
+		return true;
+	}
+	else
 	return false;
+
 }
 
 void HelloWorld::onTouchMoved(cocos2d::Touch * touch, cocos2d::Event * event)
@@ -130,7 +145,7 @@ void HelloWorld::onTouchMoved(cocos2d::Touch * touch, cocos2d::Event * event)
 	}
 	else
 	{
-		mListPedestal[mListPedestal.size() - 1]->setPos(touch->getLocation());
+		boat->BoatTouchMoved(touch, event);
 	}
 }
 
@@ -144,7 +159,7 @@ void HelloWorld::onTouchEnded(cocos2d::Touch * touch, cocos2d::Event * event)
 
 void HelloWorld::createIconHero()
 {
-	for (int i = 0; i < 7; i++)
+	for (int i = 0; i < 6; i++)
 	{
 		char str[100];
 		sprintf(str, "iconHero/%d.png", i+1);
@@ -168,15 +183,19 @@ void HelloWorld::createIconHero()
 
 void HelloWorld::createMonster()
 {
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 1; i++)
 	{
 		Troll *troll = new Troll(this);
 		mListMonsters.push_back(troll);
 	}
-	for (int i = 0; i < 5; i++)
+	/*for (int i = 0; i < 5; i++)
 	{
 		HammerTroll *hammerTroll = new HammerTroll(this);
 		mListMonsters.push_back(hammerTroll);
+	}*/
+	for (int  i = 0; i < mListMonsters.size(); i++)
+	{
+		mListMonsters[i]->setPos(cocos2d::Vec2(MONSTER_APPEAR, SCREEN_H / 3 - 30));
 	}
 }
 
@@ -239,5 +258,7 @@ void HelloWorld::update(float delta)
 		}
 	}
 
+	boat->update();
+	boat->setListMonster(mListMonsters);
 
 }
