@@ -17,6 +17,13 @@ public:
 	void walk() override;
 	void attack() override;
 	void die() override;
+	void flip(boolean flip);
+
+	void turnOnFire(cocos2d::Vec2 pos);
+	void fireFire();
+	void collsion();
+	void reuseFire();
+	void setListMonster(std::vector<Character*> &listMonsters);
 
 	void update();
 	void init();
@@ -24,6 +31,7 @@ public:
 private:
 
 	vector<Fire*> fires;
+	std::vector< Character*> mListMonsters;
 	int mFrameCount;
 };
 

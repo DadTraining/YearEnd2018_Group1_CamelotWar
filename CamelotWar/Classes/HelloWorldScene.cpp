@@ -14,6 +14,7 @@
 #include "AxeKnight.h"
 #include "SwordKnight.h"
 #include "Boat.h"
+#include "pedestal.h"
 
 USING_NS_CC;
 
@@ -44,6 +45,7 @@ AxeKnight* axeKnight;
 SwordKnight* swordKnight;
 Boat* boat;
 
+
 // on "init" you need to initialize your instance
 bool HelloWorld::init()
 {
@@ -65,10 +67,8 @@ bool HelloWorld::init()
 	listener->onTouchEnded = CC_CALLBACK_2(HelloWorld::onTouchEnded, this);
 	getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 
-	createMonster();
+	countFrame = 0;
 
-	archer = new Archer(this);
-	archer->setListMonster(mListMonsters);
 
 	troll = new Troll(this);
 	hammerTroll = new HammerTroll(this);
@@ -80,55 +80,183 @@ bool HelloWorld::init()
 	boat = new Boat(this);
 	boat->setListMonster(mListMonsters);
 
-	/*ARCHER = new Archer(this);
-	ARCHER->init();*/
-	archer_knife = new Archer_knife(this);
-	archer_knife->init();
-	archer_fire = new Archer_Fire(this);
-	archer_fire->init();
+	check = true;
 
-	// Knight
-	spearKnight = new SpearKnight(this);
-	axeKnight = new AxeKnight(this);
-	swordKnight = new SwordKnight(this);
 
+	createMonster();
+
+	createIconHero();
+	
 	scheduleUpdate();
 	
+
 
     return true;
 }
 
 bool HelloWorld::onTouchBegan(cocos2d::Touch * touch, cocos2d::Event * event)
 {
-	return boat->BoatTouchBegan(touch, event);
+
+
+
+	for (int i = 0; i < mListIconHero.size(); i++)
+	{
+		if (mListIconHero[i]->getBoundingBox().containsPoint(touch->getLocation()))
+		{
+			switch (i)
+			{
+				case 0:
+				{
+					auto archer = new Archer(this);
+					archer->setListMonster(mListMonsters);
+					archer->setPosAll(touch->getLocation());
+					mListCharacters.push_back(archer);
+					check = true;
+					break;
+				}
+				case 1:
+				{
+					auto archer_knight = new Archer_knife(this);
+					archer_knight->setListMonster(mListMonsters);
+					archer_knight->setPosAll(touch->getLocation());
+					mListCharacters.push_back(archer_knight);
+					break;
+				}
+				case 2:
+				{
+					auto archer_fire = new Archer_Fire(this);
+					archer_fire->setListMonster(mListMonsters);
+					archer_fire->setPosAll(touch->getLocation());
+					mListCharacters.push_back(archer_fire);
+					break;
+				}
+				case 6:
+				{
+					auto pedestal = new Pedestal(this);
+					pedestal->setPos(touch->getLocation());
+					pedestal->setlistCharacter(mListCharacters);
+					mListPedestal.push_back(pedestal);
+					check = false;
+					break;
+				}
+				default: 
+				{
+					check = false;
+					break;
+				}
+			}
+			return true;
+		}
+	}
+	return boat->BoatTouchBegan(touch, event);;
 
 }
 
 void HelloWorld::onTouchMoved(cocos2d::Touch * touch, cocos2d::Event * event)
 {
+
 	boat->BoatTouchMoved(touch, event);
+
+	if (check)
+	{
+		mListCharacters[mListCharacters.size() - 1]->setPos(touch->getLocation());
+	}
+	else
+	{
+		//mListPedestal[mListPedestal.size() - 1]->setPos(touch->getLocation());
+	}
+
 }
 
 void HelloWorld::onTouchEnded(cocos2d::Touch * touch, cocos2d::Event * event)
 {
+	if (check)
+	{
+		mListCharacters[mListCharacters.size() - 1]->setAlive(1);
+	}
+}
 
+void HelloWorld::createIconHero()
+{
+	for (int i = 0; i < 7; i++)
+	{
+		char str[100];
+		sprintf(str, "iconHero/%d.png", i+1);
+		auto iconHero = cocos2d::Sprite::create(str);
+		if (i==0)
+		{
+			float posX = iconHero->getContentSize().width / 2;
+			float posY = SCREEN_H - iconHero->getContentSize().height / 2;
+			iconHero->setPosition(cocos2d::Vec2(posX,posY));
+		}
+		else
+		{
+			float posX = mListIconHero[i - 1]->getPosition().x + mListIconHero[i - 1]->getContentSize().width/2 + iconHero->getContentSize().width / 2;
+			float posY = mListIconHero[i - 1]->getPosition().y;
+			iconHero->setPosition(cocos2d::Vec2(posX, posY));
+		}
+		mListIconHero.push_back(iconHero);
+		addChild(iconHero);
+	}
 }
 
 void HelloWorld::createMonster()
 {
-	Troll *troll = new Troll(this);
-	mListMonsters.push_back(troll);
+	for (int i = 0; i < 5; i++)
+	{
+		Troll *troll = new Troll(this);
+		mListMonsters.push_back(troll);
+	}
 }
+
 
 
 void HelloWorld::update(float delta)
 {	
-	archer->update();
-
-	for (int  i = 0; i < mListMonsters.size(); i++)
+	countFrame += 1;
+	for (int i = 0; i < mListCharacters.size(); i++)
 	{
-		mListMonsters[i]->update();
+		if (mListCharacters[i]->getAlive() == 1)
+		{
+			mListCharacters[i]->update();
+		}
+		if (mListCharacters[i]->getAlive() == 2)
+		{
+			mListCharacters[i]->getSprite()->removeFromParent();
+			mListCharacters.erase(mListCharacters.begin() + i);
+		}
+		CCLOG("%d", mListCharacters.size());
 	}
+
+	if (countFrame % FPS == 0)
+	{
+		for (int i = 0; i < mListMonsters.size(); i++)
+		{
+			if (mListMonsters[i]->getAppear() == false)
+			{
+				mListMonsters[i]->setAppear(true);
+				CCLOG("%d", countFrame);
+				countFrame =0;
+				break;
+			}
+		}
+	}
+
+	for (int  i = 0; i <  mListMonsters.size(); i++)
+	{
+		if (mListMonsters[i]->getAppear() == true)
+		{
+			//CCLOG("ok");
+			mListMonsters[i]->update();
+		}
+	}
+
+	for (int i = 0; i < mListPedestal.size(); i++)
+	{
+		mListPedestal[i]->update();
+		mListPedestal[i]->setlistCharacter(mListCharacters);
+	}
+
 
 	/*ARCHER->update();*/
 	//troll->update();
@@ -140,4 +268,5 @@ void HelloWorld::update(float delta)
 	//swordOrk->update();
 	//axeOrk->update();
 	boat->update();
+
 }

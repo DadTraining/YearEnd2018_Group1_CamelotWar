@@ -83,8 +83,10 @@
     <ClCompile Include="..\Classes\AxeKnight.cpp">
       <Filter>src\Models</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\SwordKnight.cpp" />
-    <ClCompile Include="..\Classes\Boat.cpp">
+    <ClCompile Include="..\Classes\SwordKnight.cpp">
+      <Filter>src\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\pedestal.cpp">
       <Filter>src\Models</Filter>
     </ClCompile>
   </ItemGroup>
@@ -154,8 +156,10 @@
     <ClInclude Include="..\Classes\AxeKnight.h">
       <Filter>src\Models</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\SwordKnight.h" />
-    <ClInclude Include="..\Classes\Boat.h">
+    <ClInclude Include="..\Classes\SwordKnight.h">
+      <Filter>src\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\pedestal.h">
       <Filter>src\Models</Filter>
     </ClInclude>
   </ItemGroup>

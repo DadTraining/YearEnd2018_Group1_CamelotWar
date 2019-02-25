@@ -35,5 +35,6 @@ private:
 	vector<Arrow*> arrows;
 	std::vector< Character*> mListMonsters;
 	int mFrameCount;
+	bool hasAnimated;
 };
 

@@ -3,6 +3,7 @@
 
 #include "cocos2d.h"
 #include "Character.h"
+#include "pedestal.h"
 #include <vector>
 
 class HelloWorld : public cocos2d::Scene
@@ -16,6 +17,8 @@ public:
 	virtual void onTouchMoved(cocos2d::Touch* touch, cocos2d::Event *event);
 	virtual void onTouchEnded(cocos2d::Touch* touch, cocos2d::Event *event);
 	
+	void createIconHero();
+
 	void createMonster();
 
 	void update(float delta);
@@ -24,8 +27,12 @@ public:
 private:
 	std::vector< Character*> mListCharacters;
 	std::vector< Character*> mListMonsters;
+	std::vector< cocos2d::Sprite*> mListIconHero;
+	std::vector< Pedestal*> mListPedestal;
 
-
+	bool check;
+	int mCountCharacter;
+	int countFrame;
 };
 
 #endif // __HELLOWORLD_SCENE_H__

@@ -3,6 +3,7 @@
 #include "Defines.h"
 #include <math.h>
 
+
 Arrow::Arrow(cocos2d::Scene * scene)
 {
 	mSprite = cocos2d::Sprite::create(IMG_Weapons);
@@ -26,9 +27,12 @@ void Arrow::fly(cocos2d::Vec2 pos)
 	 a = (pos.y - getPos().y)  / (pos.x - getPos().x);
 	 b = pos.y - (a * pos.x);	
 
+
 	 // Set the rotation for the sprite
 	 cocos2d::Vec2 delta = pos - getPos();
 	 this->mSprite->setRotation(atan2(delta.x, delta.y) * 180 / M_PI - 90);
+
+	
 }
 
 void Arrow::update()

@@ -16,12 +16,21 @@ public:
 	void walk() override;
 	void attack() override;
 	void die() override;
+	void flip(boolean flip);
+
+	void turnOnKnife(cocos2d::Vec2 pos);
+	void shootKnife();
+	void collision();
+	void reuseKnife();
+	void setListMonster(std::vector<Character*> listMonsters);
 
 	void update();
 	void init();
 
 private :
 	vector<Knife*> knifes;
+	std::vector< Character*> mListMonsters;
 	int mFrameCount;
+	
 };
 
