@@ -13,6 +13,7 @@
 #include "SpearKnight.h"
 #include "AxeKnight.h"
 #include "SwordKnight.h"
+#include "Boat.h"
 
 USING_NS_CC;
 
@@ -41,6 +42,7 @@ AxeOrk* axeOrk;
 SpearKnight* spearKnight;
 AxeKnight* axeKnight;
 SwordKnight* swordKnight;
+Boat* boat;
 
 // on "init" you need to initialize your instance
 bool HelloWorld::init()
@@ -74,6 +76,9 @@ bool HelloWorld::init()
 	hammerOrk = new HammerOrk(this);
 	swordOrk = new SwordOrk(this);
 	axeOrk = new AxeOrk(this);
+	// boat
+	boat = new Boat(this);
+	boat->setListMonster(mListMonsters);
 
 	/*ARCHER = new Archer(this);
 	ARCHER->init();*/
@@ -89,17 +94,19 @@ bool HelloWorld::init()
 
 	scheduleUpdate();
 	
+
     return true;
 }
 
 bool HelloWorld::onTouchBegan(cocos2d::Touch * touch, cocos2d::Event * event)
 {
-	return true;
+	return boat->BoatTouchBegan(touch, event);
+
 }
 
 void HelloWorld::onTouchMoved(cocos2d::Touch * touch, cocos2d::Event * event)
 {
-
+	boat->BoatTouchMoved(touch, event);
 }
 
 void HelloWorld::onTouchEnded(cocos2d::Touch * touch, cocos2d::Event * event)
@@ -124,12 +131,13 @@ void HelloWorld::update(float delta)
 	}
 
 	/*ARCHER->update();*/
-	troll->update();
-	hammerTroll->update();
-	boneTroll->update();
-	hammerOrk->update();
-	archer_knife->update();
-	archer_fire->update();
-	swordOrk->update();
-	axeOrk->update();
+	//troll->update();
+	//hammerTroll->update();
+	//boneTroll->update();
+	//hammerOrk->update();
+	//archer_knife->update();
+	//archer_fire->update();
+	//swordOrk->update();
+	//axeOrk->update();
+	boat->update();
 }

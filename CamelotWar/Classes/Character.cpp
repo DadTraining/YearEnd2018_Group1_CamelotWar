@@ -1,5 +1,6 @@
 #include "Model.h"
 #include "Character.h"
+#include "Defines.h"
 
 Character::Character()
 {
@@ -26,11 +27,12 @@ void Character::deCreaseHP(int hp)
 
 }
 
-void Character::reBorn()
+void Character::reBorn(Character * member)
 {
-
+	member->setPos(cocos2d::Vec2(member->getPos().x, SCREEN_H / 3));
+	member->mloadingHpBar->setPercent(100);
+	member->mAlive = true;
 }
-
 void Character::update()
 {
 

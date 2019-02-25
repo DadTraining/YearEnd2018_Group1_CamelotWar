@@ -84,6 +84,9 @@
       <Filter>src\Models</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\SwordKnight.cpp" />
+    <ClCompile Include="..\Classes\Boat.cpp">
+      <Filter>src\Models</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -152,6 +155,9 @@
       <Filter>src\Models</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\SwordKnight.h" />
+    <ClInclude Include="..\Classes\Boat.h">
+      <Filter>src\Models</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">
