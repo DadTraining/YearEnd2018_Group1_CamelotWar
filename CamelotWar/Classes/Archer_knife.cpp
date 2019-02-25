@@ -13,15 +13,15 @@ Archer_knife::~Archer_knife()
 Archer_knife::Archer_knife(cocos2d::Scene * scene) :Character::Character(scene)
 {
 	mSprite = cocos2d::Sprite::create(NAME_SPRITE_ARCHER_KNIFE);
-	setPos(cocos2d::Vec2(SCREEN_W / 2, SCREEN_H -200));
+	//setPos(cocos2d::Vec2(SCREEN_W /2 , SCREEN_H -100));
 	scene->addChild(mSprite);
-	mSprite->setFlipX(false);
 
+	mSprite->setFlipX(false);
 
 	for (int i = 0; i < 10; i++)
 	{
 		auto knife = new Knife(scene);
-		knife->setPos(cocos2d::Vec2(getPos().x, getPos().y));
+		//arrow->setPos(cocos2d::Vec2(getPos().x , getPos().y));
 		knifes.push_back(knife);
 		knife->setVisible(false);
 	}
@@ -57,14 +57,14 @@ void Archer_knife::turnOnKnife(cocos2d::Vec2 pos)
 			{
 				if (mSprite->isFlipX() == false)
 				{
-					knifes[i]->setPos(cocos2d::Vec2(getPos().x + mSprite->getContentSize().width, getPos().y));
+					knifes[i]->setPos(cocos2d::Vec2(getPos().x + mSprite->getContentSize().width / 2, getPos().y));
 				}
 				else
 				{
-					knifes[i]->setPos(cocos2d::Vec2(getPos().x - mSprite->getContentSize().width, getPos().y));
+					knifes[i]->setPos(cocos2d::Vec2(getPos().x - mSprite->getContentSize().width / 2, getPos().y));
 				}
 				knifes[i]->setVisible(true);
-				knifes[i]->setMKnife(mSprite->isFlipX());
+				knifes[i]->setMShoot(mSprite->isFlipX());
 				knifes[i]->fly(pos);
 				break;
 			}
@@ -93,7 +93,7 @@ void Archer_knife::collision()
 			if (mListMonsters[i]->getSprite()->getBoundingBox().intersectsRect(knifes[j]->getSprite()->getBoundingBox()))
 			{
 				mListMonsters[i]->deCreaseHP(100);
-				knifes[i]->setVisible(false);
+				knifes[j]->setVisible(false);
 				knifes[j]->setPos(cocos2d::Vec2(getPos().x, getPos().y));
 			}
 		}
@@ -104,7 +104,7 @@ void Archer_knife::reuseKnife()
 {
 	for (int i = 0; i < 10; i++)
 	{
-		if (knifes[i]->getPos().y <= mListMonsters[0]->getPos().y)
+		if (knifes[i]->getPos().y <= SCREEN_H / 3)
 		{
 			knifes[i]->setVisible(false);
 		}
@@ -123,17 +123,43 @@ void Archer_knife::update()
 {
 	for (int j = 0; j < mListMonsters.size(); j++)
 	{
-		if (mListMonsters[j]->getPos().x >= getPos().x - mRange && mListMonsters[j]->getPos().x <= getPos().x && mListMonsters[j]->getAlive() == 1)
+		if (mListMonsters[j]->getAlive() == 1)
 		{
-			mSprite->setFlipX(true);
-			turnOnKnife(mListMonsters[j]->getPos());
+			if (mListMonsters[j]->getPos().x >= getPos().x - mRange && mListMonsters[j]->getPos().x <= getPos().x)
+			{
+				mSprite->setFlipX(true);
+				turnOnKnife(mListMonsters[j]->getPos());
+				if (changeStatus == 0)
+				{
+					setAnimation(NAME_PLIST_ARCHER_ATTACK_KNIFE, NAME_PNG_ARCHER_ATTACK_KNIFE, COUNT_IMG_ARCHER_ATTACK_KNIFE, mSpeed, 0);
+					changeStatus = 1;
+				}
+				break;
+			}
+			else if (mListMonsters[j]->getPos().x >= getPos().x  && mListMonsters[j]->getPos().x <= getPos().x + mRange)
+			{
+				mSprite->setFlipX(false);
+				turnOnKnife(mListMonsters[j]->getPos());
+				if (changeStatus == 0)
+				{
+					setAnimation(NAME_PLIST_ARCHER_ATTACK_KNIFE, NAME_PNG_ARCHER_ATTACK_KNIFE, COUNT_IMG_ARCHER_ATTACK_KNIFE, mSpeed, 0);
+					changeStatus = 1;
+				}
+				break;
+			}
+			else
+			{
+				mSprite->stopAllActions();
+				changeStatus = 0;
+			}
 		}
-		if (mListMonsters[j]->getPos().x >= getPos().x  && mListMonsters[j]->getPos().x <= getPos().x + mRange && mListMonsters[j]->getAlive() == 1)
+		else if (j == mListMonsters.size() - 1)
 		{
-			mSprite->setFlipX(false);
-			turnOnKnife(mListMonsters[j]->getPos());
+			mSprite->stopAllActions();
+			changeStatus = 0;
 		}
 	}
+
 	reuseKnife();
 	shootKnife();
 	collision();
@@ -143,10 +169,9 @@ void Archer_knife::update()
 void Archer_knife::init()
 {
 	mFrameCount = 0;
-	mSpeed = 10;
-	mRange = 200;
-	mHpBar->setPosition(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height / 2));
-	mloadingHpBar->setPosition(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height / 2));
-
-	setAnimation(NAME_PLIST_ARCHER_ATTACK_KNIFE, NAME_PNG_ARCHER_ATTACK_KNIFE, COUNT_IMG_ARCHER_ATTACK_KNIFE, mSpeed, 0);
+	mSpeed = 5;
+	mRange = 300;
+	changeStatus = 0;
+	hasAnimated = false;
+	//setAnimation(NAME_PLIST_ARCHER_ATTACK_KNIFE, NAME_PNG_ARCHER_ATTACK_KNIFE, COUNT_IMG_ARCHER_ATTACK_KNIFE, mSpeed, 0);
 }
