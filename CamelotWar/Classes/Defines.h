@@ -3,6 +3,19 @@
 #define FPS 50
 #define MONSTER_APPEAR -50
 
+
+// Scene
+#define SCENE_TITLE_THECAMELOT_W 410
+#define SCENE_TITLE_THECAMELOT_H 410
+#define SCENE_TITLE_PLAY_W 512
+#define SCENE_TITLE_PLAY_H 100
+#define SCENE_TITLE_SETTING_W 256
+#define SCENE_TITLE_SETTING_H 90
+#define SCENE_TITLE_EXIT_W 768
+#define SCENE_TITLE_EXIT_H 90
+
+// Splash
+
 // troll
 #define NAME_PLIST_TROLL_ATK "images/TROLL/ATTACK/1_TROLL_ATTACK.plist"
 #define NAME_PNG_TROLL_ATK "ATTAK_00%d.png"
@@ -201,4 +214,3 @@
 //pedestal===================================================================
 
 #define NAME_SPRITE_PEDESTAL "pl_3.png"
-

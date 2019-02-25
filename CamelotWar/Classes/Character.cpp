@@ -24,6 +24,10 @@ void Character::deCreaseHP(int hp)
 	float percentHpDecrease =( (float) hp / (float)mHP) * 100;
 	mloadingHpBar->setPercent(mloadingHpBar->getPercent() - percentHpDecrease);
 	mHP = mHP - hp;
+}
+
+void Character::init()
+{
 
 }
 
@@ -39,9 +43,19 @@ void Character::setPosAll(cocos2d::Vec2 pos)
 {
 	setPos(pos);
 	setPosHp(cocos2d::Vec2(pos.x, pos.y + mSprite->getContentSize().height / 2));
-} 
+}
 
 
+
+int Character::getHP()
+{
+	return mHP;
+}
+
+void Character::setHP(int hp)
+{
+	mHP = hp;
+}
 
 void Character::init()
 {
