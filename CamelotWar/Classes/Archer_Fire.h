@@ -14,8 +14,6 @@ public:
 
 	Archer_Fire(cocos2d::Scene * scene);
 
-	void setPosAll(cocos2d::Vec2 pos);
-
 	void walk() override;
 	void attack() override;
 	void die() override;
@@ -25,7 +23,7 @@ public:
 	void fireFire();
 	void collsion();
 	void reuseFire();
-	void setListMonster(std::vector<Character*> listMonsters);
+	void setListMonster(std::vector<Character*> &listMonsters);
 
 	void update();
 	void init();

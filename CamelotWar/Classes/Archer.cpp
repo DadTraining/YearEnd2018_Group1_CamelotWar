@@ -2,12 +2,9 @@
 #include "Defines.h"
 #include "Character.h"
 
-
-
 Archer::Archer()
 {
 }
-
 
 Archer::~Archer()
 {
@@ -37,6 +34,7 @@ void Archer::walk()
 
 void Archer::attack()
 {
+	
 }
 
 void Archer::die()
@@ -60,11 +58,11 @@ void Archer::turnOnArrow(cocos2d::Vec2 pos)
 			{
 				if (mSprite->isFlipX() == false)
 				{
-					arrows[i]->setPos(cocos2d::Vec2(getPos().x + mSprite->getContentSize().width, getPos().y));
+					arrows[i]->setPos(cocos2d::Vec2(getPos().x + mSprite->getContentSize().width/2 , getPos().y));
 				}
 				else
 				{
-					arrows[i]->setPos(cocos2d::Vec2(getPos().x - mSprite->getContentSize().width, getPos().y));
+					arrows[i]->setPos(cocos2d::Vec2(getPos().x - mSprite->getContentSize().width / 2 , getPos().y));
 				}
 				arrows[i]->setVisible(true);
 				arrows[i]->setMShoot(mSprite->isFlipX());
@@ -73,12 +71,6 @@ void Archer::turnOnArrow(cocos2d::Vec2 pos)
 			}
 		}
 	}
-}
-
-void Archer::setPosAll(cocos2d::Vec2 pos)
-{
-	setPos(pos);
-	setPosHp(cocos2d::Vec2(pos.x, pos.y + mSprite->getContentSize().height / 2));
 }
 
 void Archer::shootArrow()
@@ -127,20 +119,46 @@ void Archer::setListMonster(std::vector< Character*> listMonsters)
 		mListMonsters.push_back(listMonsters[i]);
 	}
 }
+
 void Archer::update()
 { 
 	
 	for (int j = 0;j < mListMonsters.size(); j++)
 	{
-		if (mListMonsters[j]->getPos().x >= getPos().x - mRange && mListMonsters[j]->getPos().x <= getPos().x && mListMonsters[j]->getAlive() == 1)
+		if (mListMonsters[j]->getAlive() == 1)
 		{
-			mSprite->setFlipX(true);
-			turnOnArrow(mListMonsters[j]->getPos());
+			if (mListMonsters[j]->getPos().x >= getPos().x - mRange && mListMonsters[j]->getPos().x <= getPos().x)
+			{
+				mSprite->setFlipX(true);
+				turnOnArrow(mListMonsters[j]->getPos());
+				if (changeStatus == 0)
+				{
+					setAnimation(NAME_PLIST_ARCHER_ATTACK, NAME_PNG_ARCHER_ATTACK, COUNT_IMG_ARCHER_ATTACK, mSpeed, 0);
+					changeStatus = 1;
+				}
+				break;
+			}
+			else if (mListMonsters[j]->getPos().x >= getPos().x  && mListMonsters[j]->getPos().x <= getPos().x + mRange)
+			{
+				mSprite->setFlipX(false);
+				turnOnArrow(mListMonsters[j]->getPos());
+				if (changeStatus == 0)
+				{
+					setAnimation(NAME_PLIST_ARCHER_ATTACK, NAME_PNG_ARCHER_ATTACK, COUNT_IMG_ARCHER_ATTACK, mSpeed, 0);
+					changeStatus = 1;
+				}
+				break;
+			}
+			else
+			{
+				mSprite->stopAllActions();
+				changeStatus = 0;
+			}
 		}
-		if (mListMonsters[j]->getPos().x >= getPos().x  && mListMonsters[j]->getPos().x <= getPos().x + mRange && mListMonsters[j]->getAlive() == 1)
+		else if (j == mListMonsters.size()-1)
 		{
-			mSprite->setFlipX(false);
-			turnOnArrow(mListMonsters[j]->getPos());
+			mSprite->stopAllActions();
+			changeStatus = 0;
 		}
 	}
 	
@@ -155,8 +173,7 @@ void Archer::init()
 	mFrameCount = 0;
 	mSpeed = 5;
 	mRange = 300;
-	
-
-	//setAnimation(NAME_PLIST_ARCHER_ATTACK, NAME_PNG_ARCHER_ATTACK, COUNT_IMG_ARCHER_ATTACK,mSpeed,0);
-
+	changeStatus = 0;
+	hasAnimated = false;
+	// setAnimation(NAME_PLIST_ARCHER_ATTACK, NAME_PNG_ARCHER_ATTACK, COUNT_IMG_ARCHER_ATTACK, mSpeed, 0);
 }	

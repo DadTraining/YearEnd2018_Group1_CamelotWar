@@ -86,6 +86,9 @@
     <ClCompile Include="..\Classes\SwordKnight.cpp">
       <Filter>src\Models</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\pedestal.cpp">
+      <Filter>src\Models</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -154,6 +157,9 @@
       <Filter>src\Models</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\SwordKnight.h">
+      <Filter>src\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\pedestal.h">
       <Filter>src\Models</Filter>
     </ClInclude>
   </ItemGroup>

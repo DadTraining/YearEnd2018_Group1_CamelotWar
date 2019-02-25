@@ -20,8 +20,6 @@ public:
 
 	void turnOnArrow(cocos2d::Vec2 pos);
 
-	void setPosAll(cocos2d::Vec2 pos);
-
 	void shootArrow();
 
 	void collision();
@@ -37,5 +35,6 @@ private:
 	vector<Arrow*> arrows;
 	std::vector< Character*> mListMonsters;
 	int mFrameCount;
+	bool hasAnimated;
 };
 
