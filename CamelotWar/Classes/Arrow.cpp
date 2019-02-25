@@ -1,7 +1,7 @@
 #include "Arrow.h"
 #include "cocos2d.h"
 #include "Defines.h"
-#include <math.h>
+
 
 
 Arrow::Arrow(cocos2d::Scene * scene)
