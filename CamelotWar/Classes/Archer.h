@@ -3,6 +3,7 @@
 #include "Character.h"
 #include "Arrow.h"
 #include <vector>
+#include "pedestal.h"
 
 using namespace std;
 
@@ -27,13 +28,16 @@ public:
 	void reuseArrow();
 
 	void setListMonster(std::vector<Character*> listMonsters);
+	void setListPedestal(std::vector<Pedestal *> listPedestals);
 
 	void update();
 	void init();
+	void collisionWithPedestal();
 private: 
 
 	vector<Arrow*> arrows;
 	std::vector< Character*> mListMonsters;
+	std::vector<Pedestal *> mListPedestals;
 	int mFrameCount;
 	bool hasAnimated;
 };

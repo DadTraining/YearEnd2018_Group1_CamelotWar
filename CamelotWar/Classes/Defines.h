@@ -2,6 +2,7 @@
 #define SCREEN_H 720
 #define FPS 50
 #define MONSTER_APPEAR -50
+#define BACKGROUND_PLAYSCENE "ScenePlay/backgroundscene.png"
 
 // troll
 #define NAME_PLIST_TROLL_ATK "images/TROLL/ATTACK/1_TROLL_ATTACK.plist"

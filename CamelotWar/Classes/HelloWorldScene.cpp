@@ -39,11 +39,13 @@ bool HelloWorld::init()
     {
         return false;
     }
-
-	
-
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
+
+	auto background = cocos2d::Sprite::create(BACKGROUND_PLAYSCENE);
+	background->setContentSize(visibleSize);
+	background->setPosition(cocos2d::Vec2(SCREEN_W / 2, SCREEN_H / 2));
+	addChild(background);
 
 	auto listener = EventListenerTouchOneByOne::create();
 	listener->onTouchBegan = CC_CALLBACK_2(HelloWorld::onTouchBegan, this);
@@ -58,6 +60,8 @@ bool HelloWorld::init()
 	createMonster();
 
 	createIconHero();
+
+	createPedestal();
 	
 	scheduleUpdate();
 	
@@ -78,6 +82,7 @@ bool HelloWorld::onTouchBegan(cocos2d::Touch * touch, cocos2d::Event * event)
 				{
 					auto archer = new Archer(this);
 					archer->setListMonster(mListMonsters);
+					archer->setListPedestal(mListPedestal);
 					archer->setPosAll(touch->getLocation());
 					mListCharacters.push_back(archer);
 					check = true;
@@ -175,6 +180,28 @@ void HelloWorld::createMonster()
 	}
 }
 
+void HelloWorld::createPedestal()
+{
+	for (int i = 0; i < 7; i++)
+	{
+		auto pedestal = new Pedestal(this);
+		pedestal->setlistCharacter(mListCharacters);
+		mListPedestal.push_back(pedestal);
+		if (i == 0)
+		{
+			float posX = 100;
+			float posY = SCREEN_H/2 ;
+			pedestal->setPos(cocos2d::Vec2(posX, posY));
+		}
+		else
+		{
+			float posX = mListPedestal[i-1]->getPos().x + i * 100;
+			float posY = mListPedestal[i - 1]->getPos().y + i*50;
+			pedestal->setPos(cocos2d::Vec2(posX, posY));
+		}
+	}
+}
+
 void HelloWorld::update(float delta)
 {	
 	countFrame += 1;
@@ -183,9 +210,8 @@ void HelloWorld::update(float delta)
 		if (mListCharacters[i]->getAlive() == 1)
 		{
 			mListCharacters[i]->update();
-			mListCharacters[i]->setAppear(true);
 		}
-		else if (mListCharacters[i]->getAlive() == 2)
+		if (mListCharacters[i]->getAlive() == 2 && !mListCharacters[i]->getAppear())
 		{
 			mListCharacters[i]->getSprite()->removeFromParent();
 			mListCharacters.erase(mListCharacters.begin() + i);
@@ -213,10 +239,5 @@ void HelloWorld::update(float delta)
 		}
 	}
 
-	for (int i = 0; i < mListPedestal.size(); i++)
-	{
-		mListPedestal[i]->update();
-		mListPedestal[i]->setlistCharacter(mListCharacters);
-	}
 
 }

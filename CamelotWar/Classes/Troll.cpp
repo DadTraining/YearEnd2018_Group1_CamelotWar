@@ -23,7 +23,7 @@ Troll::Troll(cocos2d::Scene * scene) : Character::Character(scene)
 void Troll::walk()
 {
 		setPos(mSprite->getPosition() + cocos2d::Vec2(mSpeed / 10, 0));
-		setPosHp(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height / 2));
+		setPosHp(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height / 2 + 10));
 		countFrame = 0;	
 }
 

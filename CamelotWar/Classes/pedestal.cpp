@@ -19,19 +19,7 @@ void Pedestal::setlistCharacter(std::vector< Character*> listCharacters)
 
 void Pedestal::collision()
 {
-	for (int  i = 0; i < mListCharacters.size(); i++)
-	{
-		if (mListCharacters[i]->getAlive() == 1)
-		{
-			if (mListCharacters[i]->getAppear() == false)
-			{
-				if (!mListCharacters[i]->getSprite()->getBoundingBox().intersectsRect(mSprite->getBoundingBox()))
-				{
-					mListCharacters[i]->setAlive(2);
-				}
-			}
-		}
-	}
+	
 }
 
 Pedestal::~Pedestal()
