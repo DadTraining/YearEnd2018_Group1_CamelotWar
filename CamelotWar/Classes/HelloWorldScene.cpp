@@ -55,11 +55,13 @@ bool HelloWorld::init()
     {
         return false;
     }
-
-	
-
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
+
+	auto background = cocos2d::Sprite::create(BACKGROUND_PLAYSCENE);
+	background->setContentSize(visibleSize);
+	background->setPosition(cocos2d::Vec2(SCREEN_W / 2, SCREEN_H / 2));
+	addChild(background);
 
 	auto listener = EventListenerTouchOneByOne::create();
 	listener->onTouchBegan = CC_CALLBACK_2(HelloWorld::onTouchBegan, this);
@@ -86,6 +88,8 @@ bool HelloWorld::init()
 	createMonster();
 
 	createIconHero();
+
+	createPedestal();
 	
 	scheduleUpdate();
 	
@@ -109,6 +113,7 @@ bool HelloWorld::onTouchBegan(cocos2d::Touch * touch, cocos2d::Event * event)
 				{
 					auto archer = new Archer(this);
 					archer->setListMonster(mListMonsters);
+					archer->setListPedestal(mListPedestal);
 					archer->setPosAll(touch->getLocation());
 					mListCharacters.push_back(archer);
 					check = true;
@@ -120,6 +125,7 @@ bool HelloWorld::onTouchBegan(cocos2d::Touch * touch, cocos2d::Event * event)
 					archer_knight->setListMonster(mListMonsters);
 					archer_knight->setPosAll(touch->getLocation());
 					mListCharacters.push_back(archer_knight);
+					check = true;
 					break;
 				}
 				case 2:
@@ -128,6 +134,7 @@ bool HelloWorld::onTouchBegan(cocos2d::Touch * touch, cocos2d::Event * event)
 					archer_fire->setListMonster(mListMonsters);
 					archer_fire->setPosAll(touch->getLocation());
 					mListCharacters.push_back(archer_fire);
+					check = true;
 					break;
 				}
 				case 6:
@@ -207,9 +214,34 @@ void HelloWorld::createMonster()
 		Troll *troll = new Troll(this);
 		mListMonsters.push_back(troll);
 	}
+	for (int i = 0; i < 5; i++)
+	{
+		HammerTroll *hammerTroll = new HammerTroll(this);
+		mListMonsters.push_back(hammerTroll);
+	}
 }
 
-
+void HelloWorld::createPedestal()
+{
+	for (int i = 0; i < 7; i++)
+	{
+		auto pedestal = new Pedestal(this);
+		pedestal->setlistCharacter(mListCharacters);
+		mListPedestal.push_back(pedestal);
+		if (i == 0)
+		{
+			float posX = 100;
+			float posY = SCREEN_H/2 ;
+			pedestal->setPos(cocos2d::Vec2(posX, posY));
+		}
+		else
+		{
+			float posX = mListPedestal[i-1]->getPos().x + i * 100;
+			float posY = mListPedestal[i - 1]->getPos().y + i*50;
+			pedestal->setPos(cocos2d::Vec2(posX, posY));
+		}
+	}
+}
 
 void HelloWorld::update(float delta)
 {	
@@ -220,12 +252,11 @@ void HelloWorld::update(float delta)
 		{
 			mListCharacters[i]->update();
 		}
-		if (mListCharacters[i]->getAlive() == 2)
+		if (mListCharacters[i]->getAlive() == 2 && !mListCharacters[i]->getAppear())
 		{
 			mListCharacters[i]->getSprite()->removeFromParent();
 			mListCharacters.erase(mListCharacters.begin() + i);
 		}
-		CCLOG("%d", mListCharacters.size());
 	}
 
 	if (countFrame % FPS == 0)
@@ -235,7 +266,6 @@ void HelloWorld::update(float delta)
 			if (mListMonsters[i]->getAppear() == false)
 			{
 				mListMonsters[i]->setAppear(true);
-				CCLOG("%d", countFrame);
 				countFrame =0;
 				break;
 			}
@@ -246,16 +276,10 @@ void HelloWorld::update(float delta)
 	{
 		if (mListMonsters[i]->getAppear() == true)
 		{
-			//CCLOG("ok");
 			mListMonsters[i]->update();
 		}
 	}
 
-	for (int i = 0; i < mListPedestal.size(); i++)
-	{
-		mListPedestal[i]->update();
-		mListPedestal[i]->setlistCharacter(mListCharacters);
-	}
 
 
 	/*ARCHER->update();*/

@@ -42,8 +42,8 @@ void Character::reBorn(Character * member)
 void Character::setPosAll(cocos2d::Vec2 pos)
 {
 	setPos(pos);
-	setPosHp(cocos2d::Vec2(pos.x, pos.y + mSprite->getContentSize().height / 2));
-}
+	setPosHp(cocos2d::Vec2(pos.x, pos.y + mSprite->getContentSize().height + 10));
+} 
 
 
 
@@ -65,6 +65,7 @@ void Character::init()
 	mloadingHpBar->setDirection(cocos2d::ui::LoadingBar::Direction::LEFT);
 	mloadingHpBar->setPercent(100);
 
+	mAppear = false;
 	
 }
 

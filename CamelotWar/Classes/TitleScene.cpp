@@ -51,6 +51,7 @@ bool TitleScene::init()
 	Menu->setPosition(Vec2::ZERO);
 	addChild(Menu);
 
+	scheduleUpdate();
 
 	return true;
 }
@@ -63,7 +64,7 @@ void TitleScene::menuPlayCallback(Ref* pSender)
 
 void TitleScene::update(float delta)
 {
-	troll->update();
+
 }
 
 

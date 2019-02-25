@@ -21,6 +21,8 @@ public:
 
 	void createMonster();
 
+	void createPedestal();
+
 	void update(float delta);
 
     CREATE_FUNC(HelloWorld);
