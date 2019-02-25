@@ -31,6 +31,6 @@ private :
 	vector<Knife*> knifes;
 	std::vector< Character*> mListMonsters;
 	int mFrameCount;
-	
+	bool hasAnimated;
 };
 

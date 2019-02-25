@@ -155,6 +155,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Arrow.cpp" />
     <ClCompile Include="..\Classes\AxeKnight.cpp" />
     <ClCompile Include="..\Classes\AxeOrk.cpp" />
+    <ClCompile Include="..\Classes\Boat.cpp" />
     <ClCompile Include="..\Classes\BoneTroll.cpp" />
     <ClCompile Include="..\Classes\Castle.cpp" />
     <ClCompile Include="..\Classes\Character.cpp" />
@@ -164,6 +165,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\Classes\Knife.cpp" />
     <ClCompile Include="..\Classes\Model.cpp" />
+    <ClCompile Include="..\Classes\pedestal.cpp" />
     <ClCompile Include="..\Classes\SpearKnight.cpp" />
     <ClCompile Include="..\Classes\SwordKnight.cpp" />
     <ClCompile Include="..\Classes\SwordOrk.cpp" />
@@ -179,6 +181,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Arrow.h" />
     <ClInclude Include="..\Classes\AxeKnight.h" />
     <ClInclude Include="..\Classes\AxeOrk.h" />
+    <ClInclude Include="..\Classes\Boat.h" />
     <ClInclude Include="..\Classes\BoneTroll.h" />
     <ClInclude Include="..\Classes\Castle.h" />
     <ClInclude Include="..\Classes\Character.h" />
@@ -189,6 +192,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\Classes\Knife.h" />
     <ClInclude Include="..\Classes\Model.h" />
+    <ClInclude Include="..\Classes\pedestal.h" />
     <ClInclude Include="..\Classes\SpearKnight.h" />
     <ClInclude Include="..\Classes\SwordKnight.h" />
     <ClInclude Include="..\Classes\SwordOrk.h" />

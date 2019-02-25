@@ -2,13 +2,9 @@
 #include "Defines.h"
 #include "Character.h"
 
-
-
-
 Archer_Fire::Archer_Fire()
 {
 }
-
 
 Archer_Fire::~Archer_Fire()
 {
@@ -17,18 +13,17 @@ Archer_Fire::~Archer_Fire()
 Archer_Fire::Archer_Fire(cocos2d::Scene * scene) : Character::Character(scene)
 {
 	mSprite = cocos2d::Sprite::create(NAME_SPRITE_ARCHER_FIRE);
-	setPos(cocos2d::Vec2(SCREEN_W / 2, SCREEN_H / 2));
+	//setPos(cocos2d::Vec2(SCREEN_W / 2, SCREEN_H / 2));
 	scene->addChild(mSprite);
 	
 	mSprite->setFlipX(false);
 
 	for (int i = 0; i < 10; i++) {
 		auto fire = new Fire(scene);
-		fire->setPos(cocos2d::Vec2(getPos().x + mSprite->getContentSize().width, getPos().y));
+		//fire->setPos(cocos2d::Vec2(getPos().x + mSprite->getContentSize().width, getPos().y));
 		fires.push_back(fire);
 		fire->setVisible(false);
 	}
-
 	init();
 }
 
@@ -46,13 +41,13 @@ void Archer_Fire::die()
 
 void Archer_Fire::flip(boolean flip)
 {
-	mSprite->setFlippedX(flip);
+	mSprite->setFlipX(flip);
 }
 
 void Archer_Fire::turnOnFire(cocos2d::Vec2 pos)
 {
 	mFrameCount++;
-	int a = (COUNT_IMG_ARCHER_ATTACK_FIRE *FPS) / mSpeed;
+	int a = (COUNT_IMG_ARCHER_ATTACK * FPS) / mSpeed;
 	if (mFrameCount % a == 0)
 	{
 		for (int i = 0; i < 10; i++)
@@ -61,14 +56,14 @@ void Archer_Fire::turnOnFire(cocos2d::Vec2 pos)
 			{
 				if (mSprite->isFlipX() == false)
 				{
-					fires[i]->setPos(cocos2d::Vec2(getPos().x + mSprite->getContentSize().width, getPos().y));
+					fires[i]->setPos(cocos2d::Vec2(getPos().x + mSprite->getContentSize().width / 2, getPos().y));
 				}
 				else
 				{
-					fires[i]->setPos(cocos2d::Vec2(getPos().x - mSprite->getContentSize().width, getPos().y));
+					fires[i]->setPos(cocos2d::Vec2(getPos().x - mSprite->getContentSize().width / 2, getPos().y));
 				}
 				fires[i]->setVisible(true);
-				fires[i]->setMFire(mSprite->isFlipX());
+				fires[i]->setMShoot(mSprite->isFlipX());
 				fires[i]->fly(pos);
 				break;
 			}
@@ -76,7 +71,7 @@ void Archer_Fire::turnOnFire(cocos2d::Vec2 pos)
 	}
 }
 
-void Archer_Fire::fireFire()
+void Archer_Fire::shootFire()
 {
 	for (int i = 0; i < 10; i++)
 	{
@@ -84,11 +79,10 @@ void Archer_Fire::fireFire()
 		{
 			fires[i]->update();
 		}
-
 	}
 }
 
-void Archer_Fire::collsion()
+void Archer_Fire::collision()
 {
 	for (int i = 0; i < mListMonsters.size(); i++)
 	{
@@ -97,10 +91,9 @@ void Archer_Fire::collsion()
 			if (mListMonsters[i]->getSprite()->getBoundingBox().intersectsRect(fires[j]->getSprite()->getBoundingBox()))
 			{
 				mListMonsters[i]->deCreaseHP(100);
-				fires[i]->setVisible(false);
+				fires[j]->setVisible(false);
 				fires[j]->setPos(cocos2d::Vec2(getPos().x, getPos().y));
 			}
-
 		}
 	}
 }
@@ -109,14 +102,14 @@ void Archer_Fire::reuseFire()
 {
 	for (int i = 0; i < 10; i++)
 	{
-		if (fires[i]->getPos().y <= mListMonsters[0]->getPos().y)
+		if (fires[i]->getPos().y <= SCREEN_H / 3)
 		{
 			fires[i]->setVisible(false);
 		}
 	}
 }
 
-void Archer_Fire::setListMonster(std::vector<Character*> listMonsters)
+void Archer_Fire::setListMonster(std::vector<Character*> &listMonsters)
 {
 	for (int i = 0; i < listMonsters.size(); i++)
 	{
@@ -128,30 +121,55 @@ void Archer_Fire::update()
 {
 	for (int j = 0; j < mListMonsters.size(); j++)
 	{
-		if (mListMonsters[j]->getPos().x >= getPos().x - mRange && mListMonsters[j]->getPos().x <= getPos().x)
+		if (mListMonsters[j]->getAlive() == 1)
 		{
-			mSprite->setFlipX(true);
-			turnOnFire(mListMonsters[j]->getPos());
+			if (mListMonsters[j]->getPos().x >= getPos().x - mRange && mListMonsters[j]->getPos().x <= getPos().x)
+			{
+				mSprite->setFlipX(true);
+				turnOnFire(mListMonsters[j]->getPos());
+				if (changeStatus == 0)
+				{
+					setAnimation(NAME_PLIST_ARCHER_ATTACK_FIRE, NAME_PNG_ARCHER_ATTACK_FIRE, COUNT_IMG_ARCHER_ATTACK_FIRE, mSpeed, 0);
+					changeStatus = 1;
+				}
+				break;
+			}
+			else if (mListMonsters[j]->getPos().x >= getPos().x  && mListMonsters[j]->getPos().x <= getPos().x + mRange)
+			{
+				mSprite->setFlipX(false);
+				turnOnFire(mListMonsters[j]->getPos());
+				if (changeStatus == 0)
+				{
+					setAnimation(NAME_PLIST_ARCHER_ATTACK_FIRE, NAME_PNG_ARCHER_ATTACK_FIRE, COUNT_IMG_ARCHER_ATTACK_FIRE, mSpeed, 0);
+					changeStatus = 1;
+				}
+				break;
+			}
+			else
+			{
+				mSprite->stopAllActions();
+				changeStatus = 0;
+			}
 		}
-		if (mListMonsters[j]->getPos().x >= getPos().x  && mListMonsters[j]->getPos().x <= getPos().x + mRange)
+		else if (j == mListMonsters.size() - 1)
 		{
-			mSprite->setFlipX(false);
-			turnOnFire(mListMonsters[j]->getPos());
+			mSprite->stopAllActions();
+			changeStatus = 0;
 		}
 	}
+
 	reuseFire();
-	fireFire();
-	collsion();
+	shootFire();
+	collision();
+	setPosAll(getPos());
 }
 
 void Archer_Fire::init()
 {
 	mFrameCount = 0;
-	mSpeed = 7;
+	mSpeed = 5;
 	mRange = 300;
-	mHpBar->setPosition(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height / 2));
-	mloadingHpBar->setPosition(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height / 2));
-
-	setAnimation(NAME_PLIST_ARCHER_ATTACK_FIRE, NAME_PNG_ARCHER_ATTACK_FIRE, COUNT_IMG_ARCHER_ATTACK_FIRE, mSpeed, 0);
-
+	changeStatus = 0;
+	hasAnimated = false;
+	//setAnimation(NAME_PLIST_ARCHER_ATTACK_FIRE, NAME_PNG_ARCHER_ATTACK_FIRE, COUNT_IMG_ARCHER_ATTACK_FIRE, mSpeed, 0);
 }

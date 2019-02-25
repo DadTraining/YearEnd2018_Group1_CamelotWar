@@ -13,13 +13,12 @@ public:
 	void setVisible(boolean visible);
 	boolean isVisible();
 
-	void setMFire(boolean fire);
+	void setMShoot(boolean shoot);
 	void setSpeed(int);
 	int getSpeed();
-
 private:
 	int mSpeed;
-	boolean mFire;
+	boolean mShoot;
 	float a;
 	float b;
 };

@@ -1,8 +1,8 @@
 #pragma once
 #include "cocos2d.h"
 #include "Character.h"
-#include <vector>
 #include "Fire.h"
+#include <vector>
 
 using	namespace std;
 
@@ -11,7 +11,6 @@ class Archer_Fire : public Character
 public:
 	Archer_Fire();
 	~Archer_Fire();
-
 	Archer_Fire(cocos2d::Scene * scene);
 
 	void walk() override;
@@ -20,18 +19,18 @@ public:
 	void flip(boolean flip);
 
 	void turnOnFire(cocos2d::Vec2 pos);
-	void fireFire();
-	void collsion();
+	void shootFire();
+	void collision();
 	void reuseFire();
-	void setListMonster(std::vector<Character*> listMonsters);
+	void setListMonster(std::vector<Character*> &listMonsters);
 
 	void update();
 	void init();
 
 private:
-
 	vector<Fire*> fires;
 	std::vector< Character*> mListMonsters;
 	int mFrameCount;
+	bool hasAnimated;
 };
 
