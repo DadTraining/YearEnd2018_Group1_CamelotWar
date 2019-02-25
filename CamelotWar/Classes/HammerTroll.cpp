@@ -88,8 +88,6 @@ void HammerTroll::init()
 	mDamage = 100;
 	mRange = 10;
 	
-
-	setPos(cocos2d::Vec2(MONSTER_APPEAR, SCREEN_H / 3));
 	setPosHp(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height / 2));
 	setAnimation(NAME_PLIST_HAMMERTROLL_WALK, NAME_PNG_HAMMERTROLL_WALK, COUNT_IMG_HAMMERTROLL_WALK, mSpeed, 0);
 }

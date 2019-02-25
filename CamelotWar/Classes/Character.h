@@ -13,7 +13,7 @@ public:
 	
 	void deCreaseHP(int hp);
 
-	void reBorn(Character*);
+	void reBorn();
 
 	void setPosAll(cocos2d::Vec2 pos);
 	

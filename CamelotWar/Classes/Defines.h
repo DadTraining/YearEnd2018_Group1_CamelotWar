@@ -214,4 +214,4 @@
 
 //pedestal===================================================================
 
-#define NAME_SPRITE_PEDESTAL "pl_3.png"
+#define NAME_SPRITE_PEDESTAL "ScenePlay/pedestal1.png"
