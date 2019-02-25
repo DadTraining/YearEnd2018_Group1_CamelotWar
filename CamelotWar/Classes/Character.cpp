@@ -44,7 +44,7 @@ void Character::init()
 	mloadingHpBar = cocos2d::ui::LoadingBar::create("loadingbar.png");
 	mloadingHpBar->setDirection(cocos2d::ui::LoadingBar::Direction::LEFT);
 	mloadingHpBar->setPercent(100);
-
+	mAppear = false;
 	
 }
 

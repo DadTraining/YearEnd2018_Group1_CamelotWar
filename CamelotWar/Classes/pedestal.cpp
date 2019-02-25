@@ -23,11 +23,12 @@ void Pedestal::collision()
 	{
 		if (mListCharacters[i]->getAlive() == 1)
 		{
-			if (!mListCharacters[i]->getSprite()->getBoundingBox().intersectsRect(mSprite->getBoundingBox()))
+			if (mListCharacters[i]->getAppear() == false)
 			{
-				mListCharacters[i]->setAlive(2);
-				
-				break;
+				if (!mListCharacters[i]->getSprite()->getBoundingBox().intersectsRect(mSprite->getBoundingBox()))
+				{
+					mListCharacters[i]->setAlive(2);
+				}
 			}
 		}
 	}

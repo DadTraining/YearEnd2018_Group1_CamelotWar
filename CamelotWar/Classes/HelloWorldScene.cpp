@@ -53,7 +53,7 @@ bool HelloWorld::init()
 
 	countFrame = 0;
 
-	check = true;
+	//check = true;
 
 	createMonster();
 
@@ -89,6 +89,7 @@ bool HelloWorld::onTouchBegan(cocos2d::Touch * touch, cocos2d::Event * event)
 					archer_knight->setListMonster(mListMonsters);
 					archer_knight->setPosAll(touch->getLocation());
 					mListCharacters.push_back(archer_knight);
+					check = true;
 					break;
 				}
 				case 2:
@@ -97,6 +98,7 @@ bool HelloWorld::onTouchBegan(cocos2d::Touch * touch, cocos2d::Event * event)
 					archer_fire->setListMonster(mListMonsters);
 					archer_fire->setPosAll(touch->getLocation());
 					mListCharacters.push_back(archer_fire);
+					check = true;
 					break;
 				}
 				case 6:
@@ -166,9 +168,12 @@ void HelloWorld::createMonster()
 		Troll *troll = new Troll(this);
 		mListMonsters.push_back(troll);
 	}
+	for (int i = 0; i < 5; i++)
+	{
+		HammerTroll *hammerTroll = new HammerTroll(this);
+		mListMonsters.push_back(hammerTroll);
+	}
 }
-
-
 
 void HelloWorld::update(float delta)
 {	
@@ -178,13 +183,13 @@ void HelloWorld::update(float delta)
 		if (mListCharacters[i]->getAlive() == 1)
 		{
 			mListCharacters[i]->update();
+			mListCharacters[i]->setAppear(true);
 		}
-		if (mListCharacters[i]->getAlive() == 2)
+		else if (mListCharacters[i]->getAlive() == 2)
 		{
 			mListCharacters[i]->getSprite()->removeFromParent();
 			mListCharacters.erase(mListCharacters.begin() + i);
 		}
-		CCLOG("%d", mListCharacters.size());
 	}
 
 	if (countFrame % FPS == 0)
@@ -194,7 +199,6 @@ void HelloWorld::update(float delta)
 			if (mListMonsters[i]->getAppear() == false)
 			{
 				mListMonsters[i]->setAppear(true);
-				CCLOG("%d", countFrame);
 				countFrame =0;
 				break;
 			}
@@ -205,7 +209,6 @@ void HelloWorld::update(float delta)
 	{
 		if (mListMonsters[i]->getAppear() == true)
 		{
-			//CCLOG("ok");
 			mListMonsters[i]->update();
 		}
 	}
