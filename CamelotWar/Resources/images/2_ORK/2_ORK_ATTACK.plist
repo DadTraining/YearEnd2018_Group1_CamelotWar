@@ -4,7 +4,7 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>ATTACK_000.png</key>
+            <key>2_ORK_ATTACK_000.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -15,11 +15,11 @@
                 <key>spriteSourceSize</key>
                 <string>{77,64}</string>
                 <key>textureRect</key>
-                <string>{{133,1},{77,64}}</string>
+                <string>{{1,436},{77,64}}</string>
                 <key>textureRotated</key>
-                <true/>
+                <false/>
             </dict>
-            <key>ATTACK_001.png</key>
+            <key>2_ORK_ATTACK_001.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -30,71 +30,71 @@
                 <key>spriteSourceSize</key>
                 <string>{89,64}</string>
                 <key>textureRect</key>
-                <string>{{265,1},{83,64}}</string>
+                <string>{{1,78},{83,64}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>ATTACK_002.png</key>
+            <key>2_ORK_ATTACK_002.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
                 <string>{-4,0}</string>
                 <key>spriteSize</key>
-                <string>{79,64}</string>
+                <string>{82,68}</string>
                 <key>spriteSourceSize</key>
-                <string>{87,64}</string>
+                <string>{92,68}</string>
                 <key>textureRect</key>
-                <string>{{67,1},{79,64}}</string>
+                <string>{{1,144},{82,68}}</string>
                 <key>textureRotated</key>
-                <true/>
+                <false/>
             </dict>
-            <key>ATTACK_003.png</key>
+            <key>2_ORK_ATTACK_003.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
                 <string>{0,0}</string>
                 <key>spriteSize</key>
-                <string>{64,64}</string>
+                <string>{81,80}</string>
                 <key>spriteSourceSize</key>
-                <string>{66,64}</string>
+                <string>{83,80}</string>
                 <key>textureRect</key>
-                <string>{{350,1},{64,64}}</string>
+                <string>{{1,280},{81,80}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>ATTACK_004.png</key>
+            <key>2_ORK_ATTACK_004.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
-                <string>{0,-2}</string>
+                <string>{0,-3}</string>
                 <key>spriteSize</key>
-                <string>{54,60}</string>
+                <string>{75,84}</string>
                 <key>spriteSourceSize</key>
-                <string>{56,64}</string>
+                <string>{79,90}</string>
                 <key>textureRect</key>
-                <string>{{416,1},{54,60}}</string>
-                <key>textureRotated</key>
-                <false/>
-            </dict>
-            <key>ATTACK_005.png</key>
-            <dict>
-                <key>aliases</key>
-                <array/>
-                <key>spriteOffset</key>
-                <string>{-3,0}</string>
-                <key>spriteSize</key>
-                <string>{71,64}</string>
-                <key>spriteSourceSize</key>
-                <string>{81,64}</string>
-                <key>textureRect</key>
-                <string>{{199,1},{71,64}}</string>
+                <string>{{1,1},{75,84}}</string>
                 <key>textureRotated</key>
                 <true/>
             </dict>
-            <key>ATTACK_006.png</key>
+            <key>2_ORK_ATTACK_005.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{-4,0}</string>
+                <key>spriteSize</key>
+                <string>{81,72}</string>
+                <key>spriteSourceSize</key>
+                <string>{91,72}</string>
+                <key>textureRect</key>
+                <string>{{1,362},{81,72}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+            <key>2_ORK_ATTACK_006.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -105,9 +105,9 @@
                 <key>spriteSourceSize</key>
                 <string>{82,64}</string>
                 <key>textureRect</key>
-                <string>{{1,1},{82,64}}</string>
+                <string>{{1,214},{82,64}}</string>
                 <key>textureRotated</key>
-                <true/>
+                <false/>
             </dict>
         </dict>
         <key>metadata</key>
@@ -121,9 +121,9 @@
             <key>realTextureFileName</key>
             <string>2_ORK_ATTACK.png</string>
             <key>size</key>
-            <string>{471,84}</string>
+            <string>{86,501}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:c2a7460fdd7ee361e9f4fb0700c9439d:01b9e46fa98542834a45fc1fedb8524b:cda794410d5653edf4061cc380382590$</string>
+            <string>$TexturePacker:SmartUpdate:b15e05f3a9f091905b987e85b937e758:faf8ee9276c8ff2efa32d48a30595585:cda794410d5653edf4061cc380382590$</string>
             <key>textureFileName</key>
             <string>2_ORK_ATTACK.png</string>
         </dict>

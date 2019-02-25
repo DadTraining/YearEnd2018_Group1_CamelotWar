@@ -1,35 +1,25 @@
-/****************************************************************************
- Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
- 
- http://www.cocos2d-x.org
- 
- Permission is hereby granted, free of charge, to any person obtaining a copy
- of this software and associated documentation files (the "Software"), to deal
- in the Software without restriction, including without limitation the rights
- to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- copies of the Software, and to permit persons to whom the Software is
- furnished to do so, subject to the following conditions:
- 
- The above copyright notice and this permission notice shall be included in
- all copies or substantial portions of the Software.
- 
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- THE SOFTWARE.
- ****************************************************************************/
-
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
+#include "Archer.h"
+#include "Troll.h"
+#include "HammerTroll.h"
+#include "Defines.h"
+#include "Archer_knife.h"
+#include "Archer_Fire.h"
+#include "BoneTroll.h"
+#include "HammerOrk.h"
+#include "SwordOrk.h"
+#include "AxeOrk.h"
+#include "SpearKnight.h"
+#include "AxeKnight.h"
+#include "SwordKnight.h"
+#include "pedestal.h"
 
 USING_NS_CC;
 
 Scene* HelloWorld::createScene()
 {
-    return HelloWorld::create();
+	return HelloWorld::create();
 }
 
 // Print useful error message instead of segfaulting when files are not there.
@@ -38,6 +28,7 @@ static void problemLoading(const char* filename)
     printf("Error while loading: %s\n", filename);
     printf("Depending on how you compiled you might have to add 'Resources/' in front of filenames in HelloWorldScene.cpp\n");
 }
+
 
 // on "init" you need to initialize your instance
 bool HelloWorld::init()
@@ -49,89 +40,180 @@ bool HelloWorld::init()
         return false;
     }
 
+	
+
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-    /////////////////////////////
-    // 2. add a menu item with "X" image, which is clicked to quit the program
-    //    you may modify it.
+	auto listener = EventListenerTouchOneByOne::create();
+	listener->onTouchBegan = CC_CALLBACK_2(HelloWorld::onTouchBegan, this);
+	listener->onTouchMoved = CC_CALLBACK_2(HelloWorld::onTouchMoved, this);
+	listener->onTouchEnded = CC_CALLBACK_2(HelloWorld::onTouchEnded, this);
+	getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 
-    // add a "close" icon to exit the progress. it's an autorelease object
-    auto closeItem = MenuItemImage::create(
-                                           "CloseNormal.png",
-                                           "CloseSelected.png",
-                                           CC_CALLBACK_1(HelloWorld::menuCloseCallback, this));
+	countFrame = 0;
 
-    if (closeItem == nullptr ||
-        closeItem->getContentSize().width <= 0 ||
-        closeItem->getContentSize().height <= 0)
-    {
-        problemLoading("'CloseNormal.png' and 'CloseSelected.png'");
-    }
-    else
-    {
-        float x = origin.x + visibleSize.width - closeItem->getContentSize().width/2;
-        float y = origin.y + closeItem->getContentSize().height/2;
-        closeItem->setPosition(Vec2(x,y));
-    }
+	check = true;
 
-    // create menu, it's an autorelease object
-    auto menu = Menu::create(closeItem, NULL);
-    menu->setPosition(Vec2::ZERO);
-    this->addChild(menu, 1);
+	createMonster();
 
-    /////////////////////////////
-    // 3. add your codes below...
+	createIconHero();
+	
+	scheduleUpdate();
+	
+	
 
-    // add a label shows "Hello World"
-    // create and initialize a label
-
-    auto label = Label::createWithTTF("Hello World", "fonts/Marker Felt.ttf", 24);
-    if (label == nullptr)
-    {
-        problemLoading("'fonts/Marker Felt.ttf'");
-    }
-    else
-    {
-        // position the label on the center of the screen
-        label->setPosition(Vec2(origin.x + visibleSize.width/2,
-                                origin.y + visibleSize.height - label->getContentSize().height));
-
-        // add the label as a child to this layer
-        this->addChild(label, 1);
-    }
-
-    // add "HelloWorld" splash screen"
-    auto sprite = Sprite::create("HelloWorld.png");
-    if (sprite == nullptr)
-    {
-        problemLoading("'HelloWorld.png'");
-    }
-    else
-    {
-        // position the sprite on the center of the screen
-        sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
-
-        // add the sprite as a child to this layer
-        this->addChild(sprite, 0);
-    }
     return true;
 }
 
-
-void HelloWorld::menuCloseCallback(Ref* pSender)
+bool HelloWorld::onTouchBegan(cocos2d::Touch * touch, cocos2d::Event * event)
 {
-    //Close the cocos2d-x game scene and quit the application
-    Director::getInstance()->end();
+	for (int i = 0; i < mListIconHero.size(); i++)
+	{
+		if (mListIconHero[i]->getBoundingBox().containsPoint(touch->getLocation()))
+		{
+			switch (i)
+			{
+				case 0:
+				{
+					auto archer = new Archer(this);
+					archer->setListMonster(mListMonsters);
+					archer->setPosAll(touch->getLocation());
+					mListCharacters.push_back(archer);
+					check = true;
+					break;
+				}
+				case 1:
+				{
+					auto archer_knight = new Archer_knife(this);
+					archer_knight->setListMonster(mListMonsters);
+					archer_knight->setPosAll(touch->getLocation());
+					mListCharacters.push_back(archer_knight);
+					break;
+				}
+				case 2:
+				{
+					auto archer_fire = new Archer_Fire(this);
+					archer_fire->setListMonster(mListMonsters);
+					archer_fire->setPosAll(touch->getLocation());
+					mListCharacters.push_back(archer_fire);
+					break;
+				}
+				case 6:
+				{
+					auto pedestal = new Pedestal(this);
+					pedestal->setPos(touch->getLocation());
+					pedestal->setlistCharacter(mListCharacters);
+					mListPedestal.push_back(pedestal);
+					check = false;
+					break;
+				}
+			}
+			return true;
+		}
+	}
+	return false;
+}
 
-    #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    exit(0);
-#endif
+void HelloWorld::onTouchMoved(cocos2d::Touch * touch, cocos2d::Event * event)
+{
+	if (check)
+	{
+		mListCharacters[mListCharacters.size() - 1]->setPos(touch->getLocation());
+	}
+	else
+	{
+		mListPedestal[mListPedestal.size() - 1]->setPos(touch->getLocation());
+	}
+}
 
-    /*To navigate back to native iOS screen(if present) without quitting the application  ,do not use Director::getInstance()->end() and exit(0) as given above,instead trigger a custom event created in RootViewController.mm as below*/
+void HelloWorld::onTouchEnded(cocos2d::Touch * touch, cocos2d::Event * event)
+{
+	if (check)
+	{
+		mListCharacters[mListCharacters.size() - 1]->setAlive(1);
+	}
+}
 
-    //EventCustom customEndEvent("game_scene_close_event");
-    //_eventDispatcher->dispatchEvent(&customEndEvent);
+void HelloWorld::createIconHero()
+{
+	for (int i = 0; i < 7; i++)
+	{
+		char str[100];
+		sprintf(str, "iconHero/%d.png", i+1);
+		auto iconHero = cocos2d::Sprite::create(str);
+		if (i==0)
+		{
+			float posX = iconHero->getContentSize().width / 2;
+			float posY = SCREEN_H - iconHero->getContentSize().height / 2;
+			iconHero->setPosition(cocos2d::Vec2(posX,posY));
+		}
+		else
+		{
+			float posX = mListIconHero[i - 1]->getPosition().x + mListIconHero[i - 1]->getContentSize().width/2 + iconHero->getContentSize().width / 2;
+			float posY = mListIconHero[i - 1]->getPosition().y;
+			iconHero->setPosition(cocos2d::Vec2(posX, posY));
+		}
+		mListIconHero.push_back(iconHero);
+		addChild(iconHero);
+	}
+}
 
+void HelloWorld::createMonster()
+{
+	for (int i = 0; i < 5; i++)
+	{
+		Troll *troll = new Troll(this);
+		mListMonsters.push_back(troll);
+	}
+}
+
+
+
+void HelloWorld::update(float delta)
+{	
+	countFrame += 1;
+	for (int i = 0; i < mListCharacters.size(); i++)
+	{
+		if (mListCharacters[i]->getAlive() == 1)
+		{
+			mListCharacters[i]->update();
+		}
+		if (mListCharacters[i]->getAlive() == 2)
+		{
+			mListCharacters[i]->getSprite()->removeFromParent();
+			mListCharacters.erase(mListCharacters.begin() + i);
+		}
+		CCLOG("%d", mListCharacters.size());
+	}
+
+	if (countFrame % FPS == 0)
+	{
+		for (int i = 0; i < mListMonsters.size(); i++)
+		{
+			if (mListMonsters[i]->getAppear() == false)
+			{
+				mListMonsters[i]->setAppear(true);
+				CCLOG("%d", countFrame);
+				countFrame =0;
+				break;
+			}
+		}
+	}
+
+	for (int  i = 0; i <  mListMonsters.size(); i++)
+	{
+		if (mListMonsters[i]->getAppear() == true)
+		{
+			//CCLOG("ok");
+			mListMonsters[i]->update();
+		}
+	}
+
+	for (int i = 0; i < mListPedestal.size(); i++)
+	{
+		mListPedestal[i]->update();
+		mListPedestal[i]->setlistCharacter(mListCharacters);
+	}
 
 }

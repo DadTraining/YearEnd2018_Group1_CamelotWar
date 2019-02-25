@@ -13,12 +13,16 @@ Character::~Character()
 
 Character::Character(cocos2d::Scene * scene)
 {
-	
+	init();
+	scene->addChild(mHpBar);
+	scene->addChild(mloadingHpBar);
 }
 
-void Character::update()
+void Character::deCreaseHP(int hp)
 {
-
+	float percentHpDecrease =( (float) hp / (float)mHP) * 100;
+	mloadingHpBar->setPercent(mloadingHpBar->getPercent() - percentHpDecrease);
+	mHP = mHP - hp;
 }
 
 void Character::init()
@@ -26,9 +30,10 @@ void Character::init()
 
 }
 
-void Character::deCreaseHP()
+void Character::setPosAll(cocos2d::Vec2 pos)
 {
-
+	setPos(pos);
+	setPosHp(cocos2d::Vec2(pos.x, pos.y + mSprite->getContentSize().height / 2));
 }
 
 void Character::reBorn()
@@ -46,56 +51,40 @@ void Character::setHP(int hp)
 	mHP = hp;
 }
 
-int Character::getPrice()
+void Character::init()
 {
-	return mPrice;
+	mHpBar = cocos2d::Sprite::create("loading_bg.png");
+
+	mloadingHpBar = cocos2d::ui::LoadingBar::create("loadingbar.png");
+	mloadingHpBar->setDirection(cocos2d::ui::LoadingBar::Direction::LEFT);
+	mloadingHpBar->setPercent(100);
+
+	
 }
 
-void Character::setPrice(int price)
+void Character::setAlive(int alive)
 {
-	mPrice = price;
+	mAlive = alive;
 }
 
-int Character::getDamage()
+int Character::getAlive()
 {
-	return mDamage;
+	return mAlive;
 }
 
-void Character::setDamage(int damage)
+void Character::setAppear(bool appear)
 {
-	mDamage = damage;
+	mAppear = appear;
 }
 
-int Character::getSpeed()
+bool Character::getAppear()
 {
-	return mSpeed;
+	return mAppear;
 }
 
-void Character::setSpeed(int speed)
+void Character::setPosHp(cocos2d::Vec2 pos)
 {
-	mSpeed = speed;
+	mHpBar->setPosition(pos);
+	mloadingHpBar->setPosition(pos);
 }
 
-int Character::getRange()
-{
-	return mRange;
-}
-
-void Character::setRange(int range)
-{
-	mRange = range;
-}
-
-cocos2d::Sprite * Character::getHpBar()
-{
-	return mHpBar;
-}
-
-void Character::setHpBar(cocos2d::Sprite * hpBar)
-{
-	mHpBar = hpBar;
-}
-
-void Character::deCreaseHpBar()
-{
-}

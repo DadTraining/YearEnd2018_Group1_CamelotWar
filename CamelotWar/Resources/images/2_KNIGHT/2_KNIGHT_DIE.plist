@@ -4,7 +4,7 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>DIE_000.png</key>
+            <key>2_KNIGHT_DIE_000.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -19,7 +19,7 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>DIE_001.png</key>
+            <key>2_KNIGHT_DIE_001.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -34,7 +34,7 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>DIE_002.png</key>
+            <key>2_KNIGHT_DIE_002.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -49,7 +49,7 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>DIE_003.png</key>
+            <key>2_KNIGHT_DIE_003.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -64,7 +64,7 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>DIE_004.png</key>
+            <key>2_KNIGHT_DIE_004.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -79,7 +79,7 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>DIE_005.png</key>
+            <key>2_KNIGHT_DIE_005.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -94,7 +94,7 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>DIE_006.png</key>
+            <key>2_KNIGHT_DIE_006.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>

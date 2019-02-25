@@ -1,43 +1,44 @@
 #pragma once
+
 #include "cocos2d.h"
 #include "Model.h"
-class Character : Model
+#include "ui/CocosGUI.h"
+
+class Character : public Model
 {
 public:
 	Character(); 
 	~Character();
 	Character(cocos2d::Scene* scene);
-
-	virtual void update();
-	virtual void init();
 	
-	void deCreaseHP();
+	void deCreaseHP(int hp);
+	void setPosAll(cocos2d::Vec2 pos);
 	void reBorn();
+	virtual void walk()=0;
+	virtual	void attack()=0;
+	virtual void die() = 0;;
 
-	int getHP();
-	void setHP(int hp);
-	int getPrice();
-	void setPrice(int price);
-	int getDamage();
-	void setDamage(int damage);
-	int getSpeed();
-	void setSpeed(int speed);
-	int getRange();
-	void setRange(int range);
 
-	cocos2d::Sprite* getHpBar();
-	void setHpBar(cocos2d::Sprite* hpBar);
+	virtual void init();
 
-	void deCreaseHpBar();
+	void setAlive(int alive);
+	int getAlive();
 
-private:
+	void setAppear(bool appear);
+	bool getAppear();
+
+
+	void setPosHp(cocos2d::Vec2 pos);
+protected:
 	int mHP;
 	int mPrice;
 	int mDamage;
 	int mSpeed;
 	int mRange;
-
+	int mAlive;
+	bool mAppear;
 	cocos2d::Sprite* mHpBar;
+	cocos2d::ui::LoadingBar * mloadingHpBar;
+	int changeStatus;
+
 };
-
-
