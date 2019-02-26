@@ -24,6 +24,8 @@ public:
 
 	void createPedestal();
 
+	void checkDuplicate();
+
 	void update(float delta);
 
     CREATE_FUNC(HelloWorld);

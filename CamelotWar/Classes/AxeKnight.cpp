@@ -14,7 +14,6 @@ AxeKnight::~AxeKnight()
 AxeKnight::AxeKnight(cocos2d::Scene * scene) :Character::Character(scene)
 {
 	mSprite = cocos2d::Sprite::create(NAME_SPRITE_AXEKNIGHT);
-	setPos(cocos2d::Vec2(SCREEN_W / 4 * 3, SCREEN_H / 4 + 75));
 	scene->addChild(mSprite);
 	init();
 }

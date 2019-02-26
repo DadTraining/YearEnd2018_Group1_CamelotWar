@@ -48,6 +48,8 @@ void Character::init()
 	mloadingHpBar->setPercent(100);
 
 	mHpBar->setVisible(false);
+	mloadingHpBar->setVisible(false);
+
 	mAppear = false;
 }
 
