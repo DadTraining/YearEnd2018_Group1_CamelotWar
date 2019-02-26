@@ -40,7 +40,7 @@ void Archer_knife::die()
 {
 }
 
-void Archer_knife::flip(boolean flip)
+void Archer_knife::flip(bool flip)
 {
 	mSprite->setFlipX(flip);
 }

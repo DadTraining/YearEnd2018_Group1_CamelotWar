@@ -41,7 +41,7 @@ void Archer::die()
 {
 }
 
-void Archer::flip(boolean flip)
+void Archer::flip(bool flip)
 {
 	mSprite->setFlipX(flip);
 }

@@ -38,17 +38,17 @@ void Fire::update()
 	setPos(cocos2d::Vec2(x, y));
 }
 
-void Fire::setVisible(boolean visible)
+void Fire::setVisible(bool visible)
 {
 	mSprite->setVisible(visible);
 }
 
-boolean Fire::isVisible()
+bool Fire::isVisible()
 {
 	return mSprite->isVisible();
 }
 
-void Fire::setMShoot(boolean shoot)
+void Fire::setMShoot(bool shoot)
 {
 	mShoot = shoot;
 }

@@ -30,22 +30,6 @@ static void problemLoading(const char* filename)
     printf("Depending on how you compiled you might have to add 'Resources/' in front of filenames in HelloWorldScene.cpp\n");
 }
 
-Archer *archer;
-Archer* ARCHER;
-Troll * troll;
-HammerTroll* hammerTroll;
-Archer_knife *archer_knife;
-Archer_Fire * archer_fire;
-BoneTroll* boneTroll;
-HammerOrk* hammerOrk;
-SwordOrk* swordOrk;
-AxeOrk* axeOrk;
-SpearKnight* spearKnight;
-AxeKnight* axeKnight;
-SwordKnight* swordKnight;
-Boat* boat;
-
-
 // on "init" you need to initialize your instance
 bool HelloWorld::init()
 {
@@ -188,11 +172,11 @@ void HelloWorld::createMonster()
 		Troll *troll = new Troll(this);
 		mListMonsters.push_back(troll);
 	}
-	/*for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 5; i++)
 	{
-		HammerTroll *hammerTroll = new HammerTroll(this);
-		mListMonsters.push_back(hammerTroll);
-	}*/
+		HammerOrk *hammerOrk = new HammerOrk(this);
+		mListMonsters.push_back(hammerOrk);
+	}
 	for (int  i = 0; i < mListMonsters.size(); i++)
 	{
 		mListMonsters[i]->setPos(cocos2d::Vec2(MONSTER_APPEAR, SCREEN_H / 3 - 30));

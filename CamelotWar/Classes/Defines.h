@@ -5,18 +5,6 @@
 #define BACKGROUND_PLAYSCENE "ScenePlay/backgroundscene.png"
 
 
-// Scene
-#define SCENE_TITLE_THECAMELOT_W 410
-#define SCENE_TITLE_THECAMELOT_H 410
-#define SCENE_TITLE_PLAY_W 512
-#define SCENE_TITLE_PLAY_H 100
-#define SCENE_TITLE_SETTING_W 256
-#define SCENE_TITLE_SETTING_H 90
-#define SCENE_TITLE_EXIT_W 768
-#define SCENE_TITLE_EXIT_H 90
-
-// Splash
-
 // troll
 #define NAME_PLIST_TROLL_ATK "images/TROLL/ATTACK/1_TROLL_ATTACK.plist"
 #define NAME_PNG_TROLL_ATK "ATTAK_00%d.png"
@@ -60,8 +48,6 @@
 #define NAME_PLIST_ARCHER_DIE_KNIFE "images/ARCHER/DIE/2_TROLL_DIE.plist"
 #define NAME_PNG_ARCHER_DIE_KNIFE "DIE_00%d.png"
 #define COUNT_IMG_ARCHER_DIE_KNIFE 5
-
-#define IMG_KNIFE "images/ARCHER/ATTACK/ATTACK_KNIFE.png"
 #define IMG_KNIFE "images/ARCHER/ATTACK/ATTACK_knife.png"
 //==============================================================================================//
 

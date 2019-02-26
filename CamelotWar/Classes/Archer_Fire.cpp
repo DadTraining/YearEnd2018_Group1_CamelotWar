@@ -39,7 +39,7 @@ void Archer_Fire::die()
 {
 }
 
-void Archer_Fire::flip(boolean flip)
+void Archer_Fire::flip(bool flip)
 {
 	mSprite->setFlipX(flip);
 }
