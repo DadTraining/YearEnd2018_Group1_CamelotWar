@@ -52,18 +52,13 @@ bool TitleScene::init()
 	addChild(Menu);
 
 
-	return true;
-}
-
-
-void TitleScene::menuPlayCallback(Ref* pSender)
-{
+	scheduleUpdate();
 	return true;
 }
 
 void TitleScene::update(float delta)
 {
-	troll->update();
+
 }
 
 

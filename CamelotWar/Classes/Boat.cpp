@@ -32,7 +32,7 @@ void Boat::collision()
 			if (mListMonsters[i]->getSprite()->getBoundingBox().intersectsRect(mSprite->getBoundingBox()))
 			{
 				//mListMonsters[i]->setPos(cocos2d::Vec2(mListMonsters[i]->getPos().x, SCREEN_H/2));
-				mListMonsters[i]->reBorn(mListMonsters[i]);
+				mListMonsters[i]->reBorn();
 			}
 	}
 }
@@ -40,10 +40,7 @@ void Boat::collision()
 
 void Boat::setListMonster(std::vector<Character*> listMonsters)
 {
-	for (int i = 0; i < listMonsters.size(); i++)
-	{
-		mListMonsters.push_back(listMonsters[i]);
-	}
+	mListMonsters = listMonsters;
 }
 
 bool Boat::BoatTouchBegan(cocos2d::Touch * touch, cocos2d::Event * event)

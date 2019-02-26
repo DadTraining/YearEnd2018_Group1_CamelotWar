@@ -2,6 +2,7 @@
 #define SCREEN_H 720
 #define FPS 50
 #define MONSTER_APPEAR -50
+#define BACKGROUND_PLAYSCENE "ScenePlay/backgroundscene.png"
 
 
 // Scene
@@ -215,3 +216,4 @@
 //pedestal===================================================================
 
 #define NAME_SPRITE_PEDESTAL "pl_3.png"
+#define NAME_SPRITE_PEDESTAL "ScenePlay/pedestal1.png"

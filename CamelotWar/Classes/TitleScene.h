@@ -14,5 +14,4 @@ public:
 	void menuPlayCallback(cocos2d::Ref* pSender);
 	CREATE_FUNC(TitleScene);
 
-
 };

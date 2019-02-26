@@ -114,10 +114,12 @@ void Archer::reuseArrow()
 
 void Archer::setListMonster(std::vector< Character*> listMonsters)
 {
-	for (int i = 0; i < listMonsters.size(); i++)
-	{
-		mListMonsters.push_back(listMonsters[i]);
-	}
+	mListMonsters = listMonsters;
+}
+
+void Archer::setListPedestal(std::vector<Pedestal*> listPedestals)
+{
+	mListPedestals = listPedestals;
 }
 
 void Archer::update()
@@ -165,6 +167,7 @@ void Archer::update()
 	reuseArrow();
 	shootArrow();
 	collision();
+	collisionWithPedestal();
 	setPosAll(getPos());
 }
 
@@ -177,3 +180,21 @@ void Archer::init()
 	hasAnimated = false;
 	// setAnimation(NAME_PLIST_ARCHER_ATTACK, NAME_PNG_ARCHER_ATTACK, COUNT_IMG_ARCHER_ATTACK, mSpeed, 0);
 }	
+
+void Archer::collisionWithPedestal()
+{
+	for (int i = 0; i < mListPedestals.size(); i++)
+	{
+		if (mListPedestals[i]->getSprite()->getBoundingBox().intersectsRect(mSprite->getBoundingBox()))
+		{
+			mAppear = true;
+			mSprite->setAnchorPoint(cocos2d::Vec2(0.5, 0));
+			setPos(mListPedestals[i]->getPos() + cocos2d::Vec2(0, mListPedestals[i]->getSprite()->getContentSize().height / 2 - 7 ));
+			break;
+		}
+	}
+	if (!mAppear)
+	{
+		setAlive(2);
+	}
+}
