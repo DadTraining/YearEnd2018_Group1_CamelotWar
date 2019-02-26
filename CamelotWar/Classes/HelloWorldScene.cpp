@@ -15,6 +15,7 @@
 #include "SwordKnight.h"
 #include "Boat.h"
 #include "pedestal.h"
+#include "Castle.h"
 
 USING_NS_CC;
 
@@ -44,7 +45,7 @@ SpearKnight* spearKnight;
 AxeKnight* axeKnight;
 SwordKnight* swordKnight;
 Boat* boat;
-
+Castle* castle;
 
 // on "init" you need to initialize your instance
 bool HelloWorld::init()
@@ -83,7 +84,11 @@ bool HelloWorld::init()
 	createPedestal();
 	
 	scheduleUpdate();
+  
+	castle = new Castle(this);
 
+	scheduleUpdate();
+	
     return true;
 }
 
@@ -235,6 +240,15 @@ void HelloWorld::update(float delta)
 			mListCharacters[i]->getSprite()->removeFromParent();
 			mListCharacters.erase(mListCharacters.begin() + i);
 		}
+
+		CCLOG("%d", mListCharacters.size());
+	archer->update();
+	archer_fire->update();
+	archer_knife->update();
+	
+	for (int  i = 0; i < mListMonsters.size(); i++)
+	{
+		mListMonsters[i]->update();
 	}
 
 	if (countFrame % FPS == 0)
