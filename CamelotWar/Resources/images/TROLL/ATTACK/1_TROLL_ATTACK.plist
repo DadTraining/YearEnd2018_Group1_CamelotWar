@@ -9,28 +9,28 @@
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
-                <string>{0,-6}</string>
+                <string>{1,-8}</string>
                 <key>spriteSize</key>
-                <string>{60,52}</string>
+                <string>{82,74}</string>
                 <key>spriteSourceSize</key>
-                <string>{74,64}</string>
+                <string>{104,90}</string>
                 <key>textureRect</key>
-                <string>{{67,67},{60,52}}</string>
+                <string>{{1,243},{82,74}}</string>
                 <key>textureRotated</key>
-                <true/>
+                <false/>
             </dict>
             <key>ATTAK_001.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
-                <string>{-4,-1}</string>
+                <string>{-5,-2}</string>
                 <key>spriteSize</key>
-                <string>{58,62}</string>
+                <string>{80,86}</string>
                 <key>spriteSourceSize</key>
-                <string>{74,64}</string>
+                <string>{104,90}</string>
                 <key>textureRect</key>
-                <string>{{1,147},{58,62}}</string>
+                <string>{{1,161},{80,86}}</string>
                 <key>textureRotated</key>
                 <true/>
             </dict>
@@ -39,13 +39,13 @@
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
-                <string>{-7,0}</string>
+                <string>{-10,0}</string>
                 <key>spriteSize</key>
-                <string>{56,64}</string>
+                <string>{78,90}</string>
                 <key>spriteSourceSize</key>
-                <string>{74,64}</string>
+                <string>{104,90}</string>
                 <key>textureRect</key>
-                <string>{{1,1},{56,64}}</string>
+                <string>{{1,1},{78,90}}</string>
                 <key>textureRotated</key>
                 <true/>
             </dict>
@@ -54,28 +54,28 @@
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
-                <string>{-7,0}</string>
+                <string>{-10,0}</string>
                 <key>spriteSize</key>
-                <string>{56,64}</string>
+                <string>{78,90}</string>
                 <key>spriteSourceSize</key>
-                <string>{74,64}</string>
+                <string>{104,90}</string>
                 <key>textureRect</key>
-                <string>{{67,1},{56,64}}</string>
+                <string>{{1,81},{78,90}}</string>
                 <key>textureRotated</key>
-                <false/>
+                <true/>
             </dict>
             <key>ATTAK_004.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
-                <string>{5,-11}</string>
+                <string>{7,-16}</string>
                 <key>spriteSize</key>
-                <string>{64,42}</string>
+                <string>{88,58}</string>
                 <key>spriteSourceSize</key>
-                <string>{74,64}</string>
+                <string>{104,90}</string>
                 <key>textureRect</key>
-                <string>{{1,59},{64,42}}</string>
+                <string>{{1,319},{88,58}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -84,28 +84,28 @@
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
-                <string>{5,-11}</string>
+                <string>{7,-16}</string>
                 <key>spriteSize</key>
-                <string>{62,42}</string>
+                <string>{84,58}</string>
                 <key>spriteSourceSize</key>
-                <string>{74,64}</string>
+                <string>{104,90}</string>
                 <key>textureRect</key>
-                <string>{{67,129},{62,42}}</string>
+                <string>{{1,439},{84,58}}</string>
                 <key>textureRotated</key>
-                <true/>
+                <false/>
             </dict>
             <key>ATTAK_006.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
-                <string>{4,-11}</string>
+                <string>{5,-16}</string>
                 <key>spriteSize</key>
-                <string>{64,42}</string>
+                <string>{88,58}</string>
                 <key>spriteSourceSize</key>
-                <string>{74,64}</string>
+                <string>{104,90}</string>
                 <key>textureRect</key>
-                <string>{{1,103},{64,42}}</string>
+                <string>{{1,379},{88,58}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -115,15 +115,15 @@
             <key>format</key>
             <integer>3</integer>
             <key>pixelFormat</key>
-            <string>RGBA4444</string>
+            <string>RGBA8888</string>
             <key>premultiplyAlpha</key>
             <false/>
             <key>realTextureFileName</key>
             <string>1_TROLL_ATTACK.png</string>
             <key>size</key>
-            <string>{124,206}</string>
+            <string>{92,498}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:50ed9553ee54aa7a2d1c0111f3c4de2a:bfeb14a6c447c622adbab739007498f0:e0b92ae573c739f54c2748305d1bce42$</string>
+            <string>$TexturePacker:SmartUpdate:096efdc7df9ced3a5ea5f33cf39537ff:edcaa6622614bd1236f35b26e42a88da:e0b92ae573c739f54c2748305d1bce42$</string>
             <key>textureFileName</key>
             <string>1_TROLL_ATTACK.png</string>
         </dict>
