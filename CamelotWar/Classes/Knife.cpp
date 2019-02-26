@@ -1,11 +1,12 @@
 #include "Knife.h"
 #include "cocos2d.h"
 #include "Defines.h"
-#include <Math.h>
+
 
 Knife::Knife(cocos2d::Scene* scene)
 {
 	mSprite = cocos2d::Sprite::create(IMG_KNIFE);
+	mSprite->setScale(1.5);
 	scene->addChild(mSprite);
 	mSpeed = 20;
 	init();

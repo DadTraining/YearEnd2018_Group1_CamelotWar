@@ -1,8 +1,18 @@
 #pragma once
+#include <string>
+#include <vector>
+
+#include "cocos2d.h"
 #include "Character.h"
+#include "Model.h"
+#include "cocos2d.h"
+#include "ui/CocosGUI.h"
+
 class BoneTroll :
 	public Character
 {
+private:
+	int mCount;
 public:
 	BoneTroll();
 	~BoneTroll();

@@ -1,8 +1,18 @@
 #pragma once
+#include <string>
+#include <vector>
+
+#include "cocos2d.h"
 #include "Character.h"
-class AxeOrk :
-	public Character
+#include "Model.h"
+#include "cocos2d.h"
+#include "ui/CocosGUI.h"
+
+class AxeOrk :public Character
 {
+private:
+	int mCount;
+
 public:
 	AxeOrk();
 	~AxeOrk();

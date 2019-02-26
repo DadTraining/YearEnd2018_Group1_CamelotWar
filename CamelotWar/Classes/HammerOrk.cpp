@@ -21,7 +21,13 @@ HammerOrk::HammerOrk(cocos2d::Scene * scene) : Character::Character(scene)
 
 void HammerOrk::walk()
 {
+	if (changeStatus == 0)
+	{
+		setAnimation(NAME_PLIST_HAMMERORK_WALK, NAME_PNG_HAMMERORK_WALK, COUNT_IMG_HAMMERORK_WALK, mSpeed, 0);
+		changeStatus += 1;
+	}
 	setPos(mSprite->getPosition() + cocos2d::Vec2(mSpeed / 10, 0));
+	countFrame = 0;
 }
 
 void HammerOrk::attack()
@@ -43,13 +49,13 @@ void HammerOrk::attack()
 void HammerOrk::die()
 {
 	mAlive = 0;
-	if (changeStatus == 0)
+	if (changeStatus == 1)
 	{
 		mSprite->stopAllActions();
 		setAnimation(NAME_PLIST_HAMMERORK_DIE, NAME_PNG_HAMMERORK_DIE, COUNT_IMG_HAMMERORK_DIE, mSpeed, 1);
 		changeStatus += 2;
 	}
-	if (changeStatus == 1)
+	if (changeStatus == 2)
 	{
 		mSprite->stopAllActions();
 		setAnimation(NAME_PLIST_HAMMERORK_DIE, NAME_PNG_HAMMERORK_DIE, COUNT_IMG_HAMMERORK_DIE, mSpeed, 1);
@@ -61,17 +67,22 @@ void HammerOrk::die()
 
 void HammerOrk::update()
 {
-	if (getPos().x >= SCREEN_W / 2 && mAlive == 1)
+	if (getPos().x >= SCREEN_W - 100 && mAlive == 1)
 	{
 		attack();
 	}
-	if (getPos().x < SCREEN_W / 2 && mAlive == 1)
+	if (getPos().x < SCREEN_W - 100 && mAlive == 1)
 	{
 		walk();
+		countFrame = 0;
 	}
 	if (mloadingHpBar->getPercent() == 0)
 	{
 		die();
+	}
+	if (changeStatus == 3)
+	{
+		changeStatus = 0;
 	}
 	setPosHp(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height + 10));
 }
@@ -85,7 +96,8 @@ void HammerOrk::init()
 	mPrice = 100;
 	mDamage = 100;
 	mRange = 10;
+	mAppear = false;
 
 	mSprite->setAnchorPoint(cocos2d::Vec2(0.5, 0));
-	setAnimation(NAME_PLIST_HAMMERORK_WALK, NAME_PNG_HAMMERORK_WALK, COUNT_IMG_HAMMERORK_WALK, mSpeed, 0);
+	setPos(cocos2d::Vec2(MONSTER_APPEAR, SCREEN_H / 3 - 30));
 }

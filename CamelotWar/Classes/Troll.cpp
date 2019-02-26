@@ -1,7 +1,7 @@
 #include "Troll.h"
 #include "Defines.h"
 
-int countFrame = 0;
+
 Troll::Troll()
 {
 }

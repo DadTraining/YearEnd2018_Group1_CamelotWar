@@ -1,8 +1,18 @@
 #pragma once
+#include <string>
+#include <vector>
+
+#include "cocos2d.h"
 #include "Character.h"
-class SwordOrk :
-	public Character
+#include "Model.h"
+#include "cocos2d.h"
+#include "ui/CocosGUI.h"
+
+class SwordOrk :public Character
 {
+private:
+	int mCount;
+
 public:
 	SwordOrk();
 	~SwordOrk();
@@ -15,6 +25,7 @@ public:
 	void update();
 	void init();
 private:
+	int changeStatus;
 	int countFrame = 0;
 };
 

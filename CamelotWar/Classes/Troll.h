@@ -28,5 +28,5 @@ public:
   
 private:
 	int changeStatus;
-	
+	int countFrame = 0;
 };

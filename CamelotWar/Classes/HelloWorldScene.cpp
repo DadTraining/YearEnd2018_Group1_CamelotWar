@@ -15,6 +15,7 @@
 #include "SwordKnight.h"
 #include "Boat.h"
 #include "pedestal.h"
+#include  "Castle.h"
 
 USING_NS_CC;
 
@@ -93,7 +94,7 @@ bool HelloWorld::onTouchBegan(cocos2d::Touch * touch, cocos2d::Event * event)
 				{
 					auto archer_knight = new Archer_knife(this);
 					archer_knight->setListMonster(mListMonsters);
-					archer_fire->setListPedestal(mListPedestal);
+					archer_knight->setListPedestal(mListPedestal);
 					archer_knight->setPosAll(touch->getLocation());
 					mListCharacters.push_back(archer_knight);
 					check = true;
@@ -174,7 +175,16 @@ void HelloWorld::createMonster()
 		Troll *troll = new Troll(this);
 		mListMonsters.push_back(troll);
 	}
-	/*for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 5; i++)
+	{
+		AxeOrk *axeOrk = new AxeOrk(this);
+		mListMonsters.push_back(axeOrk);
+	}
+	/*{
+		BoneTroll *boneTroll = new BoneTroll(this);
+		mListMonsters.push_back(boneTroll);
+	}
+	for (int i = 0; i < 5; i++)
 	{
 		HammerOrk *hammerOrk = new HammerOrk(this);
 		mListMonsters.push_back(hammerOrk);
@@ -200,8 +210,8 @@ void HelloWorld::createPedestal()
 		}
 		else
 		{
-			float posX = mListPedestal[i-1]->getPos().x + i * 100;
-			float posY = mListPedestal[i - 1]->getPos().y + i*50;
+			float posX = mListPedestal[i-1]->getPos().x +  100;
+			float posY = mListPedestal[i - 1]->getPos().y + 50;
 			pedestal->setPos(cocos2d::Vec2(posX, posY));
 		}
 	}
@@ -223,7 +233,7 @@ void HelloWorld::update(float delta)
 		}
 
 		CCLOG("%d", mListCharacters.size());
-    
+	}
 	
 	for (int  i = 0; i < mListMonsters.size(); i++)
 	{

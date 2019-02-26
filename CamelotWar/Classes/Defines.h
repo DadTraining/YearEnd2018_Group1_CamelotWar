@@ -119,7 +119,7 @@
 #define NAME_PNG_SWORDORK_ATK "2_ORK_ATTACK_00%d.png"
 #define COUNT_IMG_SWORDORK_ATK 7
 
-#define NAME_SPRITE_SWORDORK "CloseNormal.png"
+#define NAME_SPRITE_SWORDORK "images/2_ORK/2_ORK.png"
 
 #define NAME_PLIST_SWORDORK_DIE "images/2_ORK/2_ORK_DIE.plist"
 #define NAME_PNG_SWORDORK_DIE "2_ORK_DIE_00%d.png"
@@ -149,7 +149,7 @@
 #define NAME_PNG_AXEORK_ATK "3_ORK_ATTACK_00%d.png"
 #define COUNT_IMG_AXEORK_ATK 7
 
-#define NAME_SPRITE_AXEORK "CloseNormal.png"
+#define NAME_SPRITE_AXEORK "images/3_ORK/3_ORK.png"
 
 #define NAME_PLIST_AXEORK_DIE "images/3_ORK/3_ORK_DIE.plist"
 #define NAME_PNG_AXEORK_DIE "3_ORK_DIE_00%d.png"

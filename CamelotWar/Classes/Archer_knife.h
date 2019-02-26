@@ -3,6 +3,7 @@
 #include "Character.h"
 #include "Knife.h"
 #include <vector>
+#include "pedestal.h"
 
 using namespace std;
 
@@ -19,17 +20,24 @@ public:
 	void flip(bool flip);
 
 	void turnOnKnife(cocos2d::Vec2 pos);
+
 	void shootKnife();
+
 	void collision();
+
 	void reuseKnife();
+
 	void setListMonster(std::vector<Character*> listMonsters);
+	void setListPedestal(std::vector<Pedestal *> listPedestals);
 
 	void update();
 	void init();
 
+	void collisionWithPedestal();
 private :
 	vector<Knife*> knifes;
 	std::vector< Character*> mListMonsters;
+	std::vector<Pedestal *> mListPedestals;
 	int mFrameCount;
 	bool hasAnimated;
 };

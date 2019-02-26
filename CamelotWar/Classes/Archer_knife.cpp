@@ -113,10 +113,12 @@ void Archer_knife::reuseKnife()
 
 void Archer_knife::setListMonster(std::vector<Character*> listMonsters)
 {
-	for (int i = 0; i < listMonsters.size(); i++)
-	{
-		mListMonsters.push_back(listMonsters[i]);
-	}
+	mListMonsters = listMonsters;
+}
+
+void Archer_knife::setListPedestal(std::vector<Pedestal*> listPedestals)
+{
+	mListPedestals = listPedestals;
 }
 
 void Archer_knife::update()
@@ -163,6 +165,7 @@ void Archer_knife::update()
 	reuseKnife();
 	shootKnife();
 	collision();
+	collisionWithPedestal();
 	setPosAll(getPos());
 }
 
@@ -174,4 +177,23 @@ void Archer_knife::init()
 	changeStatus = 0;
 	hasAnimated = false;
 	//setAnimation(NAME_PLIST_ARCHER_ATTACK_KNIFE, NAME_PNG_ARCHER_ATTACK_KNIFE, COUNT_IMG_ARCHER_ATTACK_KNIFE, mSpeed, 0);
+}
+
+void Archer_knife::collisionWithPedestal()
+{
+	for (int i = 0; i < mListPedestals.size(); i++)
+	{
+		if (mListPedestals[i]->getSprite()->getBoundingBox().intersectsRect(mSprite->getBoundingBox()))
+		{
+			mAppear = true;
+			mSprite->setAnchorPoint(cocos2d::Vec2(0.5, 0));
+			setPos(cocos2d::Vec2(getPos().x, mListPedestals[i]->getPos().y + mListPedestals[i]->getSprite()->getContentSize().height / 2 - 10));
+			break;
+		}
+	}
+	if (!mAlive)
+	{
+		setAlive(2);
+	}
+		
 }
