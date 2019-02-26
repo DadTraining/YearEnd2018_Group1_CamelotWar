@@ -221,16 +221,13 @@ void HelloWorld::update(float delta)
 			mListCharacters[i]->getSprite()->removeFromParent();
 			mListCharacters.erase(mListCharacters.begin() + i);
 		}
-<<<<<<< HEAD
 
 		CCLOG("%d", mListCharacters.size());
-	}
+    
 	
 	for (int  i = 0; i < mListMonsters.size(); i++)
 	{
 		mListMonsters[i]->update();
-=======
->>>>>>> 6a81598ede25f14feb0143bd50e08df9f9795099
 	}
 
 	if (countFrame % FPS == 0)
