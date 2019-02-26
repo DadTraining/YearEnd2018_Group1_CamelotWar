@@ -242,9 +242,7 @@ void HelloWorld::update(float delta)
 		}
 
 		CCLOG("%d", mListCharacters.size());
-	archer->update();
-	archer_fire->update();
-	archer_knife->update();
+	}
 	
 	for (int  i = 0; i < mListMonsters.size(); i++)
 	{
@@ -276,3 +274,5 @@ void HelloWorld::update(float delta)
 	boat->setListMonster(mListMonsters);
 
 }
+
+
