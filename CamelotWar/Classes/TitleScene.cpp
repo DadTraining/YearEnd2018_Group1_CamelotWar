@@ -1,6 +1,7 @@
 #include "TitleScene.h"
 #include "SimpleAudioEngine.h"
 #include "Defines.h"
+#include "PopUpSetting.h"
 
 #include "HelloWorldScene.h"
 
@@ -43,7 +44,7 @@ bool TitleScene::init()
 	Exit->setPosition(Vec2(SCENE_TITLE_EXIT_W, SCENE_TITLE_EXIT_H));
 
 	// Create setting item
-	auto Setting = MenuItemImage::create(SCENE_TITLE_PNG_SETTING, SCENE_TITLE_PNG_SETTING, CC_CALLBACK_1(TitleScene::menuPlayCallback, this));
+	auto Setting = MenuItemImage::create(SCENE_TITLE_PNG_SETTING, SCENE_TITLE_PNG_SETTING, CC_CALLBACK_1(TitleScene::menuSettingCallback, this));
 	Setting->setPosition(Vec2(SCENE_TITLE_SETTING_W, SCENE_TITLE_SETTING_H));
 
 	// Set item to menu
@@ -65,4 +66,10 @@ void TitleScene::update(float delta)
 void TitleScene::menuPlayCallback(Ref* pSender)
 {
 	Director::getInstance()->replaceScene(HelloWorld::createScene());
+}
+
+void TitleScene::menuSettingCallback(Ref* pSender)
+{
+	PopUpSetting *setting = PopUpSetting::create();
+	this->addChild(setting, 3);
 }
