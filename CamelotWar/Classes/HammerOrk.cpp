@@ -22,7 +22,6 @@ HammerOrk::HammerOrk(cocos2d::Scene * scene) : Character::Character(scene)
 void HammerOrk::walk()
 {
 	setPos(mSprite->getPosition() + cocos2d::Vec2(mSpeed / 10, 0));
-	setPosHp(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height / 2));
 }
 
 void HammerOrk::attack()
@@ -74,6 +73,7 @@ void HammerOrk::update()
 	{
 		die();
 	}
+	setPosHp(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height + 10));
 }
 
 void HammerOrk::init()
@@ -86,6 +86,6 @@ void HammerOrk::init()
 	mDamage = 100;
 	mRange = 10;
 
-	setPosHp(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height / 2));
+	mSprite->setAnchorPoint(cocos2d::Vec2(0.5, 0));
 	setAnimation(NAME_PLIST_HAMMERORK_WALK, NAME_PNG_HAMMERORK_WALK, COUNT_IMG_HAMMERORK_WALK, mSpeed, 0);
 }

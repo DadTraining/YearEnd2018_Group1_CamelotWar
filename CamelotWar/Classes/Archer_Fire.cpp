@@ -39,7 +39,12 @@ void Archer_Fire::die()
 {
 }
 
-void Archer_Fire::flip(boolean flip)
+void Archer_Fire::setListPedestal(std::vector<Pedestal*> listPedestals)
+{
+	mListPedestals = listPedestals;
+}
+
+void Archer_Fire::flip(bool flip)
 {
 	mSprite->setFlipX(flip);
 }
@@ -161,6 +166,7 @@ void Archer_Fire::update()
 	reuseFire();
 	shootFire();
 	collision();
+	collisionWithPedestal();
 	setPosAll(getPos());
 }
 
@@ -171,5 +177,23 @@ void Archer_Fire::init()
 	mRange = 300;
 	changeStatus = 0;
 	hasAnimated = false;
-	//setAnimation(NAME_PLIST_ARCHER_ATTACK_FIRE, NAME_PNG_ARCHER_ATTACK_FIRE, COUNT_IMG_ARCHER_ATTACK_FIRE, mSpeed, 0);
+	
+}
+
+void Archer_Fire::collisionWithPedestal()
+{
+	for (int i = 0; i < mListPedestals.size(); i++)
+	{
+		if (mListPedestals[i]->getSprite()->getBoundingBox().intersectsRect(mSprite->getBoundingBox()))
+		{
+			mAppear = true;
+			mSprite->setAnchorPoint(cocos2d::Vec2(0.5, 0));
+			setPos(cocos2d::Vec2(getPos().x, mListPedestals[i]->getPos().y + mListPedestals[i]->getSprite()->getContentSize().height / 2 - 10));
+			break;
+		}
+	}
+	if (!mAppear)
+	{
+		setAlive(2);
+	}
 }

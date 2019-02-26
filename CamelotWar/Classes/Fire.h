@@ -10,15 +10,15 @@ public:
 	void fly(cocos2d::Vec2 pos);
 	void update();
 
-	void setVisible(boolean visible);
-	boolean isVisible();
+	void setVisible(bool visible);
+	bool isVisible();
 
-	void setMShoot(boolean shoot);
+	void setMShoot(bool shoot);
 	void setSpeed(int);
 	int getSpeed();
 private:
 	int mSpeed;
-	boolean mShoot;
+	bool mShoot;
 	float a;
 	float b;
 };

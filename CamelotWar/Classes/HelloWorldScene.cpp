@@ -15,7 +15,6 @@
 #include "SwordKnight.h"
 #include "Boat.h"
 #include "pedestal.h"
-#include "Castle.h"
 
 USING_NS_CC;
 
@@ -30,22 +29,6 @@ static void problemLoading(const char* filename)
     printf("Error while loading: %s\n", filename);
     printf("Depending on how you compiled you might have to add 'Resources/' in front of filenames in HelloWorldScene.cpp\n");
 }
-
-Archer *archer;
-Archer* ARCHER;
-Troll * troll;
-HammerTroll* hammerTroll;
-Archer_knife *archer_knife;
-Archer_Fire * archer_fire;
-BoneTroll* boneTroll;
-HammerOrk* hammerOrk;
-SwordOrk* swordOrk;
-AxeOrk* axeOrk;
-SpearKnight* spearKnight;
-AxeKnight* axeKnight;
-SwordKnight* swordKnight;
-Boat* boat;
-Castle* castle;
 
 // on "init" you need to initialize your instance
 bool HelloWorld::init()
@@ -84,11 +67,7 @@ bool HelloWorld::init()
 	createPedestal();
 	
 	scheduleUpdate();
-  
-	castle = new Castle(this);
 
-	scheduleUpdate();
-	
     return true;
 }
 
@@ -114,6 +93,7 @@ bool HelloWorld::onTouchBegan(cocos2d::Touch * touch, cocos2d::Event * event)
 				{
 					auto archer_knight = new Archer_knife(this);
 					archer_knight->setListMonster(mListMonsters);
+					archer_fire->setListPedestal(mListPedestal);
 					archer_knight->setPosAll(touch->getLocation());
 					mListCharacters.push_back(archer_knight);
 					check = true;
@@ -123,6 +103,7 @@ bool HelloWorld::onTouchBegan(cocos2d::Touch * touch, cocos2d::Event * event)
 				{
 					auto archer_fire = new Archer_Fire(this);
 					archer_fire->setListMonster(mListMonsters);
+					archer_fire->setListPedestal(mListPedestal);
 					archer_fire->setPosAll(touch->getLocation());
 					mListCharacters.push_back(archer_fire);
 					check = true;
@@ -195,12 +176,12 @@ void HelloWorld::createMonster()
 	}
 	/*for (int i = 0; i < 5; i++)
 	{
-		HammerTroll *hammerTroll = new HammerTroll(this);
-		mListMonsters.push_back(hammerTroll);
+		HammerOrk *hammerOrk = new HammerOrk(this);
+		mListMonsters.push_back(hammerOrk);
 	}*/
 	for (int  i = 0; i < mListMonsters.size(); i++)
 	{
-		mListMonsters[i]->setPos(cocos2d::Vec2(MONSTER_APPEAR, SCREEN_H / 3 - 30));
+		mListMonsters[i]->setPos(cocos2d::Vec2(MONSTER_APPEAR, SCREEN_H / 3 - mListMonsters[i]->getSprite()->getContentSize().height));
 	}
 }
 
@@ -242,7 +223,7 @@ void HelloWorld::update(float delta)
 		}
 
 		CCLOG("%d", mListCharacters.size());
-	}
+    
 	
 	for (int  i = 0; i < mListMonsters.size(); i++)
 	{

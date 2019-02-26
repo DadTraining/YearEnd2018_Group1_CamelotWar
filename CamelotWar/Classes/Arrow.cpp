@@ -43,17 +43,17 @@ void Arrow::update()
 	setPos(cocos2d::Vec2(x,y));
 }
 
-void Arrow::setVisible(boolean visible)
+void Arrow::setVisible(bool visible)
 {
 	mSprite->setVisible(visible);
 }
 
-boolean Arrow::isVisible()
+bool Arrow::isVisible()
 {
 	return mSprite->isVisible();
 }
 
-void Arrow::setMShoot(boolean shoot)
+void Arrow::setMShoot(bool shoot)
 {
 	mShoot = shoot;
 }

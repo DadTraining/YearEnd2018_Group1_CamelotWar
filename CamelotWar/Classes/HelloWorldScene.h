@@ -4,6 +4,7 @@
 #include "cocos2d.h"
 #include "Character.h"
 #include "pedestal.h"
+#include "Boat.h"
 #include <vector>
 
 class HelloWorld : public cocos2d::Scene
@@ -33,8 +34,8 @@ private:
 	std::vector< Character*> mListMonsters;
 	std::vector< cocos2d::Sprite*> mListIconHero;
 	std::vector< Pedestal*> mListPedestal;
-	
 
+	Boat *boat;
 	bool check;
 	int mCountCharacter;
 	int countFrame;

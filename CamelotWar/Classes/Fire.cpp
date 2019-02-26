@@ -25,10 +25,6 @@ void Fire::fly(cocos2d::Vec2 pos)
 {
 	a = (pos.y - getPos().y) / (pos.x - getPos().x);
 	b = pos.y - (a * pos.x);
-
-	//set the rotatuion for the arrow
-	cocos2d::Vec2 delta = pos - getPos();
-	mSprite->setRotation(atan2(delta.x, delta.y) * 180 / M_PI - 90);
 }
 
 void Fire::update()
@@ -38,17 +34,17 @@ void Fire::update()
 	setPos(cocos2d::Vec2(x, y));
 }
 
-void Fire::setVisible(boolean visible)
+void Fire::setVisible(bool visible)
 {
 	mSprite->setVisible(visible);
 }
 
-boolean Fire::isVisible()
+bool Fire::isVisible()
 {
 	return mSprite->isVisible();
 }
 
-void Fire::setMShoot(boolean shoot)
+void Fire::setMShoot(bool shoot)
 {
 	mShoot = shoot;
 }
