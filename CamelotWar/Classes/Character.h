@@ -32,6 +32,7 @@ public:
 
 
 	void setPosHp(cocos2d::Vec2 pos);
+	
 protected:
 	int mHP;
 	int mPrice;

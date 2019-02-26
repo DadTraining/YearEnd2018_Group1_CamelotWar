@@ -47,6 +47,7 @@ void Character::init()
 	mloadingHpBar->setDirection(cocos2d::ui::LoadingBar::Direction::LEFT);
 	mloadingHpBar->setPercent(100);
 
+	mHpBar->setVisible(false);
 	mAppear = false;
 }
 

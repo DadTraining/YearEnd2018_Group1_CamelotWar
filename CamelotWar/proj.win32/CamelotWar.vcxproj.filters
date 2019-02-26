@@ -17,16 +17,47 @@
     <ClCompile Include="..\Classes\HammerTroll.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\Classes\Knife.cpp" />
-    <ClCompile Include="..\Classes\Model.cpp" />
-    <ClCompile Include="..\Classes\pedestal.cpp" />
-    <ClCompile Include="..\Classes\SpearKnight.cpp" />
-    <ClCompile Include="..\Classes\SwordKnight.cpp" />
-    <ClCompile Include="..\Classes\SwordOrk.cpp" />
-    <ClCompile Include="..\Classes\TitleScene.cpp" />
-    <ClCompile Include="..\Classes\Troll.cpp" />
-    <ClCompile Include="main.cpp" />
     <ClCompile Include="..\Classes\PopUp.cpp" />
     <ClCompile Include="..\Classes\PopUpSetting.cpp" />
+    <ClCompile Include="..\Classes\BoneTroll.cpp">
+      <Filter>src\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\HammerOrk.cpp">
+      <Filter>src\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Fire.cpp">
+      <Filter>src\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Archer_Fire.cpp">
+      <Filter>src\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TitleScene.cpp">
+      <Filter>src\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SwordOrk.cpp">
+      <Filter>src\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AxeOrk.cpp">
+      <Filter>src\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SpearKnight.cpp">
+      <Filter>src\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AxeKnight.cpp">
+      <Filter>src\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SwordKnight.cpp">
+      <Filter>src\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\pedestal.cpp">
+      <Filter>src\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Boat.cpp">
+      <Filter>src\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Castle.cpp">
+      <Filter>src\Models</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
@@ -46,16 +77,47 @@
     <ClInclude Include="..\Classes\HammerTroll.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\Classes\Knife.h" />
-    <ClInclude Include="..\Classes\Model.h" />
-    <ClInclude Include="..\Classes\pedestal.h" />
-    <ClInclude Include="..\Classes\SpearKnight.h" />
-    <ClInclude Include="..\Classes\SwordKnight.h" />
-    <ClInclude Include="..\Classes\SwordOrk.h" />
-    <ClInclude Include="..\Classes\TitleScene.h" />
-    <ClInclude Include="..\Classes\Troll.h" />
-    <ClInclude Include="main.h" />
     <ClInclude Include="..\Classes\PopUp.h" />
     <ClInclude Include="..\Classes\PopUpSetting.h" />
+    <ClInclude Include="..\Classes\BoneTroll.h">
+      <Filter>src\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\HammerOrk.h">
+      <Filter>src\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Fire.h">
+      <Filter>src\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Archer_Fire.h">
+      <Filter>src\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TitleScene.h">
+      <Filter>src\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AxeOrk.h">
+      <Filter>src\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SwordOrk.h">
+      <Filter>src\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SpearKnight.h">
+      <Filter>src\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AxeKnight.h">
+      <Filter>src\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SwordKnight.h">
+      <Filter>src\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\pedestal.h">
+      <Filter>src\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Boat.h">
+      <Filter>src\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Castle.h">
+      <Filter>src\Models</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc" />
