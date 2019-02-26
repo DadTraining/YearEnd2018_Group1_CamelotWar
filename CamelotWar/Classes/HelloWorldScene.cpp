@@ -93,6 +93,7 @@ bool HelloWorld::onTouchBegan(cocos2d::Touch * touch, cocos2d::Event * event)
 				{
 					auto archer_knight = new Archer_knife(this);
 					archer_knight->setListMonster(mListMonsters);
+					archer_fire->setListPedestal(mListPedestal);
 					archer_knight->setPosAll(touch->getLocation());
 					mListCharacters.push_back(archer_knight);
 					check = true;
@@ -102,6 +103,7 @@ bool HelloWorld::onTouchBegan(cocos2d::Touch * touch, cocos2d::Event * event)
 				{
 					auto archer_fire = new Archer_Fire(this);
 					archer_fire->setListMonster(mListMonsters);
+					archer_fire->setListPedestal(mListPedestal);
 					archer_fire->setPosAll(touch->getLocation());
 					mListCharacters.push_back(archer_fire);
 					check = true;
@@ -172,14 +174,14 @@ void HelloWorld::createMonster()
 		Troll *troll = new Troll(this);
 		mListMonsters.push_back(troll);
 	}
-	for (int i = 0; i < 5; i++)
+	/*for (int i = 0; i < 5; i++)
 	{
 		HammerOrk *hammerOrk = new HammerOrk(this);
 		mListMonsters.push_back(hammerOrk);
-	}
+	}*/
 	for (int  i = 0; i < mListMonsters.size(); i++)
 	{
-		mListMonsters[i]->setPos(cocos2d::Vec2(MONSTER_APPEAR, SCREEN_H / 3 - 30));
+		mListMonsters[i]->setPos(cocos2d::Vec2(MONSTER_APPEAR, SCREEN_H / 3 - mListMonsters[i]->getSprite()->getContentSize().height));
 	}
 }
 

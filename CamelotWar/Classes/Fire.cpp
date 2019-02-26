@@ -25,10 +25,6 @@ void Fire::fly(cocos2d::Vec2 pos)
 {
 	a = (pos.y - getPos().y) / (pos.x - getPos().x);
 	b = pos.y - (a * pos.x);
-
-	//set the rotatuion for the arrow
-	cocos2d::Vec2 delta = pos - getPos();
-	mSprite->setRotation(atan2(delta.x, delta.y) * 180 / M_PI - 90);
 }
 
 void Fire::update()
