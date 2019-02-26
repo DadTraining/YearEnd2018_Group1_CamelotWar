@@ -16,7 +16,7 @@ public:
 	void walk() override;
 	void attack() override;
 	void die() override;
-	void flip(boolean flip);
+	void flip(bool flip);
 
 	void turnOnKnife(cocos2d::Vec2 pos);
 	void shootKnife();

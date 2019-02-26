@@ -37,17 +37,17 @@ void Knife::update()
 
 
 
-void Knife::setVisible(boolean visible)
+void Knife::setVisible(bool visible)
 {
 	mSprite->setVisible(visible);
 }
 
-boolean Knife::isVisible()
+bool Knife::isVisible()
 {
 	return mSprite->isVisible();
 }
 
-void Knife::setMShoot(boolean shoot)
+void Knife::setMShoot(bool shoot)
 {
 	mShoot = shoot;
 }
