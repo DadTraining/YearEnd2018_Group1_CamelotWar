@@ -9,13 +9,13 @@
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
-                <string>{1,-6}</string>
+                <string>{2,-10}</string>
                 <key>spriteSize</key>
-                <string>{64,52}</string>
+                <string>{88,70}</string>
                 <key>spriteSourceSize</key>
-                <string>{74,64}</string>
+                <string>{104,90}</string>
                 <key>textureRect</key>
-                <string>{{63,67},{64,52}}</string>
+                <string>{{1,225},{88,70}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -24,13 +24,13 @@
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
-                <string>{-4,-2}</string>
+                <string>{-4,-4}</string>
                 <key>spriteSize</key>
-                <string>{60,60}</string>
+                <string>{82,82}</string>
                 <key>spriteSourceSize</key>
-                <string>{74,64}</string>
+                <string>{104,90}</string>
                 <key>textureRect</key>
-                <string>{{1,67},{60,60}}</string>
+                <string>{{1,425},{82,82}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -39,73 +39,73 @@
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
-                <string>{-7,0}</string>
+                <string>{-10,0}</string>
                 <key>spriteSize</key>
-                <string>{56,64}</string>
+                <string>{78,90}</string>
                 <key>spriteSourceSize</key>
-                <string>{74,64}</string>
+                <string>{104,90}</string>
                 <key>textureRect</key>
-                <string>{{1,1},{56,64}}</string>
+                <string>{{1,1},{78,90}}</string>
                 <key>textureRotated</key>
-                <false/>
+                <true/>
             </dict>
             <key>2_ATTAK_003.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
-                <string>{-7,0}</string>
+                <string>{-10,0}</string>
                 <key>spriteSize</key>
-                <string>{56,64}</string>
+                <string>{78,90}</string>
                 <key>spriteSourceSize</key>
-                <string>{74,64}</string>
+                <string>{104,90}</string>
                 <key>textureRect</key>
-                <string>{{59,1},{56,64}}</string>
+                <string>{{1,81},{78,90}}</string>
                 <key>textureRotated</key>
-                <false/>
+                <true/>
             </dict>
             <key>2_ATTAK_004.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
-                <string>{4,-10}</string>
+                <string>{6,-14}</string>
                 <key>spriteSize</key>
-                <string>{64,44}</string>
+                <string>{88,62}</string>
                 <key>spriteSourceSize</key>
-                <string>{74,64}</string>
+                <string>{104,90}</string>
                 <key>textureRect</key>
-                <string>{{117,1},{64,44}}</string>
+                <string>{{1,297},{88,62}}</string>
                 <key>textureRotated</key>
-                <true/>
+                <false/>
             </dict>
             <key>2_ATTAK_005.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
-                <string>{4,-10}</string>
+                <string>{6,-14}</string>
                 <key>spriteSize</key>
-                <string>{62,44}</string>
+                <string>{84,62}</string>
                 <key>spriteSourceSize</key>
-                <string>{74,64}</string>
+                <string>{104,90}</string>
                 <key>textureRect</key>
-                <string>{{163,1},{62,44}}</string>
+                <string>{{1,361},{84,62}}</string>
                 <key>textureRotated</key>
-                <true/>
+                <false/>
             </dict>
             <key>2_ATTAK_006.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
                 <key>spriteOffset</key>
-                <string>{4,-10}</string>
+                <string>{6,-14}</string>
                 <key>spriteSize</key>
-                <string>{64,44}</string>
+                <string>{90,62}</string>
                 <key>spriteSourceSize</key>
-                <string>{74,64}</string>
+                <string>{104,90}</string>
                 <key>textureRect</key>
-                <string>{{129,67},{64,44}}</string>
+                <string>{{1,161},{90,62}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -115,15 +115,15 @@
             <key>format</key>
             <integer>3</integer>
             <key>pixelFormat</key>
-            <string>RGBA4444</string>
+            <string>RGBA8888</string>
             <key>premultiplyAlpha</key>
             <false/>
             <key>realTextureFileName</key>
             <string>2_TROLL_ATTACK.png</string>
             <key>size</key>
-            <string>{208,128}</string>
+            <string>{92,508}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:98358a62ce0a2dee078f3f1b2af3b5e3:413ed465e48de53cbaef6e598ec167b9:533d978f2e4f0acae30bcc8f5750e5a5$</string>
+            <string>$TexturePacker:SmartUpdate:10316bdc0cfdae5b1db2b72cecd49a26:1c1254005ee15e3eb39a0c9e2bceaecf:533d978f2e4f0acae30bcc8f5750e5a5$</string>
             <key>textureFileName</key>
             <string>2_TROLL_ATTACK.png</string>
         </dict>
