@@ -240,30 +240,33 @@ void HelloWorld::update(float delta)
 		mListMonsters[i]->update();
 	}
 
-	if (countFrame % FPS == 0)
-	{
 		for (int i = 0; i < mListMonsters.size(); i++)
-		{
-			if (mListMonsters[i]->getAppear() == false)
-			{
-				mListMonsters[i]->setAppear(true);
-				countFrame =0;
-				break;
-			}
-		}
-	}
-
-	for (int  i = 0; i <  mListMonsters.size(); i++)
-	{
-		if (mListMonsters[i]->getAppear() == true)
 		{
 			mListMonsters[i]->update();
 		}
+
+		if (countFrame % FPS == 0)
+		{
+			for (int i = 0; i < mListMonsters.size(); i++)
+			{
+				if (mListMonsters[i]->getAppear() == false)
+				{
+					mListMonsters[i]->setAppear(true);
+					countFrame = 0;
+					break;
+				}
+			}
+		}
+
+		for (int i = 0; i < mListMonsters.size(); i++)
+		{
+			if (mListMonsters[i]->getAppear() == true)
+			{
+				mListMonsters[i]->update();
+			}
+		}
+
+		boat->update();
+		boat->setListMonster(mListMonsters);
 	}
-
-	boat->update();
-	boat->setListMonster(mListMonsters);
-
 }
-
-
