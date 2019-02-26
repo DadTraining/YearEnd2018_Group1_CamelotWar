@@ -3,6 +3,7 @@
 #include "Character.h"
 #include "Fire.h"
 #include <vector>
+#include "pedestal.h"
 
 using	namespace std;
 
@@ -16,7 +17,8 @@ public:
 	void walk() override;
 	void attack() override;
 	void die() override;
-	void flip(boolean flip);
+	void setListPedestal(std::vector<Pedestal*> listPedestals);
+	void flip(bool flip);
 
 	void turnOnFire(cocos2d::Vec2 pos);
 	void shootFire();
@@ -27,9 +29,12 @@ public:
 	void update();
 	void init();
 
+	void collisionWithPedestal();
+
 private:
 	vector<Fire*> fires;
 	std::vector< Character*> mListMonsters;
+	std::vector<Pedestal *> mListPedestals;
 	int mFrameCount;
 	bool hasAnimated;
 };
