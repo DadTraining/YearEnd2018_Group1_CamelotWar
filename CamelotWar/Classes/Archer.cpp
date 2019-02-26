@@ -189,7 +189,7 @@ void Archer::collisionWithPedestal()
 		{
 			mAppear = true;
 			mSprite->setAnchorPoint(cocos2d::Vec2(0.5, 0));
-			setPos(mListPedestals[i]->getPos() + cocos2d::Vec2(0, mListPedestals[i]->getSprite()->getContentSize().height / 2 - 7 ));
+			setPos(cocos2d::Vec2(getPos().x, mListPedestals[i]->getPos().y +mListPedestals[i]->getSprite()->getContentSize().height/2 - 10));
 			break;
 		}
 	}

@@ -2,7 +2,7 @@
 #include "SimpleAudioEngine.h"
 #include "Defines.h"
 
-//#include "HelloWorldScene.h"
+#include "HelloWorldScene.h"
 
 USING_NS_CC;
 
@@ -64,5 +64,5 @@ void TitleScene::update(float delta)
 
 void TitleScene::menuPlayCallback(Ref* pSender)
 {
-	//Director::getInstance()->replaceScene(HelloWorld::createScene());
+	Director::getInstance()->replaceScene(HelloWorld::createScene());
 }

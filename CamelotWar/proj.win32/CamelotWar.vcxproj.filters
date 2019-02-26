@@ -89,11 +89,10 @@
     <ClCompile Include="..\Classes\pedestal.cpp">
       <Filter>src\Models</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\SwordKnight.cpp">
+    <ClCompile Include="..\Classes\Boat.cpp">
       <Filter>src\Models</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Castle.cpp">
-    <ClCompile Include="..\Classes\Boat.cpp">
       <Filter>src\Models</Filter>
     </ClCompile>
   </ItemGroup>
@@ -166,16 +165,13 @@
     <ClInclude Include="..\Classes\SwordKnight.h">
       <Filter>src\Models</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Castle.h">
-      <Filter>src\Models</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\SwordKnight.h">
-      <Filter>src\Models</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\pedestal.h">
       <Filter>src\Models</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Boat.h">
+      <Filter>src\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Castle.h">
       <Filter>src\Models</Filter>
     </ClInclude>
   </ItemGroup>
