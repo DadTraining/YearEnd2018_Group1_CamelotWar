@@ -43,6 +43,7 @@ void Troll::attack()
 	int a = (COUNT_IMG_TROLL_ATK * FPS) / mSpeed ;
 	if (countFrame % a == 0)
 	{
+		
 	}
 }
 

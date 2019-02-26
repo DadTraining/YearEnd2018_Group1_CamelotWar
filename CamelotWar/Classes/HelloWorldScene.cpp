@@ -221,6 +221,13 @@ void HelloWorld::update(float delta)
 			mListCharacters[i]->getSprite()->removeFromParent();
 			mListCharacters.erase(mListCharacters.begin() + i);
 		}
+
+		CCLOG("%d", mListCharacters.size());
+    
+	
+	for (int  i = 0; i < mListMonsters.size(); i++)
+	{
+		mListMonsters[i]->update();
 	}
 
 	if (countFrame % FPS == 0)
@@ -248,3 +255,5 @@ void HelloWorld::update(float delta)
 	boat->setListMonster(mListMonsters);
 
 }
+
+

@@ -8,6 +8,7 @@
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 
+
 class Troll : public Character
 {
 private:
@@ -27,4 +28,5 @@ public:
   
 private:
 	int changeStatus;
+	
 };
