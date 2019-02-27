@@ -1,7 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 #include "Troll.h"
-
+#include "PopUpSetting.h"
 class TitleScene : public cocos2d::Scene
 {
 public:
@@ -15,5 +15,6 @@ public:
 	void menuSettingCallback(cocos2d::Ref* pSender);
 	void menuCloseCallback(cocos2d::Ref* pSender);
 	CREATE_FUNC(TitleScene);
-
+private:
+	PopUpSetting *setting;
 };

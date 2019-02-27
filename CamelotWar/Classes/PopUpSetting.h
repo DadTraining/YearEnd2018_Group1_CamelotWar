@@ -9,6 +9,7 @@ public:
 	/*virtual void onExit() override;*/
 	void sliderBGM();
 	void sliderSFX();
+	void setVisible(bool);
 
 	CREATE_FUNC(PopUpSetting);
 private:

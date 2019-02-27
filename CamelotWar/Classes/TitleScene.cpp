@@ -52,6 +52,10 @@ bool TitleScene::init()
 	Menu->setPosition(Vec2::ZERO);
 	addChild(Menu);
 
+	setting = PopUpSetting::create();
+	this->addChild(setting, 3);
+	setting->setVisible(false);
+
 
 	scheduleUpdate();
 	return true;
@@ -70,8 +74,7 @@ void TitleScene::menuPlayCallback(Ref* pSender)
 
 void TitleScene::menuSettingCallback(Ref* pSender)
 {
-	PopUpSetting *setting = PopUpSetting::create();
-	this->addChild(setting, 3);
+	setting->setVisible(true);
 }
 
 void TitleScene::menuCloseCallback(Ref* pSender)

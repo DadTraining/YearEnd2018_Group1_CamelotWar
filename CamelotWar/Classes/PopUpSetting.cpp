@@ -48,7 +48,7 @@ bool PopUpSetting::init()
 		switch (t)
 		{
 		case cocos2d::ui::Widget::TouchEventType::BEGAN:
-
+			
 			break;
 		case cocos2d::ui::Widget::TouchEventType::ENDED:
 			disappear();
@@ -72,7 +72,7 @@ void PopUpSetting::sliderBGM()
 	sliderB->loadSlidBallTextureNormal(SLIDE_ROUND);
 	sliderB->loadProgressBarTexture(SLIDE_BAR_PROGRESS);
 	sliderB->setAnchorPoint(Vec2(0, 0.5));
-
+	
 	/*sliderB->setPosition(Vec2(mBgm->getPosition().x + mBackground->getContentSize().width / 12,
 		mBgm->getPosition().y));*/
 	sliderB->setPosition(Vec2(-mBgm->getContentSize().width/2, mBgm->getPosition().y));
@@ -120,3 +120,9 @@ void PopUpSetting::sliderSFX()
 		}
 	});
 }
+
+void PopUpSetting::setVisible(bool visible)
+{
+	mLayer->setVisible(visible);
+}
+
