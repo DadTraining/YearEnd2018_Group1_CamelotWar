@@ -133,8 +133,11 @@
 #define SCENE_TITLE_PNG_BACKGROUND "scene/background.png"
 #define SCENE_TITLE_PNG_THECAMELOT "scene/theCamelot.png"
 #define SCENE_TITLE_PNG_PLAY "scene/play.png"
+#define SCENE_TITLE_PNG_PLAY_SELECTED "scene/playSelected.png"
 #define SCENE_TITLE_PNG_SETTING "scene/setting.png"
+#define SCENE_TITLE_PNG_SETTING_SELECTED "scene/settingSelected.png"
 #define SCENE_TITLE_PNG_EXIT "scene/exit.png"
+#define SCENE_TITLE_PNG_EXIT_SELECTED "scene/exitSelected.png"
 #define SCENE_TITLE_THECAMELOT_W 500
 #define SCENE_TITLE_THECAMELOT_H 500
 #define SCENE_TITLE_PLAY_W 640
