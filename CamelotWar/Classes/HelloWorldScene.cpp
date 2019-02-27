@@ -93,7 +93,7 @@ bool HelloWorld::onTouchBegan(cocos2d::Touch * touch, cocos2d::Event * event)
 				{
 					auto archer_knight = new Archer_knife(this);
 					archer_knight->setListMonster(mListMonsters);
-					archer_fire->setListPedestal(mListPedestal);
+					//archer_fire->setListPedestal(mListPedestal);
 					archer_knight->setPosAll(touch->getLocation());
 					mListCharacters.push_back(archer_knight);
 					check = true;
