@@ -36,15 +36,15 @@ bool TitleScene::init()
 
 	// Create play item
 
-	auto *Play = MenuItemImage::create(SCENE_TITLE_PNG_PLAY, SCENE_TITLE_PNG_PLAY, CC_CALLBACK_1(TitleScene::menuPlayCallback, this));
+	auto Play = MenuItemImage::create(SCENE_TITLE_PNG_PLAY, SCENE_TITLE_PNG_PLAY_SELECTED, CC_CALLBACK_1(TitleScene::menuPlayCallback, this));
 	Play->setPosition(Vec2(SCENE_TITLE_PLAY_W, SCENE_TITLE_PLAY_H));
 	
 	// Create exit item
-	auto Exit = MenuItemImage::create(SCENE_TITLE_PNG_EXIT, SCENE_TITLE_PNG_EXIT, CC_CALLBACK_1(TitleScene::menuCloseCallback, this));
+	auto Exit = MenuItemImage::create(SCENE_TITLE_PNG_EXIT, SCENE_TITLE_PNG_EXIT_SELECTED, CC_CALLBACK_1(TitleScene::menuCloseCallback, this));
 	Exit->setPosition(Vec2(SCENE_TITLE_EXIT_W, SCENE_TITLE_EXIT_H));
 
 	// Create setting item
-	auto Setting = MenuItemImage::create(SCENE_TITLE_PNG_SETTING, SCENE_TITLE_PNG_SETTING, CC_CALLBACK_1(TitleScene::menuSettingCallback, this));
+	auto Setting = MenuItemImage::create(SCENE_TITLE_PNG_SETTING, SCENE_TITLE_PNG_SETTING_SELECTED, CC_CALLBACK_1(TitleScene::menuSettingCallback, this));
 	Setting->setPosition(Vec2(SCENE_TITLE_SETTING_W, SCENE_TITLE_SETTING_H));
 
 	// Set item to menu
