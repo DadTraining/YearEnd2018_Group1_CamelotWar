@@ -34,6 +34,10 @@ void Troll::attack()
 {
 	
 	countFrame = countFrame + 1;
+	if (changeStatus == 0)
+	{
+		changeStatus++;
+	}
 	if (changeStatus == 1)
 	{
 		mSprite->stopAllActions();	
@@ -68,11 +72,11 @@ void Troll::die()
 
 void Troll::update()
 {
-	if (getPos().x >= SCREEN_W - 100 && mAlive == 1)
+	if (getPos().x >= SCREEN_W -100 && mAlive == 1)
 	{
 		attack();
 	}
-	if (getPos().x < SCREEN_W - 100 && mAlive == 1  )
+	if (getPos().x < SCREEN_W -100 && mAlive == 1  )
 	{
 		walk();
 		countFrame = 0;

@@ -33,6 +33,10 @@ void AxeOrk::walk()
 void AxeOrk::attack()
 {
 	countFrame = countFrame + 1;
+	if (changeStatus ==0)
+	{
+		changeStatus++;
+	}
 	if (changeStatus == 1)
 	{
 		mSprite->stopAllActions();
@@ -79,6 +83,7 @@ void AxeOrk::update()
 	if (mloadingHpBar->getPercent() == 0)
 	{
 		die();
+		
 	}
 	if (changeStatus == 3)
 	{

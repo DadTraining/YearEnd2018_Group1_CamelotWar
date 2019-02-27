@@ -156,7 +156,7 @@
 #define COUNT_IMG_AXEORK_DIE 7
 
 #define NAME_PLIST_AXEORK_WALK "images/3_ORK/3_ORK_WALK.plist"
-#define NAME_PNG_AXEORK_WALK "3_ORK_WALK_00%d.png"
+#define NAME_PNG_AXEORK_WALK	"3_ORK_WALK_00%d.png"
 #define COUNT_IMG_AXEORK_WALK 7
 
 // Spear Knight

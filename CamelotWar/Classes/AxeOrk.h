@@ -1,8 +1,6 @@
 #pragma once
 #include <string>
 #include <vector>
-
-#include "cocos2d.h"
 #include "Character.h"
 #include "Model.h"
 #include "cocos2d.h"

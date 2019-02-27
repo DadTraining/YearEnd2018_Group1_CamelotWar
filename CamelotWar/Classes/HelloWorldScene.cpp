@@ -175,20 +175,31 @@ void HelloWorld::createMonster()
 		Troll *troll = new Troll(this);
 		mListMonsters.push_back(troll);
 	}
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 1; i++)
 	{
 		AxeOrk *axeOrk = new AxeOrk(this);
 		mListMonsters.push_back(axeOrk);
 	}
-	/*{
+	for (int i = 0; i < 1; i++)
+	{
+		SwordOrk *swrdOrk = new SwordOrk(this);
+		mListMonsters.push_back(swrdOrk);
+	}
+	for (int i = 0; i < 1; i++)
+	{
+		HammerTroll *hammerTroll = new HammerTroll(this);
+		mListMonsters.push_back(hammerTroll);
+	}
+	for (int i = 0; i < 1; i++)
+	{
 		BoneTroll *boneTroll = new BoneTroll(this);
 		mListMonsters.push_back(boneTroll);
 	}
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 1; i++)
 	{
 		HammerOrk *hammerOrk = new HammerOrk(this);
 		mListMonsters.push_back(hammerOrk);
-	}*/
+	}
 	for (int  i = 0; i < mListMonsters.size(); i++)
 	{
 		mListMonsters[i]->setPos(cocos2d::Vec2(MONSTER_APPEAR, SCREEN_H / 3 - mListMonsters[i]->getSprite()->getContentSize().height));
@@ -231,42 +242,29 @@ void HelloWorld::update(float delta)
 			mListCharacters[i]->getSprite()->removeFromParent();
 			mListCharacters.erase(mListCharacters.begin() + i);
 		}
-
-		CCLOG("%d", mListCharacters.size());
 	}
-	
-	for (int  i = 0; i < mListMonsters.size(); i++)
+
+	if (countFrame % FPS == 0)
 	{
-		mListMonsters[i]->update();
+		for (int i = 0; i < mListMonsters.size(); i++)
+		{
+			if (mListMonsters[i]->getAppear() == false)
+			{
+				mListMonsters[i]->setAppear(true);
+				countFrame = 0;
+				break;
+			}
+		}
 	}
 
-		for (int i = 0; i < mListMonsters.size(); i++)
+	for (int i = 0; i < mListMonsters.size(); i++)
+	{
+		if (mListMonsters[i]->getAppear() == true)
 		{
 			mListMonsters[i]->update();
 		}
-
-		if (countFrame % FPS == 0)
-		{
-			for (int i = 0; i < mListMonsters.size(); i++)
-			{
-				if (mListMonsters[i]->getAppear() == false)
-				{
-					mListMonsters[i]->setAppear(true);
-					countFrame = 0;
-					break;
-				}
-			}
-		}
-
-		for (int i = 0; i < mListMonsters.size(); i++)
-		{
-			if (mListMonsters[i]->getAppear() == true)
-			{
-				mListMonsters[i]->update();
-			}
-		}
+	}
 
 		boat->update();
 		boat->setListMonster(mListMonsters);
 	}
-}

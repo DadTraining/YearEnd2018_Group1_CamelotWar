@@ -33,6 +33,10 @@ void SwordOrk::walk()
 void SwordOrk::attack()
 {
 	countFrame = countFrame + 1;
+	if (changeStatus ==0)
+	{
+		changeStatus++;
+	}
 	if (changeStatus == 1)
 	{
 		mSprite->stopAllActions();
@@ -42,7 +46,7 @@ void SwordOrk::attack()
 	int a = (COUNT_IMG_SWORDORK_ATK * FPS) / mSpeed;
 	if (countFrame % a == 0)
 	{
-		deCreaseHP(100);
+		//deCreaseHP(100);
 	}
 }
 

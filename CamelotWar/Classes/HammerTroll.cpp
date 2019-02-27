@@ -33,6 +33,10 @@ void HammerTroll::walk()
 void HammerTroll::attack()
 {
 	countFrame = countFrame + 1;
+	if (changeStatus == 0)
+	{
+		changeStatus++;
+	}
 	if (changeStatus == 1)
 	{
 		mSprite->stopAllActions();

@@ -35,6 +35,10 @@ void HammerOrk::attack()
 	countFrame = countFrame + 1;
 	if (changeStatus == 0)
 	{
+		changeStatus++;
+	}
+	if (changeStatus == 1)
+	{
 		mSprite->stopAllActions();
 		setAnimation(NAME_PLIST_HAMMERORK_ATK, NAME_PNG_HAMMERORK_ATK, COUNT_IMG_HAMMERORK_ATK, mSpeed, 0);
 		changeStatus++;
