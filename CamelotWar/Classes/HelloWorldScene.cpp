@@ -58,6 +58,8 @@ bool HelloWorld::init()
 	boat = new Boat(this);
 	boat->setListMonster(mListMonsters);
 
+	mCastle = new Castle(this);
+
 	check = true;
 
 	createMonster();
@@ -188,6 +190,7 @@ void HelloWorld::createMonster()
 	for (int i = 0; i < 1; i++)
 	{
 		Troll *troll = new Troll(this);
+		troll->setCastle(mCastle);
 		mListMonsters.push_back(troll);
 	}
 	/*for (int i = 0; i < 5; i++)

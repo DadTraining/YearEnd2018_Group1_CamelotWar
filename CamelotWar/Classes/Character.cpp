@@ -51,6 +51,8 @@ void Character::init()
 	mloadingHpBar->setVisible(false);
 
 	mAppear = false;
+	mCheckAtk = false;
+
 }
 
 void Character::setAlive(int alive)
@@ -61,6 +63,11 @@ void Character::setAlive(int alive)
 int Character::getAlive()
 {
 	return mAlive;
+}
+
+void Character::setCastle(Castle * castle)
+{
+	mCastle = castle;
 }
 
 void Character::setAppear(bool appear)

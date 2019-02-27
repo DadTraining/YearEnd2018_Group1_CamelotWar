@@ -30,6 +30,14 @@ void Troll::walk()
 	countFrame = 0;
 }
 
+void Troll::collision()
+{
+	if (mSprite->getBoundingBox().intersectsRect(mCastle->getSprite()->getBoundingBox()))
+	{
+		mCheckAtk = true;
+	}
+}
+
 void Troll::attack()
 {
 	
@@ -67,11 +75,11 @@ void Troll::die()
 
 void Troll::update()
 {
-	if (getPos().x >= SCREEN_W - 100 && mAlive == 1)
+	if (mCheckAtk && mAlive == 1)
 	{
 		attack();
 	}
-	if (getPos().x < SCREEN_W - 100 && mAlive == 1  )
+	if (!mCheckAtk && mAlive == 1  )
 	{
 		walk();
 		countFrame = 0;
@@ -84,6 +92,7 @@ void Troll::update()
 	{
 		changeStatus = 0;
 	}
+	collision();
 	setPosHp(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height + 10));
 }
 

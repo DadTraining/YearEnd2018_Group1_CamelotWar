@@ -5,6 +5,7 @@
 #include "Character.h"
 #include "pedestal.h"
 #include "Boat.h"
+#include "Castle.h"
 #include <vector>
 
 class HelloWorld : public cocos2d::Scene
@@ -35,8 +36,8 @@ private:
 	std::vector< cocos2d::Sprite*> mListIconHero;
 	std::vector< Pedestal*> mListPedestal;
 	Boat *boat;
+	Castle * mCastle;
 	bool check;
-	int mCountCharacter;
 	int countFrame;
 };
 

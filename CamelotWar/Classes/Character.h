@@ -3,6 +3,7 @@
 #include "cocos2d.h"
 #include "Model.h"
 #include "ui/CocosGUI.h"
+#include "Castle.h"
 
 class Character : public Model
 {
@@ -27,6 +28,7 @@ public:
 	void setAlive(int alive);
 	int getAlive();
 
+	void setCastle(Castle *castle);
 	void setAppear(bool appear);
 	bool getAppear();
 
@@ -43,5 +45,6 @@ protected:
 	cocos2d::Sprite* mHpBar;
 	cocos2d::ui::LoadingBar * mloadingHpBar;
 	int changeStatus;
-
+	bool mCheckAtk;
+	Castle * mCastle;
 };

@@ -36,13 +36,23 @@ Castle::~Castle()
 void Castle::update()
 {
 }
+
 void Castle::init()
 {
 	mloadingHpBar->setPercent(100);
+	mHP = 10000;
 }
+
 void Castle::setPosHp(cocos2d::Vec2 pos)
 {
 	
+}
+
+void Castle::deCreaseHP(int hp)
+{
+	float percentHpDecrease = ((float)hp / (float)mHP) * 100;
+	mloadingHpBar->setPercent(mloadingHpBar->getPercent() - percentHpDecrease);
+	mHP = mHP - hp;
 }
 
 

@@ -19,6 +19,7 @@ public:
 	Troll(cocos2d::Scene * scene);
 
 	void walk() override;
+	void collision();
 	void attack() override;
 	void die() override;
 
@@ -27,4 +28,5 @@ public:
   
 private:
 	int changeStatus;
+
 };
