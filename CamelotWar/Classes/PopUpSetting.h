@@ -6,7 +6,7 @@ class PopUpSetting :
 {
 public:
 	virtual bool init() override;
-	virtual void onExit() override;
+	/*virtual void onExit() override;*/
 	void sliderBGM();
 	void sliderSFX();
 

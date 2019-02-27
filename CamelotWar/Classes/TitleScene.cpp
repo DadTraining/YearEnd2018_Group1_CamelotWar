@@ -36,11 +36,11 @@ bool TitleScene::init()
 
 	// Create play item
 
-	auto Play = MenuItemImage::create(SCENE_TITLE_PNG_PLAY, SCENE_TITLE_PNG_PLAY, CC_CALLBACK_1(TitleScene::menuPlayCallback, this));
+	auto *Play = MenuItemImage::create(SCENE_TITLE_PNG_PLAY, SCENE_TITLE_PNG_PLAY, CC_CALLBACK_1(TitleScene::menuPlayCallback, this));
 	Play->setPosition(Vec2(SCENE_TITLE_PLAY_W, SCENE_TITLE_PLAY_H));
 	
 	// Create exit item
-	auto Exit = MenuItemImage::create(SCENE_TITLE_PNG_EXIT, SCENE_TITLE_PNG_EXIT, CC_CALLBACK_1(TitleScene::menuPlayCallback, this));
+	auto Exit = MenuItemImage::create(SCENE_TITLE_PNG_EXIT, SCENE_TITLE_PNG_EXIT, CC_CALLBACK_1(TitleScene::menuCloseCallback, this));
 	Exit->setPosition(Vec2(SCENE_TITLE_EXIT_W, SCENE_TITLE_EXIT_H));
 
 	// Create setting item
@@ -72,4 +72,12 @@ void TitleScene::menuSettingCallback(Ref* pSender)
 {
 	PopUpSetting *setting = PopUpSetting::create();
 	this->addChild(setting, 3);
+}
+
+void TitleScene::menuCloseCallback(Ref* pSender)
+{
+	Director::getInstance()->end();
+	#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+		exit(0);
+	#endif
 }

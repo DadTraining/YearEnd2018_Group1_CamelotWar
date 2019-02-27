@@ -13,6 +13,7 @@ public:
 	// a selector callback
 	void menuPlayCallback(cocos2d::Ref* pSender);
 	void menuSettingCallback(cocos2d::Ref* pSender);
+	void menuCloseCallback(cocos2d::Ref* pSender);
 	CREATE_FUNC(TitleScene);
 
 };

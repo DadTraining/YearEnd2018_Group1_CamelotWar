@@ -204,8 +204,8 @@
 
 // PopUp Setting
 #define DIALOG_MAP "popUpSetting/tb.png"
-#define POPUP_SCALE_X 0.53
-#define POPUP_SCALE_Y 0.51
+//#define POPUP_SCALE_X 0.53
+//#define POPUP_SCALE_Y 0.51
 #define BUTTON_EXIT "popUpSetting/cancel.png"
 #define SETTING "popUpSetting/setting.png"
 #define SFX "popUpSetting/SFX.png"
