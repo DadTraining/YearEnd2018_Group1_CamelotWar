@@ -143,11 +143,7 @@ bool HelloWorld::onTouchBegan(cocos2d::Touch * touch, cocos2d::Event * event)
 		}
 	}
 	
-	/*if (touchCharacter(touch))
-	{
-		return true;
-	}
-	else*/
+	
 	if (boat->BoatTouchBegan(touch, event))
 	{
 		check = 2;
@@ -238,7 +234,7 @@ void HelloWorld::createIconHero()
 
 void HelloWorld::createMonster()
 {
-	for (int i = 0; i < 2; i++)
+	for (int i = 0; i < 5; i++)
 	{
 		Troll *troll = new Troll(this);
 		troll->setCastle(mCastle);

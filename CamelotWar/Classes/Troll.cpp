@@ -34,10 +34,7 @@ void Troll::collision()
 	{
 		mCheckAtk = true;
 	}
-	if (mSprite->getPosition().x == SCREEN_W / 2)
-	{
-		mCheckAtk = true;
-	}
+
 }
 
 void Troll::attack()

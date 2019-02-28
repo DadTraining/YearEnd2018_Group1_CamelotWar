@@ -4,6 +4,9 @@
 #define MONSTER_APPEAR -50
 #define BACKGROUND_PLAYSCENE "ScenePlay/backgroundscene.png"
 
+//coin
+#define IMG_COIN "pl_3.png"
+
 
 // troll
 #define NAME_PLIST_TROLL_ATK "images/TROLL/ATTACK/1_TROLL_ATTACK.plist"

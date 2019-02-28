@@ -43,15 +43,15 @@ void AxeKnight::collision()
 	}*/
 	for (int i = 0; i < mListMonsters.size(); i++)
 	{
-		if (mListMonsters[i]->getSprite()->getBoundingBox().intersectsRect(mSprite->getBoundingBox()))
+		if (mListMonsters[i]->getSprite()->getBoundingBox().intersectsRect(mSprite->getBoundingBox()) &&
+			mListMonsters[i]->getAlive() == 1)
 		{
 			mCheckAtk = true;
 			break;
 		}
-		else
+		else if (mListMonsters[mListMonsters.size() - 1]->getAlive() != 1)
 		{
 			mCheckAtk = false;
-			break;
 		}
 	}
 }
@@ -74,7 +74,11 @@ void AxeKnight::attack()
 	{
 		for (int i = 0; i < mListMonsters.size(); i++)
 		{
-			mListMonsters[i]->deCreaseHP(100);
+			if (mListMonsters[i]->getAlive())
+			{
+				mListMonsters[i]->deCreaseHP(100);
+				break;
+			}
 		}
 		countFrame = 0;
 	}
