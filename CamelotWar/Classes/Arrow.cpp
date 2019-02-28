@@ -4,7 +4,6 @@
 
 
 
-
 Arrow::Arrow(cocos2d::Scene * scene)
 {
 	mSprite = cocos2d::Sprite::create(IMG_Weapons);

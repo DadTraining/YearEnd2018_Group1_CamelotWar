@@ -8,7 +8,7 @@ Fire::Fire(cocos2d::Scene * scene)
 {
 	mSprite = cocos2d::Sprite::create(IMG_FIRE);
 	scene->addChild(mSprite);
-	mSpeed = 20;
+	mSpeed = 10;
 	init();
 }
 
@@ -32,6 +32,7 @@ void Fire::update()
 	float y = getPos().y - mSpeed;
 	float x = (y - b) / a;
 	setPos(cocos2d::Vec2(x, y));
+	mSprite->setRotation(mSprite->getRotation() + 80);
 }
 
 void Fire::setVisible(bool visible)

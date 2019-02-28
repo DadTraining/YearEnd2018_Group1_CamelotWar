@@ -1,11 +1,9 @@
 #include "HammerTroll.h"
 #include "Defines.h"
 
-
 HammerTroll::HammerTroll()
 {
 }
-
 
 HammerTroll::~HammerTroll()
 {
@@ -35,7 +33,7 @@ void HammerTroll::attack()
 	countFrame = countFrame + 1;
 	if (changeStatus == 0)
 	{
-		changeStatus++;
+		changeStatus = 1;
 	}
 	if (changeStatus == 1)
 	{
@@ -46,7 +44,8 @@ void HammerTroll::attack()
 	int a = (COUNT_IMG_HAMMERTROLL_ATK * FPS) / mSpeed;
 	if (countFrame % a == 0)
 	{
-		//deCreaseHP(100);
+		mCastle->deCreaseHP(100);
+		countFrame = 0;
 	}
 }
 
@@ -70,13 +69,21 @@ void HammerTroll::die()
 
 }
 
+void HammerTroll::collision()
+{
+	if (mSprite->getBoundingBox().intersectsRect(mCastle->getSprite()->getBoundingBox()))
+	{
+		mCheckAtk = true;
+	}
+}
+
 void HammerTroll::update()
 {
-	if (getPos().x >= SCREEN_W - 100 && mAlive == 1)
+	if (mCheckAtk && mAlive == 1)
 	{
 		attack();
 	}
-	if (getPos().x < SCREEN_W - 100 && mAlive == 1)
+	if (!mCheckAtk && mAlive == 1)
 	{
 		walk();
 		countFrame = 0;
@@ -89,15 +96,14 @@ void HammerTroll::update()
 	{
 		changeStatus = 0;
 	}
+	collision();
 	setPosHp(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height + 10));
-
 }
 
 void HammerTroll::init()
 {
-
 	changeStatus = 0;
-	mSpeed = 15;
+	mSpeed = 20;
 	mAlive = 1;
 	mHP = 1000;
 	mPrice = 100;
@@ -106,5 +112,4 @@ void HammerTroll::init()
 	mAppear = false;
 
 	mSprite->setAnchorPoint(cocos2d::Vec2(0.5, 0));
-	setPos(cocos2d::Vec2(MONSTER_APPEAR, SCREEN_H / 3 - 30));
 }

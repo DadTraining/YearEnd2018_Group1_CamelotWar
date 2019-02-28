@@ -8,7 +8,7 @@ protected:
 	cocos2d::Sprite *mBackground;
 public:
 	virtual bool init();
-	virtual void onExit();
+	/*virtual void onExit();*/
 	void setBackground();
 	void disappear();
 

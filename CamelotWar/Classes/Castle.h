@@ -3,7 +3,6 @@
 #include "Model.h"
 #include "ui/CocosGUI.h"
 
-
 using namespace std;
 
 class Castle : public Model
@@ -18,12 +17,15 @@ public:
 
 
 	void setPosHp(cocos2d::Vec2 pos);
+	void deCreaseHP(int hp);
+
+	cocos2d::ui::LoadingBar * getLoadingbar();
 	
 
 private:
 	cocos2d::Sprite* mHpBar;
 	cocos2d::ui::LoadingBar * mloadingHpBar;
-	
+	int mHP;
 	int mFrameCount;
 };
 

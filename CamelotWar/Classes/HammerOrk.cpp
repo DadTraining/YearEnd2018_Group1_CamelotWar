@@ -1,11 +1,9 @@
 #include "HammerOrk.h"
 #include "Defines.h"
 
-
 HammerOrk::HammerOrk()
 {
 }
-
 
 HammerOrk::~HammerOrk()
 {
@@ -35,7 +33,7 @@ void HammerOrk::attack()
 	countFrame = countFrame + 1;
 	if (changeStatus == 0)
 	{
-		changeStatus++;
+		changeStatus = 1;
 	}
 	if (changeStatus == 1)
 	{
@@ -46,7 +44,8 @@ void HammerOrk::attack()
 	int a = (COUNT_IMG_HAMMERORK_ATK * FPS) / mSpeed;
 	if (countFrame % a == 0)
 	{
-		//deCreaseHP(100);
+		mCastle->deCreaseHP(100);
+		countFrame = 0;
 	}
 }
 
@@ -69,13 +68,21 @@ void HammerOrk::die()
 	setPosHp(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height / 2));
 }
 
+void HammerOrk::collision()
+{
+	if (mSprite->getBoundingBox().intersectsRect(mCastle->getSprite()->getBoundingBox()))
+	{
+		mCheckAtk = true;
+	}
+}
+
 void HammerOrk::update()
 {
-	if (getPos().x >= SCREEN_W - 100 && mAlive == 1)
+	if (mCheckAtk && mAlive == 1)
 	{
 		attack();
 	}
-	if (getPos().x < SCREEN_W - 100 && mAlive == 1)
+	if (!mCheckAtk && mAlive == 1)
 	{
 		walk();
 		countFrame = 0;
@@ -88,6 +95,7 @@ void HammerOrk::update()
 	{
 		changeStatus = 0;
 	}
+	collision();
 	setPosHp(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height + 10));
 }
 
@@ -103,5 +111,4 @@ void HammerOrk::init()
 	mAppear = false;
 
 	mSprite->setAnchorPoint(cocos2d::Vec2(0.5, 0));
-	setPos(cocos2d::Vec2(MONSTER_APPEAR, SCREEN_H / 3 - 30));
 }

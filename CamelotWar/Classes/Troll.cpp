@@ -1,14 +1,12 @@
 #include "Troll.h"
 #include "Defines.h"
 
-
 Troll::Troll()
 {
 }
 
 Troll::~Troll()
 {
-
 }
 
 Troll::Troll(cocos2d::Scene * scene) : Character::Character(scene)
@@ -30,13 +28,24 @@ void Troll::walk()
 	countFrame = 0;
 }
 
+void Troll::collision()
+{
+	if (mSprite->getBoundingBox().intersectsRect(mCastle->getSprite()->getBoundingBox()))
+	{
+		mCheckAtk = true;
+	}
+	if (mSprite->getPosition().x == SCREEN_W / 2)
+	{
+		mCheckAtk = true;
+	}
+}
+
 void Troll::attack()
 {
-	
 	countFrame = countFrame + 1;
 	if (changeStatus == 0)
 	{
-		changeStatus++;
+		changeStatus = 1;
 	}
 	if (changeStatus == 1)
 	{
@@ -47,7 +56,8 @@ void Troll::attack()
 	int a = (COUNT_IMG_TROLL_ATK * FPS) / mSpeed ;
 	if (countFrame % a == 0)
 	{
-		
+		mCastle->deCreaseHP(100);
+		countFrame = 0;
 	}
 }
 
@@ -72,11 +82,11 @@ void Troll::die()
 
 void Troll::update()
 {
-	if (getPos().x >= SCREEN_W -100 && mAlive == 1)
+	if (mCheckAtk && mAlive == 1)
 	{
 		attack();
 	}
-	if (getPos().x < SCREEN_W -100 && mAlive == 1  )
+	if (!mCheckAtk && mAlive == 1  )
 	{
 		walk();
 		countFrame = 0;
@@ -89,6 +99,7 @@ void Troll::update()
 	{
 		changeStatus = 0;
 	}
+	collision();
 	setPosHp(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height + 10));
 }
 
@@ -104,7 +115,4 @@ void Troll::init()
 	mAppear = false;
 
 	mSprite->setAnchorPoint(cocos2d::Vec2(0.5, 0));
-	setPos(cocos2d::Vec2(MONSTER_APPEAR, SCREEN_H / 3- 30));
-	
-	
 }

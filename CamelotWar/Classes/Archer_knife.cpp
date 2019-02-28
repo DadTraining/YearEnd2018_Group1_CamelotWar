@@ -45,6 +45,11 @@ void Archer_knife::flip(bool flip)
 	mSprite->setFlipX(flip);
 }
 
+void Archer_knife::setListMonster(std::vector< Character*> listMonsters)
+{
+	mListMonsters = listMonsters;
+}
+
 void Archer_knife::turnOnKnife(cocos2d::Vec2 pos)
 {
 	mFrameCount++;
@@ -109,11 +114,6 @@ void Archer_knife::reuseKnife()
 			knifes[i]->setVisible(false);
 		}
 	}
-}
-
-void Archer_knife::setListMonster(std::vector<Character*> listMonsters)
-{
-	mListMonsters = listMonsters;
 }
 
 void Archer_knife::setListPedestal(std::vector<Pedestal*> listPedestals)
@@ -191,9 +191,8 @@ void Archer_knife::collisionWithPedestal()
 			break;
 		}
 	}
-	if (!mAlive)
+	if (!mAppear)
 	{
 		setAlive(2);
 	}
-		
 }

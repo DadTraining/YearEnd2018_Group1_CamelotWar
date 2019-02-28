@@ -1,11 +1,9 @@
 #include "SwordOrk.h"
 #include "Defines.h"
 
-
 SwordOrk::SwordOrk()
 {
 }
-
 
 SwordOrk::~SwordOrk()
 {
@@ -33,9 +31,9 @@ void SwordOrk::walk()
 void SwordOrk::attack()
 {
 	countFrame = countFrame + 1;
-	if (changeStatus ==0)
+	if (changeStatus == 0)
 	{
-		changeStatus++;
+		changeStatus = 1;
 	}
 	if (changeStatus == 1)
 	{
@@ -46,7 +44,8 @@ void SwordOrk::attack()
 	int a = (COUNT_IMG_SWORDORK_ATK * FPS) / mSpeed;
 	if (countFrame % a == 0)
 	{
-		//deCreaseHP(100);
+		mCastle->deCreaseHP(100);
+		countFrame = 0;
 	}
 }
 
@@ -69,13 +68,21 @@ void SwordOrk::die()
 	setPosHp(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height / 2));
 }
 
+void SwordOrk::collision()
+{
+	if (mSprite->getBoundingBox().intersectsRect(mCastle->getSprite()->getBoundingBox()))
+	{
+		mCheckAtk = true;
+	}
+}
+
 void SwordOrk::update()
 {
-	if (getPos().x >= SCREEN_W - 100 && mAlive == 1)
+	if (mCheckAtk && mAlive == 1)
 	{
 		attack();
 	}
-	if (getPos().x < SCREEN_W - 100 && mAlive == 1)
+	if (!mCheckAtk && mAlive == 1)
 	{
 		walk();
 		countFrame = 0;
@@ -88,8 +95,8 @@ void SwordOrk::update()
 	{
 		changeStatus = 0;
 	}
+	collision();
 	setPosHp(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height + 10));
-
 }
 
 void SwordOrk::init()
@@ -104,5 +111,4 @@ void SwordOrk::init()
 	mAppear = false;
 
 	mSprite->setAnchorPoint(cocos2d::Vec2(0.5, 0));
-	setPos(cocos2d::Vec2(MONSTER_APPEAR, SCREEN_H / 3 - 30));
 }
