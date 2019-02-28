@@ -217,3 +217,4 @@
 #define SLIDE_BAR_BG "popUpSetting/Slider_Back.png"
 #define SLIDE_ROUND "popUpSetting/round.png"
 #define SLIDE_BAR_PROGRESS "popUpSetting/Slider_PressBar.png"
+#define LEVEL_UP "popUpSetting/levelup.png"
