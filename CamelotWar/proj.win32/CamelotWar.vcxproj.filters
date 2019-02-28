@@ -31,25 +31,10 @@
     <ClCompile Include="..\Classes\Archer_Fire.cpp">
       <Filter>src\Models</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\TitleScene.cpp">
-      <Filter>src\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\SwordOrk.cpp">
-      <Filter>src\Models</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\AxeOrk.cpp">
       <Filter>src\Models</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\SpearKnight.cpp">
-      <Filter>src\Models</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\AxeKnight.cpp">
-      <Filter>src\Models</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\SwordKnight.cpp">
-      <Filter>src\Models</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\pedestal.cpp">
       <Filter>src\Models</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Boat.cpp">
@@ -58,6 +43,15 @@
     <ClCompile Include="..\Classes\Castle.cpp">
       <Filter>src\Models</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Model.cpp" />
+    <ClCompile Include="..\Classes\pedestal.cpp" />
+    <ClCompile Include="..\Classes\SpearKnight.cpp" />
+    <ClCompile Include="..\Classes\SwordKnight.cpp" />
+    <ClCompile Include="..\Classes\SwordOrk.cpp" />
+    <ClCompile Include="..\Classes\TitleScene.cpp" />
+    <ClCompile Include="..\Classes\Troll.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="..\Classes\PopUpLevelUp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
@@ -91,25 +85,10 @@
     <ClInclude Include="..\Classes\Archer_Fire.h">
       <Filter>src\Models</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\TitleScene.h">
-      <Filter>src\Scenes</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\AxeOrk.h">
       <Filter>src\Models</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\SwordOrk.h">
-      <Filter>src\Models</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\SpearKnight.h">
-      <Filter>src\Models</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\AxeKnight.h">
-      <Filter>src\Models</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\SwordKnight.h">
-      <Filter>src\Models</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\pedestal.h">
       <Filter>src\Models</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Boat.h">
@@ -118,6 +97,15 @@
     <ClInclude Include="..\Classes\Castle.h">
       <Filter>src\Models</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\Model.h" />
+    <ClInclude Include="..\Classes\pedestal.h" />
+    <ClInclude Include="..\Classes\SpearKnight.h" />
+    <ClInclude Include="..\Classes\SwordKnight.h" />
+    <ClInclude Include="..\Classes\SwordOrk.h" />
+    <ClInclude Include="..\Classes\TitleScene.h" />
+    <ClInclude Include="..\Classes\Troll.h" />
+    <ClInclude Include="main.h" />
+    <ClInclude Include="..\Classes\PopUpLevelUp.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc" />
