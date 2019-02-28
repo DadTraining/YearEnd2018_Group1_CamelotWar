@@ -20,6 +20,7 @@
 
 #define NAME_SPRITE_TROLL "CloseNormal.png"
 
+
 //ARCHER
 
 #define NAME_PLIST_ARCHER_ATTACK "images/ARCHER/ATTACK/1_TROLL_ATTACK.plist"
@@ -48,7 +49,7 @@
 #define NAME_PLIST_ARCHER_DIE_KNIFE "images/ARCHER/DIE/2_TROLL_DIE.plist"
 #define NAME_PNG_ARCHER_DIE_KNIFE "DIE_00%d.png"
 #define COUNT_IMG_ARCHER_DIE_KNIFE 5
-#define IMG_KNIFE "images/ARCHER/ATTACK/ATTACK_knife.png"
+#define IMG_KNIFE "images/ARCHER/ATTACK/ATTACK_KNIFE.png"
 //==============================================================================================//
 
 //Archer_FIRE ===================================================================================//
@@ -66,7 +67,7 @@
 #define NAME_PNG_ARCHER_DIE_FIRE "DIE_00%d.png"
 #define COUNT_IMG_ARCHER_DIE_FIRE 5
 
-#define IMG_FIRE "images/ARCHER/ATTACK/ATTACK_FIRE.png"
+#define IMG_FIRE "images/ARCHER/ATTACK/ATTACK_fire.png"
 //==================================================================================================//
 
 // Hammer Troll
@@ -119,7 +120,7 @@
 #define NAME_PNG_SWORDORK_ATK "2_ORK_ATTACK_00%d.png"
 #define COUNT_IMG_SWORDORK_ATK 7
 
-#define NAME_SPRITE_SWORDORK "CloseNormal.png"
+#define NAME_SPRITE_SWORDORK "images/2_ORK/2_ORK.png"
 
 #define NAME_PLIST_SWORDORK_DIE "images/2_ORK/2_ORK_DIE.plist"
 #define NAME_PNG_SWORDORK_DIE "2_ORK_DIE_00%d.png"
@@ -149,7 +150,7 @@
 #define NAME_PNG_AXEORK_ATK "3_ORK_ATTACK_00%d.png"
 #define COUNT_IMG_AXEORK_ATK 7
 
-#define NAME_SPRITE_AXEORK "CloseNormal.png"
+#define NAME_SPRITE_AXEORK "images/3_ORK/3_ORK.png"
 
 #define NAME_PLIST_AXEORK_DIE "images/3_ORK/3_ORK_DIE.plist"
 #define NAME_PNG_AXEORK_DIE "3_ORK_DIE_00%d.png"

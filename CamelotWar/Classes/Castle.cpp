@@ -2,9 +2,6 @@
 #include "Character.h"
 #include "Defines.h"
 
-
-
-
 Castle::Castle()
 {
 }
@@ -18,22 +15,19 @@ Castle::Castle(cocos2d::Scene * scene)
 
 	scene->addChild(mSprite);
 
-	mHpBar = cocos2d::Sprite::create("loading_bg.png");
-	mHpBar->setScale(3);
-
-	mHpBar->setPosition(cocos2d::Vec2(SCREEN_W - mSprite->getContentSize().width / 4, 480));
+	mHpBar = cocos2d::Sprite::create("loading1.png");
+	mHpBar->setAnchorPoint(cocos2d::Vec2(0, 1));
+	mHpBar->setPosition(cocos2d::Vec2(0, SCREEN_H+1));
 
 	scene->addChild(mHpBar);
 
-	mloadingHpBar = cocos2d::ui::LoadingBar::create("loadingbar.png");
-	mloadingHpBar->setScale(3);
-
-	mloadingHpBar->setPosition(cocos2d::Vec2(SCREEN_W - mSprite->getContentSize().width / 4, 480));
+	mloadingHpBar = cocos2d::ui::LoadingBar::create("loading2.png");
+	mloadingHpBar->setAnchorPoint(cocos2d::Vec2(0, 1));
+	mloadingHpBar->setPosition(cocos2d::Vec2(80, SCREEN_H-8));
 
 	scene->addChild(mloadingHpBar);
 	init();
 }
-
 
 Castle::~Castle()
 {
@@ -60,7 +54,7 @@ void Castle::deCreaseHP(int hp)
 	mHP = mHP - hp;
 }
 
-
-
-
-
+cocos2d::ui::LoadingBar * Castle::getLoadingbar()
+{
+	return mloadingHpBar;
+}

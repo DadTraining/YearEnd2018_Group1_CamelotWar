@@ -149,13 +149,8 @@ void Archer_knife::update()
 				}
 				break;
 			}
-			else
-			{
-				mSprite->stopAllActions();
-				changeStatus = 0;
-			}
 		}
-		else if (j == mListMonsters.size() - 1)
+		if (j == mListMonsters.size() - 1)
 		{
 			mSprite->stopAllActions();
 			changeStatus = 0;

@@ -25,6 +25,8 @@ public:
 
 	virtual void init();
 
+	void setVisibleHP(bool visible);
+
 	void setAlive(int alive);
 	int getAlive();
 
@@ -32,6 +34,8 @@ public:
 	void setAppear(bool appear);
 	bool getAppear();
 
+	void setcheckAppear(bool appear);
+	bool getcheckAppear();
 
 	void setPosHp(cocos2d::Vec2 pos);
 	
@@ -48,4 +52,7 @@ protected:
 	int changeStatus;
 	bool mCheckAtk;
 	Castle * mCastle;
+	int countFrame;
+	bool checkAppear;
+
 };

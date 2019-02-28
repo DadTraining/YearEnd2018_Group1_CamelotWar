@@ -1,14 +1,12 @@
 #include "Troll.h"
 #include "Defines.h"
 
-int countFrame = 0;
 Troll::Troll()
 {
 }
 
 Troll::~Troll()
 {
-
 }
 
 Troll::Troll(cocos2d::Scene * scene) : Character::Character(scene)
@@ -27,7 +25,6 @@ void Troll::walk()
 		changeStatus += 1;
 	}
 	setPos(mSprite->getPosition() + cocos2d::Vec2(mSpeed / 10, 0));
-	countFrame = 0;
 }
 
 void Troll::collision()
@@ -40,8 +37,11 @@ void Troll::collision()
 
 void Troll::attack()
 {
-	
 	countFrame = countFrame + 1;
+	if (changeStatus == 0)
+	{
+		changeStatus = 1;
+	}
 	if (changeStatus == 1)
 	{
 		mSprite->stopAllActions();	
@@ -51,7 +51,8 @@ void Troll::attack()
 	int a = (COUNT_IMG_TROLL_ATK * FPS) / mSpeed ;
 	if (countFrame % a == 0)
 	{
-		
+		mCastle->deCreaseHP(100);
+		countFrame = 0;
 	}
 }
 
@@ -109,7 +110,4 @@ void Troll::init()
 	mAppear = false;
 
 	mSprite->setAnchorPoint(cocos2d::Vec2(0.5, 0));
-	setPos(cocos2d::Vec2(MONSTER_APPEAR, SCREEN_H / 3- 30));
-	
-	
 }

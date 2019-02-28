@@ -1,7 +1,7 @@
 #pragma once
 #include "Character.h"
-class BoneTroll :
-	public Character
+
+class BoneTroll :public Character
 {
 public:
 	BoneTroll();
@@ -12,10 +12,10 @@ public:
 	void attack() override;
 	void die() override;
 
+	void collision();
 	void update();
 	void init();
 private:
-	int changeStatus;
 	int countFrame = 0;
 };
 

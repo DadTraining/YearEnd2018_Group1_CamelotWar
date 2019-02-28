@@ -58,7 +58,9 @@ bool HelloWorld::init()
 	boat = new Boat(this);
 	boat->setListMonster(mListMonsters);
 
-	check = true;
+	mCastle = new Castle(this);
+
+	check = 0;
 
 	createMonster();
 
@@ -79,57 +81,81 @@ bool HelloWorld::onTouchBegan(cocos2d::Touch * touch, cocos2d::Event * event)
 		{
 			switch (i)
 			{
-				case 0:
-				{
-					auto archer = new Archer(this);
-					archer->setListMonster(mListMonsters);
-					archer->setListPedestal(mListPedestal);
-					archer->setPosAll(touch->getLocation());
-					mListCharacters.push_back(archer);
-					check = true;
-					break;
-				}
-				case 1:
-				{
-					auto archer_knight = new Archer_knife(this);
-					archer_knight->setListMonster(mListMonsters);
-					//archer_fire->setListPedestal(mListPedestal);
-					archer_knight->setPosAll(touch->getLocation());
-					mListCharacters.push_back(archer_knight);
-					check = true;
-					break;
-				}
-				case 2:
-				{
-					auto archer_fire = new Archer_Fire(this);
-					archer_fire->setListMonster(mListMonsters);
-					archer_fire->setListPedestal(mListPedestal);
-					archer_fire->setPosAll(touch->getLocation());
-					mListCharacters.push_back(archer_fire);
-					check = true;
-					break;
-				}
+			case 0:
+			{
+				auto archer = new Archer(this);
+				archer->setListMonster(mListMonsters);
+				archer->setListPedestal(mListPedestal);
+				archer->setPosAll(touch->getLocation());
+				mListCharacters.push_back(archer);
+				check = 1;
+				break;
+			}
+			case 1:
+			{
+				auto archer_knight = new Archer_knife(this);
+				archer_knight->setListMonster(mListMonsters);
+				archer_knight->setListPedestal(mListPedestal);
+				archer_knight->setPosAll(touch->getLocation());
+				mListCharacters.push_back(archer_knight);
+				check = 1;
+				break;
+			}
+			case 2:
+			{
+				auto archer_fire = new Archer_Fire(this);
+				archer_fire->setListMonster(mListMonsters);
+				archer_fire->setListPedestal(mListPedestal);
+				archer_fire->setPosAll(touch->getLocation());
+				mListCharacters.push_back(archer_fire);
+				check = 1;
+				break;
+			}
+			case 3:
+			{
+
+				return false;
+				break;
+			}
+			case 4:
+			{
+				return false;
+				break;
+			}
+			case 5:
+			{
+				return false;
+				break;
+			}
 			}
 			return true;
 		}
 	}
 	if (boat->BoatTouchBegan(touch, event))
 	{
-		check = false;
+		check = 2;
 		return true;
 	}
 	else
-	return false;
-
+	{
+		if (touchCharacter(touch))
+		{ 
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 }
 
 void HelloWorld::onTouchMoved(cocos2d::Touch * touch, cocos2d::Event * event)
 {
-	if (check)
+	if (check == 1)
 	{
 		mListCharacters[mListCharacters.size() - 1]->setPos(touch->getLocation());
 	}
-	else
+	if (check == 2)
 	{
 		boat->BoatTouchMoved(touch, event);
 	}
@@ -137,9 +163,36 @@ void HelloWorld::onTouchMoved(cocos2d::Touch * touch, cocos2d::Event * event)
 
 void HelloWorld::onTouchEnded(cocos2d::Touch * touch, cocos2d::Event * event)
 {
-	if (check)
+	if (check == 1)
 	{
 		mListCharacters[mListCharacters.size() - 1]->setAlive(1);
+		mListCharacters[mListCharacters.size() - 1]->setcheckAppear(false);
+	}
+	if(check > 2)
+	{ 
+		mListMonsters[check -3]->setVisibleHP(false);
+	}
+}
+
+bool HelloWorld::touchCharacter(cocos2d::Touch * touch)
+{
+	for (int  i = 0; i < mListMonsters.size(); i++)
+	{
+		if (mListMonsters[i]->getSprite()->getBoundingBox().containsPoint(touch->getLocation()))
+		{
+			mListMonsters[i]->setVisibleHP(true);
+			check = i + 3;
+			return true;
+			break;
+		}
+		else
+		{
+			check = 0;
+		}
+	}
+	if (check == 0)
+	{
+		return false;
 	}
 }
 
@@ -148,12 +201,12 @@ void HelloWorld::createIconHero()
 	for (int i = 0; i < 6; i++)
 	{
 		char str[100];
-		sprintf(str, "iconHero/%d.png", i+1);
+		sprintf(str, "iconhero/hero%d.png", i+1);
 		auto iconHero = cocos2d::Sprite::create(str);
 		if (i==0)
 		{
-			float posX = iconHero->getContentSize().width / 2;
-			float posY = SCREEN_H - iconHero->getContentSize().height / 2;
+			float posX = iconHero->getContentSize().width / 2 + 80;
+			float posY = SCREEN_H - iconHero->getContentSize().height / 2 - iconHero->getContentSize().height / 3 -5;
 			iconHero->setPosition(cocos2d::Vec2(posX,posY));
 		}
 		else
@@ -169,16 +222,18 @@ void HelloWorld::createIconHero()
 
 void HelloWorld::createMonster()
 {
-	for (int i = 0; i < 1; i++)
+	for (int i = 0; i < 10; i++)
 	{
 		Troll *troll = new Troll(this);
+		troll->setCastle(mCastle);
 		mListMonsters.push_back(troll);
 	}
-	/*for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 5; i++)
 	{
 		HammerOrk *hammerOrk = new HammerOrk(this);
+		hammerOrk->setCastle(mCastle);
 		mListMonsters.push_back(hammerOrk);
-	}*/
+	}
 	for (int  i = 0; i < mListMonsters.size(); i++)
 	{
 		mListMonsters[i]->setPos(cocos2d::Vec2(MONSTER_APPEAR, SCREEN_H / 3 - mListMonsters[i]->getSprite()->getContentSize().height));
@@ -187,28 +242,56 @@ void HelloWorld::createMonster()
 
 void HelloWorld::createPedestal()
 {
-	for (int i = 0; i < 7; i++)
+	auto pedestal1 = new Pedestal(this);
+	mListPedestal.push_back(pedestal1);
+	pedestal1->setPos(cocos2d::Vec2(100, 350));
+
+	auto pedestal2 = new Pedestal(this);
+	mListPedestal.push_back(pedestal2);
+	pedestal2->setPos(cocos2d::Vec2(250, 500));
+
+	auto pedestal3 = new Pedestal(this);
+	mListPedestal.push_back(pedestal3);
+	pedestal3->setPos(cocos2d::Vec2(450, 400));
+
+	auto pedestal4 = new Pedestal(this);
+	mListPedestal.push_back(pedestal4);
+	pedestal4->setPos(cocos2d::Vec2(650, 600));
+
+	auto pedestal5 = new Pedestal(this);
+	mListPedestal.push_back(pedestal5);
+	pedestal5->setPos(cocos2d::Vec2(850, 350));
+
+	auto pedestal6 = new Pedestal(this);
+	mListPedestal.push_back(pedestal6);
+	pedestal6->setPos(cocos2d::Vec2(1050, 530));
+}
+
+void HelloWorld::checkDuplicate()
+{
+	if (mListCharacters.size() > 1)
 	{
-		auto pedestal = new Pedestal(this);
-		pedestal->setlistCharacter(mListCharacters);
-		mListPedestal.push_back(pedestal);
-		if (i == 0)
+		for (int i = 0; i < mListCharacters.size()-1; i++)
 		{
-			float posX = 100;
-			float posY = SCREEN_H/2 ;
-			pedestal->setPos(cocos2d::Vec2(posX, posY));
+			if (mListCharacters[mListCharacters.size()-1]->getAlive() == 1 && !mListCharacters[mListCharacters.size() - 1]->getcheckAppear())
+			{
+				if (mListCharacters[mListCharacters.size() - 1]->getSprite()->getBoundingBox().intersectsRect(mListCharacters[i]->getSprite()->getBoundingBox()))
+				{
+					mListCharacters[mListCharacters.size() - 1]->setAlive(2);
+					mListCharacters[mListCharacters.size() - 1]->setAppear(false);
+					break;
+				}
+			}
 		}
-		else
+		if (!mListCharacters[mListCharacters.size() - 1]->getcheckAppear())
 		{
-			float posX = mListPedestal[i-1]->getPos().x + i * 100;
-			float posY = mListPedestal[i - 1]->getPos().y + i*50;
-			pedestal->setPos(cocos2d::Vec2(posX, posY));
+			mListCharacters[mListCharacters.size() - 1]->setcheckAppear(true);
 		}
 	}
 }
 
 void HelloWorld::update(float delta)
-{	
+{
 	countFrame += 1;
 	for (int i = 0; i < mListCharacters.size(); i++)
 	{
@@ -221,40 +304,35 @@ void HelloWorld::update(float delta)
 			mListCharacters[i]->getSprite()->removeFromParent();
 			mListCharacters.erase(mListCharacters.begin() + i);
 		}
-
-		CCLOG("%d", mListCharacters.size());
-	for (int  i = 0; i < mListMonsters.size(); i++)
-	{
-		mListMonsters[i]->update();
 	}
 
-		for (int i = 0; i < mListMonsters.size(); i++)
+	if (countFrame % (FPS) == 0)
+	{
+		for (int i = 0; i < mListMonsters.size(); i++)	
+		{
+			if (mListMonsters[i]->getAppear() == false)
+			{
+				mListMonsters[i]->setAppear(true);
+				countFrame = 0;
+				break;
+			}
+		}
+	}
+
+	for (int i = 0; i < mListMonsters.size(); i++)
+	{
+		if (mListMonsters[i]->getAppear() == true)
 		{
 			mListMonsters[i]->update();
 		}
+	}
 
-		if (countFrame % FPS == 0)
-		{
-			for (int i = 0; i < mListMonsters.size(); i++)
-			{
-				if (mListMonsters[i]->getAppear() == false)
-				{
-					mListMonsters[i]->setAppear(true);
-					countFrame = 0;
-					break;
-				}
-			}
-		}
+	boat->update();
+	boat->setListMonster(mListMonsters);
+	checkDuplicate();
 
-		for (int i = 0; i < mListMonsters.size(); i++)
-		{
-			if (mListMonsters[i]->getAppear() == true)
-			{
-				mListMonsters[i]->update();
-			}
-		}
-
-		boat->update();
-		boat->setListMonster(mListMonsters);
+	if (mCastle->getLoadingbar()->getPercent() == 0)
+	{
+		//Director::getInstance()->pause();
 	}
 }

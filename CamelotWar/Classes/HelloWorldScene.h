@@ -18,6 +18,8 @@ public:
 	virtual bool onTouchBegan(cocos2d::Touch* touch, cocos2d::Event *event);
 	virtual void onTouchMoved(cocos2d::Touch* touch, cocos2d::Event *event);
 	virtual void onTouchEnded(cocos2d::Touch* touch, cocos2d::Event *event);
+
+	bool touchCharacter(cocos2d::Touch * touch);
 	
 	void createIconHero();
 
@@ -40,7 +42,7 @@ private:
 
 	Boat *boat;
 	Castle * mCastle;
-	bool check;
+	int check;
 	int countFrame;
 };
 

@@ -12,16 +12,6 @@ Pedestal::Pedestal(cocos2d::Scene * scene)
 	scene->addChild(mSprite);
 }
 
-void Pedestal::setlistCharacter(std::vector< Character*> listCharacters)
-{
-	mListCharacters = listCharacters;
-}
-
-void Pedestal::collision()
-{
-	
-}
-
 Pedestal::~Pedestal()
 {
 }
@@ -29,7 +19,7 @@ Pedestal::~Pedestal()
 
 void Pedestal::update()
 {
-	collision();
+	
 }
 
 void Pedestal::init()

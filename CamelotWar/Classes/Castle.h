@@ -15,7 +15,7 @@ public:
 	void init();
 	void setPosHp(cocos2d::Vec2 pos);
 	void deCreaseHP(int hp);
-	
+	cocos2d::ui::LoadingBar * Castle::getLoadingbar();
 
 private:
 	cocos2d::Sprite* mHpBar;

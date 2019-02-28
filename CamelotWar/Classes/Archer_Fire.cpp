@@ -13,14 +13,12 @@ Archer_Fire::~Archer_Fire()
 Archer_Fire::Archer_Fire(cocos2d::Scene * scene) : Character::Character(scene)
 {
 	mSprite = cocos2d::Sprite::create(NAME_SPRITE_ARCHER_FIRE);
-	//setPos(cocos2d::Vec2(SCREEN_W / 2, SCREEN_H / 2));
 	scene->addChild(mSprite);
 	
 	mSprite->setFlipX(false);
 
 	for (int i = 0; i < 10; i++) {
 		auto fire = new Fire(scene);
-		//fire->setPos(cocos2d::Vec2(getPos().x + mSprite->getContentSize().width, getPos().y));
 		fires.push_back(fire);
 		fire->setVisible(false);
 	}
@@ -114,12 +112,9 @@ void Archer_Fire::reuseFire()
 	}
 }
 
-void Archer_Fire::setListMonster(std::vector<Character*> &listMonsters)
+void Archer_Fire::setListMonster(std::vector<Character*> listMonsters)
 {
-	for (int i = 0; i < listMonsters.size(); i++)
-	{
-		mListMonsters.push_back(listMonsters[i]);
-	}
+	mListMonsters = listMonsters;
 }
 
 void Archer_Fire::update()
@@ -150,13 +145,8 @@ void Archer_Fire::update()
 				}
 				break;
 			}
-			else
-			{
-				mSprite->stopAllActions();
-				changeStatus = 0;
-			}
 		}
-		else if (j == mListMonsters.size() - 1)
+		if (j == mListMonsters.size() - 1)
 		{
 			mSprite->stopAllActions();
 			changeStatus = 0;
