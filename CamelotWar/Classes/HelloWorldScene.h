@@ -30,11 +30,14 @@ public:
 	void update(float delta);
 
     CREATE_FUNC(HelloWorld);
+	
+
 private:
 	std::vector< Character*> mListCharacters;
 	std::vector< Character*> mListMonsters;
 	std::vector< cocos2d::Sprite*> mListIconHero;
 	std::vector< Pedestal*> mListPedestal;
+
 	Boat *boat;
 	Castle * mCastle;
 	bool check;

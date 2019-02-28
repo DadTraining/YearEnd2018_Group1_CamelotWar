@@ -58,8 +58,6 @@ bool HelloWorld::init()
 	boat = new Boat(this);
 	boat->setListMonster(mListMonsters);
 
-	mCastle = new Castle(this);
-
 	check = true;
 
 	createMonster();
@@ -95,7 +93,7 @@ bool HelloWorld::onTouchBegan(cocos2d::Touch * touch, cocos2d::Event * event)
 				{
 					auto archer_knight = new Archer_knife(this);
 					archer_knight->setListMonster(mListMonsters);
-					archer_knight->setListPedestal(mListPedestal);
+					//archer_fire->setListPedestal(mListPedestal);
 					archer_knight->setPosAll(touch->getLocation());
 					mListCharacters.push_back(archer_knight);
 					check = true;
@@ -111,22 +109,6 @@ bool HelloWorld::onTouchBegan(cocos2d::Touch * touch, cocos2d::Event * event)
 					check = true;
 					break;
 				}
-				case 3:
-				{
-					return false;
-					break;
-				}
-				case 4:
-				{
-					return false;
-					break;
-				}
-				case 5:
-				{
-					return false;
-					break;
-				}
-				
 			}
 			return true;
 		}
@@ -190,7 +172,6 @@ void HelloWorld::createMonster()
 	for (int i = 0; i < 1; i++)
 	{
 		Troll *troll = new Troll(this);
-		troll->setCastle(mCastle);
 		mListMonsters.push_back(troll);
 	}
 	/*for (int i = 0; i < 5; i++)
@@ -226,29 +207,6 @@ void HelloWorld::createPedestal()
 	}
 }
 
-void HelloWorld::checkDuplicate()
-{
-	if (mListCharacters.size() > 1)
-	{
-		for (int i = 0; i < mListCharacters.size(); i++)
-		{
-			for (int j = i + 1; j < mListCharacters.size(); j++)
-			{
-				if (mListCharacters[j]->getAlive() == 1)
-				{
-					
-					if (mListCharacters[i]->getSprite()->getBoundingBox().intersectsRect(mListCharacters[j]->getSprite()->getBoundingBox()))
-					{
-						mListCharacters[j]->setAlive(2);
-						mListCharacters[j]->setAppear(false);
-						break;
-					}
-				}
-			}
-		}
-	}
-}
-
 void HelloWorld::update(float delta)
 {	
 	countFrame += 1;
@@ -263,30 +221,40 @@ void HelloWorld::update(float delta)
 			mListCharacters[i]->getSprite()->removeFromParent();
 			mListCharacters.erase(mListCharacters.begin() + i);
 		}
+
+		CCLOG("%d", mListCharacters.size());
+	for (int  i = 0; i < mListMonsters.size(); i++)
+	{
+		mListMonsters[i]->update();
 	}
 
-	if (countFrame % FPS == 0)
-	{
 		for (int i = 0; i < mListMonsters.size(); i++)
-		{
-			if (mListMonsters[i]->getAppear() == false)
-			{
-				mListMonsters[i]->setAppear(true);
-				countFrame =0;
-				break;
-			}
-		}
-	}
-
-	for (int  i = 0; i <  mListMonsters.size(); i++)
-	{
-		if (mListMonsters[i]->getAppear() == true)
 		{
 			mListMonsters[i]->update();
 		}
-	}
 
-	boat->update();
-	boat->setListMonster(mListMonsters);
-	checkDuplicate();
+		if (countFrame % FPS == 0)
+		{
+			for (int i = 0; i < mListMonsters.size(); i++)
+			{
+				if (mListMonsters[i]->getAppear() == false)
+				{
+					mListMonsters[i]->setAppear(true);
+					countFrame = 0;
+					break;
+				}
+			}
+		}
+
+		for (int i = 0; i < mListMonsters.size(); i++)
+		{
+			if (mListMonsters[i]->getAppear() == true)
+			{
+				mListMonsters[i]->update();
+			}
+		}
+
+		boat->update();
+		boat->setListMonster(mListMonsters);
+	}
 }

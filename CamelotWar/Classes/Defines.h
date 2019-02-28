@@ -201,3 +201,16 @@
 //pedestal===================================================================
 
 #define NAME_SPRITE_PEDESTAL "ScenePlay/pedestal1.png"
+
+// PopUp Setting
+#define DIALOG_MAP "popUpSetting/tb.png"
+//#define POPUP_SCALE_X 0.53
+//#define POPUP_SCALE_Y 0.51
+#define BUTTON_EXIT "popUpSetting/cancel.png"
+#define SETTING "popUpSetting/setting.png"
+#define SFX "popUpSetting/SFX.png"
+#define BGM "popUpSetting/BGM.png"
+#define BUTTON_ACCEPT "popUpSetting/accept.png"
+#define SLIDE_BAR_BG "popUpSetting/Slider_Back.png"
+#define SLIDE_ROUND "popUpSetting/round.png"
+#define SLIDE_BAR_PROGRESS "popUpSetting/Slider_PressBar.png"
