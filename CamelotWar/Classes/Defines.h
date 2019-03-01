@@ -205,7 +205,7 @@
 
 #define NAME_SPRITE_PEDESTAL "ScenePlay/pedestal1.png"
 
-// PopUp Setting
+// PopUp
 #define DIALOG_MAP "popUpSetting/tb.png"
 //#define POPUP_SCALE_X 0.53
 //#define POPUP_SCALE_Y 0.51
@@ -218,3 +218,6 @@
 #define SLIDE_ROUND "popUpSetting/round.png"
 #define SLIDE_BAR_PROGRESS "popUpSetting/Slider_PressBar.png"
 #define LEVEL_UP "popUpSetting/levelup.png"
+#define GAME_OVER "popUpSetting/gameover.png"
+#define YES "popUpSetting/yes.png"
+#define NO "popUpSetting/no.png"

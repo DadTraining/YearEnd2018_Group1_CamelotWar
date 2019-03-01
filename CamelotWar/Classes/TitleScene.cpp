@@ -1,8 +1,6 @@
 #include "TitleScene.h"
 #include "SimpleAudioEngine.h"
 #include "Defines.h"
-#include "PopUpSetting.h"
-
 #include "HelloWorldScene.h"
 
 USING_NS_CC;
@@ -53,7 +51,7 @@ bool TitleScene::init()
 	addChild(Menu);
 
 	setting = PopUpSetting::create();
-	this->addChild(setting, 3);
+	this->addChild(setting);
 	setting->setVisible(false);
 
 
