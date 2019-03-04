@@ -1,7 +1,11 @@
 #pragma once
+#include "cocos2d.h"
 #include "Character.h"
-class AxeKnight :
-	public Character
+#include <vector>
+
+using namespace std;
+
+class AxeKnight :public Character
 {
 public:
 	AxeKnight();
@@ -12,7 +16,14 @@ public:
 	void attack() override;
 	void die() override;
 
-	void update();
-	void init();
+	void setListMonster(std::vector<Character*> listMonsters);
+	void collision();
+	void update() override;
+	void init() override;
+private:
+	std::vector< Character*> mListMonsters;
+	int mFrameCount;
+	bool hasAnimated;
+	int countFrame = 0;
 };
 

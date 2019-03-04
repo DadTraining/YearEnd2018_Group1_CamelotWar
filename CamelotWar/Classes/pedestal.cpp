@@ -25,3 +25,13 @@ void Pedestal::update()
 void Pedestal::init()
 {
 }
+
+cocos2d::Rect Pedestal::getBoudingBox()
+{
+	cocos2d::Rect boudingbox = mSprite->getBoundingBox();
+	boudingbox.size.width -= 40;
+	boudingbox.size.height -= 40;
+
+	boudingbox.setRect(getPos().x - 60, getPos().y, boudingbox.size.width-20, boudingbox.size.height - 40);
+	return boudingbox;
+}

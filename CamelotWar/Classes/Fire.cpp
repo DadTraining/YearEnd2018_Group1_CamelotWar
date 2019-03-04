@@ -8,7 +8,7 @@ Fire::Fire(cocos2d::Scene * scene)
 {
 	mSprite = cocos2d::Sprite::create(IMG_FIRE);
 	scene->addChild(mSprite);
-	mSpeed = 10;
+	mSpeed = 20;
 	init();
 }
 

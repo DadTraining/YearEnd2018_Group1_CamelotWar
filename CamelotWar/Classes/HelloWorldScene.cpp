@@ -16,11 +16,19 @@
 #include "Boat.h"
 #include "pedestal.h"
 
+
 USING_NS_CC;
 
 Scene* HelloWorld::createScene()
 {
-	return HelloWorld::create();
+	auto layout = HelloWorld::createWithPhysics();
+	layout->getPhysicsWorld()->setDebugDrawMask(cocos2d::PhysicsWorld::DEBUGDRAW_NONE);
+	layout->getPhysicsWorld()->setGravity(cocos2d::Vec2(0, -980));
+
+	auto scene = HelloWorld::create();
+	layout->addChild(scene);
+
+	return layout;
 }
 
 // Print useful error message instead of segfaulting when files are not there.
@@ -48,6 +56,7 @@ bool HelloWorld::init()
 	addChild(background);
 
 	auto listener = EventListenerTouchOneByOne::create();
+	listener->setSwallowTouches(true);
 	listener->onTouchBegan = CC_CALLBACK_2(HelloWorld::onTouchBegan, this);
 	listener->onTouchMoved = CC_CALLBACK_2(HelloWorld::onTouchMoved, this);
 	listener->onTouchEnded = CC_CALLBACK_2(HelloWorld::onTouchEnded, this);
@@ -83,49 +92,105 @@ bool HelloWorld::onTouchBegan(cocos2d::Touch * touch, cocos2d::Event * event)
 			{
 			case 0:
 			{
-				auto archer = new Archer(this);
-				archer->setListMonster(mListMonsters);
-				archer->setListPedestal(mListPedestal);
-				archer->setPosAll(touch->getLocation());
-				mListCharacters.push_back(archer);
-				check = 1;
-				break;
+				if (boat->getcoin() >= 100)
+				{
+					auto archer = new Archer(this);
+					archer->setListMonster(mListMonsters);
+					archer->setListPedestal(mListPedestal);
+					archer->setPosAll(touch->getLocation());
+					mListCharacters.push_back(archer);
+					check = 1;
+					boat->setcoin(boat->getcoin() - 100);
+					break;
+				}
+				else
+				{
+					return false;
+				}
 			}
 			case 1:
 			{
-				auto archer_knight = new Archer_knife(this);
-				archer_knight->setListMonster(mListMonsters);
-				archer_knight->setListPedestal(mListPedestal);
-				archer_knight->setPosAll(touch->getLocation());
-				mListCharacters.push_back(archer_knight);
-				check = 1;
-				break;
+				if (boat->getcoin() >= 200)
+				{
+					auto archer_knight = new Archer_knife(this);
+					archer_knight->setListMonster(mListMonsters);
+					archer_knight->setListPedestal(mListPedestal);
+					archer_knight->setPosAll(touch->getLocation());
+					mListCharacters.push_back(archer_knight);
+					boat->setcoin(boat->getcoin() - 200);
+					check = 1;
+					break;
+				}
+				else
+				{
+					return false;
+				}
 			}
 			case 2:
 			{
-				auto archer_fire = new Archer_Fire(this);
-				archer_fire->setListMonster(mListMonsters);
-				archer_fire->setListPedestal(mListPedestal);
-				archer_fire->setPosAll(touch->getLocation());
-				mListCharacters.push_back(archer_fire);
-				check = 1;
-				break;
+				if (boat->getcoin() >= 300)
+				{
+					auto archer_fire = new Archer_Fire(this);
+					archer_fire->setListMonster(mListMonsters);
+					archer_fire->setListPedestal(mListPedestal);
+					archer_fire->setPosAll(touch->getLocation());
+					mListCharacters.push_back(archer_fire);
+					boat->setcoin(boat->getcoin() - 300);
+					check = 1;
+					break;
+				}
+				else
+				{
+					return false;
+				}
 			}
 			case 3:
 			{
-
-				return false;
-				break;
+				if (boat->getcoin() >= 150)
+				{
+					auto axe_knight = new AxeKnight(this);
+					axe_knight->setListMonster(mListMonsters);
+					mListCharacters.push_back(axe_knight);
+					boat->setcoin(boat->getcoin() - 150);	
+					check = 0;
+					break;
+				}
+				else
+				{
+					break;
+				}
 			}
 			case 4:
 			{
-				return false;
-				break;
+				if (boat->getcoin() >= 400)
+				{
+					auto spear_knight = new SpearKnight(this);
+					spear_knight->setListMonster(mListMonsters);
+					mListCharacters.push_back(spear_knight);
+					boat->setcoin(boat->getcoin() - 400);
+					check = 0;
+					return false;
+				}
+				else
+				{
+					return false;
+				}
 			}
 			case 5:
 			{
-				return false;
-				break;
+				if (boat->getcoin() >= 9999)
+				{
+					auto sword_Knight = new SwordKnight(this);
+					sword_Knight->setListMonster(mListMonsters);
+					mListCharacters.push_back(sword_Knight);
+					boat->setcoin(boat->getcoin() - 9999);
+					check = 0;
+					return false;
+				}
+				else
+				{
+					return false;
+				}
 			}
 			}
 			return true;
@@ -222,13 +287,13 @@ void HelloWorld::createIconHero()
 
 void HelloWorld::createMonster()
 {
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 15; i++)
 	{
 		Troll *troll = new Troll(this);
 		troll->setCastle(mCastle);
 		mListMonsters.push_back(troll);
 	}
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 0; i++)
 	{
 		HammerOrk *hammerOrk = new HammerOrk(this);
 		hammerOrk->setCastle(mCastle);
@@ -279,7 +344,7 @@ void HelloWorld::checkDuplicate()
 				{
 					mListCharacters[mListCharacters.size() - 1]->setAlive(2);
 					mListCharacters[mListCharacters.size() - 1]->setAppear(false);
-					break;
+					break;	
 				}
 			}
 		}
@@ -301,6 +366,7 @@ void HelloWorld::update(float delta)
 		}
 		if (mListCharacters[i]->getAlive() == 2 && !mListCharacters[i]->getAppear())
 		{
+			boat->setcoin(boat->getcoin() + mListCharacters[i]->getPrice());
 			mListCharacters[i]->getSprite()->removeFromParent();
 			mListCharacters.erase(mListCharacters.begin() + i);
 		}
@@ -333,6 +399,6 @@ void HelloWorld::update(float delta)
 
 	if (mCastle->getLoadingbar()->getPercent() == 0)
 	{
-		//Director::getInstance()->pause();
+		Director::getInstance()->pause();
 	}
 }

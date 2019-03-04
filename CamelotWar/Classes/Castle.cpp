@@ -9,11 +9,10 @@ Castle::Castle()
 Castle::Castle(cocos2d::Scene * scene)
 {
 	mSprite = cocos2d::Sprite::create("tower.png");
-	mSprite->setScale(0.6);
 
-	setPos(cocos2d::Vec2(SCREEN_W - mSprite->getContentSize().width/4, 330));
+	setPos(cocos2d::Vec2(SCREEN_W - mSprite->getContentSize().width/4 - 25, 255));
 
-	scene->addChild(mSprite);
+	scene->addChild(mSprite,9999);
 
 	mHpBar = cocos2d::Sprite::create("loading1.png");
 	mHpBar->setAnchorPoint(cocos2d::Vec2(0, 1));

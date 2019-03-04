@@ -95,7 +95,7 @@ void Archer::collision()
 		{	
 			if (mListMonsters[i]->getSprite()->getBoundingBox().intersectsRect(arrows[j]->getSprite()->getBoundingBox()))
 			{
-				mListMonsters[i]->deCreaseHP(100);
+				mListMonsters[i]->deCreaseHP(mDamage);
 				arrows[j]->setVisible(false);
 				arrows[j]->setPos(cocos2d::Vec2(getPos().x, getPos().y));
 			}
@@ -178,8 +178,10 @@ void Archer::update()
 void Archer::init()
 {
 	mFrameCount = 0;
-	mSpeed = 5;
-	mRange = 300;
+	mSpeed = 10;
+	mRange = 100;
+	mDamage = 30;
+	mPrice = 100;
 	changeStatus = 0;
 	hasAnimated = false;
 	// setAnimation(NAME_PLIST_ARCHER_ATTACK, NAME_PNG_ARCHER_ATTACK, COUNT_IMG_ARCHER_ATTACK, mSpeed, 0);

@@ -12,8 +12,9 @@ Troll::~Troll()
 Troll::Troll(cocos2d::Scene * scene) : Character::Character(scene)
 {
 	mSprite = cocos2d::Sprite::create(NAME_SPRITE_TROLL);
-	scene->addChild(mSprite);
+	this->addPhysicsBody();
 
+	scene->addChild(mSprite);
 	init();
 }
 
@@ -51,7 +52,7 @@ void Troll::attack()
 	int a = (COUNT_IMG_TROLL_ATK * FPS) / mSpeed ;
 	if (countFrame % a == 0)
 	{
-		mCastle->deCreaseHP(100);
+		mCastle->deCreaseHP(mDamage);
 		countFrame = 0;
 	}
 }
@@ -64,14 +65,44 @@ void Troll::die()
 		mSprite->stopAllActions();
 		setAnimation(NAME_PLIST_TROLL_DIE, NAME_PNG_TROLL_DIE, COUNT_IMG_TROLL_DIE, mSpeed, 1);
 		changeStatus+= 2;
+
+		for (int i = 0; i < getCoin().size(); i++)
+		{
+			if (!getCoin().at(i)->getCheckFall())
+			{
+				setVisibleCoin(true,i);
+				getCoin().at(i)->setPos(getPos());
+				getCoin().at(i)->PushCoin(cocos2d::Vec2(-100, 500));
+				getCoin().at(i)->setDynamic(true);
+				getCoin().at(i)->setCheckFall(true);
+				break;
+			}
+		}
+
+		
 	}
 	if (changeStatus == 2)
 	{
 		mSprite->stopAllActions();
 		setAnimation(NAME_PLIST_TROLL_DIE, NAME_PNG_TROLL_DIE, COUNT_IMG_TROLL_DIE, mSpeed, 1);
 		changeStatus += 1;
+
+		for (int i = 0; i < getCoin().size(); i++)
+		{
+			if (!getCoin().at(i)->getCheckFall())
+			{
+				setVisibleCoin(true, i);
+				getCoin().at(i)->setPos(getPos());
+				getCoin().at(i)->PushCoin(cocos2d::Vec2(-100, 500));
+				getCoin().at(i)->setDynamic(true);
+				getCoin().at(i)->setCheckFall(true);
+				break;
+			}
+		}
 	}
-	setPos(getPos() - cocos2d::Vec2(0, 1));
+
+	mPhysicsBody->setDynamic(true);
+
 	setPosHp(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height / 2));
 }
 
@@ -101,12 +132,12 @@ void Troll::update()
 void Troll::init()
 {
 	changeStatus = 0;
-	mSpeed =15;
+	mSpeed =10;
 	mAlive = 1;
-	mHP = 1000;
-	mPrice = 100;
+	mHP = 100;
+	mPrice = 30;
 	mDamage = 100;
-	mRange = 10;
+	mRange = 0;
 	mAppear = false;
 
 	mSprite->setAnchorPoint(cocos2d::Vec2(0.5, 0));

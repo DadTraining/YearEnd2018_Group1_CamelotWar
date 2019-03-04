@@ -7,7 +7,7 @@ Knife::Knife(cocos2d::Scene* scene)
 {
 	mSprite = cocos2d::Sprite::create(IMG_KNIFE);
 	scene->addChild(mSprite);
-	mSpeed = 10;
+	mSpeed = 20;
 	init();
 }
 

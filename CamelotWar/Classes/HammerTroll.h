@@ -13,8 +13,8 @@ public:
 	void die() override;
 
 	void collision();
-	void update();
-	void init();
+	void update() override;
+	void init() override;
 private:
 	int countFrame=0;
 };

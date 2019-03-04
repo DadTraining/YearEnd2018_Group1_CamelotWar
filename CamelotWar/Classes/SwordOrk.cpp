@@ -12,8 +12,9 @@ SwordOrk::~SwordOrk()
 SwordOrk::SwordOrk(cocos2d::Scene * scene) : Character::Character(scene)
 {
 	mSprite = cocos2d::Sprite::create(NAME_SPRITE_SWORDORK);
-	scene->addChild(mSprite);
+	this->addPhysicsBody();
 
+	scene->addChild(mSprite);
 	init();
 }
 
@@ -57,14 +58,42 @@ void SwordOrk::die()
 		mSprite->stopAllActions();
 		setAnimation(NAME_PLIST_SWORDORK_DIE, NAME_PNG_SWORDORK_DIE, COUNT_IMG_SWORDORK_DIE, mSpeed, 1);
 		changeStatus += 2;
+
+		for (int i = 0; i < getCoin().size(); i++)
+		{
+			if (!getCoin().at(i)->getCheckFall())
+			{
+				setVisibleCoin(true, i);
+				getCoin().at(i)->setPos(getPos());
+				getCoin().at(i)->PushCoin(cocos2d::Vec2(-100, 500));
+				getCoin().at(i)->setDynamic(true);
+				getCoin().at(i)->setCheckFall(true);
+				break;
+			}
+		}
 	}
 	if (changeStatus == 2)
 	{
 		mSprite->stopAllActions();
 		setAnimation(NAME_PLIST_SWORDORK_DIE, NAME_PNG_SWORDORK_DIE, COUNT_IMG_SWORDORK_DIE, mSpeed, 1);
 		changeStatus += 1;
+
+		for (int i = 0; i < getCoin().size(); i++)
+		{
+			if (!getCoin().at(i)->getCheckFall())
+			{
+				setVisibleCoin(true, i);
+				getCoin().at(i)->setPos(getPos());
+				getCoin().at(i)->PushCoin(cocos2d::Vec2(-100, 500));
+				getCoin().at(i)->setDynamic(true);
+				getCoin().at(i)->setCheckFall(true);
+				break;
+			}
+		}
 	}
-	setPos(getPos() - cocos2d::Vec2(0, 1));
+
+	mPhysicsBody->setDynamic(true);
+
 	setPosHp(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height / 2));
 }
 

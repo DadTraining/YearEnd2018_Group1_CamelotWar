@@ -2,7 +2,7 @@
 #include "SimpleAudioEngine.h"
 #include "Defines.h"
 #include "PopUpSetting.h"
-
+#include "ui/CocosGUI.h"
 #include "HelloWorldScene.h"
 
 USING_NS_CC;
@@ -34,21 +34,19 @@ bool TitleScene::init()
 	spriteTheCamelot->setPosition(Vec2(SCENE_TITLE_THECAMELOT_W, SCENE_TITLE_THECAMELOT_H));
 	addChild(spriteTheCamelot);
 
-	// Create play item
-
-	auto *Play = MenuItemImage::create(SCENE_TITLE_PNG_PLAY, SCENE_TITLE_PNG_PLAY, CC_CALLBACK_1(TitleScene::menuPlayCallback, this));
+	auto Play = MenuItemImage::create(SCENE_TITLE_PNG_PLAY, SCENE_TITLE_PNG_PLAY_SELECTED, CC_CALLBACK_1(TitleScene::menuPlayCallback, this));
 	Play->setPosition(Vec2(SCENE_TITLE_PLAY_W, SCENE_TITLE_PLAY_H));
-	
+
 	// Create exit item
-	auto Exit = MenuItemImage::create(SCENE_TITLE_PNG_EXIT, SCENE_TITLE_PNG_EXIT, CC_CALLBACK_1(TitleScene::menuCloseCallback, this));
+	auto Exit = MenuItemImage::create(SCENE_TITLE_PNG_EXIT, SCENE_TITLE_PNG_EXIT_SELECTED, CC_CALLBACK_1(TitleScene::menuCloseCallback, this));
 	Exit->setPosition(Vec2(SCENE_TITLE_EXIT_W, SCENE_TITLE_EXIT_H));
 
 	// Create setting item
-	auto Setting = MenuItemImage::create(SCENE_TITLE_PNG_SETTING, SCENE_TITLE_PNG_SETTING, CC_CALLBACK_1(TitleScene::menuSettingCallback, this));
+	auto Setting = MenuItemImage::create(SCENE_TITLE_PNG_SETTING, SCENE_TITLE_PNG_SETTING_SELECTED, CC_CALLBACK_1(TitleScene::menuSettingCallback, this));
 	Setting->setPosition(Vec2(SCENE_TITLE_SETTING_W, SCENE_TITLE_SETTING_H));
 
 	// Set item to menu
-	auto Menu = Menu::create(Play, Setting, Exit , NULL);
+	auto Menu = Menu::create(Play,Setting, Exit , NULL);
 	Menu->setPosition(Vec2::ZERO);
 	addChild(Menu);
 

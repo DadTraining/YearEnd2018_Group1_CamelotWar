@@ -6,9 +6,9 @@ public:
 	Arrow(cocos2d::Scene*scene);
 	~Arrow();
 
-	void init();
+	void init() override;
 	void fly(cocos2d::Vec2 pos);
-	void update();
+	void update() override;
 	
 	void setVisible(bool visible);
 	bool isVisible();

@@ -9,8 +9,10 @@ public:
 	Pedestal();
 	Pedestal(cocos2d::Scene *scene);
 	~Pedestal();
-	void update();
-	void init();
+	void update() override;
+	void init() override;
+
+	cocos2d::Rect getBoudingBox();
 
 private:
 	std::vector< Character*> mListCharacters;

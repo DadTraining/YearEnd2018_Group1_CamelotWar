@@ -26,8 +26,8 @@ public:
 	void setListPedestal(std::vector<Pedestal*> listPedestals);
 	void setListMonster(std::vector<Character*> listMonsters);
 
-	void update();
-	void init();
+	void update() override;
+	void init() override;
 
 	void collisionWithPedestal();
 

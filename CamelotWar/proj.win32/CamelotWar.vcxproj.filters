@@ -19,6 +19,18 @@
     <Filter Include="src\Models">
       <UniqueIdentifier>{22559244-f280-45eb-9310-38af67528f02}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Models\coin">
+      <UniqueIdentifier>{26817c89-f5ac-44a1-9c33-0e0462f2aa07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\utils">
+      <UniqueIdentifier>{8f9c4c65-c810-4ada-8258-24c7f880b41b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\utils\animation">
+      <UniqueIdentifier>{1b908c39-c6b4-4fdd-b999-f5271d3836f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\utils\physics">
+      <UniqueIdentifier>{f148a9fe-1efd-4232-af04-4f712dde8358}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -100,6 +112,15 @@
     </ClCompile>
     <ClCompile Include="..\Classes\PopUpSetting.cpp">
       <Filter>src\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\coin\CoinModel.cpp">
+      <Filter>src\Models\coin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\utils\animation\GetAnimation.cpp">
+      <Filter>src\utils\animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\utils\physics\CustomPhysicsBody.cpp">
+      <Filter>src\utils\physics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -185,6 +206,18 @@
     </ClInclude>
     <ClInclude Include="..\Classes\PopUpSetting.h">
       <Filter>src\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\coin\CoinModel.h">
+      <Filter>src\Models\coin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\utils\animation\GetAnimation.h">
+      <Filter>src\utils\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\DefineCoin.h">
+      <Filter>src\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\utils\physics\CustomPhysicsBody.h">
+      <Filter>src\utils\physics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
