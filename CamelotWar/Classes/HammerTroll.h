@@ -1,5 +1,6 @@
 #pragma once
 #include "Character.h"
+
 class HammerTroll :	public Character
 {
 public:
@@ -11,9 +12,9 @@ public:
 	void attack() override;
 	void die() override;
 
-	void update();
-	void init();
+	void collision();
+	void update() override;
+	void init() override;
 private:
-	int changeStatus;
 	int countFrame=0;
 };

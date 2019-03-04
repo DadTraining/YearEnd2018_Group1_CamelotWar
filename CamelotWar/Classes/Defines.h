@@ -2,7 +2,7 @@
 #define SCREEN_H 720
 #define FPS 50
 #define MONSTER_APPEAR -50
-#define BACKGROUND_PLAYSCENE "ScenePlay/backgroundscene.png"
+#define BACKGROUND_PLAYSCENE "ScenePlay/backgroundmains.png"
 
 
 // troll
@@ -18,7 +18,8 @@
 #define NAME_PNG_TROLL_WALK "WALK_00%d.png"
 #define COUNT_IMG_TROLL_WALK 7
 
-#define NAME_SPRITE_TROLL "CloseNormal.png"
+#define NAME_SPRITE_TROLL "images/TROLL/ATTACK/1_TROLL.png"
+
 
 //ARCHER
 
@@ -48,7 +49,7 @@
 #define NAME_PLIST_ARCHER_DIE_KNIFE "images/ARCHER/DIE/2_TROLL_DIE.plist"
 #define NAME_PNG_ARCHER_DIE_KNIFE "DIE_00%d.png"
 #define COUNT_IMG_ARCHER_DIE_KNIFE 5
-#define IMG_KNIFE "images/ARCHER/ATTACK/ATTACK_knife.png"
+#define IMG_KNIFE "images/ARCHER/ATTACK/ATTACK_KNIFE.png"
 //==============================================================================================//
 
 //Archer_FIRE ===================================================================================//
@@ -66,7 +67,7 @@
 #define NAME_PNG_ARCHER_DIE_FIRE "DIE_00%d.png"
 #define COUNT_IMG_ARCHER_DIE_FIRE 5
 
-#define IMG_FIRE "images/ARCHER/ATTACK/ATTACK_FIRE.png"
+#define IMG_FIRE "images/ARCHER/ATTACK/ATTACK_fire.png"
 //==================================================================================================//
 
 // Hammer Troll
@@ -74,7 +75,7 @@
 #define NAME_PNG_HAMMERTROLL_ATK "2_ATTAK_00%d.png"
 #define COUNT_IMG_HAMMERTROLL_ATK 7
 
-#define NAME_SPRITE_HAMMERTROLL "CloseNormal.png"
+#define NAME_SPRITE_HAMMERTROLL "images/TROLL/ATTACK/2_TROLL.png"
 
 #define NAME_PLIST_HAMMERTROLL_DIE "images/TROLL/DIE/2_TROLL_DIE.plist"
 #define NAME_PNG_HAMMERTROLL_DIE "2_DIE_00%d.png"
@@ -89,7 +90,7 @@
 #define NAME_PNG_BONETROLL_ATK "3_ATTAK_00%d.png"
 #define COUNT_IMG_BONETROLL_ATK 7
 
-#define NAME_SPRITE_BONETROLL "CloseNormal.png"
+#define NAME_SPRITE_BONETROLL "images/TROLL/ATTACK/3_TROLL.png"
 
 #define NAME_PLIST_BONETROLL_DIE "images/TROLL/DIE/3_TROLL_DIE.plist"
 #define NAME_PNG_BONETROLL_DIE "3_DIE_00%d.png"
@@ -119,7 +120,7 @@
 #define NAME_PNG_SWORDORK_ATK "2_ORK_ATTACK_00%d.png"
 #define COUNT_IMG_SWORDORK_ATK 7
 
-#define NAME_SPRITE_SWORDORK "CloseNormal.png"
+#define NAME_SPRITE_SWORDORK "images/2_ORK/2_ORK.png"
 
 #define NAME_PLIST_SWORDORK_DIE "images/2_ORK/2_ORK_DIE.plist"
 #define NAME_PNG_SWORDORK_DIE "2_ORK_DIE_00%d.png"
@@ -146,13 +147,16 @@
 #define SCENE_TITLE_SETTING_H 90
 #define SCENE_TITLE_EXIT_W 1000
 #define SCENE_TITLE_EXIT_H 90
+#define SCENE_TITLE_PNG_PLAY_SELECTED "scene/playSelected.png"
+#define SCENE_TITLE_PNG_SETTING_SELECTED "scene/settingSelected.png"
+#define SCENE_TITLE_PNG_EXIT_SELECTED "scene/exitSelected.png"
 
 // Axe Ork 
 #define NAME_PLIST_AXEORK_ATK "images/3_ORK/3_ORK_ATTACK.plist"
 #define NAME_PNG_AXEORK_ATK "3_ORK_ATTACK_00%d.png"
 #define COUNT_IMG_AXEORK_ATK 7
 
-#define NAME_SPRITE_AXEORK "CloseNormal.png"
+#define NAME_SPRITE_AXEORK "images/3_ORK/3_ORK.png"
 
 #define NAME_PLIST_AXEORK_DIE "images/3_ORK/3_ORK_DIE.plist"
 #define NAME_PNG_AXEORK_DIE "3_ORK_DIE_00%d.png"
@@ -165,13 +169,16 @@
 // Spear Knight
 #define NAME_PLIST_SPEARKNIGHT_ATK "images/1_KNIGHT/1_KNIGHT_ATTACK.plist"
 #define NAME_PNG_SPEARKNIGHT_ATK "1_KNIGHT_ATTACK_00%d.png"
-#define COUNT_IMG_SPEARKNIGHT_ATK 8
+#define COUNT_IMG_SPEARKNIGHT_ATK 7
 
 #define NAME_SPRITE_SPEARKNIGHT "images/1_KNIGHT/1_KNIGHT.png"
 
 #define NAME_PLIST_SPEARKNIGHT_DIE "images/1_KNIGHT/1_KNIGHT_DIE.plist"
 #define NAME_PNG_SPEARKNIGHT_DIE "1_KNIGHT_DIE_00%d.png"
-#define COUNT_IMG_SPEARKNIGHT_DIE 8
+#define COUNT_IMG_SPEARKNIGHT_DIE 7
+#define NAME_PLIST_SPEARKNIGHT_WALK "images/1_KNIGHT/1_KNIGHT_WALK.plist"
+#define NAME_PNG_SPEARKNIGHT_WALK "1_KNIGHT_WALK_00%d.png"
+#define COUNT_IMG_SPEARKNIGHT_WALK 7
 
 // Axe Knight
 #define NAME_PLIST_AXEKNIGHT_ATK "images/2_KNIGHT/2_KNIGHT_ATTACK.plist"
@@ -184,6 +191,10 @@
 #define NAME_PNG_AXEKNIGHT_DIE "2_KNIGHT_DIE_00%d.png"
 #define COUNT_IMG_AXEKNIGHT_DIE 7
 
+#define NAME_PLIST_AXEKNIGHT_WALK "images/2_KNIGHT/2_KNIGHT_WALK.plist"
+#define NAME_PNG_AXEKNIGHT_WALK "2_KNIGHT_WALK_00%d.png"
+#define COUNT_IMG_AXEKNIGHT_WALK 7
+
 // SwordKnight 
 #define NAME_PLIST_SWORDKNIGHT_ATK "images/3_KNIGHT/3_KNIGHT_ATTACK.plist"
 #define NAME_PNG_SWORDKNIGHT_ATK "3_KNIGHT_ATTACK_00%d.png"
@@ -195,6 +206,9 @@
 #define NAME_PNG_SWORDKNIGHT_DIE "3_KNIGHT_DIE_00%d.png"
 #define COUNT_IMG_SWORDKNIGHT_DIE 7
 
+#define NAME_PLIST_SWORDKNIGHT_WALK "images/3_KNIGHT/3_KNIGHT_WALK.plist"
+#define NAME_PNG_SWORDKNIGHT_WALK "3_KNIGHT_WALK_00%d.png"
+#define COUNT_IMG_SWORDKNIGHT_WALK 7
 
 // Boat
 

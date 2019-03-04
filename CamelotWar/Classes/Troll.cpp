@@ -1,21 +1,20 @@
 #include "Troll.h"
 #include "Defines.h"
 
-int countFrame = 0;
 Troll::Troll()
 {
 }
 
 Troll::~Troll()
 {
-
 }
 
 Troll::Troll(cocos2d::Scene * scene) : Character::Character(scene)
 {
 	mSprite = cocos2d::Sprite::create(NAME_SPRITE_TROLL);
-	scene->addChild(mSprite);
+	this->addPhysicsBody();
 
+	scene->addChild(mSprite);
 	init();
 }
 
@@ -27,13 +26,23 @@ void Troll::walk()
 		changeStatus += 1;
 	}
 	setPos(mSprite->getPosition() + cocos2d::Vec2(mSpeed / 10, 0));
-	countFrame = 0;
+}
+
+void Troll::collision()
+{
+	if (mSprite->getBoundingBox().intersectsRect(mCastle->getSprite()->getBoundingBox()))
+	{
+		mCheckAtk = true;
+	}
 }
 
 void Troll::attack()
 {
-	
 	countFrame = countFrame + 1;
+	if (changeStatus == 0)
+	{
+		changeStatus = 1;
+	}
 	if (changeStatus == 1)
 	{
 		mSprite->stopAllActions();	
@@ -43,7 +52,8 @@ void Troll::attack()
 	int a = (COUNT_IMG_TROLL_ATK * FPS) / mSpeed ;
 	if (countFrame % a == 0)
 	{
-		
+		mCastle->deCreaseHP(mDamage);
+		countFrame = 0;
 	}
 }
 
@@ -55,24 +65,54 @@ void Troll::die()
 		mSprite->stopAllActions();
 		setAnimation(NAME_PLIST_TROLL_DIE, NAME_PNG_TROLL_DIE, COUNT_IMG_TROLL_DIE, mSpeed, 1);
 		changeStatus+= 2;
+
+		for (int i = 0; i < getCoin().size(); i++)
+		{
+			if (!getCoin().at(i)->getCheckFall())
+			{
+				setVisibleCoin(true,i);
+				getCoin().at(i)->setPos(getPos());
+				getCoin().at(i)->PushCoin(cocos2d::Vec2(-100, 500));
+				getCoin().at(i)->setDynamic(true);
+				getCoin().at(i)->setCheckFall(true);
+				break;
+			}
+		}
+
+		
 	}
 	if (changeStatus == 2)
 	{
 		mSprite->stopAllActions();
 		setAnimation(NAME_PLIST_TROLL_DIE, NAME_PNG_TROLL_DIE, COUNT_IMG_TROLL_DIE, mSpeed, 1);
 		changeStatus += 1;
+
+		for (int i = 0; i < getCoin().size(); i++)
+		{
+			if (!getCoin().at(i)->getCheckFall())
+			{
+				setVisibleCoin(true, i);
+				getCoin().at(i)->setPos(getPos());
+				getCoin().at(i)->PushCoin(cocos2d::Vec2(-100, 500));
+				getCoin().at(i)->setDynamic(true);
+				getCoin().at(i)->setCheckFall(true);
+				break;
+			}
+		}
 	}
-	setPos(getPos() - cocos2d::Vec2(0, 1));
+
+	mPhysicsBody->setDynamic(true);
+
 	setPosHp(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height / 2));
 }
 
 void Troll::update()
 {
-	if (getPos().x >= SCREEN_W - 100 && mAlive == 1)
+	if (mCheckAtk && mAlive == 1)
 	{
 		attack();
 	}
-	if (getPos().x < SCREEN_W - 100 && mAlive == 1  )
+	if (!mCheckAtk && mAlive == 1  )
 	{
 		walk();
 		countFrame = 0;
@@ -85,22 +125,20 @@ void Troll::update()
 	{
 		changeStatus = 0;
 	}
+	collision();
 	setPosHp(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height + 10));
 }
 
 void Troll::init()
 {
 	changeStatus = 0;
-	mSpeed =15;
+	mSpeed =10;
 	mAlive = 1;
-	mHP = 1000;
-	mPrice = 100;
+	mHP = 100;
+	mPrice = 30;
 	mDamage = 100;
-	mRange = 10;
+	mRange = 0;
 	mAppear = false;
 
 	mSprite->setAnchorPoint(cocos2d::Vec2(0.5, 0));
-	setPos(cocos2d::Vec2(MONSTER_APPEAR, SCREEN_H / 3- 30));
-	
-	
 }

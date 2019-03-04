@@ -15,9 +15,11 @@ Archer::Archer(cocos2d::Scene * scene) : Character::Character(scene)
 	mSprite = cocos2d::Sprite::create(NAME_SPRITE_ARCHER);
 	//setPos(cocos2d::Vec2(SCREEN_W /2 , SCREEN_H -100));
 	scene->addChild(mSprite);
-	
 	mSprite->setFlipX(false);
-
+	mRangeLeft = cocos2d::Sprite::create("range.png");
+	mRangeRight = cocos2d::Sprite::create("range.png");
+	scene->addChild(mRangeLeft);
+	scene->addChild(mRangeRight);
 	for (int i = 0; i < 10; i++)
 	{
 		auto arrow = new Arrow(scene);
@@ -93,7 +95,7 @@ void Archer::collision()
 		{	
 			if (mListMonsters[i]->getSprite()->getBoundingBox().intersectsRect(arrows[j]->getSprite()->getBoundingBox()))
 			{
-				mListMonsters[i]->deCreaseHP(100);
+				mListMonsters[i]->deCreaseHP(mDamage);
 				arrows[j]->setVisible(false);
 				arrows[j]->setPos(cocos2d::Vec2(getPos().x, getPos().y));
 			}
@@ -110,6 +112,12 @@ void Archer::reuseArrow()
 			arrows[i]->setVisible(false);
 		}
 	}
+}
+
+void Archer::setPosRange()
+{
+	mRangeLeft->setPosition(cocos2d::Vec2(getPos().x - mRange, getPos().y));
+	mRangeRight->setPosition(cocos2d::Vec2(getPos().x + mRange, getPos().y));
 }
 
 void Archer::setListMonster(std::vector< Character*> listMonsters)
@@ -151,13 +159,8 @@ void Archer::update()
 				}
 				break;
 			}
-			else
-			{
-				mSprite->stopAllActions();
-				changeStatus = 0;
-			}
 		}
-		else if (j == mListMonsters.size()-1)
+	    if (j == mListMonsters.size()-1)
 		{
 			mSprite->stopAllActions();
 			changeStatus = 0;
@@ -169,13 +172,16 @@ void Archer::update()
 	collision();
 	collisionWithPedestal();
 	setPosAll(getPos());
+	
 }
 
 void Archer::init()
 {
 	mFrameCount = 0;
-	mSpeed = 5;
-	mRange = 300;
+	mSpeed = 10;
+	mRange = 100;
+	mDamage = 30;
+	mPrice = 100;
 	changeStatus = 0;
 	hasAnimated = false;
 	// setAnimation(NAME_PLIST_ARCHER_ATTACK, NAME_PNG_ARCHER_ATTACK, COUNT_IMG_ARCHER_ATTACK, mSpeed, 0);

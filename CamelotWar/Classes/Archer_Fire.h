@@ -24,10 +24,10 @@ public:
 	void shootFire();
 	void collision();
 	void reuseFire();
-	void setListMonster(std::vector<Character*> &listMonsters);
+	void setListMonster(std::vector<Character*> listMonsters);
 
-	void update();
-	void init();
+	void update() override;
+	void init() override;
 
 	void collisionWithPedestal();
 

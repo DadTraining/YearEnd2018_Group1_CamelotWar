@@ -10,13 +10,22 @@ class Boat : public Model
 public:
 	Boat(cocos2d::Scene*);
 	~Boat();
-	virtual void update();
-	virtual void init();
+	void update() override;
+	void init() override;
 	void collision();
+	int getcoin();
+	void setcoin(int acoin);
+
 	void setListMonster(std::vector<Character*> listMonsters);
-	bool Boat::BoatTouchBegan(cocos2d::Touch* touch, cocos2d::Event *event);
-	void Boat::BoatTouchMoved(cocos2d::Touch* touch, cocos2d::Event *event);
-	void Boat::BoatTouchEnded(cocos2d::Touch* touch, cocos2d::Event *event);
+
+	void setListCharacter(std::vector<Character*> listCharacter);
+
+	bool BoatTouchBegan(cocos2d::Touch* touch, cocos2d::Event *event);
+	void BoatTouchMoved(cocos2d::Touch* touch, cocos2d::Event *event);
+	void BoatTouchEnded(cocos2d::Touch* touch, cocos2d::Event *event);
 protected:
 	std::vector< Character*> mListMonsters;
+	std::vector< Character*> mListCharacter;
+	cocos2d::Label* lableCoin;
+	int coin;
 };

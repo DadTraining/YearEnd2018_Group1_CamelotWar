@@ -5,6 +5,7 @@
 #include "Character.h"
 #include "pedestal.h"
 #include "Boat.h"
+#include "Castle.h"
 #include <vector>
 
 class HelloWorld : public cocos2d::Scene
@@ -17,12 +18,16 @@ public:
 	virtual bool onTouchBegan(cocos2d::Touch* touch, cocos2d::Event *event);
 	virtual void onTouchMoved(cocos2d::Touch* touch, cocos2d::Event *event);
 	virtual void onTouchEnded(cocos2d::Touch* touch, cocos2d::Event *event);
+
+	bool touchCharacter(cocos2d::Touch * touch);
 	
 	void createIconHero();
 
 	void createMonster();
 
 	void createPedestal();
+
+	void checkDuplicate();
 
 	void update(float delta);
 
@@ -36,8 +41,8 @@ private:
 	std::vector< Pedestal*> mListPedestal;
 
 	Boat *boat;
-	bool check;
-	int mCountCharacter;
+	Castle * mCastle;
+	int check;
 	int countFrame;
 };
 

@@ -1,24 +1,73 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="..\Classes\AppDelegate.cpp" />
-    <ClCompile Include="..\Classes\Archer.cpp" />
-    <ClCompile Include="..\Classes\Archer_Fire.cpp" />
+    <Filter Include="win32">
+      <UniqueIdentifier>{84a8ebd7-7cf0-47f6-b75e-d441df67da40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{715254bc-d70b-4ec5-bf29-467dd3ace079}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Common">
+      <UniqueIdentifier>{b408bd24-7791-42ce-abe7-025569e5eee7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Scenes">
+      <UniqueIdentifier>{7272af37-78ab-4e8b-b25f-f90e7c258888}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Models">
+      <UniqueIdentifier>{22559244-f280-45eb-9310-38af67528f02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Models\coin">
+      <UniqueIdentifier>{26817c89-f5ac-44a1-9c33-0e0462f2aa07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\utils">
+      <UniqueIdentifier>{8f9c4c65-c810-4ada-8258-24c7f880b41b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\utils\animation">
+      <UniqueIdentifier>{1b908c39-c6b4-4fdd-b999-f5271d3836f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\utils\physics">
+      <UniqueIdentifier>{f148a9fe-1efd-4232-af04-4f712dde8358}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
+      <Filter>src\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AppDelegate.cpp">
+      <Filter>src\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Character.cpp">
+      <Filter>src\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Model.cpp">
+      <Filter>src\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Troll.cpp">
+      <Filter>src\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Archer.cpp">
+      <Filter>src\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Arrow.cpp">
+      <Filter>src\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\HammerTroll.cpp">
+      <Filter>src\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Knife.cpp">
+      <Filter>src\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Archer_knife.cpp">
+      <Filter>src\Models</Filter>
+    </ClCompile>
     <ClCompile Include="..\Classes\Archer_knife.cpp" />
-    <ClCompile Include="..\Classes\Arrow.cpp" />
-    <ClCompile Include="..\Classes\AxeKnight.cpp" />
-    <ClCompile Include="..\Classes\AxeOrk.cpp" />
-    <ClCompile Include="..\Classes\Boat.cpp" />
-    <ClCompile Include="..\Classes\BoneTroll.cpp" />
-    <ClCompile Include="..\Classes\Castle.cpp" />
-    <ClCompile Include="..\Classes\Character.cpp" />
-    <ClCompile Include="..\Classes\HammerOrk.cpp" />
-    <ClCompile Include="..\Classes\Fire.cpp" />
-    <ClCompile Include="..\Classes\HammerTroll.cpp" />
-    <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\Classes\Knife.cpp" />
-    <ClCompile Include="..\Classes\PopUp.cpp" />
-    <ClCompile Include="..\Classes\PopUpSetting.cpp" />
     <ClCompile Include="..\Classes\BoneTroll.cpp">
       <Filter>src\Models</Filter>
     </ClCompile>
@@ -31,10 +80,25 @@
     <ClCompile Include="..\Classes\Archer_Fire.cpp">
       <Filter>src\Models</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\TitleScene.cpp">
+      <Filter>src\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SwordOrk.cpp">
+      <Filter>src\Models</Filter>
+    </ClCompile>
     <ClCompile Include="..\Classes\AxeOrk.cpp">
       <Filter>src\Models</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\SpearKnight.cpp">
+      <Filter>src\Models</Filter>
+    </ClCompile>
     <ClCompile Include="..\Classes\AxeKnight.cpp">
+      <Filter>src\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SwordKnight.cpp">
+      <Filter>src\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\pedestal.cpp">
       <Filter>src\Models</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Boat.cpp">
@@ -43,37 +107,61 @@
     <ClCompile Include="..\Classes\Castle.cpp">
       <Filter>src\Models</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Model.cpp" />
-    <ClCompile Include="..\Classes\pedestal.cpp" />
-    <ClCompile Include="..\Classes\SpearKnight.cpp" />
-    <ClCompile Include="..\Classes\SwordKnight.cpp" />
-    <ClCompile Include="..\Classes\SwordOrk.cpp" />
-    <ClCompile Include="..\Classes\TitleScene.cpp" />
-    <ClCompile Include="..\Classes\Troll.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="..\Classes\PopUpLevelUp.cpp" />
-    <ClCompile Include="..\Classes\PopUpGameOver.cpp" />
+    <ClCompile Include="..\Classes\PopUp.cpp">
+      <Filter>src\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PopUpSetting.cpp">
+      <Filter>src\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\coin\CoinModel.cpp">
+      <Filter>src\Models\coin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\utils\animation\GetAnimation.cpp">
+      <Filter>src\utils\animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\utils\physics\CustomPhysicsBody.cpp">
+      <Filter>src\utils\physics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Classes\AppDelegate.h" />
-    <ClInclude Include="..\Classes\Archer.h" />
-    <ClInclude Include="..\Classes\Archer_Fire.h" />
+    <ClInclude Include="main.h">
+      <Filter>win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\HelloWorldScene.h">
+      <Filter>src\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AppDelegate.h">
+      <Filter>src\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Character.h">
+      <Filter>src\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Model.h">
+      <Filter>src\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Troll.h">
+      <Filter>src\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Defines.h">
+      <Filter>src\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Archer.h">
+      <Filter>src\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Arrow.h">
+      <Filter>src\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\HammerTroll.h">
+      <Filter>src\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Knife.h">
+      <Filter>src\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Archer_knife.h">
+      <Filter>src\Models</Filter>
+    </ClInclude>
     <ClInclude Include="..\Classes\Archer_knife.h" />
-    <ClInclude Include="..\Classes\Arrow.h" />
-    <ClInclude Include="..\Classes\AxeKnight.h" />
-    <ClInclude Include="..\Classes\AxeOrk.h" />
-    <ClInclude Include="..\Classes\Boat.h" />
-    <ClInclude Include="..\Classes\BoneTroll.h" />
-    <ClInclude Include="..\Classes\Castle.h" />
-    <ClInclude Include="..\Classes\Character.h" />
-    <ClInclude Include="..\Classes\Defines.h" />
-    <ClInclude Include="..\Classes\HammerOrk.h" />
-    <ClInclude Include="..\Classes\Fire.h" />
-    <ClInclude Include="..\Classes\HammerTroll.h" />
-    <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\Classes\Knife.h" />
-    <ClInclude Include="..\Classes\PopUp.h" />
-    <ClInclude Include="..\Classes\PopUpSetting.h" />
     <ClInclude Include="..\Classes\BoneTroll.h">
       <Filter>src\Models</Filter>
     </ClInclude>
@@ -86,10 +174,25 @@
     <ClInclude Include="..\Classes\Archer_Fire.h">
       <Filter>src\Models</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\TitleScene.h">
+      <Filter>src\Scenes</Filter>
+    </ClInclude>
     <ClInclude Include="..\Classes\AxeOrk.h">
       <Filter>src\Models</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\SwordOrk.h">
+      <Filter>src\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SpearKnight.h">
+      <Filter>src\Models</Filter>
+    </ClInclude>
     <ClInclude Include="..\Classes\AxeKnight.h">
+      <Filter>src\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SwordKnight.h">
+      <Filter>src\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\pedestal.h">
       <Filter>src\Models</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Boat.h">
@@ -98,18 +201,28 @@
     <ClInclude Include="..\Classes\Castle.h">
       <Filter>src\Models</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Model.h" />
-    <ClInclude Include="..\Classes\pedestal.h" />
-    <ClInclude Include="..\Classes\SpearKnight.h" />
-    <ClInclude Include="..\Classes\SwordKnight.h" />
-    <ClInclude Include="..\Classes\SwordOrk.h" />
-    <ClInclude Include="..\Classes\TitleScene.h" />
-    <ClInclude Include="..\Classes\Troll.h" />
-    <ClInclude Include="main.h" />
-    <ClInclude Include="..\Classes\PopUpLevelUp.h" />
-    <ClInclude Include="..\Classes\PopUpGameOver.h" />
+    <ClInclude Include="..\Classes\PopUp.h">
+      <Filter>src\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PopUpSetting.h">
+      <Filter>src\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\coin\CoinModel.h">
+      <Filter>src\Models\coin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\utils\animation\GetAnimation.h">
+      <Filter>src\utils\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\DefineCoin.h">
+      <Filter>src\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\utils\physics\CustomPhysicsBody.h">
+      <Filter>src\utils\physics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="game.rc" />
+    <ResourceCompile Include="game.rc">
+      <Filter>resource</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

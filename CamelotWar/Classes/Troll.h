@@ -8,25 +8,22 @@
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 
-
 class Troll : public Character
 {
-private:
-	int mCount;
-
 public:
 	Troll();
 	~Troll();
 	Troll(cocos2d::Scene * scene);
 
 	void walk() override;
+	void collision();
 	void attack() override;
 	void die() override;
 
-	void update();
-	void init();
+	void update() override;
+	void init() override;
   
 private:
 	int changeStatus;
-	
+
 };

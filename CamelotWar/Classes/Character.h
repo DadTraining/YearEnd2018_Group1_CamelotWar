@@ -3,6 +3,8 @@
 #include "cocos2d.h"
 #include "Model.h"
 #include "ui/CocosGUI.h"
+#include "Castle.h"
+#include "coin/CoinModel.h"
 
 class Character : public Model
 {
@@ -22,16 +24,34 @@ public:
 	virtual void die() = 0;;
 
 
-	virtual void init();
+	void init() override;
+
+	std::vector<CoinModel*> getCoin();
+
+	int getPrice();
+	void setVisibleCoin(bool visible, int i);
+
+
+	void setVisibleHP(bool visible);
 
 	void setAlive(int alive);
 	int getAlive();
 
+	void setCastle(Castle *castle);
 	void setAppear(bool appear);
 	bool getAppear();
 
+	cocos2d::Rect getBoudingBoxCoin(int i);
+
+	void setcheckAppear(bool appear);
+	bool getcheckAppear();
+
+	void setCheckATK(bool checkATK);
+	bool getCheckATK();
 
 	void setPosHp(cocos2d::Vec2 pos);
+
+	void addPhysicsBody();
 	
 protected:
 	int mHP;
@@ -40,9 +60,14 @@ protected:
 	int mSpeed;
 	int mRange;
 	int mAlive;
-	bool mAppear;
-	cocos2d::Sprite* mHpBar;
-	cocos2d::ui::LoadingBar * mloadingHpBar;
+	int countFrame;
 	int changeStatus;
-
+	bool mAppear;
+	bool mCheckAtk;
+	bool checkAppear;
+	Castle * mCastle;
+	std::vector<CoinModel *> coins;
+	cocos2d::Sprite* mHpBar;
+	cocos2d::PhysicsBody* mPhysicsBody;
+	cocos2d::ui::LoadingBar * mloadingHpBar;
 };

@@ -3,6 +3,7 @@
 #include "Character.h"
 #include "Knife.h"
 #include <vector>
+#include "pedestal.h"
 
 using namespace std;
 
@@ -22,14 +23,18 @@ public:
 	void shootKnife();
 	void collision();
 	void reuseKnife();
+	void setListPedestal(std::vector<Pedestal*> listPedestals);
 	void setListMonster(std::vector<Character*> listMonsters);
 
-	void update();
-	void init();
+	void update() override;
+	void init() override;
+
+	void collisionWithPedestal();
 
 private :
 	vector<Knife*> knifes;
 	std::vector< Character*> mListMonsters;
+	std::vector<Pedestal *> mListPedestals;
 	int mFrameCount;
 	bool hasAnimated;
 };

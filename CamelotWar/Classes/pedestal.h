@@ -8,11 +8,11 @@ class Pedestal : public Model
 public:
 	Pedestal();
 	Pedestal(cocos2d::Scene *scene);
-	void setlistCharacter(std::vector<Character*> listCharacters);
-	void collision();
 	~Pedestal();
-	void update();
-	void init();
+	void update() override;
+	void init() override;
+
+	cocos2d::Rect getBoudingBox();
 
 private:
 	std::vector< Character*> mListCharacters;
