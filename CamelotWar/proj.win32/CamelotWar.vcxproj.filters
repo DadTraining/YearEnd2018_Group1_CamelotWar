@@ -51,7 +51,9 @@
     <ClCompile Include="..\Classes\TitleScene.cpp" />
     <ClCompile Include="..\Classes\Troll.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="..\Classes\Coin.cpp" />
+
+    <ClCompile Include="..\Classes\PopUpLevelUp.cpp" />
+    <ClCompile Include="..\Classes\PopUpGameOver.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
@@ -105,7 +107,8 @@
     <ClInclude Include="..\Classes\TitleScene.h" />
     <ClInclude Include="..\Classes\Troll.h" />
     <ClInclude Include="main.h" />
-    <ClInclude Include="..\Classes\Coin.h" />
+    <ClInclude Include="..\Classes\PopUpLevelUp.h" />
+    <ClInclude Include="..\Classes\PopUpGameOver.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc" />
