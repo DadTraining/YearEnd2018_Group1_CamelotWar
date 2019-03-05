@@ -1,6 +1,7 @@
 #include "BoneTroll.h"
 #include "Defines.h"
-
+#include "SimpleAudioEngine.h"
+using namespace CocosDenshion;
 BoneTroll::BoneTroll()
 {
 }
@@ -57,6 +58,7 @@ void BoneTroll::die()
 	{
 		mSprite->stopAllActions();
 		setAnimation(NAME_PLIST_BONETROLL_DIE, NAME_PNG_BONETROLL_DIE, COUNT_IMG_BONETROLL_DIE, mSpeed, 1);
+		CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SFX_MONSTER_DIED, false, 1.0f, 1.0f, 1.0f);
 		changeStatus += 2;
 
 		for (int i = 0; i < getCoin().size(); i++)
@@ -76,6 +78,7 @@ void BoneTroll::die()
 	{
 		mSprite->stopAllActions();
 		setAnimation(NAME_PLIST_BONETROLL_DIE, NAME_PNG_BONETROLL_DIE, COUNT_IMG_BONETROLL_DIE, mSpeed, 1);
+		CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SFX_MONSTER_DIED, false, 1.0f, 1.0f, 1.0f);
 		changeStatus += 1;
 
 		for (int i = 0; i < getCoin().size(); i++)

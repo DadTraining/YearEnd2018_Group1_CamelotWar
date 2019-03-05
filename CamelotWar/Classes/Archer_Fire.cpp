@@ -1,7 +1,8 @@
 #include "Archer_Fire.h"
 #include "Defines.h"
 #include "Character.h"
-
+#include "SimpleAudioEngine.h"
+using namespace CocosDenshion;
 Archer_Fire::Archer_Fire()
 {
 }
@@ -93,6 +94,7 @@ void Archer_Fire::collision()
 		{
 			if (mListMonsters[i]->getSprite()->getBoundingBox().intersectsRect(fires[j]->getSprite()->getBoundingBox()))
 			{
+				CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SFX_MAGIC, false, 1.0f, 1.0f, 1.0f);
 				mListMonsters[i]->deCreaseHP(100);
 				fires[j]->setVisible(false);
 				fires[j]->setPos(cocos2d::Vec2(getPos().x, getPos().y));

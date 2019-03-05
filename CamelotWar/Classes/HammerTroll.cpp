@@ -1,6 +1,7 @@
 #include "HammerTroll.h"
 #include "Defines.h"
-
+#include "SimpleAudioEngine.h"
+using namespace CocosDenshion;
 HammerTroll::HammerTroll()
 {
 }
@@ -57,6 +58,7 @@ void HammerTroll::die()
 	{
 		mSprite->stopAllActions();
 		setAnimation(NAME_PLIST_HAMMERTROLL_DIE, NAME_PNG_HAMMERTROLL_DIE, COUNT_IMG_HAMMERTROLL_DIE, mSpeed, 1);
+		CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SFX_MONSTER_DIED, false, 1.0f, 1.0f, 1.0f);
 		changeStatus += 2;
 
 		for (int i = 0; i < getCoin().size(); i++)
@@ -76,6 +78,7 @@ void HammerTroll::die()
 	{
 		mSprite->stopAllActions();
 		setAnimation(NAME_PLIST_HAMMERTROLL_DIE, NAME_PNG_HAMMERTROLL_DIE, COUNT_IMG_HAMMERTROLL_DIE, mSpeed, 1);
+		CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SFX_MONSTER_DIED, false, 1.0f, 1.0f, 1.0f);
 		changeStatus += 1;
 
 		for (int i = 0; i < getCoin().size(); i++)

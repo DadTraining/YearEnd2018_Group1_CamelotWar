@@ -1,7 +1,8 @@
 #include "Archer.h"
 #include "Defines.h"
 #include "Character.h"
-
+#include "SimpleAudioEngine.h"
+using namespace CocosDenshion;
 Archer::Archer()
 {
 }
@@ -95,6 +96,7 @@ void Archer::collision()
 		{	
 			if (mListMonsters[i]->getSprite()->getBoundingBox().intersectsRect(arrows[j]->getSprite()->getBoundingBox()))
 			{
+				CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SFX_ARCHERY, false, 1.0f, 1.0f, 1.0f);
 				mListMonsters[i]->deCreaseHP(mDamage);
 				arrows[j]->setVisible(false);
 				arrows[j]->setPos(cocos2d::Vec2(getPos().x, getPos().y));

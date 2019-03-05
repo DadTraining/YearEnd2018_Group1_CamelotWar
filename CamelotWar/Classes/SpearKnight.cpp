@@ -1,7 +1,7 @@
 #include "SpearKnight.h"
 #include "Defines.h"
-
-
+#include "SimpleAudioEngine.h"
+using namespace CocosDenshion;
 SpearKnight::SpearKnight()
 {
 }
@@ -70,12 +70,14 @@ void SpearKnight::die()
 	{
 		mSprite->stopAllActions();
 		setAnimation(NAME_PLIST_SPEARKNIGHT_DIE, NAME_PNG_SPEARKNIGHT_DIE, COUNT_IMG_SPEARKNIGHT_DIE, mSpeed, 1);
+		CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SFX_HERO_DIED, false, 1.0f, 1.0f, 1.0f);
 		changeStatus += 2;
 	}
 	if (changeStatus == 2)
 	{
 		mSprite->stopAllActions();
 		setAnimation(NAME_PLIST_SPEARKNIGHT_DIE, NAME_PNG_SPEARKNIGHT_DIE, COUNT_IMG_SPEARKNIGHT_DIE, mSpeed, 1);
+		CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SFX_HERO_DIED, false, 1.0f, 1.0f, 1.0f);
 		changeStatus += 1;
 	}
 	setPos(getPos() - cocos2d::Vec2(0, 1));

@@ -1,6 +1,7 @@
 #include "SwordOrk.h"
 #include "Defines.h"
-
+#include "SimpleAudioEngine.h"
+using namespace CocosDenshion;
 SwordOrk::SwordOrk()
 {
 }
@@ -57,6 +58,7 @@ void SwordOrk::die()
 	{
 		mSprite->stopAllActions();
 		setAnimation(NAME_PLIST_SWORDORK_DIE, NAME_PNG_SWORDORK_DIE, COUNT_IMG_SWORDORK_DIE, mSpeed, 1);
+		CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SFX_MONSTER_DIED, false, 1.0f, 1.0f, 1.0f);
 		changeStatus += 2;
 
 		for (int i = 0; i < getCoin().size(); i++)
@@ -76,6 +78,7 @@ void SwordOrk::die()
 	{
 		mSprite->stopAllActions();
 		setAnimation(NAME_PLIST_SWORDORK_DIE, NAME_PNG_SWORDORK_DIE, COUNT_IMG_SWORDORK_DIE, mSpeed, 1);
+		CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SFX_MONSTER_DIED, false, 1.0f, 1.0f, 1.0f);
 		changeStatus += 1;
 
 		for (int i = 0; i < getCoin().size(); i++)

@@ -1,7 +1,7 @@
 #include "SwordKnight.h"
 #include "Defines.h"
-
-
+#include "SimpleAudioEngine.h"
+using namespace CocosDenshion;
 SwordKnight::SwordKnight()
 {
 }
@@ -70,12 +70,14 @@ void SwordKnight::die()
 	{
 		mSprite->stopAllActions();
 		setAnimation(NAME_PLIST_SWORDKNIGHT_DIE, NAME_PNG_SWORDKNIGHT_DIE, COUNT_IMG_SWORDKNIGHT_DIE, mSpeed, 1);
+		CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SFX_HERO_DIED, false, 1.0f, 1.0f, 1.0f);
 		changeStatus += 2;
 	}
 	if (changeStatus == 2)
 	{
 		mSprite->stopAllActions();
 		setAnimation(NAME_PLIST_SWORDKNIGHT_DIE, NAME_PNG_SWORDKNIGHT_DIE, COUNT_IMG_SWORDKNIGHT_DIE, mSpeed, 1);
+		CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SFX_HERO_DIED, false, 1.0f, 1.0f, 1.0f);
 		changeStatus += 1;
 	}
 	setPos(getPos() - cocos2d::Vec2(0, 1));

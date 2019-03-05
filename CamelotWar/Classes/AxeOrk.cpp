@@ -1,6 +1,7 @@
 #include "AxeOrk.h"
 #include "Defines.h"
-
+#include "SimpleAudioEngine.h"
+using namespace CocosDenshion;
 AxeOrk::AxeOrk()
 {
 }
@@ -57,6 +58,7 @@ void AxeOrk::die()
 	{
 		mSprite->stopAllActions();
 		setAnimation(NAME_PLIST_AXEORK_DIE, NAME_PNG_AXEORK_DIE, COUNT_IMG_AXEORK_DIE, mSpeed, 1);
+		CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SFX_MONSTER_DIED, false, 1.0f, 1.0f, 1.0f);
 		changeStatus += 2;
 
 		for (int i = 0; i < getCoin().size(); i++)
@@ -77,6 +79,7 @@ void AxeOrk::die()
 	{
 		mSprite->stopAllActions();
 		setAnimation(NAME_PLIST_AXEORK_DIE, NAME_PNG_AXEORK_DIE, COUNT_IMG_AXEORK_DIE, mSpeed, 1);
+		CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SFX_MONSTER_DIED, false, 1.0f, 1.0f, 1.0f);
 		changeStatus += 1;
 
 		for (int i = 0; i < getCoin().size(); i++)
@@ -103,6 +106,7 @@ void AxeOrk::collision()
 	if (mSprite->getBoundingBox().intersectsRect(mCastle->getSprite()->getBoundingBox()))
 	{
 		mCheckAtk = true;
+		CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SFX_MONSTER_DIED, false, 1.0f, 1.0f, 1.0f);
 	}
 }
 

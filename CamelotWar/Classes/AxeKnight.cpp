@@ -1,7 +1,7 @@
 #include "AxeKnight.h"
 #include "Defines.h"
-
-
+#include "SimpleAudioEngine.h"
+using namespace CocosDenshion;
 AxeKnight::AxeKnight()
 {
 }
@@ -43,6 +43,7 @@ void AxeKnight::collision()
 		if (mListMonsters[i]->getSprite()->getBoundingBox().intersectsRect(mSprite->getBoundingBox()) &&
 			mListMonsters[i]->getAlive() == 1)
 		{
+			CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SFX_STABBE, false, 1.0f, 1.0f, 1.0f);
 			mCheckAtk = true;
 			check = true;
 			break;
@@ -89,12 +90,14 @@ void AxeKnight::die()
 	{
 		mSprite->stopAllActions();
 		setAnimation(NAME_PLIST_AXEKNIGHT_DIE, NAME_PNG_AXEKNIGHT_DIE, COUNT_IMG_AXEKNIGHT_DIE, mSpeed, 1);
+		CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SFX_HERO_DIED, false, 1.0f, 1.0f, 1.0f);
 		changeStatus += 2;
 	}
 	if (changeStatus == 2)
 	{
 		mSprite->stopAllActions();
 		setAnimation(NAME_PLIST_AXEKNIGHT_DIE, NAME_PNG_AXEKNIGHT_DIE, COUNT_IMG_AXEKNIGHT_DIE, mSpeed, 1);
+		CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SFX_HERO_DIED, false, 1.0f, 1.0f, 1.0f);
 		changeStatus += 1;
 	}
 	

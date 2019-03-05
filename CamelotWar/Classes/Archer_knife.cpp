@@ -1,7 +1,8 @@
 #include "Archer_knife.h"
 #include "Defines.h"
 #include "Character.h"
-
+#include "SimpleAudioEngine.h"
+using namespace CocosDenshion;
 Archer_knife::Archer_knife()
 {
 }
@@ -97,6 +98,7 @@ void Archer_knife::collision()
 		{
 			if (mListMonsters[i]->getSprite()->getBoundingBox().intersectsRect(knifes[j]->getSprite()->getBoundingBox()))
 			{
+				CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SFX_STABBE, false, 1.0f, 1.0f, 1.0f);
 				mListMonsters[i]->deCreaseHP(100);
 				knifes[j]->setVisible(false);
 				knifes[j]->setPos(cocos2d::Vec2(getPos().x, getPos().y));

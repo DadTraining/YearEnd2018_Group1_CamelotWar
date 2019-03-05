@@ -235,3 +235,12 @@
 #define GAME_OVER "popUpSetting/gameover.png"
 #define YES "popUpSetting/yes.png"
 #define NO "popUpSetting/no.png"
+
+// music for game
+#define BGM_MUSIC "Audio/backgroundMusic.wav"
+#define SFX_ARCHERY "Audio/Attack/archery.mp3"
+#define SFX_HIT "Audio/Attack/hit.mp3"
+#define SFX_MAGIC "Audio/Attack/magic.mp3"
+#define SFX_STABBE "Audio/Attack/stabbe.mp3"
+#define SFX_HERO_DIED "Audio/Die/heroDied.wav"
+#define SFX_MONSTER_DIED "Audio/Die/monsterDied.wav"

@@ -1,6 +1,7 @@
 #include "Troll.h"
 #include "Defines.h"
-
+#include "SimpleAudioEngine.h"
+using namespace CocosDenshion;
 Troll::Troll()
 {
 }
@@ -47,6 +48,7 @@ void Troll::attack()
 	{
 		mSprite->stopAllActions();	
 		setAnimation(NAME_PLIST_TROLL_ATK, NAME_PNG_TROLL_ATK, COUNT_IMG_TROLL_ATK, mSpeed, 0);
+		CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SFX_HIT, false, 1.0f, 1.0f, 1.0f);
 		changeStatus++;
 	}
 	int a = (COUNT_IMG_TROLL_ATK * FPS) / mSpeed ;
@@ -64,6 +66,7 @@ void Troll::die()
 	{
 		mSprite->stopAllActions();
 		setAnimation(NAME_PLIST_TROLL_DIE, NAME_PNG_TROLL_DIE, COUNT_IMG_TROLL_DIE, mSpeed, 1);
+		CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SFX_MONSTER_DIED, false, 1.0f, 1.0f, 1.0f);
 		changeStatus+= 2;
 
 		for (int i = 0; i < getCoin().size(); i++)
@@ -85,6 +88,7 @@ void Troll::die()
 	{
 		mSprite->stopAllActions();
 		setAnimation(NAME_PLIST_TROLL_DIE, NAME_PNG_TROLL_DIE, COUNT_IMG_TROLL_DIE, mSpeed, 1);
+		CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SFX_MONSTER_DIED, false, 1.0f, 1.0f, 1.0f);
 		changeStatus += 1;
 
 		for (int i = 0; i < getCoin().size(); i++)
