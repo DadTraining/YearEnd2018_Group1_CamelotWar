@@ -1,7 +1,7 @@
 #pragma once
 #include "Character.h"
-class AxeOrk :
-	public Character
+
+class AxeOrk :public Character
 {
 public:
 	AxeOrk();
@@ -12,9 +12,9 @@ public:
 	void attack() override;
 	void die() override;
 
+	void collision();
 	void update();
 	void init();
 private:
-	int changeStatus;
 	int countFrame = 0;
 };

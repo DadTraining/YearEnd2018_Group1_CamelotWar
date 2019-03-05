@@ -27,7 +27,8 @@ void Character::deCreaseHP(int hp)
 
 void Character::reBorn()
 {
-	setPos(cocos2d::Vec2(getPos().x, SCREEN_H / 3-30));
+	mSprite->setAnchorPoint(cocos2d::Vec2(0.5, 0));
+	setPos(cocos2d::Vec2(getPos().x, SCREEN_H / 3 - mSprite->getContentSize().height));
 	mloadingHpBar->setPercent(100);
 	mAlive = 1;
 
@@ -47,8 +48,17 @@ void Character::init()
 	mloadingHpBar->setDirection(cocos2d::ui::LoadingBar::Direction::LEFT);
 	mloadingHpBar->setPercent(100);
 
-	mHpBar->setVisible(false);
+	setVisibleHP(false);
+
 	mAppear = false;
+	mCheckAtk = false;
+
+}
+
+void Character::setVisibleHP(bool visible)
+{
+	mHpBar->setVisible(visible);
+	mloadingHpBar->setVisible(visible);
 }
 
 void Character::setAlive(int alive)
@@ -59,6 +69,11 @@ void Character::setAlive(int alive)
 int Character::getAlive()
 {
 	return mAlive;
+}
+
+void Character::setCastle(Castle * castle)
+{
+	mCastle = castle;
 }
 
 void Character::setAppear(bool appear)

@@ -51,6 +51,7 @@
     <ClCompile Include="..\Classes\TitleScene.cpp" />
     <ClCompile Include="..\Classes\Troll.cpp" />
     <ClCompile Include="main.cpp" />
+
     <ClCompile Include="..\Classes\PopUpLevelUp.cpp" />
     <ClCompile Include="..\Classes\PopUpGameOver.cpp" />
   </ItemGroup>

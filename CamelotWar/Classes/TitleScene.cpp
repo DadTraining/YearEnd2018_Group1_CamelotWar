@@ -38,6 +38,7 @@ bool TitleScene::init()
 	Play->setPosition(Vec2(SCENE_TITLE_PLAY_W, SCENE_TITLE_PLAY_H));
 	
 	// Create exit item
+
 	auto Exit = MenuItemImage::create(SCENE_TITLE_PNG_EXIT, SCENE_TITLE_PNG_EXIT_SELECTED, CC_CALLBACK_1(TitleScene::menuCloseCallback, this));
 	Exit->setPosition(Vec2(SCENE_TITLE_EXIT_W, SCENE_TITLE_EXIT_H));
 
@@ -49,7 +50,6 @@ bool TitleScene::init()
 	auto Menu = Menu::create(Play, Setting, Exit , NULL);
 	Menu->setPosition(Vec2::ZERO);
 	addChild(Menu);
-
 	setting = PopUpSetting::create();
 	this->addChild(setting);
 	setting->setVisible(false);
