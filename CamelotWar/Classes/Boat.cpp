@@ -8,13 +8,12 @@ Boat::Boat(cocos2d::Scene *scene)
 	init();
 	scene->addChild(mSprite);
 
-	lableCoin = cocos2d::Label::create();
+	lableCoin = cocos2d::Label::createWithTTF("", FONT_COIN, 20);
 	lableCoin->setTextColor(cocos2d::Color4B::YELLOW);
-	lableCoin->setAnchorPoint(cocos2d::Vec2(0, 1));
-	lableCoin->setPosition(cocos2d::Vec2(30, SCREEN_H - 30));
+	lableCoin->setPosition(cocos2d::Vec2(40, SCREEN_H - 50));
 	scene->addChild(lableCoin,999);
 
-	coin = 500;
+	coin = 300;
 	cocos2d::CCString *tempScore = cocos2d::CCString::createWithFormat("%i", coin);
 	lableCoin->setString(tempScore->getCString());
 } 
@@ -55,6 +54,7 @@ void Boat::collision()
 				mListMonsters[i]->getCoin().at(j)->setPos(cocos2d::Vec2(SCREEN_W, SCREEN_H));
 				mListMonsters[i]->getCoin().at(j)->setDynamic(false);
 				mListMonsters[i]->getCoin().at(j)->setCheckFall(false);
+				mListMonsters[i]->getCoin().at(j)->CoinPriceFly(mListMonsters[i]->getPrice(),cocos2d::Vec2(getPos().x,getPos().y + mSprite->getContentSize().height/2));
 			}
 		}
 	}
@@ -99,7 +99,7 @@ void Boat::BoatTouchMoved(cocos2d::Touch * touch, cocos2d::Event * event)
 	else {
 		mSprite->setFlipX(true);
 	}
-	if (touch->getLocation().x <= SCREEN_W - 100 && touch->getLocation().x > 0)
+	if (touch->getLocation().x <= SCREEN_W - 100 && touch->getLocation().x > mSprite->getContentSize().width/2)
 	{
 		setPos(cocos2d::Vec2(touch->getLocation().x, BOAT_MIN_POSITION_Y));
 	}

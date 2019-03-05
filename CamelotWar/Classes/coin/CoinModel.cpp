@@ -1,5 +1,6 @@
 #include "CoinModel.h"
 #include "DefineCoin.h"
+#include "Defines.h"
 #include "utils/animation/GetAnimation.h"
 #include "utils/physics/CustomPhysicsBody.h"
 
@@ -7,6 +8,7 @@ CoinModel::CoinModel(cocos2d::Scene* scene) : Model()
 {
     init();
     scene->addChild(mSprite, 5);
+	scene->addChild(lable, 100000);
 }
 
 CoinModel::CoinModel(cocos2d::Node* node) : Model()
@@ -41,7 +43,20 @@ void CoinModel::init()
         mSprite->setPhysicsBody(mPhysicsBody);
     }
 
+	lable = cocos2d::Label::createWithTTF("", FONT_COIN, 20);
+	lable->setTextColor(cocos2d::Color4B::YELLOW);
 	mCheckFall = false;
+}
+
+void CoinModel::CoinPriceFly(int price , cocos2d::Vec2 pos)
+{
+	cocos2d::CCString *tempScore = cocos2d::CCString::createWithFormat("+ %i", price);
+	lable->setString(tempScore->getCString());
+	lable->setPosition(pos);
+	auto moveUp = cocos2d::MoveBy::create(1, cocos2d::Vec2(0, 100));
+	auto FadeOut = cocos2d::FadeOut::create(1);
+	auto sequence = cocos2d::Sequence::create(moveUp, FadeOut, nullptr);
+	lable->runAction(sequence);
 }
 
 void CoinModel::update()

@@ -55,6 +55,10 @@ bool HelloWorld::init()
 	background->setPosition(cocos2d::Vec2(SCREEN_W / 2, SCREEN_H / 2));
 	addChild(background);
 
+	popupSetting = PopUpSetting::create();
+	this->addChild(popupSetting, 3);
+	popupSetting->setVisible(false);
+
 	auto listener = EventListenerTouchOneByOne::create();
 	listener->setSwallowTouches(true);
 	listener->onTouchBegan = CC_CALLBACK_2(HelloWorld::onTouchBegan, this);
@@ -63,23 +67,95 @@ bool HelloWorld::init()
 	getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 
 	countFrame = 0;
-
+	indexCharacter = -1;
 	boat = new Boat(this);
 	boat->setListMonster(mListMonsters);
 
 	mCastle = new Castle(this);
 
 	check = 0;
+	checkUpdate = true;
+	checkAppearMonster = false;
 
-	createMonster();
+	level = 1;
+	monsterOfLevel(level);
 
 	createIconHero();
+
+	createButtonSettings();
 
 	createPedestal();
 	
 	scheduleUpdate();
 
     return true;
+}
+
+void HelloWorld::createButtonSettings()
+{
+	mSetting = cocos2d::ui::Button::create("setting.png");
+	mNext = cocos2d::ui::Button::create("next.png");
+	mPause = cocos2d::ui::Button::create("pause.png");
+
+	mSetting->setAnchorPoint(cocos2d::Vec2(1, 1));
+	mNext->setAnchorPoint(cocos2d::Vec2(1, 1));
+	mPause->setAnchorPoint(cocos2d::Vec2(1, 1));
+
+	mSetting->setPosition(cocos2d::Vec2(SCREEN_W, SCREEN_H));
+	mNext->setPosition(cocos2d::Vec2(mSetting->getPosition().x - mSetting->getContentSize().width, SCREEN_H));
+	mPause->setPosition(cocos2d::Vec2(mSetting->getPosition().x - mSetting->getContentSize().width, SCREEN_H));
+	
+	mPause->setVisible(false);
+	
+	
+	mSetting->addTouchEventListener([=](Ref* sender, cocos2d::ui::Widget::TouchEventType type) {
+		switch (type)
+		{
+		case ui::Widget::TouchEventType::BEGAN:
+			break;
+		case ui::Widget::TouchEventType::ENDED:
+			popupSetting->setVisible(true);
+			checkUpdate = false;
+			break;
+		default:
+			break;
+		}
+	});
+
+	mNext->addTouchEventListener([=](Ref* sender, cocos2d::ui::Widget::TouchEventType type) {
+		switch (type)
+		{
+		case ui::Widget::TouchEventType::BEGAN:
+			break;
+		case ui::Widget::TouchEventType::ENDED:
+			mPause->setVisible(true);
+			mNext->setVisible(false);
+			checkAppearMonster = true;
+			//checkUpdate = true;
+			break;
+		default:
+			break;
+		}
+	});
+
+	mPause->addTouchEventListener([=](Ref* sender, cocos2d::ui::Widget::TouchEventType type) {
+		switch (type)
+		{
+		case ui::Widget::TouchEventType::BEGAN:
+			break;
+		case ui::Widget::TouchEventType::ENDED:
+			checkUpdate = false;
+			mNext->setVisible(true);
+			mPause->setVisible(false);
+			break;
+		default:
+			break;
+		}
+	});
+
+	addChild(mSetting);
+	addChild(mNext);
+	addChild(mPause);
 }
 
 bool HelloWorld::onTouchBegan(cocos2d::Touch * touch, cocos2d::Event * event)
@@ -98,6 +174,8 @@ bool HelloWorld::onTouchBegan(cocos2d::Touch * touch, cocos2d::Event * event)
 					archer->setListMonster(mListMonsters);
 					archer->setListPedestal(mListPedestal);
 					archer->setPosAll(touch->getLocation());
+					archer->setvisibleRange(true);
+					archer->setPosRange();
 					mListCharacters.push_back(archer);
 					check = 1;
 					boat->setcoin(boat->getcoin() - 100);
@@ -201,17 +279,19 @@ bool HelloWorld::onTouchBegan(cocos2d::Touch * touch, cocos2d::Event * event)
 		check = 2;
 		return true;
 	}
+	else if (touchMonster(touch))
+	{
+		return true;
+	}
+	else if (touchCharacter(touch))
+	{
+		return true;
+	}
 	else
 	{
-		if (touchCharacter(touch))
-		{ 
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return false;
 	}
+	
 }
 
 void HelloWorld::onTouchMoved(cocos2d::Touch * touch, cocos2d::Event * event)
@@ -219,6 +299,7 @@ void HelloWorld::onTouchMoved(cocos2d::Touch * touch, cocos2d::Event * event)
 	if (check == 1)
 	{
 		mListCharacters[mListCharacters.size() - 1]->setPos(touch->getLocation());
+		mListCharacters[mListCharacters.size() - 1]->setPosRange();
 	}
 	if (check == 2)
 	{
@@ -232,14 +313,20 @@ void HelloWorld::onTouchEnded(cocos2d::Touch * touch, cocos2d::Event * event)
 	{
 		mListCharacters[mListCharacters.size() - 1]->setAlive(1);
 		mListCharacters[mListCharacters.size() - 1]->setcheckAppear(false);
+		mListCharacters[mListCharacters.size() - 1]->setvisibleRange(false);
 	}
 	if(check > 2)
 	{ 
 		mListMonsters[check -3]->setVisibleHP(false);
 	}
+	if (indexCharacter != -1)
+	{
+		mListCharacters[indexCharacter]->setvisibleRange(false);
+		indexCharacter = -1;
+	}
 }
 
-bool HelloWorld::touchCharacter(cocos2d::Touch * touch)
+bool HelloWorld::touchMonster(cocos2d::Touch * touch)
 {
 	for (int  i = 0; i < mListMonsters.size(); i++)
 	{
@@ -259,6 +346,24 @@ bool HelloWorld::touchCharacter(cocos2d::Touch * touch)
 	{
 		return false;
 	}
+}
+
+bool HelloWorld::touchCharacter(cocos2d::Touch * touch)
+{
+	for (int  i = 0; i < mListCharacters.size(); i++)
+	{
+		if (mListCharacters[i]->getSprite()->getBoundingBox().containsPoint(touch->getLocation()))
+		{
+			mListCharacters[i]->setvisibleRange(true);
+			indexCharacter = i;
+			return true;
+		}
+	}
+	if (indexCharacter == -1)
+	{
+		return false;
+	}
+
 }
 
 void HelloWorld::createIconHero()
@@ -285,19 +390,43 @@ void HelloWorld::createIconHero()
 	}
 }
 
-void HelloWorld::createMonster()
+void HelloWorld::createMonster(int trolls, int hammerOrks, int hammerTrolls,int boneTrolls, int swordOrks, int axeOrks)
 {
-	for (int i = 0; i < 15; i++)
+	for (int i = 0; i < trolls; i++)
 	{
 		Troll *troll = new Troll(this);
 		troll->setCastle(mCastle);
 		mListMonsters.push_back(troll);
 	}
-	for (int i = 0; i < 0; i++)
+	for (int i = 0; i < hammerOrks; i++)
 	{
 		HammerOrk *hammerOrk = new HammerOrk(this);
 		hammerOrk->setCastle(mCastle);
 		mListMonsters.push_back(hammerOrk);
+	}
+	for (int i = 0; i < hammerTrolls; i++)
+	{
+		HammerTroll *hammerTroll = new HammerTroll(this);
+		hammerTroll->setCastle(mCastle);
+		mListMonsters.push_back(hammerTroll);
+	}
+	for (int i = 0; i < boneTrolls; i++)
+	{
+		BoneTroll *boneTroll = new BoneTroll(this);
+		boneTroll->setCastle(mCastle);
+		mListMonsters.push_back(boneTroll);
+	}
+	for (int i = 0; i < swordOrks; i++)
+	{
+		SwordOrk *swordOrk = new SwordOrk(this);
+		swordOrk->setCastle(mCastle);
+		mListMonsters.push_back(swordOrk);
+	}
+	for (int i = 0; i < axeOrks; i++)
+	{
+		AxeOrk *axeOrk = new AxeOrk(this);
+		axeOrk->setCastle(mCastle);
+		mListMonsters.push_back(axeOrk);
 	}
 	for (int  i = 0; i < mListMonsters.size(); i++)
 	{
@@ -313,6 +442,7 @@ void HelloWorld::createPedestal()
 
 	auto pedestal2 = new Pedestal(this);
 	mListPedestal.push_back(pedestal2);
+	pedestal2->setBuffATK(2);
 	pedestal2->setPos(cocos2d::Vec2(250, 500));
 
 	auto pedestal3 = new Pedestal(this);
@@ -321,6 +451,7 @@ void HelloWorld::createPedestal()
 
 	auto pedestal4 = new Pedestal(this);
 	mListPedestal.push_back(pedestal4);
+	pedestal4->setBuffRange(2);
 	pedestal4->setPos(cocos2d::Vec2(650, 600));
 
 	auto pedestal5 = new Pedestal(this);
@@ -329,6 +460,7 @@ void HelloWorld::createPedestal()
 
 	auto pedestal6 = new Pedestal(this);
 	mListPedestal.push_back(pedestal6);
+	pedestal6->setBuffSpeed(2);
 	pedestal6->setPos(cocos2d::Vec2(1050, 530));
 }
 
@@ -357,12 +489,25 @@ void HelloWorld::checkDuplicate()
 
 void HelloWorld::update(float delta)
 {
+	if (checkUpdate)
+	{
+		myUpdate();
+	}
+	if (!popupSetting->isVisible() && mPause->isVisible())
+	{
+		checkUpdate = true;
+	}
+}
+
+void HelloWorld::myUpdate()
+{
 	countFrame += 1;
 	for (int i = 0; i < mListCharacters.size(); i++)
 	{
 		if (mListCharacters[i]->getAlive() == 1)
 		{
 			mListCharacters[i]->update();
+			mListCharacters[i]->setPosRange();
 		}
 		if (mListCharacters[i]->getAlive() == 2 && !mListCharacters[i]->getAppear())
 		{
@@ -372,33 +517,74 @@ void HelloWorld::update(float delta)
 		}
 	}
 
-	if (countFrame % (FPS) == 0)
+	if (checkAppearMonster)
 	{
-		for (int i = 0; i < mListMonsters.size(); i++)	
+		if (countFrame % (FPS) == 0)
 		{
-			if (mListMonsters[i]->getAppear() == false)
+			for (int i = 0; i < mListMonsters.size(); i++)
 			{
-				mListMonsters[i]->setAppear(true);
-				countFrame = 0;
-				break;
+				if (mListMonsters[i]->getAppear() == false)
+				{
+					mListMonsters[i]->setAppear(true);
+					countFrame = 0;
+					break;
+				}
+			}
+		}
+
+		for (int i = 0; i < mListMonsters.size(); i++)
+		{
+			if (mListMonsters[i]->getAppear() == true)
+			{
+				mListMonsters[i]->update();
 			}
 		}
 	}
-
-	for (int i = 0; i < mListMonsters.size(); i++)
-	{
-		if (mListMonsters[i]->getAppear() == true)
-		{
-			mListMonsters[i]->update();
-		}
-	}
-
 	boat->update();
 	boat->setListMonster(mListMonsters);
 	checkDuplicate();
 
 	if (mCastle->getLoadingbar()->getPercent() == 0)
 	{
-		Director::getInstance()->pause();
+		checkUpdate = false;
+	}
+}
+
+void HelloWorld::monsterOfLevel(int level)
+{
+	switch (level)
+	{
+	case 1:
+	{
+		mListMonsters.erase(mListMonsters.begin(), mListMonsters.end());
+		createMonster(3, 3, 0, 0, 0, 0);
+		break;
+	}
+	case 2:
+	{
+		mListMonsters.erase(mListMonsters.begin(), mListMonsters.end());
+		createMonster(5, 0, 3, 0, 0, 0);
+		break;
+	}
+	case 3:
+	{
+		mListMonsters.erase(mListMonsters.begin(), mListMonsters.end());
+		createMonster(5,0,4,2,0,0);
+		break;
+	}
+	case 4:
+	{
+		mListMonsters.erase(mListMonsters.begin(), mListMonsters.end());
+		createMonster(3, 5, 3, 0, 2, 0);
+		break;
+	}
+	case 5:
+	{
+		mListMonsters.erase(mListMonsters.begin(), mListMonsters.end());
+		createMonster(0, 5, 0, 4, 4, 0);
+		break;
+	}
+	default:
+		break;
 	}
 }

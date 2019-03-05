@@ -22,7 +22,7 @@ Castle::Castle(cocos2d::Scene * scene)
 
 	mloadingHpBar = cocos2d::ui::LoadingBar::create("loading2.png");
 	mloadingHpBar->setAnchorPoint(cocos2d::Vec2(0, 1));
-	mloadingHpBar->setPosition(cocos2d::Vec2(80, SCREEN_H-8));
+	mloadingHpBar->setPosition(cocos2d::Vec2(80, SCREEN_H));
 
 	scene->addChild(mloadingHpBar);
 	init();

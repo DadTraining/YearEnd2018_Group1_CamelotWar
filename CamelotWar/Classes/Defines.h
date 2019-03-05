@@ -3,7 +3,7 @@
 #define FPS 50
 #define MONSTER_APPEAR -50
 #define BACKGROUND_PLAYSCENE "ScenePlay/backgroundmains.png"
-
+#define FONT_COIN "fonts/StencilStd.otf"
 
 // troll
 #define NAME_PLIST_TROLL_ATK "images/TROLL/ATTACK/1_TROLL_ATTACK.plist"

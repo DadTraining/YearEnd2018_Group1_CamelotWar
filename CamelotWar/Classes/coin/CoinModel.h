@@ -9,6 +9,7 @@ class CoinModel : public Model
 private:
 	cocos2d::PhysicsBody* mPhysicsBody;
     cocos2d::Vector<cocos2d::SpriteFrame*> mSpriteFrames;
+	cocos2d::Label* lable;
 	bool mCheckFall;
 
 public:
@@ -24,5 +25,6 @@ public:
 	bool getCheckFall();
 		
     void init() override;
+	void CoinPriceFly(int price, cocos2d::Vec2 pos);
 	void update() override;
 };

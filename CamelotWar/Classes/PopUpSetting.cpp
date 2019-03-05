@@ -22,6 +22,8 @@ bool PopUpSetting::init()
 	mBgm->setPosition(Vec2(-mBackground->getContentSize().width / 4, -mBgm->getContentSize().height * 0.75));
 	mLayer->addChild(mBgm);
 
+	mVisible = true;
+
 	////////////////
 	//Add slider of mBgm and mSfx
 	sliderBGM();
@@ -42,6 +44,7 @@ bool PopUpSetting::init()
 		case cocos2d::ui::Widget::TouchEventType::ENDED:
 			disappear();
 			mLayer->setVisible(false);
+			mVisible = false;
 			break;
 		}
 	});
@@ -102,5 +105,11 @@ void PopUpSetting::sliderSFX()
 void PopUpSetting::setVisible(bool visible)
 {
 	mLayer->setVisible(visible);
+	mVisible = visible;
+}
+
+bool PopUpSetting::isVisible()
+{
+	return mVisible;
 }
 
