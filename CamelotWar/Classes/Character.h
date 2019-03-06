@@ -5,6 +5,9 @@
 #include "ui/CocosGUI.h"
 #include "Castle.h"
 #include "coin/CoinModel.h"
+#include "SimpleAudioEngine.h"
+using namespace CocosDenshion;
+
 
 class Character : public Model
 {
@@ -20,12 +23,22 @@ public:
 	void setVisibleCoin(bool visible, int i);
 	void setCastle(Castle *castle);
 	void setAppear(bool appear);
+	bool getCheckFallDone();
+	void setCheckFallDone(bool check);
 	void setPosHp(cocos2d::Vec2 pos);
 	void setPosAll(cocos2d::Vec2 pos);
 	void setPosRange();
+	void levleUp();
+	void setLevle(int lv);
+	int getpriceToUpLv();
+
+	void setStarOfHero();
+
+	virtual void setListMonster(std::vector<Character*> listMonsters) = 0;
 	
 	int getAlive();
 	int getPrice();
+	int getLvOfHero();
 	
 	bool getAppear();
 	bool getcheckAppear();
@@ -54,10 +67,14 @@ protected:
 	int mAlive;
 	int countFrame;
 	int changeStatus;
+	int lvOfHero;
+	int priceToUpLv;
+
 	bool mAppear;
 	bool mCheckAtk;
 	bool checkAppear;
 	bool checkBuff;
+	bool checkFallDone;
 	Castle * mCastle;
 	std::vector<CoinModel *> coins;
 	cocos2d::Sprite* mHpBar;
@@ -65,4 +82,5 @@ protected:
 	cocos2d::ui::LoadingBar * mloadingHpBar;
 	cocos2d::Sprite * mRangeLeft;
 	cocos2d::Sprite * mRangeRight;
+	cocos2d::Sprite * mStarOfHero;
 };

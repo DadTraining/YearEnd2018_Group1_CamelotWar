@@ -168,11 +168,13 @@ void Archer::update()
 
 void Archer::init()
 {
-	mFrameCount = 0;
-	mSpeed = 10;
+	mSpeed = 20;
 	mRange = 100;
-	mDamage = 30;
+	mDamage = 15;
 	mPrice = 100;
+	priceToUpLv = 100;
+
+	mFrameCount = 0;
 	changeStatus = 0;
 	hasAnimated = false;
 	// setAnimation(NAME_PLIST_ARCHER_ATTACK, NAME_PNG_ARCHER_ATTACK, COUNT_IMG_ARCHER_ATTACK, mSpeed, 0);
@@ -184,6 +186,7 @@ void Archer::collisionWithPedestal()
 	{
 		if (mListPedestals[i]->getSprite()->getBoundingBox().intersectsRect(mSprite->getBoundingBox()))
 		{
+
 			mAppear = true;
 			mSprite->setAnchorPoint(cocos2d::Vec2(0.5, 0));
 			setPos(cocos2d::Vec2(getPos().x, mListPedestals[i]->getPos().y +mListPedestals[i]->getSprite()->getContentSize().height/2 - 10));

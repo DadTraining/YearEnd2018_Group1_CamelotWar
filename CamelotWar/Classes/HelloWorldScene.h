@@ -8,6 +8,8 @@
 #include "Castle.h"
 #include "PopUpSetting.h"
 #include <vector>
+#include "SimpleAudioEngine.h"
+using namespace CocosDenshion;
 
 class HelloWorld : public cocos2d::Scene
 {
@@ -25,6 +27,8 @@ public:
 	bool touchMonster(cocos2d::Touch * touch);
 
 	bool touchCharacter(cocos2d::Touch * touch);
+
+	void createHero();
 	
 	void createIconHero();
 
@@ -37,6 +41,8 @@ public:
 	void update(float delta);
 
 	void myUpdate();
+
+	void removeAllMonster();
 
 	void monsterOfLevel(int level);
 
@@ -51,6 +57,8 @@ private:
 	cocos2d::ui::Button * mNext;
 	cocos2d::ui::Button * mPause;
 	cocos2d::ui::Button * mSetting;
+	cocos2d::ui::Button * mBtUpHero;
+	cocos2d::Sprite * mWinAndLose;
 
 	PopUpSetting * popupSetting;
 

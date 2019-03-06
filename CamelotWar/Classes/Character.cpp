@@ -25,6 +25,7 @@ Character::Character(cocos2d::Scene * scene)
 	scene->addChild(mRangeRight);
 	scene->addChild(mHpBar);
 	scene->addChild(mloadingHpBar);
+	scene->addChild(mStarOfHero,9999);
 }
 
 void Character::deCreaseHP(int hp)
@@ -42,9 +43,9 @@ void Character::reBorn()
 	setPos(cocos2d::Vec2(getPos().x, SCREEN_H / 3 - mSprite->getContentSize().height));
 	mloadingHpBar->setPercent(100);
 	mAlive = 1;
-	mDamage = mDamage * 2 ;
+	/*mDamage = mDamage * 2 ;
 	mHP = mHP + 100;
-	mSpeed = mSpeed * 2 ;
+	mSpeed = mSpeed * 2 ;*/
 	mSprite->runAction(sequence);
 	if (mPhysicsBody != nullptr)
 	{
@@ -64,6 +65,63 @@ void Character::setPosRange()
 	mRangeRight->setPosition(cocos2d::Vec2(getPos().x + mRange, SCREEN_H / 3 - 85));
 }
 
+void Character::levleUp()
+{
+	lvOfHero += 1;
+	switch (lvOfHero)
+	{
+	case 0:
+	{
+		break;
+	}
+	case 1:
+	{
+		priceToUpLv += 50;
+		mDamage = mDamage + 10;
+		mSpeed = mSpeed + 1;
+		mRange = mRange + 20;
+		mStarOfHero->setTexture("Star/1star.png");
+		break;
+	}
+	case 2:
+	{
+		priceToUpLv += 100;
+		mDamage = mDamage +10;
+		mSpeed = mSpeed + 2;
+		mRange = mRange + 30;
+		mStarOfHero->setTexture("Star/2star.png");
+		break;
+	}
+	case 3:
+	{
+		mDamage = mDamage + 20;
+		mSpeed = mSpeed + 2;
+		mRange = mRange + 20;
+		mStarOfHero->setTexture("Star/3star.png");
+		break;
+	}
+	default:
+		break;
+	}
+
+	//mStarOfHero->setPosition(cocos2d::Vec2(200,300));
+	mStarOfHero->setPosition(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height + 10));
+}
+
+void Character::setLevle(int lv)
+{
+	lvOfHero = lv;
+}
+
+int Character::getpriceToUpLv()
+{
+	return priceToUpLv;
+}
+
+void Character::setStarOfHero()
+{
+}
+
 void Character::init()
 {
 	mHpBar = cocos2d::Sprite::create("loading_bg.png");
@@ -81,6 +139,8 @@ void Character::init()
 	mAppear = false;
 	mCheckAtk = false;
 	checkBuff = false;
+	checkFallDone = false;
+	lvOfHero = 0;
 
 	//range hero
 	mRangeLeft = cocos2d::Sprite::create("range.png");
@@ -88,6 +148,9 @@ void Character::init()
 	mRangeLeft->setAnchorPoint(cocos2d::Vec2(0.5, 0));
 	mRangeRight->setAnchorPoint(cocos2d::Vec2(0.5, 0));
 	setvisibleRange(false);
+
+	//star of hero
+	mStarOfHero = cocos2d::Sprite::create();
 }
 
 std::vector<CoinModel*> Character::getCoin()
@@ -98,6 +161,11 @@ std::vector<CoinModel*> Character::getCoin()
 int Character::getPrice()
 {
 	return mPrice;
+}
+
+int Character::getLvOfHero()
+{
+	return lvOfHero;
 }
 
 void Character::setVisibleCoin(bool visible , int i)
@@ -129,6 +197,16 @@ void Character::setCastle(Castle * castle)
 void Character::setAppear(bool appear)
 {
 	mAppear = appear;
+}
+
+bool Character::getCheckFallDone()
+{
+	return checkFallDone;
+}
+
+void Character::setCheckFallDone(bool check)
+{
+	checkFallDone = check;
 }
 
 bool Character::getAppear()

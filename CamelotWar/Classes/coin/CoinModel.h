@@ -17,6 +17,8 @@ public:
     CoinModel(cocos2d::Node* node);
     ~CoinModel();
 
+	void removeCoin();
+
 	void PushCoin(cocos2d::Vec2 velocity);
 
 	void setDynamic(bool dynamic);

@@ -25,6 +25,7 @@ bool TitleScene::init()
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
+	loadMusic();
 	auto background = Sprite::create(SCENE_TITLE_PNG_BACKGROUND);
 	background->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
 	background->setContentSize(visibleSize);
@@ -58,6 +59,20 @@ bool TitleScene::init()
 	scheduleUpdate();
 	return true;
 }
+void TitleScene::loadMusic()
+{
+	mBGM = CocosDenshion::SimpleAudioEngine::getInstance();
+	mBGM->preloadBackgroundMusic(BGM_MUSIC);
+	mBGM->playBackgroundMusic(BGM_MUSIC, true);
+	mSFX = CocosDenshion::SimpleAudioEngine::getInstance();
+	mSFX->preloadEffect(SFX_ARCHERY);
+	mSFX->preloadEffect(SFX_MAGIC);
+	mSFX->preloadEffect(SFX_STABBE);
+	mSFX->preloadEffect(SFX_HIT);
+	mSFX->preloadEffect(SFX_HERO_DIED);
+	mSFX->preloadEffect(SFX_MONSTER_DIED);
+	mSFX->preloadEffect(SFX_WIN);
+}
 
 void TitleScene::update(float delta)
 {
@@ -67,6 +82,7 @@ void TitleScene::update(float delta)
 
 void TitleScene::menuPlayCallback(Ref* pSender)
 {
+	CocosDenshion::SimpleAudioEngine::getInstance()->stopBackgroundMusic();
 	Director::getInstance()->replaceScene(HelloWorld::createScene());
 }
 

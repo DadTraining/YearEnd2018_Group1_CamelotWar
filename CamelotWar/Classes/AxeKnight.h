@@ -16,7 +16,7 @@ public:
 	void attack() override;
 	void die() override;
 
-	void setListMonster(std::vector<Character*> listMonsters);
+	void setListMonster(std::vector<Character*> listMonsters) override;
 	void collision();
 	void update() override;
 	void init() override;

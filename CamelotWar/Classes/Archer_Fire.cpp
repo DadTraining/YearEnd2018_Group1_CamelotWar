@@ -93,7 +93,7 @@ void Archer_Fire::collision()
 		{
 			if (mListMonsters[i]->getSprite()->getBoundingBox().intersectsRect(fires[j]->getSprite()->getBoundingBox()))
 			{
-				mListMonsters[i]->deCreaseHP(100);
+				mListMonsters[i]->deCreaseHP(mDamage);
 				fires[j]->setVisible(false);
 				fires[j]->setPos(cocos2d::Vec2(getPos().x, getPos().y));
 			}
@@ -162,9 +162,13 @@ void Archer_Fire::update()
 
 void Archer_Fire::init()
 {
-	mFrameCount = 0;
 	mSpeed = 5;
-	mRange = 300;
+	mRange = 150;
+	mDamage = 50;
+	mPrice = 300;
+	priceToUpLv = 300;
+
+	mFrameCount = 0;
 	changeStatus = 0;
 	hasAnimated = false;
 	
@@ -179,6 +183,13 @@ void Archer_Fire::collisionWithPedestal()
 			mAppear = true;
 			mSprite->setAnchorPoint(cocos2d::Vec2(0.5, 0));
 			setPos(cocos2d::Vec2(getPos().x, mListPedestals[i]->getPos().y + mListPedestals[i]->getSprite()->getContentSize().height / 2 - 10));
+			if (!checkBuff)
+			{
+				mDamage = mDamage * mListPedestals[i]->getBuffATK();
+				mSpeed = mSpeed * mListPedestals[i]->getBuffSpeed();
+				mRange = mRange * mListPedestals[i]->getBuffRange();
+				checkBuff = true;
+			}
 			break;
 		}
 	}

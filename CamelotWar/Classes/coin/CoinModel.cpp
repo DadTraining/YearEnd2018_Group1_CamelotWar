@@ -22,6 +22,14 @@ CoinModel::~CoinModel()
     // Destrucltor
 }
 
+void CoinModel::removeCoin()
+{
+	mSprite->removeFromParent();
+	lable->removeFromParent();
+	//delete lable;
+	//delete mSprite;
+}
+
 void CoinModel::init()
 {
     auto getAnimation = GetAnimation::GetInstance();
@@ -43,7 +51,7 @@ void CoinModel::init()
         mSprite->setPhysicsBody(mPhysicsBody);
     }
 
-	lable = cocos2d::Label::createWithTTF("", FONT_COIN, 20);
+	lable = cocos2d::Label::createWithSystemFont("", FONT_COIN, 20);
 	lable->setTextColor(cocos2d::Color4B::YELLOW);
 	mCheckFall = false;
 }

@@ -6,7 +6,6 @@ SwordKnight::SwordKnight()
 {
 }
 
-
 SwordKnight::~SwordKnight()
 {
 }
@@ -55,7 +54,7 @@ void SwordKnight::attack()
 		{
 			if (mListMonsters[i]->getAlive())
 			{
-				mListMonsters[i]->deCreaseHP(100);
+				mListMonsters[i]->deCreaseHP(mDamage);
 				break;
 			}
 		}
@@ -134,13 +133,13 @@ void SwordKnight::update()
 
 void SwordKnight::init()
 {
-	changeStatus = 0;
 	mSpeed = 15;
-	mAlive = 1;
 	mHP = 10000;
-	mPrice = 100;
+	mPrice = 400;
 	mDamage = 500;
-	mRange = 10;
+	
+	mAlive = 1;
+	changeStatus = 0;
 	mAppear = false;
 
 	mSprite->setAnchorPoint(cocos2d::Vec2(0.5, 0));

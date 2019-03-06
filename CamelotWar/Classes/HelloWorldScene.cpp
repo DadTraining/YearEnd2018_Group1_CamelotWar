@@ -50,6 +50,8 @@ bool HelloWorld::init()
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
+	CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SFX_WIN, false);
+
 	auto background = cocos2d::Sprite::create(BACKGROUND_PLAYSCENE);
 	background->setContentSize(visibleSize);
 	background->setPosition(cocos2d::Vec2(SCREEN_W / 2, SCREEN_H / 2));
@@ -66,8 +68,18 @@ bool HelloWorld::init()
 	listener->onTouchEnded = CC_CALLBACK_2(HelloWorld::onTouchEnded, this);
 	getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 
+	mWinAndLose = cocos2d::Sprite::create();
+	addChild(mWinAndLose,9999);
+
+	createIconHero();
+
+	createButtonSettings();
+
+	createPedestal();
+
 	countFrame = 0;
 	indexCharacter = -1;
+
 	boat = new Boat(this);
 	boat->setListMonster(mListMonsters);
 
@@ -80,11 +92,6 @@ bool HelloWorld::init()
 	level = 1;
 	monsterOfLevel(level);
 
-	createIconHero();
-
-	createButtonSettings();
-
-	createPedestal();
 	
 	scheduleUpdate();
 
@@ -131,7 +138,6 @@ void HelloWorld::createButtonSettings()
 			mPause->setVisible(true);
 			mNext->setVisible(false);
 			checkAppearMonster = true;
-			//checkUpdate = true;
 			break;
 		default:
 			break;
@@ -194,6 +200,8 @@ bool HelloWorld::onTouchBegan(cocos2d::Touch * touch, cocos2d::Event * event)
 					archer_knight->setListMonster(mListMonsters);
 					archer_knight->setListPedestal(mListPedestal);
 					archer_knight->setPosAll(touch->getLocation());
+					archer_knight->setvisibleRange(true);
+					archer_knight->setPosRange();
 					mListCharacters.push_back(archer_knight);
 					boat->setcoin(boat->getcoin() - 200);
 					check = 1;
@@ -212,6 +220,8 @@ bool HelloWorld::onTouchBegan(cocos2d::Touch * touch, cocos2d::Event * event)
 					archer_fire->setListMonster(mListMonsters);
 					archer_fire->setListPedestal(mListPedestal);
 					archer_fire->setPosAll(touch->getLocation());
+					archer_fire->setvisibleRange(true);
+					archer_fire->setPosRange();
 					mListCharacters.push_back(archer_fire);
 					boat->setcoin(boat->getcoin() - 300);
 					check = 1;
@@ -354,6 +364,12 @@ bool HelloWorld::touchCharacter(cocos2d::Touch * touch)
 	{
 		if (mListCharacters[i]->getSprite()->getBoundingBox().containsPoint(touch->getLocation()))
 		{
+			if (mListCharacters[i]->getpriceToUpLv() <= boat->getcoin() && mListCharacters[i]->getLvOfHero() < 3)
+			{
+				int newCoin = boat->getcoin() - mListCharacters[i]->getpriceToUpLv();
+				boat->setcoin(newCoin);
+				mListCharacters[i]->levleUp();
+			}
 			mListCharacters[i]->setvisibleRange(true);
 			indexCharacter = i;
 			return true;
@@ -501,7 +517,6 @@ void HelloWorld::update(float delta)
 
 void HelloWorld::myUpdate()
 {
-	countFrame += 1;
 	for (int i = 0; i < mListCharacters.size(); i++)
 	{
 		if (mListCharacters[i]->getAlive() == 1)
@@ -519,6 +534,7 @@ void HelloWorld::myUpdate()
 
 	if (checkAppearMonster)
 	{
+		countFrame += 1;
 		if (countFrame % (FPS) == 0)
 		{
 			for (int i = 0; i < mListMonsters.size(); i++)
@@ -541,13 +557,74 @@ void HelloWorld::myUpdate()
 		}
 	}
 	boat->update();
-	boat->setListMonster(mListMonsters);
 	checkDuplicate();
 
+	//lose
 	if (mCastle->getLoadingbar()->getPercent() == 0)
 	{
 		checkUpdate = false;
+		mNext->setVisible(true);
+		mPause->setVisible(false);
+		mWinAndLose->setTexture(LOSE_SPRITE);
+		mWinAndLose->setPosition(cocos2d::Vec2(SCREEN_W / 2, SCREEN_H / 2));
+		auto FadeIn = cocos2d::FadeIn::create(0.2);
+		mWinAndLose->runAction(FadeIn);
 	}
+
+	int checkLevelUp = 0;
+	for (int i = 0; i < mListMonsters.size(); i++)
+	{
+		if (mListMonsters[i]->getAlive() != 1 && mListMonsters[i]->getCheckFallDone())
+		{
+			checkLevelUp ++;
+		}
+	}
+	if (checkLevelUp == mListMonsters.size() && level < 6)
+	{
+		level += 1;
+		monsterOfLevel(level);
+		mNext->setVisible(true);
+		mPause->setVisible(false);
+		mWinAndLose->setTexture(WIN_SPRITE);
+		mWinAndLose->setPosition(cocos2d::Vec2(SCREEN_W / 2, SCREEN_H / 2));
+		auto FadeOut = cocos2d::FadeOut::create(0.2);
+		auto FadeIn = cocos2d::FadeIn::create(0.2);
+		auto sequence = cocos2d::Sequence::create(FadeOut, FadeIn, FadeOut->clone(), FadeIn->clone(), FadeOut->clone(), nullptr);
+		mWinAndLose->runAction(sequence);
+
+		
+		
+		checkAppearMonster = false;
+	}
+	//readd listmonster in character
+	if (mListCharacters.size() >= 1)
+	{
+		for (int i = 0; i < mListCharacters.size(); i++)
+		{
+			mListCharacters[i]->setListMonster(mListMonsters);
+		}
+	}
+	// win
+	if (level > 5)
+	{
+
+	}
+}
+
+void HelloWorld::removeAllMonster()
+{
+	for (int  i = 0; i < mListMonsters.size(); i++)
+	{
+		if (mListMonsters[i]->getAlive() != 1)
+		{
+			for (int j = 0; j < 3; j++)
+			{
+				mListMonsters[i]->getCoin().at(j)->removeCoin();
+			}
+			mListMonsters[i]->getSprite()->removeFromParent();
+		}
+	}
+	mListMonsters.erase(mListMonsters.begin(), mListMonsters.end());
 }
 
 void HelloWorld::monsterOfLevel(int level)
@@ -556,32 +633,37 @@ void HelloWorld::monsterOfLevel(int level)
 	{
 	case 1:
 	{
-		mListMonsters.erase(mListMonsters.begin(), mListMonsters.end());
+		removeAllMonster();
 		createMonster(3, 3, 0, 0, 0, 0);
+		boat->setListMonster(mListMonsters);
 		break;
 	}
 	case 2:
 	{
-		mListMonsters.erase(mListMonsters.begin(), mListMonsters.end());
+		removeAllMonster();
 		createMonster(5, 0, 3, 0, 0, 0);
+		boat->setListMonster(mListMonsters);
 		break;
 	}
 	case 3:
 	{
-		mListMonsters.erase(mListMonsters.begin(), mListMonsters.end());
+		removeAllMonster();
 		createMonster(5,0,4,2,0,0);
+		boat->setListMonster(mListMonsters);
 		break;
 	}
 	case 4:
 	{
-		mListMonsters.erase(mListMonsters.begin(), mListMonsters.end());
+		removeAllMonster();
 		createMonster(3, 5, 3, 0, 2, 0);
+		boat->setListMonster(mListMonsters);
 		break;
 	}
 	case 5:
 	{
-		mListMonsters.erase(mListMonsters.begin(), mListMonsters.end());
+		removeAllMonster();
 		createMonster(0, 5, 0, 4, 4, 0);
+		boat->setListMonster(mListMonsters);
 		break;
 	}
 	default:

@@ -97,7 +97,8 @@ void Archer_knife::collision()
 		{
 			if (mListMonsters[i]->getSprite()->getBoundingBox().intersectsRect(knifes[j]->getSprite()->getBoundingBox()))
 			{
-				mListMonsters[i]->deCreaseHP(100);
+				//CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SFX_STABBE, false, 1.0f, 1.0f, 1.0f);
+				mListMonsters[i]->deCreaseHP(mDamage);
 				knifes[j]->setVisible(false);
 				knifes[j]->setPos(cocos2d::Vec2(getPos().x, getPos().y));
 			}
@@ -166,10 +167,14 @@ void Archer_knife::update()
 
 void Archer_knife::init()
 {
-	mFrameCount = 0;
-	mSpeed = 5;
-	mRange = 300;
+	mSpeed = 10;
+	mRange = 120;
+	mDamage = 30;
+	mPrice = 200;
+	priceToUpLv = 200;
+
 	changeStatus = 0;
+	mFrameCount = 0;
 	hasAnimated = false;
 	//setAnimation(NAME_PLIST_ARCHER_ATTACK_KNIFE, NAME_PNG_ARCHER_ATTACK_KNIFE, COUNT_IMG_ARCHER_ATTACK_KNIFE, mSpeed, 0);
 }
@@ -183,6 +188,13 @@ void Archer_knife::collisionWithPedestal()
 			mAppear = true;
 			mSprite->setAnchorPoint(cocos2d::Vec2(0.5, 0));
 			setPos(cocos2d::Vec2(getPos().x, mListPedestals[i]->getPos().y + mListPedestals[i]->getSprite()->getContentSize().height / 2 - 10));
+			if (!checkBuff)
+			{
+				mDamage = mDamage * mListPedestals[i]->getBuffATK();
+				mSpeed = mSpeed * mListPedestals[i]->getBuffSpeed();
+				mRange = mRange * mListPedestals[i]->getBuffRange();
+				checkBuff = true;
+			}
 			break;
 		}
 	}

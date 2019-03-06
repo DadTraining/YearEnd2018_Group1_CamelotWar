@@ -8,15 +8,15 @@ Boat::Boat(cocos2d::Scene *scene)
 	init();
 	scene->addChild(mSprite);
 
-	lableCoin = cocos2d::Label::createWithTTF("", FONT_COIN, 20);
+	lableCoin = cocos2d::Label::createWithSystemFont("", FONT_COIN, 20);
 	lableCoin->setTextColor(cocos2d::Color4B::YELLOW);
-	lableCoin->setPosition(cocos2d::Vec2(40, SCREEN_H - 50));
-	scene->addChild(lableCoin,999);
+	lableCoin->setPosition(cocos2d::Vec2(40, SCREEN_H - 80));
+	scene->addChild(lableCoin, 999);
 
 	coin = 300;
 	cocos2d::CCString *tempScore = cocos2d::CCString::createWithFormat("%i", coin);
 	lableCoin->setString(tempScore->getCString());
-} 
+}
 
 Boat::~Boat()
 {
@@ -44,7 +44,7 @@ void Boat::collision()
 			//mListMonsters[i]->setPos(cocos2d::Vec2(mListMonsters[i]->getPos().x, SCREEN_H/2));
 			mListMonsters[i]->reBorn();
 		}
-		for (int j = 0; j < mListMonsters[i]->getCoin().size(); j++)
+		for (int j = 0; j < 3; j++)
 		{
 			if (mListMonsters[i]->getBoudingBoxCoin(j).intersectsRect(mSprite->getBoundingBox()))
 			{
@@ -53,8 +53,15 @@ void Boat::collision()
 				mListMonsters[i]->setVisibleCoin(false, j);
 				mListMonsters[i]->getCoin().at(j)->setPos(cocos2d::Vec2(SCREEN_W, SCREEN_H));
 				mListMonsters[i]->getCoin().at(j)->setDynamic(false);
+				//mListMonsters[i]->setCheckFallDone(true);
+				//mListMonsters[i]->getCoin().at(j)->setCheckFall(false);
+				mListMonsters[i]->getCoin().at(j)->CoinPriceFly(mListMonsters[i]->getPrice(), cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height / 2));
+			}
+			if (mListMonsters[i]->getCoin().at(j)->getPos().y < -300)
+			{
+				mListMonsters[i]->getCoin().at(j)->setDynamic(false);
 				mListMonsters[i]->getCoin().at(j)->setCheckFall(false);
-				mListMonsters[i]->getCoin().at(j)->CoinPriceFly(mListMonsters[i]->getPrice(),cocos2d::Vec2(getPos().x,getPos().y + mSprite->getContentSize().height/2));
+				//mListMonsters[i]->setCheckFallDone(true);
 			}
 		}
 	}
@@ -69,7 +76,6 @@ void Boat::setcoin(int acoin)
 {
 	coin = acoin;
 }
-
 
 void Boat::setListMonster(std::vector<Character*> listMonsters)
 {

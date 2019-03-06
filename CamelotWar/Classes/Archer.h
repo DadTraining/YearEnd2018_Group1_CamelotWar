@@ -27,7 +27,7 @@ public:
 
 	void reuseArrow();
 
-	void setListMonster(std::vector<Character*> listMonsters);
+	void setListMonster(std::vector<Character*> listMonsters) override;
 	void setListPedestal(std::vector<Pedestal *> listPedestals);
 
 	void update() override;

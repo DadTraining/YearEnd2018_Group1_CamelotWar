@@ -25,7 +25,7 @@ void BoneTroll::walk()
 		setAnimation(NAME_PLIST_BONETROLL_WALK, NAME_PNG_BONETROLL_WALK, COUNT_IMG_BONETROLL_WALK, mSpeed, 0);
 		changeStatus += 1;
 	}
-	setPos(mSprite->getPosition() + cocos2d::Vec2(mSpeed / 10, 0));
+	setPos(mSprite->getPosition() + cocos2d::Vec2((float) mSpeed / (float)10, 0));
 	countFrame = 0;
 }
 
@@ -45,7 +45,7 @@ void BoneTroll::attack()
 	int a = (COUNT_IMG_BONETROLL_ATK * FPS) / mSpeed;
 	if (countFrame % a == 0)
 	{
-		mCastle->deCreaseHP(100);
+		mCastle->deCreaseHP(mDamage);
 		countFrame = 0;
 	}
 }
@@ -57,6 +57,7 @@ void BoneTroll::die()
 	{
 		mSprite->stopAllActions();
 		setAnimation(NAME_PLIST_BONETROLL_DIE, NAME_PNG_BONETROLL_DIE, COUNT_IMG_BONETROLL_DIE, mSpeed, 1);
+		CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SFX_HERO_DIED, false, 1.0f, 1.0f, 1.0f);
 		changeStatus += 2;
 
 		for (int i = 0; i < getCoin().size(); i++)
@@ -76,6 +77,7 @@ void BoneTroll::die()
 	{
 		mSprite->stopAllActions();
 		setAnimation(NAME_PLIST_BONETROLL_DIE, NAME_PNG_BONETROLL_DIE, COUNT_IMG_BONETROLL_DIE, mSpeed, 1);
+		CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SFX_HERO_DIED, false, 1.0f, 1.0f, 1.0f);
 		changeStatus += 1;
 
 		for (int i = 0; i < getCoin().size(); i++)
@@ -106,6 +108,10 @@ void BoneTroll::collision()
 	}
 }
 
+void BoneTroll::setListMonster(std::vector<Character*> listMonsters)
+{
+}
+
 void BoneTroll::update()
 {
 	if (mCheckAtk && mAlive == 1)
@@ -127,17 +133,23 @@ void BoneTroll::update()
 	}
 	collision();
 	setPosHp(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height + 10));
+
+	if (getPos().y < -1000)
+	{
+		mPhysicsBody->setDynamic(false);
+		checkFallDone = true;
+	}
 }
 
 void BoneTroll::init()
 {
-	changeStatus = 0;
 	mSpeed = 15;
-	mAlive = 1;
-	mHP = 1000;
-	mPrice = 100;
+	mHP = 430;
 	mDamage = 100;
-	mRange = 10;
+	mPrice = 25;
+	
+	mAlive = 1;
+	changeStatus = 0;
 	mAppear = false;
 
 	mSprite->setAnchorPoint(cocos2d::Vec2(0.5, 0));
