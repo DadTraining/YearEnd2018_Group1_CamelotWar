@@ -24,7 +24,7 @@ public:
 	void collision();
 	void reuseKnife();
 	void setListPedestal(std::vector<Pedestal*> listPedestals);
-	void setListMonster(std::vector<Character*> listMonsters);
+	void setListMonster(std::vector<Character*> listMonsters) override;
 
 	void update() override;
 	void init() override;

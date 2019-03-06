@@ -1,7 +1,6 @@
 #include "HammerOrk.h"
 #include "Defines.h"
-#include "SimpleAudioEngine.h"
-using namespace CocosDenshion;
+
 HammerOrk::HammerOrk()
 {
 }
@@ -26,7 +25,7 @@ void HammerOrk::walk()
 		setAnimation(NAME_PLIST_HAMMERORK_WALK, NAME_PNG_HAMMERORK_WALK, COUNT_IMG_HAMMERORK_WALK, mSpeed, 0);
 		changeStatus += 1;
 	}
-	setPos(mSprite->getPosition() + cocos2d::Vec2(mSpeed / 10, 0));
+	setPos(mSprite->getPosition() + cocos2d::Vec2((float)mSpeed / (float)10, 0));
 	countFrame = 0;
 }
 
@@ -46,7 +45,7 @@ void HammerOrk::attack()
 	int a = (COUNT_IMG_HAMMERORK_ATK * FPS) / mSpeed;
 	if (countFrame % a == 0)
 	{
-		mCastle->deCreaseHP(100);
+		mCastle->deCreaseHP(mDamage);
 		countFrame = 0;
 	}
 }
@@ -58,7 +57,7 @@ void HammerOrk::die()
 	{
 		mSprite->stopAllActions();
 		setAnimation(NAME_PLIST_HAMMERORK_DIE, NAME_PNG_HAMMERORK_DIE, COUNT_IMG_HAMMERORK_DIE, mSpeed, 1);
-		CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SFX_MONSTER_DIED, false, 1.0f, 1.0f, 1.0f);
+		CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SFX_HERO_DIED, false, 1.0f, 1.0f, 1.0f);
 		changeStatus += 2;
 
 		for (int i = 0; i < getCoin().size(); i++)
@@ -78,7 +77,7 @@ void HammerOrk::die()
 	{
 		mSprite->stopAllActions();
 		setAnimation(NAME_PLIST_HAMMERORK_DIE, NAME_PNG_HAMMERORK_DIE, COUNT_IMG_HAMMERORK_DIE, mSpeed, 1);
-		CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SFX_MONSTER_DIED, false, 1.0f, 1.0f, 1.0f);
+		CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SFX_HERO_DIED, false, 1.0f, 1.0f, 1.0f);
 		changeStatus += 1;
 
 		for (int i = 0; i < getCoin().size(); i++)
@@ -108,6 +107,10 @@ void HammerOrk::collision()
 	}
 }
 
+void HammerOrk::setListMonster(std::vector<Character*> listMonsters)
+{
+}
+
 void HammerOrk::update()
 {
 	if (mCheckAtk && mAlive == 1)
@@ -129,17 +132,23 @@ void HammerOrk::update()
 	}
 	collision();
 	setPosHp(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height + 10));
+
+	if (getPos().y < -1000)
+	{
+		mPhysicsBody->setDynamic(false);
+		checkFallDone = true;
+	}
 }
 
 void HammerOrk::init()
 {
-	changeStatus = 0;
 	mSpeed = 15;
+	mHP = 380;
+	mDamage = 80;
+	mPrice = 15;
+	
 	mAlive = 1;
-	mHP = 1000;
-	mPrice = 100;
-	mDamage = 100;
-	mRange = 10;
+	changeStatus = 0;
 	mAppear = false;
 
 	mSprite->setAnchorPoint(cocos2d::Vec2(0.5, 0));

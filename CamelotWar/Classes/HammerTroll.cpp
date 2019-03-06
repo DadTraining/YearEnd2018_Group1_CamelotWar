@@ -1,7 +1,6 @@
 #include "HammerTroll.h"
 #include "Defines.h"
-#include "SimpleAudioEngine.h"
-using namespace CocosDenshion;
+
 HammerTroll::HammerTroll()
 {
 }
@@ -26,10 +25,10 @@ void HammerTroll::walk()
 		setAnimation(NAME_PLIST_HAMMERTROLL_WALK, NAME_PNG_HAMMERTROLL_WALK, COUNT_IMG_HAMMERTROLL_WALK, mSpeed, 0);
 		changeStatus += 1;
 	}
-	setPos(mSprite->getPosition() + cocos2d::Vec2(mSpeed / 10, 0));
+	setPos(mSprite->getPosition() + cocos2d::Vec2((float)mSpeed / (float)10, 0));
 	countFrame = 0;
 }
-
+ 
 void HammerTroll::attack()
 {
 	countFrame = countFrame + 1;
@@ -46,7 +45,7 @@ void HammerTroll::attack()
 	int a = (COUNT_IMG_HAMMERTROLL_ATK * FPS) / mSpeed;
 	if (countFrame % a == 0)
 	{
-		mCastle->deCreaseHP(100);
+		mCastle->deCreaseHP(mDamage);
 		countFrame = 0;
 	}
 }
@@ -58,7 +57,7 @@ void HammerTroll::die()
 	{
 		mSprite->stopAllActions();
 		setAnimation(NAME_PLIST_HAMMERTROLL_DIE, NAME_PNG_HAMMERTROLL_DIE, COUNT_IMG_HAMMERTROLL_DIE, mSpeed, 1);
-		CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SFX_MONSTER_DIED, false, 1.0f, 1.0f, 1.0f);
+		CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SFX_HERO_DIED, false, 1.0f, 1.0f, 1.0f);
 		changeStatus += 2;
 
 		for (int i = 0; i < getCoin().size(); i++)
@@ -78,7 +77,7 @@ void HammerTroll::die()
 	{
 		mSprite->stopAllActions();
 		setAnimation(NAME_PLIST_HAMMERTROLL_DIE, NAME_PNG_HAMMERTROLL_DIE, COUNT_IMG_HAMMERTROLL_DIE, mSpeed, 1);
-		CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SFX_MONSTER_DIED, false, 1.0f, 1.0f, 1.0f);
+		CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SFX_HERO_DIED, false, 1.0f, 1.0f, 1.0f);
 		changeStatus += 1;
 
 		for (int i = 0; i < getCoin().size(); i++)
@@ -109,6 +108,10 @@ void HammerTroll::collision()
 	}
 }
 
+void HammerTroll::setListMonster(std::vector<Character*> listMonsters)
+{
+}
+
 void HammerTroll::update()
 {
 	if (mCheckAtk && mAlive == 1)
@@ -130,17 +133,23 @@ void HammerTroll::update()
 	}
 	collision();
 	setPosHp(cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height + 10));
+
+	if (getPos().y < -1000)
+	{
+		mPhysicsBody->setDynamic(false);
+		checkFallDone = true;
+	}
 }
 
 void HammerTroll::init()
 {
-	changeStatus = 0;
-	mSpeed = 20;
-	mAlive = 1;
-	mHP = 1000;
-	mPrice = 100;
+	mSpeed = 15;
+	mHP = 400;
 	mDamage = 100;
-	mRange = 10;
+	mPrice = 20;
+	
+	mAlive = 1;
+	changeStatus = 0;
 	mAppear = false;
 
 	mSprite->setAnchorPoint(cocos2d::Vec2(0.5, 0));

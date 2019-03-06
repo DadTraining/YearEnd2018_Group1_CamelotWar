@@ -27,9 +27,7 @@ public:
 
 	void reuseArrow();
 
-	void setPosRange();
-
-	void setListMonster(std::vector<Character*> listMonsters);
+	void setListMonster(std::vector<Character*> listMonsters) override;
 	void setListPedestal(std::vector<Pedestal *> listPedestals);
 
 	void update() override;
@@ -42,7 +40,5 @@ private:
 	std::vector<Pedestal *> mListPedestals;
 	int mFrameCount;
 	bool hasAnimated;
-	cocos2d::Sprite * mRangeLeft;
-	cocos2d::Sprite * mRangeRight;
 };
 

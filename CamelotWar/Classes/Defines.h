@@ -3,6 +3,9 @@
 #define FPS 50
 #define MONSTER_APPEAR -50
 #define BACKGROUND_PLAYSCENE "ScenePlay/backgroundmains.png"
+#define FONT_COIN "fonts/tencilStd.otf"
+#define WIN_SPRITE "popUpSetting/levelup.png"
+#define LOSE_SPRITE "popUpSetting/gameover.png"
 
 
 // troll
@@ -244,3 +247,4 @@
 #define SFX_STABBE "Audio/Attack/stabbe.mp3"
 #define SFX_HERO_DIED "Audio/Die/heroDied.wav"
 #define SFX_MONSTER_DIED "Audio/Die/monsterDied.wav"
+#define SFX_WIN "Audio/WinGame/nextRound.mp3"

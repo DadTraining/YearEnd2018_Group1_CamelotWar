@@ -13,6 +13,7 @@ public:
 	void die() override;
 
 	void collision();
+	void setListMonster(std::vector<Character*> listMonsters) override;
 	void update() override;
 	void init() override;
 private:

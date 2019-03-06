@@ -16,10 +16,12 @@ public:
 	Troll(cocos2d::Scene * scene);
 
 	void walk() override;
-	void collision();
 	void attack() override;
 	void die() override;
 
+	void collision();
+
+	void setListMonster(std::vector<Character*> listMonsters) override;
 	void update() override;
 	void init() override;
   

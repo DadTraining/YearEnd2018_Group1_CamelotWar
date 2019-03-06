@@ -4,7 +4,7 @@
 #include "PopUpSetting.h"
 #include "ui/CocosGUI.h"
 #include "HelloWorldScene.h"
-#include "Defines.h"
+
 USING_NS_CC;
 
 Scene* TitleScene::createScene()
@@ -52,14 +52,13 @@ bool TitleScene::init()
 	addChild(Menu);
 
 	setting = PopUpSetting::create();
-	this->addChild(setting);
+	this->addChild(setting, 3);
 	setting->setVisible(false);
 
 
 	scheduleUpdate();
 	return true;
 }
-
 void TitleScene::loadMusic()
 {
 	mBGM = CocosDenshion::SimpleAudioEngine::getInstance();
@@ -72,6 +71,7 @@ void TitleScene::loadMusic()
 	mSFX->preloadEffect(SFX_HIT);
 	mSFX->preloadEffect(SFX_HERO_DIED);
 	mSFX->preloadEffect(SFX_MONSTER_DIED);
+	mSFX->preloadEffect(SFX_WIN);
 }
 
 void TitleScene::update(float delta)
@@ -82,8 +82,7 @@ void TitleScene::update(float delta)
 
 void TitleScene::menuPlayCallback(Ref* pSender)
 {
-	mBGM = CocosDenshion::SimpleAudioEngine::getInstance();
-	mBGM->stopBackgroundMusic();
+	CocosDenshion::SimpleAudioEngine::getInstance()->stopBackgroundMusic();
 	Director::getInstance()->replaceScene(HelloWorld::createScene());
 }
 
