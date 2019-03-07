@@ -6,7 +6,7 @@
 #include "pedestal.h"
 #include "Boat.h"
 #include "Castle.h"
-#include "PopUpSetting.h"
+#include "Setting.h"
 #include <vector>
 #include "SimpleAudioEngine.h"
 using namespace CocosDenshion;
@@ -60,7 +60,7 @@ private:
 	cocos2d::ui::Button * mBtUpHero;
 	cocos2d::Sprite * mWinAndLose;
 
-	PopUpSetting * popupSetting;
+	Setting * setting;
 
 	Boat *boat;
 	Castle * mCastle;

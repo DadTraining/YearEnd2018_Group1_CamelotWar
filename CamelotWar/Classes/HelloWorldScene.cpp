@@ -57,9 +57,9 @@ bool HelloWorld::init()
 	background->setPosition(cocos2d::Vec2(SCREEN_W / 2, SCREEN_H / 2));
 	addChild(background);
 
-	popupSetting = PopUpSetting::create();
-	this->addChild(popupSetting, 3);
-	popupSetting->setVisible(false);
+	setting = Setting::create();
+	this->addChild(setting, 3);
+	setting->setVisible(false);
 
 	auto listener = EventListenerTouchOneByOne::create();
 	listener->setSwallowTouches(true);
@@ -121,7 +121,7 @@ void HelloWorld::createButtonSettings()
 		case ui::Widget::TouchEventType::BEGAN:
 			break;
 		case ui::Widget::TouchEventType::ENDED:
-			popupSetting->setVisible(true);
+			setting->setVisible(true);
 			checkUpdate = false;
 			break;
 		default:
@@ -509,7 +509,7 @@ void HelloWorld::update(float delta)
 	{
 		myUpdate();
 	}
-	if (!popupSetting->isVisible() && mPause->isVisible())
+	if (!setting->isVisible() && mPause->isVisible())
 	{
 		checkUpdate = true;
 	}
