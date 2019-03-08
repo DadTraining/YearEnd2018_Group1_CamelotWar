@@ -25,9 +25,8 @@ CoinModel::~CoinModel()
 void CoinModel::removeCoin()
 {
 	mSprite->removeFromParent();
+	lable->stopAllActions();
 	lable->removeFromParent();
-	//delete lable;
-	//delete mSprite;
 }
 
 void CoinModel::init()
@@ -90,4 +89,10 @@ void CoinModel::setCheckFall(bool checkfall)
 bool CoinModel::getCheckFall()
 {
 	return mCheckFall;
+}
+void CoinModel::removePhysics()
+{
+	mPhysicsBody->removeFromWorld();
+	auto removeSelf = cocos2d::RemoveSelf::create();
+	mSprite->runAction(removeSelf);
 }

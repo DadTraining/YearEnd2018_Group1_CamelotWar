@@ -25,6 +25,8 @@ public:
 
 	void setCheckFall(bool checkfall);
 	bool getCheckFall();
+
+	void removePhysics();
 		
     void init() override;
 	void CoinPriceFly(int price, cocos2d::Vec2 pos);

@@ -6,8 +6,9 @@
 #include "pedestal.h"
 #include "Boat.h"
 #include "Castle.h"
-#include "PopUpSetting.h"
+#include "Setting.h"
 #include <vector>
+#include "PopUpGameOver.h"
 #include "SimpleAudioEngine.h"
 using namespace CocosDenshion;
 
@@ -27,8 +28,6 @@ public:
 	bool touchMonster(cocos2d::Touch * touch);
 
 	bool touchCharacter(cocos2d::Touch * touch);
-
-	void createHero();
 	
 	void createIconHero();
 
@@ -46,6 +45,16 @@ public:
 
 	void monsterOfLevel(int level);
 
+	void MonsterAppear();
+
+	void updateCharacter();
+
+	void checkWinGame();
+
+	void checkLose();
+
+	void levleUp();
+
     CREATE_FUNC(HelloWorld);
 	
 
@@ -60,7 +69,8 @@ private:
 	cocos2d::ui::Button * mBtUpHero;
 	cocos2d::Sprite * mWinAndLose;
 
-	PopUpSetting * popupSetting;
+	Setting * popupSetting;
+	PopUpGameOver * popupGameOver;
 
 	Boat *boat;
 	Castle * mCastle;
@@ -70,6 +80,7 @@ private:
 	int level;
 	bool checkUpdate;
 	bool checkAppearMonster;
+	bool checkEnableBt;
 };
 
 #endif // __HELLOWORLD_SCENE_H__

@@ -122,6 +122,12 @@
     <ClCompile Include="..\Classes\utils\physics\CustomPhysicsBody.cpp">
       <Filter>src\utils\physics</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\PopUpGameOver.cpp">
+      <Filter>src\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Setting.cpp">
+      <Filter>src\Models</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -218,6 +224,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\utils\physics\CustomPhysicsBody.h">
       <Filter>src\utils\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PopUpGameOver.h">
+      <Filter>src\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Setting.h">
+      <Filter>src\Models</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

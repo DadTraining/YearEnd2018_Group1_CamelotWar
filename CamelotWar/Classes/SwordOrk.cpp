@@ -57,41 +57,79 @@ void SwordOrk::die()
 	{
 		mSprite->stopAllActions();
 		setAnimation(NAME_PLIST_SWORDORK_DIE, NAME_PNG_SWORDORK_DIE, COUNT_IMG_SWORDORK_DIE, mSpeed, 1);
-		CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SFX_HERO_DIED, false, 1.0f, 1.0f, 1.0f);
+		//CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SFX_HERO_DIED, false, 1.0f, 1.0f, 1.0f);
 		changeStatus += 2;
 
-		for (int i = 0; i < getCoin().size(); i++)
+		if (getPos().x < 100)
 		{
-			if (!getCoin().at(i)->getCheckFall())
+			for (int i = 0; i < getCoin().size(); i++)
 			{
-				setVisibleCoin(true, i);
-				getCoin().at(i)->setPos(getPos());
-				getCoin().at(i)->PushCoin(cocos2d::Vec2(-100, 500));
-				getCoin().at(i)->setDynamic(true);
-				getCoin().at(i)->setCheckFall(true);
-				break;
+				if (!getCoin().at(i)->getCheckFall())
+				{
+					setVisibleCoin(true, i);
+					getCoin().at(i)->setPos(getPos());
+					getCoin().at(i)->PushCoin(cocos2d::Vec2(150, 500));
+					getCoin().at(i)->setDynamic(true);
+					getCoin().at(i)->setCheckFall(true);
+					break;
+				}
 			}
 		}
+		else
+		{
+			for (int i = 0; i < getCoin().size(); i++)
+			{
+				if (!getCoin().at(i)->getCheckFall())
+				{
+					setVisibleCoin(true, i);
+					getCoin().at(i)->setPos(getPos());
+					getCoin().at(i)->PushCoin(cocos2d::Vec2(-100, 500));
+					getCoin().at(i)->setDynamic(true);
+					getCoin().at(i)->setCheckFall(true);
+					break;
+				}
+			}
+		}
+
 	}
 	if (changeStatus == 2)
 	{
 		mSprite->stopAllActions();
 		setAnimation(NAME_PLIST_SWORDORK_DIE, NAME_PNG_SWORDORK_DIE, COUNT_IMG_SWORDORK_DIE, mSpeed, 1);
-		CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SFX_HERO_DIED, false, 1.0f, 1.0f, 1.0f);
+		//CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SFX_HERO_DIED, false, 1.0f, 1.0f, 1.0f);
 		changeStatus += 1;
 
-		for (int i = 0; i < getCoin().size(); i++)
+		if (getPos().x < 100)
 		{
-			if (!getCoin().at(i)->getCheckFall())
+			for (int i = 0; i < getCoin().size(); i++)
 			{
-				setVisibleCoin(true, i);
-				getCoin().at(i)->setPos(getPos());
-				getCoin().at(i)->PushCoin(cocos2d::Vec2(-100, 500));
-				getCoin().at(i)->setDynamic(true);
-				getCoin().at(i)->setCheckFall(true);
-				break;
+				if (!getCoin().at(i)->getCheckFall())
+				{
+					setVisibleCoin(true, i);
+					getCoin().at(i)->setPos(getPos());
+					getCoin().at(i)->PushCoin(cocos2d::Vec2(150, 500));
+					getCoin().at(i)->setDynamic(true);
+					getCoin().at(i)->setCheckFall(true);
+					break;
+				}
 			}
 		}
+		else
+		{
+			for (int i = 0; i < getCoin().size(); i++)
+			{
+				if (!getCoin().at(i)->getCheckFall())
+				{
+					setVisibleCoin(true, i);
+					getCoin().at(i)->setPos(getPos());
+					getCoin().at(i)->PushCoin(cocos2d::Vec2(-100, 500));
+					getCoin().at(i)->setDynamic(true);
+					getCoin().at(i)->setCheckFall(true);
+					break;
+				}
+			}
+		}
+
 	}
 
 	mPhysicsBody->setDynamic(true);

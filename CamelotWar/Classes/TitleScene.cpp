@@ -65,13 +65,12 @@ void TitleScene::loadMusic()
 	mBGM->preloadBackgroundMusic(BGM_MUSIC);
 	mBGM->playBackgroundMusic(BGM_MUSIC, true);
 	mSFX = CocosDenshion::SimpleAudioEngine::getInstance();
-	mSFX->preloadEffect(SFX_ARCHERY);
-	mSFX->preloadEffect(SFX_MAGIC);
-	mSFX->preloadEffect(SFX_STABBE);
 	mSFX->preloadEffect(SFX_HIT);
 	mSFX->preloadEffect(SFX_HERO_DIED);
 	mSFX->preloadEffect(SFX_MONSTER_DIED);
 	mSFX->preloadEffect(SFX_WIN);
+	mSFX->preloadEffect(SFX_COIN);
+
 }
 
 void TitleScene::update(float delta)

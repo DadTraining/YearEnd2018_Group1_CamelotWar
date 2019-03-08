@@ -140,6 +140,7 @@ void SwordKnight::init()
 	
 	mAlive = 1;
 	changeStatus = 0;
+	priceToUpLv = 0;
 	mAppear = false;
 
 	mSprite->setAnchorPoint(cocos2d::Vec2(0.5, 0));

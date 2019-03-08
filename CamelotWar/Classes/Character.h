@@ -51,6 +51,7 @@ public:
 	void reBorn();
 	void addPhysicsBody();
 	void setvisibleRange(bool visible);
+	void removePhysics();
 	void init() override;
 	
 	virtual void walk()=0;

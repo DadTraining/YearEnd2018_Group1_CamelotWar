@@ -2,6 +2,8 @@
 #include "Boat.h"
 #include "Defines.h"
 #include "Character.h"
+#include "SimpleAudioEngine.h"
+using namespace CocosDenshion;
 
 Boat::Boat(cocos2d::Scene *scene)
 {
@@ -13,7 +15,7 @@ Boat::Boat(cocos2d::Scene *scene)
 	lableCoin->setPosition(cocos2d::Vec2(40, SCREEN_H - 80));
 	scene->addChild(lableCoin, 999);
 
-	coin = 300;
+	coin = 500;
 	cocos2d::CCString *tempScore = cocos2d::CCString::createWithFormat("%i", coin);
 	lableCoin->setString(tempScore->getCString());
 }
@@ -48,13 +50,12 @@ void Boat::collision()
 		{
 			if (mListMonsters[i]->getBoudingBoxCoin(j).intersectsRect(mSprite->getBoundingBox()))
 			{
+				CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SFX_COIN, false, 1.0f, 1.0f, 1.0f);
 				int temp = mListMonsters[i]->getPrice();
 				coin = coin + temp;
 				mListMonsters[i]->setVisibleCoin(false, j);
 				mListMonsters[i]->getCoin().at(j)->setPos(cocos2d::Vec2(SCREEN_W, SCREEN_H));
 				mListMonsters[i]->getCoin().at(j)->setDynamic(false);
-				//mListMonsters[i]->setCheckFallDone(true);
-				//mListMonsters[i]->getCoin().at(j)->setCheckFall(false);
 				mListMonsters[i]->getCoin().at(j)->CoinPriceFly(mListMonsters[i]->getPrice(), cocos2d::Vec2(getPos().x, getPos().y + mSprite->getContentSize().height / 2));
 			}
 			if (mListMonsters[i]->getCoin().at(j)->getPos().y < -300)

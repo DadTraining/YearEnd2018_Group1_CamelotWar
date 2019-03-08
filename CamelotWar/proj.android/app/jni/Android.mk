@@ -38,6 +38,8 @@ $(LOCAL_PATH)/../../../Classes/utils/animation/GetAnimation.cpp  \
 $(LOCAL_PATH)/../../../Classes/utils/physics/CustomPhysicsBody.cpp \
 $(LOCAL_PATH)/../../../Classes/PopUp.cpp \
 $(LOCAL_PATH)/../../../Classes/PopUpSetting.cpp \
+$(LOCAL_PATH)/../../../Classes/Setting.cpp \
+$(LOCAL_PATH)/../../../Classes/PopUpGameOver.cpp \
 $(LOCAL_PATH)/../../../Classes/TitleScene.cpp \
 $(LOCAL_PATH)/../../../Classes/HelloWorldScene.cpp 
 

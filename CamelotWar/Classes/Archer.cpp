@@ -17,7 +17,7 @@ Archer::Archer(cocos2d::Scene * scene) : Character::Character(scene)
 	scene->addChild(mSprite);
 	mSprite->setFlipX(false);
 
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 20; i++)
 	{
 		auto arrow = new Arrow(scene);
 		//arrow->setPos(cocos2d::Vec2(getPos().x , getPos().y));
@@ -51,7 +51,7 @@ void Archer::turnOnArrow(cocos2d::Vec2 pos)
 	int a = (COUNT_IMG_ARCHER_ATTACK * FPS) / mSpeed;
 	if (mFrameCount % a == 0)
 	{
-		for (int i = 0; i < 10; i++)
+		for (int i = 0; i < 20; i++)
 		{
 			if (arrows[i]->isVisible() == false)
 			{
@@ -74,7 +74,7 @@ void Archer::turnOnArrow(cocos2d::Vec2 pos)
 
 void Archer::shootArrow()
 {
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 20; i++)
 	{
 		if (arrows[i]->isVisible() == true)
 		{
@@ -102,7 +102,7 @@ void Archer::collision()
 
 void Archer::reuseArrow()
 {
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 20; i++)
 	{
 		if (arrows[i]->getPos().y <= SCREEN_H/3)
 		{
@@ -128,7 +128,7 @@ void Archer::update()
 	{
 		if (mListMonsters[j]->getAlive() == 1)
 		{
-			if (mListMonsters[j]->getPos().x >= getPos().x - mRange && mListMonsters[j]->getPos().x <= getPos().x)
+			if (mListMonsters[j]->getPos().x >= mRangeLeft->getPosition().x && mListMonsters[j]->getPos().x <= getPos().x)
 			{
 				mSprite->setFlipX(true);
 				turnOnArrow(mListMonsters[j]->getPos());
@@ -139,7 +139,7 @@ void Archer::update()
 				}
 				break;
 			}
-			else if (mListMonsters[j]->getPos().x >= getPos().x  && mListMonsters[j]->getPos().x <= getPos().x + mRange)
+			else if (mListMonsters[j]->getPos().x >= getPos().x  && mListMonsters[j]->getPos().x <= mRangeRight->getPosition().x)
 			{
 				mSprite->setFlipX(false);
 				turnOnArrow(mListMonsters[j]->getPos());

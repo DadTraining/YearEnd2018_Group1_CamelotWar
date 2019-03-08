@@ -139,6 +139,7 @@ void AxeKnight::init()
 	mPrice = 150;
 	mDamage = 20;
 	mRange = 10;
+	priceToUpLv = 0;
 	mAppear = false;
 
 	mSprite->setAnchorPoint(cocos2d::Vec2(0.5, 0));

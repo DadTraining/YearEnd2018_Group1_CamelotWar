@@ -162,9 +162,9 @@ void Archer_Fire::update()
 
 void Archer_Fire::init()
 {
-	mSpeed = 5;
+	mSpeed = 10;
 	mRange = 150;
-	mDamage = 50;
+	mDamage = 75;
 	mPrice = 300;
 	priceToUpLv = 300;
 

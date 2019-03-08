@@ -9,7 +9,7 @@ Character::Character()
 
 Character::~Character()
 {
-
+	
 }
 
 Character::Character(cocos2d::Scene * scene)
@@ -39,14 +39,13 @@ void Character::reBorn()
 	auto FadeOut = cocos2d::FadeOut::create(0.2);
 	auto FadeIn = cocos2d::FadeIn::create(0.2);
 	auto sequence = cocos2d::Sequence::create(FadeOut, FadeIn,FadeOut->clone(),FadeIn->clone(),nullptr);
+	mSprite->runAction(sequence);
+
 	mSprite->setAnchorPoint(cocos2d::Vec2(0.5, 0));
 	setPos(cocos2d::Vec2(getPos().x, SCREEN_H / 3 - mSprite->getContentSize().height));
 	mloadingHpBar->setPercent(100);
 	mAlive = 1;
-	/*mDamage = mDamage * 2 ;
-	mHP = mHP + 100;
-	mSpeed = mSpeed * 2 ;*/
-	mSprite->runAction(sequence);
+
 	if (mPhysicsBody != nullptr)
 	{
 		mPhysicsBody->setDynamic(false);
@@ -61,8 +60,25 @@ void Character::setPosAll(cocos2d::Vec2 pos)
 
 void Character::setPosRange()
 {
-	mRangeLeft->setPosition(cocos2d::Vec2(getPos().x - mRange,SCREEN_H /3 - 85));
-	mRangeRight->setPosition(cocos2d::Vec2(getPos().x + mRange, SCREEN_H / 3 - 85));
+	int rangeXLeft = getPos().x - mRange;
+	int rangeXright = getPos().x + mRange;
+	if (rangeXLeft < 0)
+	{
+		mRangeLeft->setPosition(cocos2d::Vec2(0,SCREEN_H /3 - 85));
+	}
+	else
+	{
+		mRangeLeft->setPosition(cocos2d::Vec2(rangeXLeft, SCREEN_H / 3 - 85));
+	}
+	if (rangeXright > SCREEN_W)
+	{
+		mRangeRight->setPosition(cocos2d::Vec2(SCREEN_W, SCREEN_H / 3 - 85));
+	}
+	else
+	{
+		mRangeRight->setPosition(cocos2d::Vec2(getPos().x + mRange, SCREEN_H / 3 - 85));
+	}
+
 }
 
 void Character::levleUp()
@@ -259,4 +275,11 @@ void Character::setvisibleRange(bool visible)
 {
 	mRangeLeft->setVisible(visible);
 	mRangeRight->setVisible(visible);
+}
+
+void Character::removePhysics()
+{
+	mPhysicsBody->removeFromWorld();
+	auto removeSelf = cocos2d::RemoveSelf::create();
+	mSprite->runAction(removeSelf);
 }

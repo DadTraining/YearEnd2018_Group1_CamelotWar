@@ -141,6 +141,7 @@ void SpearKnight::init()
 	mPrice = 400;
 	mDamage = 100;
 	mRange = 0;
+	priceToUpLv = 0;
 	mAppear = false;
 
 	mSprite->setAnchorPoint(cocos2d::Vec2(0.5, 0));

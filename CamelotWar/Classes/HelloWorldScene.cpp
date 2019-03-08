@@ -15,6 +15,7 @@
 #include "SwordKnight.h"
 #include "Boat.h"
 #include "pedestal.h"
+#include "Setting.h"
 
 
 USING_NS_CC;
@@ -57,9 +58,14 @@ bool HelloWorld::init()
 	background->setPosition(cocos2d::Vec2(SCREEN_W / 2, SCREEN_H / 2));
 	addChild(background);
 
-	popupSetting = PopUpSetting::create();
+	popupSetting = Setting::create();
 	this->addChild(popupSetting, 3);
 	popupSetting->setVisible(false);
+
+
+	popupGameOver = PopUpGameOver::create();
+	addChild(popupGameOver, 10);
+	popupGameOver->setVisible(false);
 
 	auto listener = EventListenerTouchOneByOne::create();
 	listener->setSwallowTouches(true);
@@ -100,6 +106,8 @@ bool HelloWorld::init()
 
 void HelloWorld::createButtonSettings()
 {
+	checkEnableBt = false;
+
 	mSetting = cocos2d::ui::Button::create("setting.png");
 	mNext = cocos2d::ui::Button::create("next.png");
 	mPause = cocos2d::ui::Button::create("pause.png");
@@ -121,8 +129,14 @@ void HelloWorld::createButtonSettings()
 		case ui::Widget::TouchEventType::BEGAN:
 			break;
 		case ui::Widget::TouchEventType::ENDED:
+			Director::getInstance()->getEventDispatcher()->pauseEventListenersForTarget(this);
+			mNext->setTouchEnabled(false);
+			mPause->setTouchEnabled(false);
+			mNext->setVisible(true);
+			mPause->setVisible(false);
 			popupSetting->setVisible(true);
 			checkUpdate = false;
+			checkEnableBt = true;
 			break;
 		default:
 			break;
@@ -151,8 +165,11 @@ void HelloWorld::createButtonSettings()
 			break;
 		case ui::Widget::TouchEventType::ENDED:
 			checkUpdate = false;
+			mSetting->setTouchEnabled(false);
+			Director::getInstance()->getEventDispatcher()->pauseEventListenersForTarget(this);
 			mNext->setVisible(true);
 			mPause->setVisible(false);
+
 			break;
 		default:
 			break;
@@ -234,12 +251,12 @@ bool HelloWorld::onTouchBegan(cocos2d::Touch * touch, cocos2d::Event * event)
 			}
 			case 3:
 			{
-				if (boat->getcoin() >= 150)
+				if (boat->getcoin() >= 150 && checkAppearMonster)
 				{
 					auto axe_knight = new AxeKnight(this);
 					axe_knight->setListMonster(mListMonsters);
 					mListCharacters.push_back(axe_knight);
-					boat->setcoin(boat->getcoin() - 150);	
+					boat->setcoin(boat->getcoin() - 150);
 					check = 0;
 					break;
 				}
@@ -250,7 +267,7 @@ bool HelloWorld::onTouchBegan(cocos2d::Touch * touch, cocos2d::Event * event)
 			}
 			case 4:
 			{
-				if (boat->getcoin() >= 400)
+				if (boat->getcoin() >= 400 && checkAppearMonster)
 				{
 					auto spear_knight = new SpearKnight(this);
 					spear_knight->setListMonster(mListMonsters);
@@ -266,7 +283,7 @@ bool HelloWorld::onTouchBegan(cocos2d::Touch * touch, cocos2d::Event * event)
 			}
 			case 5:
 			{
-				if (boat->getcoin() >= 9999)
+				if (boat->getcoin() >= 9999 && checkAppearMonster)
 				{
 					auto sword_Knight = new SwordKnight(this);
 					sword_Knight->setListMonster(mListMonsters);
@@ -289,11 +306,7 @@ bool HelloWorld::onTouchBegan(cocos2d::Touch * touch, cocos2d::Event * event)
 		check = 2;
 		return true;
 	}
-	else if (touchMonster(touch))
-	{
-		return true;
-	}
-	else if (touchCharacter(touch))
+	else if (touchCharacter(touch) || touchMonster(touch))
 	{
 		return true;
 	}
@@ -323,7 +336,7 @@ void HelloWorld::onTouchEnded(cocos2d::Touch * touch, cocos2d::Event * event)
 	{
 		mListCharacters[mListCharacters.size() - 1]->setAlive(1);
 		mListCharacters[mListCharacters.size() - 1]->setcheckAppear(false);
-		mListCharacters[mListCharacters.size() - 1]->setvisibleRange(false);
+		mListCharacters[mListCharacters.size() - 1]->setvisibleRange(false);		
 	}
 	if(check > 2)
 	{ 
@@ -334,6 +347,7 @@ void HelloWorld::onTouchEnded(cocos2d::Touch * touch, cocos2d::Event * event)
 		mListCharacters[indexCharacter]->setvisibleRange(false);
 		indexCharacter = -1;
 	}
+	check = 0;
 }
 
 bool HelloWorld::touchMonster(cocos2d::Touch * touch)
@@ -364,7 +378,7 @@ bool HelloWorld::touchCharacter(cocos2d::Touch * touch)
 	{
 		if (mListCharacters[i]->getSprite()->getBoundingBox().containsPoint(touch->getLocation()))
 		{
-			if (mListCharacters[i]->getpriceToUpLv() <= boat->getcoin() && mListCharacters[i]->getLvOfHero() < 3)
+			if (mListCharacters[i]->getpriceToUpLv() <= boat->getcoin() && mListCharacters[i]->getLvOfHero() < 3 && mListCharacters[i]->getpriceToUpLv() >0)
 			{
 				int newCoin = boat->getcoin() - mListCharacters[i]->getpriceToUpLv();
 				boat->setcoin(newCoin);
@@ -512,103 +526,34 @@ void HelloWorld::update(float delta)
 	if (!popupSetting->isVisible() && mPause->isVisible())
 	{
 		checkUpdate = true;
+		mNext->setTouchEnabled(true);
+		mPause->setTouchEnabled(true);
+		mSetting->setTouchEnabled(true);
+		Director::getInstance()->getEventDispatcher()->resumeEventListenersForTarget(this);
+	}
+	if (checkEnableBt && !popupSetting->isVisible())
+	{
+		mNext->setTouchEnabled(true);
+		mPause->setTouchEnabled(true);
+		mSetting->setTouchEnabled(true);
+		mPause->setVisible(true);
+		mNext->setVisible(false);
+
+		checkUpdate = true;
+		checkEnableBt = false;
+		Director::getInstance()->getEventDispatcher()->resumeEventListenersForTarget(this);
 	}
 }
 
 void HelloWorld::myUpdate()
 {
-	for (int i = 0; i < mListCharacters.size(); i++)
-	{
-		if (mListCharacters[i]->getAlive() == 1)
-		{
-			mListCharacters[i]->update();
-			mListCharacters[i]->setPosRange();
-		}
-		if (mListCharacters[i]->getAlive() == 2 && !mListCharacters[i]->getAppear())
-		{
-			boat->setcoin(boat->getcoin() + mListCharacters[i]->getPrice());
-			mListCharacters[i]->getSprite()->removeFromParent();
-			mListCharacters.erase(mListCharacters.begin() + i);
-		}
-	}
-
-	if (checkAppearMonster)
-	{
-		countFrame += 1;
-		if (countFrame % (FPS) == 0)
-		{
-			for (int i = 0; i < mListMonsters.size(); i++)
-			{
-				if (mListMonsters[i]->getAppear() == false)
-				{
-					mListMonsters[i]->setAppear(true);
-					countFrame = 0;
-					break;
-				}
-			}
-		}
-
-		for (int i = 0; i < mListMonsters.size(); i++)
-		{
-			if (mListMonsters[i]->getAppear() == true)
-			{
-				mListMonsters[i]->update();
-			}
-		}
-	}
+	MonsterAppear();
 	boat->update();
 	checkDuplicate();
-
-	//lose
-	if (mCastle->getLoadingbar()->getPercent() == 0)
-	{
-		checkUpdate = false;
-		mNext->setVisible(true);
-		mPause->setVisible(false);
-		mWinAndLose->setTexture(LOSE_SPRITE);
-		mWinAndLose->setPosition(cocos2d::Vec2(SCREEN_W / 2, SCREEN_H / 2));
-		auto FadeIn = cocos2d::FadeIn::create(0.2);
-		mWinAndLose->runAction(FadeIn);
-	}
-
-	int checkLevelUp = 0;
-	for (int i = 0; i < mListMonsters.size(); i++)
-	{
-		if (mListMonsters[i]->getAlive() != 1 && mListMonsters[i]->getCheckFallDone())
-		{
-			checkLevelUp ++;
-		}
-	}
-	if (checkLevelUp == mListMonsters.size() && level < 6)
-	{
-		level += 1;
-		monsterOfLevel(level);
-		mNext->setVisible(true);
-		mPause->setVisible(false);
-		mWinAndLose->setTexture(WIN_SPRITE);
-		mWinAndLose->setPosition(cocos2d::Vec2(SCREEN_W / 2, SCREEN_H / 2));
-		auto FadeOut = cocos2d::FadeOut::create(0.2);
-		auto FadeIn = cocos2d::FadeIn::create(0.2);
-		auto sequence = cocos2d::Sequence::create(FadeOut, FadeIn, FadeOut->clone(), FadeIn->clone(), FadeOut->clone(), nullptr);
-		mWinAndLose->runAction(sequence);
-
-		
-		
-		checkAppearMonster = false;
-	}
-	//readd listmonster in character
-	if (mListCharacters.size() >= 1)
-	{
-		for (int i = 0; i < mListCharacters.size(); i++)
-		{
-			mListCharacters[i]->setListMonster(mListMonsters);
-		}
-	}
-	// win
-	if (level > 5)
-	{
-
-	}
+	updateCharacter();
+	checkLose();
+	checkWinGame();
+	levleUp();
 }
 
 void HelloWorld::removeAllMonster()
@@ -619,12 +564,16 @@ void HelloWorld::removeAllMonster()
 		{
 			for (int j = 0; j < 3; j++)
 			{
+				mListMonsters[i]->getCoin().at(j)->removePhysics();
 				mListMonsters[i]->getCoin().at(j)->removeCoin();
 			}
+			mListMonsters[i]->removePhysics();
 			mListMonsters[i]->getSprite()->removeFromParent();
+
 		}
 	}
-	mListMonsters.erase(mListMonsters.begin(), mListMonsters.end());
+
+	mListMonsters.clear();
 }
 
 void HelloWorld::monsterOfLevel(int level)
@@ -666,7 +615,177 @@ void HelloWorld::monsterOfLevel(int level)
 		boat->setListMonster(mListMonsters);
 		break;
 	}
+	case 6:
+	{
+		removeAllMonster();
+		createMonster(0, 5, 3, 3, 6, 2);
+		boat->setListMonster(mListMonsters);
+		break;
+	}
+	case 7:
+	{
+		removeAllMonster();
+		createMonster(0, 5, 5, 5, 5, 5);
+		boat->setListMonster(mListMonsters);
+		break;
+	}
+	case 8:
+	{
+		removeAllMonster();
+		createMonster(0, 4, 6, 5, 7, 7);
+		boat->setListMonster(mListMonsters);
+		break;
+	}
+	case 9:
+	{
+		removeAllMonster();
+		createMonster(0, 0, 6, 6, 8, 10);
+		boat->setListMonster(mListMonsters);
+		break;
+	}
+	case 10:
+	{
+		removeAllMonster();
+		createMonster(10,10, 10, 10, 10, 10);
+		boat->setListMonster(mListMonsters);
+		break;
+	}
 	default:
 		break;
 	}
+}
+
+void HelloWorld::MonsterAppear()
+{
+	if (checkAppearMonster)
+	{
+		countFrame += 1;
+		if (countFrame % (FPS) == 0)
+		{
+			for (int i = 0; i < mListMonsters.size(); i++)
+			{
+				if (mListMonsters[i]->getAppear() == false)
+				{
+					mListMonsters[i]->setAppear(true);
+					countFrame = 0;
+					break;
+				}
+			}
+		}
+
+		for (int i = 0; i < mListMonsters.size(); i++)
+		{
+			if (mListMonsters[i]->getAppear() == true)
+			{
+				mListMonsters[i]->update();
+			}
+		}
+	}
+}
+
+void HelloWorld::updateCharacter()
+{
+	for (int i = 0; i < mListCharacters.size(); i++)
+	{
+		if (mListCharacters[i]->getAlive() == 1)
+		{
+			mListCharacters[i]->update();
+			mListCharacters[i]->setPosRange();
+		}
+		if (mListCharacters[i]->getAlive() == 2 && !mListCharacters[i]->getAppear())
+		{
+			boat->setcoin(boat->getcoin() + mListCharacters[i]->getPrice());
+			mListCharacters[i]->getSprite()->removeFromParent();
+			mListCharacters.erase(mListCharacters.begin() + i);
+		}
+	}
+	//readd listmonster in character
+	if (mListCharacters.size() >= 1)
+	{
+		for (int i = 0; i < mListCharacters.size(); i++)
+		{
+			mListCharacters[i]->setListMonster(mListMonsters);
+		}
+	}
+
+}
+
+void HelloWorld::checkWinGame()
+{
+	// win
+	if (level > 3)
+	{
+		checkUpdate = false;
+		mNext->setVisible(true);
+		mPause->setVisible(false);
+
+		popupGameOver->setNewvalue(YOU_WIN);
+		popupGameOver->setVisible(true);
+		Director::getInstance()->getEventDispatcher()->pauseEventListenersForTarget(this);
+
+		mSetting->setTouchEnabled(false);
+		mPause->setTouchEnabled(false);
+		mNext->setTouchEnabled(false);
+	}
+}
+
+void HelloWorld::checkLose()
+{
+	if (mCastle->getLoadingbar()->getPercent() == 0)
+	{
+		checkUpdate = false;
+		mNext->setVisible(true);
+		mPause->setVisible(false);
+
+		popupGameOver->setVisible(true);
+		Director::getInstance()->getEventDispatcher()->pauseEventListenersForTarget(this);
+		
+		mSetting->setTouchEnabled(false);
+		mPause->setTouchEnabled(false);
+		mNext->setTouchEnabled(false);
+	}
+}
+
+void HelloWorld::levleUp()
+{
+	int checkLevelUp = 0;
+
+	for (int i = 0; i < mListMonsters.size(); i++)
+	{
+		if (mListMonsters[i]->getAlive() != 1 && mListMonsters[i]->getCheckFallDone())
+		{
+			checkLevelUp++;
+		}
+	}
+
+	if (checkLevelUp == mListMonsters.size() && level <= 3)
+	{
+		level += 1;
+		monsterOfLevel(level);
+		if (level < 4)
+		{
+
+			mNext->setVisible(true);
+			mPause->setVisible(false);
+			mWinAndLose->setTexture(WIN_SPRITE);
+			mWinAndLose->setPosition(cocos2d::Vec2(SCREEN_W / 2, SCREEN_H / 2));
+			auto FadeOut = cocos2d::FadeOut::create(0.2);
+			auto FadeIn = cocos2d::FadeIn::create(0.2);
+			auto sequence = cocos2d::Sequence::create(FadeOut, FadeIn, FadeOut->clone(), FadeIn->clone(), FadeOut->clone(), cocos2d::CallFunc::create([=] {
+				mWinAndLose->stopAllActions();
+			}), nullptr);
+			mWinAndLose->runAction(sequence);
+			checkAppearMonster = false;
+
+
+			for (int i = 0; i < mListCharacters.size(); i++)
+			{
+				if (mListCharacters[i]->getAlive() == 0)
+				{
+					mListCharacters[i]->setAlive(2);
+				}
+			}
+		}
+	}
+
 }

@@ -235,6 +235,7 @@
 #define SLIDE_BAR_PROGRESS "popUpSetting/Slider_PressBar.png"
 #define LEVEL_UP "popUpSetting/levelup.png"
 #define GAME_OVER "popUpSetting/gameover.png"
+#define YOU_WIN "popUpSetting/youwin.png"
 #define YES "popUpSetting/yes.png"
 #define NO "popUpSetting/no.png"
 
@@ -247,3 +248,16 @@
 #define SFX_HERO_DIED "Audio/Die/heroDied.wav"
 #define SFX_MONSTER_DIED "Audio/Die/monsterDied.wav"
 #define SFX_WIN "Audio/WinGame/nextRound.mp3"
+#define SFX_COIN "Audio/coin.mp3"
+//popup setting++
+// PopUp
+#define POPUP_SETTING "setting/setting.png"
+#define LABEL_BGM "setting/bgm.png"
+#define LABEL_SFX "setting/sfx.png"
+#define SLIDER_BAR_BROWN "setting/brown.png"
+#define SLIDER_BAR_BLUE "setting/blue.png"
+#define SLIDER_BAR_ORANGE "setting/orange.png"
+#define SLIDER_ROUND "setting/round.png"
+#define BUTTON_HOME "setting/home.png"
+#define BUTTON_RESET "setting/reset.png"
+#define BUTTON_RESUME "setting/resume.png"
